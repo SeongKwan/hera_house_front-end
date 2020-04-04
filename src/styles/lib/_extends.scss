@@ -1,0 +1,13 @@
+/* extends */
+%center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%input {
+    all: unset;
+    border: 0;
+    box-shadow: 0;
+    padding: 0 0.4rem;
+}
