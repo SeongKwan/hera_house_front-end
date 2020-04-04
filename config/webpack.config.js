@@ -457,13 +457,25 @@ module.exports = function(webpackEnv) {
             {
               test: sassRegex,
               exclude: sassModuleRegex,
-              use: getStyleLoaders(
-                {
-                  importLoaders: 3,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                },
-                'sass-loader'
-              ),
+              // use: getStyleLoaders(
+              //   {
+              //     importLoaders: 3,
+              //     sourceMap: isEnvProduction && shouldUseSourceMap,
+              //   },
+              //   'sass-loader'
+              // ),
+              use: getStyleLoaders({
+                importLoaders: 3,
+                sourceMap: isEnvProduction && shouldUseSourceMap
+              }).concat({
+                loader: require.resolve('sass-loader'),
+                options: {
+                  sassOptions: {
+                    includePaths: [paths.globalStyles],
+                  },
+                  prependData: `@import 'utils';`
+                }
+              }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.
@@ -481,9 +493,19 @@ module.exports = function(webpackEnv) {
                   modules: {
                     getLocalIdent: getCSSModuleLocalIdent,
                   },
-                },
-                'sass-loader'
-              ),
+              //   },
+              //   'sass-loader'
+              // ),
+              }).concat({
+                loader: require.resolve('sass-loader'),
+                options: {
+                  sassOptions: {
+                    includePaths: [paths.globalStyles],
+                  },
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                  prependData: `@import 'utils';`
+                }
+              }),
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
