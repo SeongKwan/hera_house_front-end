@@ -1,0 +1,81 @@
+.Archive {
+    position: relative;
+    
+    .header {
+        background-color: $white;
+        height: $height-header;
+        opacity: 0.95;
+        position: sticky;
+        top: 0;
+        z-index: $z-header-archive;
+        display: flex;
+        align-items: center;
+
+        .wrapper-brand-logo {
+            cursor: pointer;
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-left: 2rem;
+            transition: opacity 300ms ease;
+            user-select: none;
+            width: 320px;
+            &:hover {
+                opacity: 0.85;
+            }
+            @include fontEn;
+        }
+    }
+    .container {
+        display: flex;
+        position: relative;
+        z-index: $z-container-archive;
+
+        .aside {
+            height: calc(85vh);
+            left: 0;
+            margin-left: 2rem;
+            overflow: scroll;
+            padding: 2rem 0rem;
+            position: sticky;
+            top: $height-header;
+            width: 20rem;
+            z-index: $z-aside-archive;
+            &.listPage {
+                margin-right: 6rem;
+            }
+
+            .list-main-category {
+                list-style: none;
+
+                .link-nav-item {
+                    color: $font-color-dark;
+                    text-decoration: none;
+                    user-select: none;
+                    &:last-child {
+                        .list-item-main-category {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+
+                .list-item-main-category {
+                    cursor: pointer;
+                    font-weight: 300;
+                    margin-bottom: 2.5rem;
+                    padding: 0.3rem;
+                    text-align: center;
+                    transition: color 400ms ease;
+                    &:hover {
+                        color: $font-color-light;
+                    }
+                    @include fontEn;
+                }
+            }
+        }
+        .main {
+            flex: 1 1 0%;
+            padding: 2rem 0rem;
+        }
+    }
+}
