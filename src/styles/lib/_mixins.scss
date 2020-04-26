@@ -1,3 +1,21 @@
+/** 
+*** flex를 이용하여 요소를 가운데로 위치시키기
+**/
+@mixin centerPosition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin fontKR {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+@mixin fontEn {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+
 @mixin shadow($z-depth: 1, $strength: 1, $color: black) {
     @if $z-depth==1 {
         box-shadow: 0 1px 3px rgba($color, $strength * 0.14), 0 1px 2px rgba($color, $strength * 0.24);
@@ -42,11 +60,13 @@
 
 
 // Map with much breakpoints
-$breakpoints: ('xs': 576px,
+$breakpoints: (
+    'xs': 576px,
     'sm': 768px,
-    'md': 1024px,
-    'lg': 1411px,
-    'xl': 1601px);
+    'md': 912px,
+    'lg': 1288px,
+    'xl': 1601px
+);
 
 // Respond-To Mixin
 @mixin media($size) {
