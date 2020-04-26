@@ -1,41 +1,48 @@
-// color -----------------------
+
+/**
+*** COLOR -----------------------
+**/ 
+
 $black: black;
 $white: white;
 
-$bc-01: #0F4C81;
-$bc-02: #658DC6;
-$bc-03: #A5B8D0;
-$bc-04: #955C20;
-$bc-05: #996849;
-$bc-06: #A58D7F;
-$bc-07: #F3D5AD;
-$bc-08: #255958;
-$bc-09: #77202F;
-$bc-10: #E9ADCA;
-$bc-11: #F26B5B;
-$bc-12: #fbd16f;
-$bc-13: #7FC844;
-$bc-14: #F1EEE6;
-$bc-15: #c4c0ad;
-$bc-16: #656460;
-$bc-17: #84898C;
-$bc-18: #2A2A35;
-$bc-19: #373838;
+$font-color-dark: #100c08; // Smoky Black
+$font-color-light: #878583; // 6th Tints of Smoky Black
 
-// size ------------------------
-$header-height: 60px;
-$screen-width: 1366px;
-$screen-md-width: 768px;
-$container-width: 1277px;
+$button-color-back: #044389; // Dark Cornflower Blue
 
-// z-index ---------------------
-$drawer-z-index: 1003;
-$header-z-index: 1010;
-$topbar-z-index: 1020;
-$main-container-z-index: 1000;
 
-// border radius
-$radius-low: 2px;
-$radius-medium: 4px;
-$radius-high: 8px;
+/**
+*** SIZE -----------------------
+**/ 
+
+$height-full: 100vh;
+$width-full: 100vw;
+$height-header: 15vh;
+
+
+
+/**
+*** POSITION [top, bottom, left, right]
+**/ 
+
+$top-main-logo: 15vh;
+
+
+
+/**
+*** Z-INDEX -----------------------
+**/ 
+
+$z-header-archive: 1040;
+$z-container-archive: 1030;
+$z-aside-archive: 1035;
+
+/**
+*** RADIUS SIZE -----------------------
+**/ 
+
+$radius-ease: 2px;
+$radius-normal: 4px;
+$radius-hard: 8px;
 $radius-circle: 100%;
