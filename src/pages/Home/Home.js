@@ -17,13 +17,13 @@ class Home extends Component {
         return (
             <div className={cx('Home')}>
                 <main className={cx('main')}>
-                    <div className={cx('wrapper-logo')}>Hera House</div>
-                    <ul className={cx(cn.list)}>
+                    <div className={cx('wrapper-brand-logo')}>Hera House</div>
+                    <nav className={cx(cn.list)}>
                         {categories.map(category => {
                             const { path, name } = category;
                             return <Link key={name} to={`/archive${path}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>{name}</li></Link>
                         })}
-                    </ul>
+                    </nav>
                 </main>
             </div>
         );

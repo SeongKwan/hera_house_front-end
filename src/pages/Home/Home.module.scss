@@ -6,19 +6,29 @@
         position: relative;
         @include centerPosition;
 
-        .wrapper-logo {
+        .wrapper-brand-logo {
             font-size: 2rem;
             font-weight: 800;
             position: absolute;
             top: $top-main-logo;
+            user-select: none;
             @include fontEn;
         }
 
         .list-main-category {
+            list-style: none;
+            
             .link-nav-item {
                 color: $font-color-dark;
                 text-decoration: none;
+                user-select: none;
+                &:last-child {
+                    .list-item-main-category {
+                        margin-bottom: 0;
+                    }
+                }
             }
+
             .list-item-main-category {
                 cursor: pointer;
                 font-weight: 300;
