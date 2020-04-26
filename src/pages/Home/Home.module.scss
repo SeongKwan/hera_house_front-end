@@ -1,0 +1,36 @@
+.Home {
+    .main {
+        display: flex;
+        flex-direction: column;
+        height: $height-full;
+        position: relative;
+        @include centerPosition;
+
+        .wrapper-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            position: absolute;
+            top: $top-main-logo;
+            @include fontEn;
+        }
+
+        .list-main-category {
+            .link-nav-item {
+                color: $font-color-dark;
+                text-decoration: none;
+            }
+            .list-item-main-category {
+                cursor: pointer;
+                font-weight: 300;
+                margin-bottom: 2.5rem;
+                padding: 0.3rem;
+                text-align: center;
+                transition: color 400ms ease;
+                &:hover {
+                    color: $font-color-light;
+                }
+                @include fontEn;
+            }
+        }
+    }
+}
