@@ -2,15 +2,15 @@
     user-select: none;
     display: flex;
     flex-wrap: wrap;
-    margin: -1rem;
+    margin: -0.25rem 2rem 0 0;
     
     .list-item-post {
         border-radius: 2px;
         display: flex;
         flex-direction: column;
-        margin: 1rem;
+        margin: 0.25rem;
         overflow: hidden;
-        width: 20rem;
+        width: 24rem;
         transition: opacity 300ms ease;
         &:hover {
             opacity: 0.85;
