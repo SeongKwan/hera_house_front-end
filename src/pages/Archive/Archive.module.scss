@@ -77,5 +77,24 @@
             flex: 1 1 0%;
             padding: 2rem 0rem;
         }
+        .wrapper-button-top-scroll {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 2.5rem;
+            .wrapper-icon {
+                padding: 1rem;
+                background-color: rgba($font-color-light, 0.05);
+                box-shadow: 4px 20px 32px -12px rgba($font-color-light, 0.35);
+                border-radius: $radius-hard;
+                .icon {
+                    cursor: pointer;
+                    font-size: 3rem;
+                    transition: color 300ms ease;
+                    &:hover {
+                        color: $font-color-light;
+                    }
+                }
+            }
+        }
     }
 }
