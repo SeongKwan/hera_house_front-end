@@ -1,0 +1,23 @@
+.PostList {
+    user-select: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem;
+    
+    .list-item-post {
+        border-radius: 2px;
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        overflow: hidden;
+        width: 20rem;
+        transition: opacity 300ms ease;
+        &:hover {
+            opacity: 0.85;
+        }
+        .img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+const posts = [
+    {id: '1', color: '#2F4858'},
+    {id: '2', color: '#f6ae2d'},
+    {id: '3', color: '#f26419'},
+    {id: '4', color: '#a3bfa8'},
+    {id: '5', color: '#0c1b33'},
+    {id: '6', color: '#da4167'},
+    {id: '7', color: '#846a6a'},
+    {id: '8', color: '#0a2463'},
+    {id: '9', color: '#9d44b5'},
+    {id: '10', color: '#004f2d'},
+    {id: '11', color: '#004f2d'},
+    {id: '12', color: '#004f2d'},
+    {id: '13', color: '#004f2d'},
+    {id: '14', color: '#004f2d'},
+    {id: '15', color: '#004f2d'},
+    {id: '16', color: '#004f2d'},
+    {id: '17', color: '#004f2d'},
+    {id: '18', color: '#004f2d'},
+    {id: '19', color: '#004f2d'},
+    {id: '20', color: '#004f2d'},
+    {id: '21', color: '#004f2d'},
+    {id: '22', color: '#004f2d'},
+    {id: '23', color: '#004f2d'},
+    {id: '24', color: '#004f2d'},
+];
+
+export default posts;

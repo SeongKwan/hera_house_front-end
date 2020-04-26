@@ -1,0 +1,47 @@
+.Post {
+    position: relative;
+    .button-back-to-list {
+        background-color: transparent;
+        border: 0;
+        color: $button-color-back;
+        cursor: pointer;
+        font-size: 0.9rem;
+        left: 15%;
+        outline: 0;
+        position: sticky;
+        top: calc(15vh + 2rem);
+        transition: opacity 300ms ease;
+        &:after {
+            background: $button-color-back;
+            content: '';
+            display: block;
+            height: 0.5px;
+            opacity: 0;
+            transition: 300ms ease;
+            width: 100%;
+        }
+        &:hover {
+            opacity: 0.8;
+            &:after {
+                opacity: 0.5;
+            }
+        }
+    }
+    .pascal-text {
+        text-transform: capitalize;
+    }
+    .section {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: $height-header;
+
+        .figure {
+            margin-bottom: 2rem;
+            .img {
+                width: 850px;
+                height: auto;
+            }
+        }
+    }
+}
