@@ -1,7 +1,17 @@
-import navStore from './navStore';
+import authStore from './authStore';
+import categoryStore from './categoryStore';
+import dndStore from './dndStore';
+import loginStore from './loginStore';
+import postStore from './postStore';
+import tableStore from './tableStore';
 
 const stores = {
-    navStore
+    authStore,
+    categoryStore,
+    dndStore,
+    loginStore,
+    postStore,
+    tableStore
 }
 
 export default stores;
