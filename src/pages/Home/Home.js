@@ -32,7 +32,7 @@ class Home extends Component {
                     </div>
                 }
                 <main className={cx('main')}>
-                    <div className={cx('wrapper-brand-logo')}>Hera House!!</div>
+                    <div className={cx('wrapper-brand-logo')}>Hera House</div>
                     <nav className={cx(cn.list)}>
                         {categories.map(category => {
                             const { name } = category;
