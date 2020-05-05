@@ -34,10 +34,16 @@
             top: $top-main-logo;
             user-select: none;
             @include fontEn;
+            @include media('xs') {
+                top: $top-main-logo-mobile;
+            }
         }
 
         .list-main-category {
             list-style: none;
+            @include media('xs') {
+                padding-top: 100px;
+            }
             
             .link-nav-item {
                 color: $font-color-dark;
@@ -59,6 +65,9 @@
                 text-transform: capitalize;
                 transition: color 400ms ease;
                 @include fontEn;
+                @include media('xs') {
+                    margin-bottom: 25px;
+                }
                 &:hover {
                     color: $font-color-light;
                 }
