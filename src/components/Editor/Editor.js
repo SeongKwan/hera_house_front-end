@@ -5,15 +5,12 @@ import './Editor.css';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
 import ReactSummernote from 'react-summernote';
-// import 'react-summernote/dist/react-summernote.css'; // import styles
 import 'react-summernote/lang/summernote-ko-KR'; // you can import any other locale
 import 'summernote/dist/summernote-bs4';
 import 'summernote/dist/summernote-bs4.css';
 import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
-// import 'bootstrap/dist/css/bootstrap.css';
-// import './bootstrap.css';
 
 import { FiArrowLeft } from 'react-icons/fi';
 import TextareaAutosize from 'react-textarea-autosize';
