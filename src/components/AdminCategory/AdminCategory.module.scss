@@ -1,0 +1,96 @@
+.AdminCategory {
+    display: flex;
+
+    .left-container {
+        flex: 1;
+
+        .list-category-fake {
+            display: flex;
+            flex-direction: column;
+
+            .fake-list {
+                background-color: $fake-box-color-300;
+                width: 100%;
+                height: 280px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .fake-button {
+                width: 100%;
+                height: 50px;
+                background-color: $fake-box-color-300;
+                border: 1px solid transparent;
+                border-radius: $radius-easy;
+                color: $white;
+                cursor: pointer;
+                font-size: 1rem;
+                outline: 0;
+                padding: 0 1rem;
+            }
+        }
+
+        .wrapper-add-category {
+            margin-bottom: 0.5rem;
+            display: flex;
+
+            .wrapper-input {
+                flex: 1;
+                position: relative;
+
+                .input-category {
+                    border: 0;
+                    border-radius: $radius-easy;
+                    box-shadow: $box-shadow-admin-element;
+                    font-size: 1.2rem;
+                    margin-right: 0.5rem;
+                    outline: 0;
+                    padding: 0.75rem 0.5rem;
+                    padding-left: 1rem;
+                    padding-right: 2.5rem;
+                    width: 100%;
+    
+                    &::placeholder {
+                        color: rgba($font-color-light, 0.5);
+                    }
+                }
+
+                .clear {
+                    cursor: pointer;
+                    position: absolute;
+                    right: 1rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            
+            
+        }
+        .button-add, .button-apply-order {
+            background-color: $admin-sidebar-color;
+            border: 1px solid transparent;
+            border-radius: $radius-easy;
+            color: $white;
+            cursor: pointer;
+            font-size: 1rem;
+            outline: 0;
+            padding: 0 1rem;
+            @include fontEn;
+            &:active {
+                background-color: rgba($admin-sidebar-color, 0.8);
+                border: 1px solid transparent;
+            }
+        }
+
+        .button-apply-order {
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            width: 100%;
+        }
+    }
+
+    .right-container {
+        flex: 2;
+        margin-left: 3rem;
+    }
+}

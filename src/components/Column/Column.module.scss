@@ -1,0 +1,11 @@
+.Column {
+    .list {
+        background-color: $white;
+        border-radius: $radius-easy;
+        box-shadow: $box-shadow-admin-element;
+
+        &.isDragginOver {
+            
+        }
+    }
+}

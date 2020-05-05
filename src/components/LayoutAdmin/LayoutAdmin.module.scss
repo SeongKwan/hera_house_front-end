@@ -1,0 +1,28 @@
+.LayoutAdmin {
+    display: flex;
+    flex-direction: column;
+    
+    .wrapper-section-title {
+        flex: 1;
+        padding: 4rem;
+        .section-title {
+            font-size: 1.8rem;
+            position: relative;
+            &::before {
+                height: 2px;
+                width: 40px;
+                background-color: $font-color-dark;
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -13px;
+            }
+        }
+    }
+    
+    .container {
+        flex: 1;
+        padding: 4rem 6rem;
+        position: relative;
+    }
+}

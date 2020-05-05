@@ -2,85 +2,47 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router";
 import styles from './Post.module.scss';
 import classNames from 'classnames/bind';
-import color from '../../styles/img/color.jpg';
+import Markdown from 'react-markdown';
+import './Post.css';
+import { inject, observer } from 'mobx-react';
 
 const cx = classNames.bind(styles);
 
 @withRouter
+@inject('postStore')
+@observer
 class Post extends Component {
+    componentDidMount() {
+        this._initialize();
+    }
+
+    componentWillUnmount() {
+        this.props.postStore.clearThePost();
+    }
+
+    _initialize = () => {
+        const { postId } = this.props.match.params;
+        this.props.postStore.loadPost(postId);
+    }
+
     _onClickBackToListButton = () => {
         this.props.history.goBack();
     }
 
     render() {
-        const { postId, category} = this.props.match.params;
+        const { thePost } = this.props.postStore;
+        const {
+            // title,
+            content
+        } = thePost;
+
         return (
-            <article className={cx('Post')}>
-                {/* <button className={cx('button-back-to-list')} onClick={this._onClickBackToListButton}>&lt; 목록 (<span className={cx('pascal-text')}>{category}</span>)</button> */}
+            <article className={cx('Post', 'Post-CSS')}>
                 <section className={cx('section')}>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
-                    <figure className={cx('figure')}>
-                        <img className={cx('img')} src={color} alt="color" />
-                    </figure>
+                    <Markdown 
+                        escapeHtml={false}
+                        source={content} 
+                    />
                 </section>
             </article>
         );

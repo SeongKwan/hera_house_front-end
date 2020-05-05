@@ -1,0 +1,144 @@
+.LayoutAdminMain {
+    color: $white;
+    display: flex;
+    position: relative;
+    user-select: none;
+    width: 100%;
+
+    &.is-not-logged-in {
+        background-color: $admin-main-container-color;
+        height: 100vh;
+        @include centerPosition;
+    }
+
+    .aside {
+        background-color: $admin-sidebar-color;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: 2rem 0 3rem 0;
+        position: sticky;
+        top: 0;
+        width: 360px;
+        z-index: $z-aside;
+
+        .logo {
+            cursor: pointer;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            padding: 2rem 3rem;
+            transition: color 300ms ease;
+            @include fontEn;
+            &:hover {
+                color: $font-color-light;
+            }
+        }
+
+        .list-category {
+            padding: 2rem 3rem;
+            width: 100%;
+
+            .list-item-wrapper {
+                &:not(:last-child) {
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .list-item-category {
+                color: $white;
+                cursor: pointer;
+                display: block;
+                font-size: 1.2rem;
+                font-weight: 300;
+                padding: 1rem 0;
+                text-decoration: none;
+                transition: color 300ms ease;
+                width: 100%;
+                &:hover {
+                    color: $font-color-light;
+                }
+            }
+        }
+
+        .footer {
+            font-size: 1rem;
+            margin-top: auto;
+            padding: 0rem 3rem;
+            text-align: center;
+            width: 100%;
+            
+
+            .link-to-site, .button-logout {
+                align-items: center;
+                color: $white;
+                display: flex;
+                font-size: 0.9em;
+                font-weight: 100;
+                justify-content: center;
+                transition: all 300ms ease;
+            }
+
+            .button-logout {
+                background-color: transparent;
+                border: 0;
+                margin-bottom: 2rem;
+                outline: 0;
+                width: 100%;
+                &:hover {
+                    color: $font-color-light;
+                }
+            }
+            
+            .link-to-site {
+                margin-bottom: 4rem;
+                &:hover {
+                    text-decoration: none;
+
+                    span::after {
+                        content: '';
+                        width: calc(100% + 24px);
+                        height: 1px;
+                        background-color: white;
+                        opacity: 1;
+                        position: absolute;
+                    }
+                }
+
+                span {
+                    position: relative;
+                    &::after {
+                        content: '';
+                        width: 0%;
+                        height: 1px;
+                        background-color: white;
+                        position: absolute;
+                        opacity: 0;
+                        right: 0;
+                        bottom: -3px;
+                        transition: all 200ms ease;
+                    }
+                }
+
+                .icon {
+                    margin-right: 0.5rem;
+                }
+            }
+
+            .footer-content {
+                color: rgba($font-color-light, 0.7);
+                font-size: 0.8em;
+                font-weight: 300;
+                @include fontEn;
+            }
+        }
+
+    }
+    .main {
+        background-color: $admin-main-container-color;
+        color: $font-color-dark;
+        width: 100%;
+    }
+}

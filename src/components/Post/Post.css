@@ -1,0 +1,22 @@
+.Post-CSS h1,
+.Post-CSS h2,
+.Post-CSS h3,
+.Post-CSS h4,
+.Post-CSS h5,
+.Post-CSS h6,
+.Post-CSS p {
+    padding: 0 0.5rem;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.Post-CSS img {
+    margin: 0 auto;
+    max-width: 100% !important;
+    height: auto !important;
+    /* padding: 0 0.5rem; */
+}
+
+.Post-CSS iframe {
+    max-width: 100%;
+}

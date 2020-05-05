@@ -1,0 +1,48 @@
+.column-item {
+    align-items: center;
+    border-radius: $radius-easy;
+    display: flex;
+    @include fontEn;
+    
+    &.isDragging {
+        background-color: $admin-sidebar-color-100;
+    }
+
+    .drag-handle {
+        color: $admin-sidebar-color;
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        margin-right: 8px;
+        padding: 1rem;
+    }
+
+    .wrapper-content {
+        position: relative;
+        width: 100%;
+
+        .content {
+            cursor: pointer;
+            padding: 1rem;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .button-delete {
+            background-color: transparent;
+            border: 0;
+            color: $delete;
+            cursor: pointer;
+            position: absolute;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.75rem;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

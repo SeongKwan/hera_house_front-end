@@ -3,8 +3,14 @@
     display: flex;
     flex-wrap: wrap;
     margin: -0.25rem 2rem 0 0;
+    &.no-posts {
+        height: 100%;
+    }
+    @include media('md') {
+        margin: -0.25rem 0rem 0 0;
+    }
     
-    .list-item-post {
+    .list-item-post, .fake-container {
         border-radius: 2px;
         display: flex;
         flex-direction: column;
@@ -15,9 +21,38 @@
         &:hover {
             opacity: 0.85;
         }
-        .img {
+
+        .img, .fake-box {
             width: 100%;
             height: auto;
         }
+
+        .fake-box {
+            width: 24rem;
+            height: 24rem;
+            background-color: $fake-box-color;
+        }
+    }
+    
+    .no-posts {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        margin-top: 4rem;
+        width: 70%;
+        @include media('md') {
+            width: 100%;
+        }
+        
+        img {
+            width: 100px;
+        }
+
+        p {
+            margin-top: 1rem;
+            font-weight: 100;
+        }
+
     }
 }
