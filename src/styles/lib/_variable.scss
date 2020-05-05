@@ -1,3 +1,9 @@
+/**
+*** BOX SHADOW -----------------------
+**/
+$box-shadow-admin-element: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
+
+
 
 /**
 *** COLOR -----------------------
@@ -9,9 +15,19 @@ $white: white;
 $font-color-dark: #100c08; // Smoky Black
 $font-color-light: #878583; // 6th Tints of Smoky Black
 
-$button-color-back: #044389; // Dark Cornflower Blue
+$button-color-back: #044389; // Dark Cornflower Blueon
 
+$admin-sidebar-color: #003366; // Midnight Blue 
+$admin-sidebar-color-100: #e5f2ff; // Midnight Blue Shade100
 
+$admin-main-container-color: #f5f5f5;
+
+$fake-box-color: #f8f8f8;
+$fake-box-color-300: #eeeeee;
+
+$table-list-select: #eeeeee;
+
+$delete: #9b111e; // Ruby
 /**
 *** SIZE -----------------------
 **/ 
@@ -36,13 +52,16 @@ $top-main-logo: 15vh;
 
 $z-header-archive: 1040;
 $z-container-archive: 1030;
+$z-aside: 1070;
 $z-aside-archive: 1035;
+
+$z-button-to-admin: 9999;
 
 /**
 *** RADIUS SIZE -----------------------
 **/ 
 
-$radius-ease: 2px;
+$radius-easy: 2px;
 $radius-normal: 4px;
 $radius-hard: 8px;
 $radius-super: 16px;
