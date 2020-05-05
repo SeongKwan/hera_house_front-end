@@ -1,4 +1,24 @@
 .Home {
+
+    .floating-container {
+        position: fixed;
+        right: 2rem;
+        top: 2rem;
+        z-index: $z-button-to-admin;
+
+        button {
+            background-color: $white;
+            border: 0;
+            &:hover {
+                text-decoration: underline;
+            }
+
+            .icon {
+                font-size: 2rem;
+            }
+        }
+    }
+
     .main {
         display: flex;
         flex-direction: column;
@@ -35,11 +55,12 @@
                 margin-bottom: 2.5rem;
                 padding: 0.3rem;
                 text-align: center;
+                text-transform: capitalize;
                 transition: color 400ms ease;
+                @include fontEn;
                 &:hover {
                     color: $font-color-light;
                 }
-                @include fontEn;
             }
         }
     }

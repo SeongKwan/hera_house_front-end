@@ -1,6 +1,25 @@
 .Archive {
     position: relative;
     
+    .floating-container {
+        position: fixed;
+        right: 2rem;
+        top: 2rem;
+        z-index: $z-button-to-admin;
+
+        button {
+            background-color: $white;
+            border: 0;
+            &:hover {
+                text-decoration: underline;
+            }
+
+            .icon {
+                font-size: 2rem;
+            }
+        }
+    }
+
     .header {
         background-color: $white;
         height: $height-header;
@@ -20,10 +39,10 @@
             transition: opacity 300ms ease;
             user-select: none;
             width: 320px;
+            @include fontEn;
             &:hover {
                 opacity: 0.85;
             }
-            @include fontEn;
         }
     }
     .container {
@@ -39,8 +58,13 @@
             padding: 2rem 0rem;
             position: sticky;
             top: $height-header;
-            width: 20rem;
+            width: 20%;
+            max-width: 320px;
             z-index: $z-aside-archive;
+            @include media('md') {
+                display: none;
+            }
+
             &.listPage {
                 margin-right: 6rem;
             }
@@ -64,17 +88,35 @@
                     font-weight: 300;
                     margin-bottom: 2.5rem;
                     padding: 0.3rem;
+                    position: relative;
                     text-align: center;
+                    text-transform: capitalize;
                     transition: color 400ms ease;
+                    @include fontEn;
                     &:hover {
                         color: $font-color-light;
                     }
-                    @include fontEn;
+
+                    &.selected {
+                        &::before {
+                            background-color: $font-color-dark;
+                            content: '';
+                            height: 100%;
+                            left: 50px;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 5px;
+
+                        }
+                    }
+
+                    
                 }
             }
         }
         .main {
-            flex: 1 1 0%;
+            flex: 1;
             padding: 2rem 0rem;
         }
         .wrapper-button-top-scroll {

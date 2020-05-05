@@ -5,12 +5,12 @@ import {
     Link
 } from "react-router-dom";
 import { withRouter } from "react-router";
+import { inject, observer } from 'mobx-react';
 import styles from './Archive.module.scss';
 import classNames from 'classnames/bind';
-import categories from '../../constants/category';
 import PostList from '../../components/PostList/PostList';
 import Post from '../../components/Post/Post';
-import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowUp, IoIosSettings } from "react-icons/io";
 
 const cx = classNames.bind(styles);
 const cn = {
@@ -19,20 +19,23 @@ const cn = {
 }
 
 @withRouter
+@inject('categoryStore', 'loginStore')
+@observer
 class Archive extends Component {
     state = { isSeen: false }
 
     componentDidMount() {
-        window.addEventListener("scroll", this._showTopScrollButton)
+        this.props.categoryStore.loadCategories();
+        window.addEventListener("scroll", this._showTopScrollButton);
     }
     componentWillUnmount() {
-        window.removeEventListener("scroll", this._showTopScrollButton)
+        window.removeEventListener("scroll", this._showTopScrollButton);
     }
 
     _showTopScrollButton = () => {
         let { scrollY } = window,
             { scrollHeight } = this.mainContainer;
-        let touchDown = ((scrollY / scrollHeight) > 0.3) || scrollY > 2000;
+        let touchDown = ((scrollY / scrollHeight) > 0.1) || scrollY > 100;
 
         if (touchDown && !this.state.isSeen) {
             this.setState({isSeen: true});
@@ -50,10 +53,20 @@ class Archive extends Component {
     }
 
     render() {
-        let { path, params } = this.props.match;
+        const categories = this.props.categoryStore.registry;
+        const currentCategory = this.props.location.pathname.split('/')[2];
+        const { isLoggedIn } = this.props.loginStore;
+        let { path } = this.props.match;
         let isDetailPage = window.location.pathname.split('/').length > 3 ? true : false;
+
         return (
             <div className={cx('Archive')}>
+            {
+                isLoggedIn &&
+                <div className={cx('floating-container')}>
+                    <button onClick={()=>this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
+                </div>
+            }
                 <header className={cx('header')}>
                     <div className={cx('wrapper-brand-logo')} onClick={this._onClickBrandLogo}>Hera House</div>
                 </header>
@@ -61,8 +74,8 @@ class Archive extends Component {
                     <aside className={cx('aside', {listPage: !isDetailPage})}>
                         <nav className={cx(cn.list)}>
                             {categories.map(category => {
-                                const { path, name } = category;
-                                return <Link key={name} to={`/archive${path}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>{name}</li></Link>
+                                const { name } = category;
+                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item, {selected: currentCategory === name})}>{name}</li></Link>
                             })}
                         </nav>
                     </aside>

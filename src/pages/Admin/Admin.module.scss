@@ -1,0 +1,14 @@
+.Admin {
+    color: $white;
+    display: flex;
+    position: relative;
+    user-select: none;
+
+    &.is-not-logged-in {
+        background-color: $admin-main-container-color;
+        height: 100vh;
+        @include centerPosition;
+    }
+    
+    
+}
