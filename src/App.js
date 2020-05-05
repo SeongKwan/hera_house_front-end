@@ -7,10 +7,13 @@ import {
 import Home from './pages/Home/Home';
 import Archive from './pages/Archive/Archive';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Admin from './pages/Admin/Admin';
 
 const routes = [
-  { path: '/', name: 'Home', Component: Home },
+  { path: '/', name: 'Home', Component: Home, exact: true },
   { path: '/archive', name: 'Archive', Component: Archive },
+  { path: '/admin', name: 'Admin Board', Component: Admin },
+  
   { path: '*', name: 'NotFoundPage', Component: NotFoundPage },
 ]
 
@@ -19,8 +22,8 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          {routes.map(({ path, Component }) => (
-            <Route key={path} exact={path === '/'} path={path}>
+          {routes.map(({ path, Component, exact }) => (
+            <Route key={path} exact={exact === true ? true : false} path={path}>
               <Component />
             </Route>
           ))}
