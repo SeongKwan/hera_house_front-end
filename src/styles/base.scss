@@ -6,7 +6,7 @@ html {
     box-sizing: border-box; // Padding, Margin 을 포함한 박스크기 || 반응형에 적합
     color: $font-color-dark;
     font-size: 16px; // 1rem
-    // font-family: 'Noto Sans KR', sans-serif;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 *,
