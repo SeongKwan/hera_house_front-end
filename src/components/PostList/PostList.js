@@ -43,7 +43,6 @@ class PostList extends Component {
     render() {
         const { url } = this.props.match;
         let { filteredRegistry: posts, isLoading, postsLength } = this.props.postStore;
-        console.log(postsLength)
 
         if (posts === null && posts === undefined) {
             return <div className={cx('PostList')}>
