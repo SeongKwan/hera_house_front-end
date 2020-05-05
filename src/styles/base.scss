@@ -18,8 +18,16 @@
     font-weight: 400;
     font-display: auto;
     src: url(font/NanumPenScript-Regular.eot);
-    src: url(font/NanumPenScript-Regular.eot);
     src: url(font/NanumPenScript-Regular.eot?#iefix) format("embedded-opentype"), url(font/NanumPenScript-Regular.woff2) format("woff2"), url(font/NanumPenScript-Regular.woff) format("woff"), url(font/NanumPenScript-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: 'Sunflower';
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url(font/Sunflower-Medium.eot);
+    src: url(font/Sunflower-Medium.eot?#iefix) format("embedded-opentype"), url(font/Sunflower-Medium.woff2) format("woff2"), url(font/Sunflower-Medium.woff) format("woff"), url(font/Sunflower-Medium.ttf) format("truetype");
 }
 
 html {
