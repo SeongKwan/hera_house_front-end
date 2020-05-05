@@ -12,7 +12,8 @@ import 'summernote/dist/summernote-bs4.css';
 import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import './bootstrap.css';
 
 import { FiArrowLeft } from 'react-icons/fi';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -231,7 +232,7 @@ class Editor extends Component {
             </div>
         }
         return (
-            <div className={cx('Editor')}>
+            <div className={cx('Editor', 'Editor-Only')}>
                 <div className={cx('wrapper-textarea')}>
                     <TextareaAutosize 
                         autoFocus
@@ -287,6 +288,7 @@ class Editor extends Component {
                     </div>
                 </div>
                 <ReactSummernote
+                    className={cx('editor-container')}
                     value={type === 'edit' ? content : ''}
                     ref={ref => this.editor = ref}
                     options={options}
