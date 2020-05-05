@@ -30,11 +30,20 @@
     src: url(font/Sunflower-Medium.eot?#iefix) format("embedded-opentype"), url(font/Sunflower-Medium.woff2) format("woff2"), url(font/Sunflower-Medium.woff) format("woff"), url(font/Sunflower-Medium.ttf) format("truetype");
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
 html {
     box-sizing: border-box; // Padding, Margin 을 포함한 박스크기 || 반응형에 적합
     color: $font-color-dark;
     font-size: 16px; // 1rem
     font-family: 'Noto Sans KR', sans-serif;
+}
+
+div#root {
+    height: 100%;
 }
 
 *,
