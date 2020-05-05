@@ -8,7 +8,6 @@ import Home from './pages/Home/Home';
 import Archive from './pages/Archive/Archive';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Admin from './pages/Admin/Admin';
-import 'bootstrap/dist/css/bootstrap.css';
 
 const routes = [
   { path: '/', name: 'Home', Component: Home, exact: true },
