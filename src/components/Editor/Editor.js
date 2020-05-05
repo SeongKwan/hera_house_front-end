@@ -177,7 +177,7 @@ class Editor extends Component {
                     })
                     .then(res => {
                         this.state.imageUrls.forEach(url => {
-                            insertImage(`http://localhost:8080/${url}`);
+                            insertImage(`${staticUrl}${url}`);
                         });
                         this.setState({fileName: [], file: [], imageUrls: []});
                     })
@@ -223,7 +223,7 @@ class Editor extends Component {
     render() {
         const { isLoading, value: {title, category, content} } = this.props.postStore;
         const { type } = this.props;
-        
+
         if (isLoading) {
             return <div className={cx('Editor', {isLoading})}>
                 <Loader />
@@ -287,7 +287,7 @@ class Editor extends Component {
                     </div>
                 </div>
                 <ReactSummernote
-                    value={content}
+                    value={type === 'edit' ? content : ''}
                     ref={ref => this.editor = ref}
                     options={options}
                     onChange={this._handleOnChange}
