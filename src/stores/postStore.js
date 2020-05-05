@@ -78,8 +78,8 @@ class PostStore {
                 return res.data;
             }))
             .then(action((res) => {
+                this.isLoading = false;
                 setTimeout(action(() => {
-                    this.isLoading = false;
                 }), 2000);
                 return res;
             }))
@@ -111,8 +111,8 @@ class PostStore {
                 return res.data;
             }))
             .then(action((res) => {
+                this.isLoading = false;
                 setTimeout(action(() => {
-                    this.isLoading = false;
                 }), 2000);
                 return res;
             }))
