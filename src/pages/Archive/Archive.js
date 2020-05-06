@@ -10,7 +10,7 @@ import styles from './Archive.module.scss';
 import classNames from 'classnames/bind';
 import PostList from '../../components/PostList/PostList';
 import Post from '../../components/Post/Post';
-import { IoIosArrowUp, IoIosArrowRoundForward, IoIosSettings } from "react-icons/io";
+import { IoIosArrowUp, IoIosSettings, IoIosMenu } from "react-icons/io";
 
 const cx = classNames.bind(styles);
 const cn = {
@@ -22,7 +22,7 @@ const cn = {
 @inject('categoryStore', 'loginStore')
 @observer
 class Archive extends Component {
-    state = { isSeen: false, isVisibleCategory: false }
+    state = { isSeen: false, isVisibleCategory: false , active: false}
 
     componentDidMount() {
         this.props.categoryStore.loadCategories();
@@ -57,6 +57,19 @@ class Archive extends Component {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+
+    toggleDropdown() {
+        this.setState({
+          active: !this.state.active
+        });
+      }
+      
+      handleClick(i) {
+        this.setState({
+          selected: i
+        });
+      }
+
     render() {
         const categories = this.props.categoryStore.registry;
         const currentCategory = this.props.location.pathname.split('/')[2];
@@ -73,29 +86,25 @@ class Archive extends Component {
                 </div>
             }
                 <header className={cx('header')}>
-                    <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._onClickBrandLogo}>Hera House</div>
+                    <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._onClickBrandLogo}><span>Hera House</span></div>
                     <div className={cx('wrapper-brand-logo')} data-device="mobile">
                         <span onClick={this._onClickBrandLogo}>HH</span>
-                        {
-                            isLoggedIn &&
-                            <div className={cx('button-admin')} onClick={()=>this.props.history.push('/admin')}>
-                            <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div></div>
-                        }
                     </div>
-                    <div className={cx('container-dropmenu-category')}>
-                        <div className={cx('current-category')}>
-                            <span onClick={this._handleClickOnDropdown}>{currentCategory}</span>
-                            <ul className={cx('dropmenu-list', {isVisible: this.state.isVisibleCategory}, {notVisible: !this.state.isVisibleCategory})}>
-                                {categories.map((category, i) =>{ 
-                                    if (category.name !== currentCategory) {
-                                        return <Link key={i} to={`/archive/${category.name}`} className={cx('dropmenu-link')}><li className={cx('dropmenu-item')}>{category.name}</li></Link>
-                                    }
-                                    return false;
-                                    }
-                                )}
-                            </ul>
+
+                    <div className={cx('dropdown')}>
+                        <div
+                            onClick={() => this.toggleDropdown()}
+                            className={cx('dropdown__toggle', 'dropdown__list-item' )}
+                        >
+                            <span>{currentCategory}</span><IoIosMenu className={cx('icon')} />
                         </div>
                     </div>
+
+                    {
+                        isLoggedIn &&
+                        <div className={cx('button-admin')} onClick={()=>this.props.history.push('/admin')}>
+                        <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div></div>
+                    }
                     
                 </header>
 
@@ -128,6 +137,31 @@ class Archive extends Component {
                         }
                     </main>
                 </div>
+
+                {/* <ul className={cx('dropdown-list', {isOpened: this.state.active}, {notOpened: !this.state.active})}>
+                    {categories.map((category, i) =>{ 
+                        return <li 
+                            onClick={evt => console.log('list clicked')} 
+                            key={i} 
+                            className={cx('dropdown_list-item')}
+                        >
+                            {category.name}
+                        </li>
+                        })
+                    }
+                </ul> */}
+                {/* <ul className={cx('dropdown__list', {"dropdown__list--active": this.state.active})}>
+                    {categories.map((category, i) =>{ 
+                        return <li 
+                            onClick={evt => console.log('list clicked')} 
+                            key={i} 
+                            className={cx('dropdown_list-item')}
+                        >
+                            {category.name}
+                        </li>
+                        })
+                    }
+                </ul> */}
             </div>
         );
     }
