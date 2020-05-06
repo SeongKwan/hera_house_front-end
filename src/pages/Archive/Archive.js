@@ -63,6 +63,12 @@ class Archive extends Component {
         });
     }
 
+    _handleClickOnListItem = () => {
+        this.setState({
+            active: !this.state.active
+        });
+    }
+
     render() {
         const categories = this.props.categoryStore.registry;
         const currentCategory = this.props.location.pathname.split('/')[2];
@@ -120,6 +126,8 @@ class Archive extends Component {
                         }
                     </main>
                 </div>
+
+
                 <div className={cx('dropdown')}>
                     <input 
                         ref={ref => this.menuCheckbox = ref}
@@ -135,19 +143,12 @@ class Archive extends Component {
                         <span className={cx("navigation__icon")}>&nbsp;</span>
                     </label>
 
-                    
-                    
                 </div>
-                <div className={cx('navigation-background', {active: this.state.active}, {deactive: !this.state.active})}>&nbsp;</div>
-                <ul className={cx('dropdown-list', {'going-in': this.state.active}, {'going-out': !this.state.active})}>
+                
+                <ul className={cx('dropdown-list', {'going-in': this.state.active})}>
                     {categories.map((category, i) =>{ 
-                        return <li 
-                            onClick={evt => console.log('list clicked')} 
-                            key={i} 
-                            className={cx('dropdown_list-item')}
-                        >
-                            {category.name}
-                        </li>
+                        const { name } = category;
+                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItem} className={cx('list-item', {selected: currentCategory === name})}>{name}</li></Link>
                         })
                     }
                 </ul>

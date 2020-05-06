@@ -318,11 +318,11 @@
                 }
 
                 &::before {
-                    top: -.3rem;
+                    top: -5px;
                 }
 
                 &::after {
-                    top: .3rem;
+                    top: 5px;
                 }
             }
         }
@@ -346,24 +346,8 @@
         }
     }
 
-    .navigation-background {
-        height: 1rem;
-        width: 1rem;
-        position: fixed;
-        top: 1.5rem;
-        right: 1.25rem;
-        background-color: rgba($white, 0.9);
-        transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
-        z-index: 1100;
-        &.active {
-            transform: scale(80);
-        }
-        &.deactive {
-            transform: scale(1);
-        }
-    }
-
     .dropdown-list {
+        background-color: rgba($white, 1);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -375,18 +359,42 @@
         
         opacity: 0;
         height: 100%;
-        width: 100%;
-        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        width: 0%;
+        transition: all .5s ease;
+        
         &.going-in {
-            animation-name: fadeInDown;
-            animation-duration: 0.8s;
-            animation-fill-mode: both;
+            width: 100%;
+            opacity: 1;
         }
-        &.going-out {
-            animation-name: fadeOutUp;
-            animation-duration: 0.2s;
-            animation-fill-mode: both;
+
+        .nav-link {
+            color: $font-color-dark;
+            text-decoration: none;
+
+            &:active, &:focus, &:hover {
+                text-decoration: none;
+            }
+            .list-item {
+                cursor: pointer;
+                font-weight: 300;
+                margin-bottom: 2.5rem;
+                padding: 0.3rem;
+                text-align: center;
+                text-transform: capitalize;
+                transition: color 400ms ease;
+                @include fontEn;
+                @include media('xs') {
+                    margin-bottom: 25px;
+                }
+                &:hover {
+                    color: $font-color-light;
+                }
+                &.selected {
+                    font-weight: 700;
+                }
+            }
         }
+
     }
 }
 
