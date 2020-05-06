@@ -22,12 +22,13 @@ const cn = {
 @inject('categoryStore', 'loginStore', 'commonStore')
 @observer
 class Archive extends Component {
-    state = { isSeen: false, isVisibleCategory: false , active: false}
+    state = { isShownScrollButton: false, isVisibleCategory: false , openMenu: false}
 
     componentDidMount() {
         this.props.categoryStore.loadCategories();
         window.addEventListener("scroll", this._showTopScrollButton);
     }
+
     componentWillUnmount() {
         window.removeEventListener("scroll", this._showTopScrollButton);
     }
@@ -37,35 +38,31 @@ class Archive extends Component {
             { scrollHeight } = this.mainContainer;
         let touchDown = ((scrollY / scrollHeight) > 0.1) || scrollY > 100;
 
-        if (touchDown && !this.state.isSeen) {
-            this.setState({isSeen: true});
-        } else if (!touchDown && this.state.isSeen) {
-            this.setState({isSeen: false});
+        if (touchDown && !this.state.isShownScrollButton) {
+            this.setState({isShownScrollButton: true});
+        } else if (!touchDown && this.state.isShownScrollButton) {
+            this.setState({isShownScrollButton: false});
         }
     }
 
-    _onClickBrandLogo = () => {
+    _handleClickOnBrandLogo = () => {
         this.props.history.push('/');
     }
 
-    _handleClickOnDropdown = () => {
-        this.setState({ isVisibleCategory: !this.state.isVisibleCategory});
-    }
-
-    _onClickTopScrollButton = () => {
+    _handleClickOnTopScrollButton = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
 
-    toggleDropdown() {
+    _handleClickOnToggleMenu() {
         this.setState({
-            active: !this.state.active
+            openMenu: !this.state.openMenu
         });
     }
 
-    _handleClickOnListItem = () => {
+    _handleClickOnListItemInMenu = () => {
         this.setState({
-            active: !this.state.active
+            openMenu: !this.state.openMenu
         });
     }
 
@@ -85,20 +82,17 @@ class Archive extends Component {
                 </div>
             }
                 <header className={cx('header')}>
-                    <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._onClickBrandLogo}><span>Hera House</span></div>
+                    <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._handleClickOnBrandLogo}><span>Hera House</span></div>
                     <div className={cx('wrapper-brand-logo')} data-device="mobile">
-                        <span onClick={this._onClickBrandLogo}>HH</span>
+                        <span onClick={this._handleClickOnBrandLogo}>HH</span>
                     </div>
                     {
                         isLoggedIn &&
                         <div className={cx('button-admin')} onClick={()=>this.props.history.push('/admin')}>
                         <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div></div>
                     }
-                    
                 </header>
-
-                
-                <div className={cx('container', {'covered-menu': this.state.active})}>
+                <div className={cx('container', {'covered-menu': this.state.openMenu})}>
                     <aside className={cx('aside', {listPage: !isDetailPage})}>
                         <nav className={cx(cn.list)}>
                             {categories.map(category => {
@@ -117,9 +111,9 @@ class Archive extends Component {
                             </Route>
                         </Switch>
                         {
-                            this.state.isSeen && 
+                            this.state.isShownScrollButton && 
                             <div className={cx('wrapper-button-top-scroll')}>
-                                <div className={cx('wrapper-icon')} onClick={this._onClickTopScrollButton}>
+                                <div className={cx('wrapper-icon')} onClick={this._handleClickOnTopScrollButton}>
                                     <IoIosArrowUp className={cx('icon')} />
                                 </div>
                             </div>
@@ -127,28 +121,25 @@ class Archive extends Component {
                     </main>
                 </div>
 
-
-                <div className={cx('dropdown')}>
+                <div className={cx('wrapper-toggle-menu')}>
                     <input 
                         ref={ref => this.menuCheckbox = ref}
+                        className={cx("input-checkbox-menu")} 
                         hidden
                         type="checkbox" 
-                        className={cx("navigation__checkbox")} 
                         id="navi-toggle" />
                     <label 
-                        onClick={() => this.toggleDropdown()}
-                        className={cx('dropdown__toggle', 'dropdown__list-item', "navigation__button")} 
+                        onClick={() => this._handleClickOnToggleMenu()}
+                        className={cx('label-menu', "hamburger-menu")} 
                         htmlFor="navi-toggle" >
                         <span>{currentCategory}</span>
-                        <span className={cx("navigation__icon")}>&nbsp;</span>
+                        <span className={cx("icon-menu")}>&nbsp;</span>
                     </label>
-
                 </div>
-                
-                <ul className={cx('dropdown-list', {'going-in': this.state.active})}>
+                <ul className={cx('menu-list', {'going-in': this.state.openMenu})}>
                     {categories.map((category, i) =>{ 
                         const { name } = category;
-                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItem} className={cx('list-item', {selected: currentCategory === name})}>{name}</li></Link>
+                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', {selected: currentCategory === name})}>{name}</li></Link>
                         })
                     }
                 </ul>
