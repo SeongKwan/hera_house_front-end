@@ -1,5 +1,34 @@
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -10%, 0);
+        transform: translate3d(0, -10%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -10%, 0);
+        transform: translate3d(0, -10%, 0);
+    }
+}
+
 .Archive {
     position: relative;
+    label {
+        margin-bottom: 0;
+    }
 
     .floating-container {
         position: fixed;
@@ -35,7 +64,7 @@
         position: sticky;
         top: 0;
         z-index: $z-header-archive;
-        
+
         @include media('xs') {
             display: flex;
             min-height: 50px;
@@ -47,7 +76,7 @@
             text-align: center;
             transition: opacity 300ms ease;
             user-select: none;
-            
+
             // Main Logo for Desktop
             &[data-device="desktop"] {
                 display: block;
@@ -92,50 +121,6 @@
             }
         }
 
-        .dropdown {
-            max-width: 300px;
-
-            &__list {
-                // opacity: 0;
-                transition: max-height .6s ease;
-                // transition: opacity .15s ease-out;
-                max-height: 0;
-                overflow: hidden;
-                margin: 0;
-                padding: 0;
-
-                &--active {
-                    max-height: 1000px;
-                    opacity: 1;
-                }
-            }
-
-            &__list-item {
-                cursor: pointer;
-                list-style: none;
-
-                &--active {
-                    background: #f4f4f4;
-                }
-            }
-
-            &__toggle {
-                align-items: center;
-                display: flex;
-
-                span {
-                    font-size: 0.8rem;
-                    text-transform: capitalize;
-                }
-
-                .icon {
-                    font-size: 2rem;
-                    margin-left: 0.5rem;
-                }
-
-            }
-        }
-
         .button-admin {
             display: none;
 
@@ -164,7 +149,10 @@
     .container {
         display: flex;
         position: relative;
-        z-index: $z-container-archive;
+        z-index: 1039;
+        &.covered-menu {
+            z-index: $z-container-archive;
+        }
 
         .aside {
             height: calc(85vh);
@@ -239,6 +227,7 @@
             flex: 1;
             padding: 2rem 0rem;
             width: 100%;
+
             @include media('xs') {
                 padding: 2rem 1rem;
             }
@@ -248,17 +237,27 @@
             position: fixed;
             bottom: 1.5rem;
             right: 2.5rem;
+            @include media('xs') {
+                bottom: 1rem;
+                right: 1rem;
+            }
 
             .wrapper-icon {
                 padding: 1rem;
                 background-color: rgba($font-color-light, 0.05);
                 box-shadow: 4px 20px 32px -12px rgba($font-color-light, 0.35);
                 border-radius: $radius-super;
+                @include media('xs') {
+                    padding: 0.5rem;
+                }
 
                 .icon {
                     cursor: pointer;
                     font-size: 3rem;
                     transition: color 300ms ease;
+                    @include media('xs') {
+                        font-size: 2rem;
+                    }
 
                     &:hover {
                         color: $font-color-light;
@@ -268,15 +267,126 @@
         }
     }
 
+    .dropdown {
+        position: fixed;
+        top: 26px;
+        right: 1rem;
+        align-items: center;
+        display: flex;
+        max-width: 300px;
+        z-index: 1300;
+
+        &__list-item {
+            cursor: pointer;
+            list-style: none;
+
+            &--active {
+                background: #f4f4f4;
+            }
+        }
+
+        &__toggle {
+            align-items: center;
+            display: flex;
+            z-index: 2000;
+
+            span:first-child {
+                font-size: 0.8rem;
+                text-transform: capitalize;
+            }
+
+            //Hamburger
+            .navigation__icon {
+                position: relative;
+                margin-left: 1rem;
+
+                &,
+                &::before,
+                &::after {
+                    width: 1.5rem;
+                    height: 2px;
+                    background-color: $font-color-dark;
+                    display: inline-block;
+                }
+
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    transition: all .2s;
+                }
+
+                &::before {
+                    top: -.3rem;
+                }
+
+                &::after {
+                    top: .3rem;
+                }
+            }
+        }
+
+        .navigation__checkbox:checked+.navigation__button .navigation__icon {
+            background-color: transparent;
+        }
+
+        .navigation__checkbox:checked+.navigation__button .navigation__icon::before {
+            top: 0;
+            transform: rotate(135deg);
+        }
+
+        .navigation__checkbox:checked+.navigation__button .navigation__icon::after {
+            top: 0;
+            transform: rotate(-135deg);
+        }
+
+        .navigation__checkbox:checked {
+            margin-top: 4rem;
+        }
+    }
+
+    .navigation-background {
+        height: 1rem;
+        width: 1rem;
+        position: fixed;
+        top: 1.5rem;
+        right: 1.25rem;
+        background-color: rgba($white, 0.9);
+        transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+        z-index: 1100;
+        &.active {
+            transform: scale(80);
+        }
+        &.deactive {
+            transform: scale(1);
+        }
+    }
+
     .dropdown-list {
-        background-color: rgba(lightcoral, 0.3);
-        width: 100%;
-        height: 100vh;
-        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
         top: 0;
-        left: 0;
         right: 0;
-        bottom: 0;
-        z-index: 9999999;
+        z-index: 1200;
+        
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        &.going-in {
+            animation-name: fadeInDown;
+            animation-duration: 0.8s;
+            animation-fill-mode: both;
+        }
+        &.going-out {
+            animation-name: fadeOutUp;
+            animation-duration: 0.2s;
+            animation-fill-mode: both;
+        }
     }
 }
+
