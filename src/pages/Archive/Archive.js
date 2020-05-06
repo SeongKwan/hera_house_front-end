@@ -76,8 +76,11 @@ class Archive extends Component {
                     <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._onClickBrandLogo}>Hera House</div>
                     <div className={cx('wrapper-brand-logo')} data-device="mobile">
                         <span onClick={this._onClickBrandLogo}>HH</span>
-                        <div className={cx('button-admin')} onClick={()=>this.props.history.push('/admin')}>
-                        <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div></div>
+                        {
+                            isLoggedIn &&
+                            <div className={cx('button-admin')} onClick={()=>this.props.history.push('/admin')}>
+                            <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div></div>
+                        }
                     </div>
                     <div className={cx('container-dropmenu-category')}>
                         <div className={cx('current-category')}>
