@@ -95,30 +95,6 @@
                 }
             }
         }
-
-        .button-admin {
-            display: none;
-
-            @include media('xs') {
-                margin-left: 1rem;
-                margin-right: 1rem;
-                text-align: center;
-                @include centerPosition;
-
-                .wrapper-button-admin {
-
-                    .icon {
-                        cursor: pointer;
-                        font-size: 2.2rem;
-                        transition: opacity 300ms ease;
-
-                        &:hover {
-                            opacity: 0.85;
-                        }
-                    }
-                }
-            }
-        }
     }
 
     .container {
@@ -245,21 +221,15 @@
     }
 
     .wrapper-toggle-menu {
-        align-items: center;
-        display: flex;
-        max-width: 300px;
-        position: fixed;
-        right: 1rem;
-        top: 26px;
-        z-index: $z-wrapper-archive-toggle-menu;
-
-        &__list-item {
-            cursor: pointer;
-            list-style: none;
-
-            &--active {
-                background: #f4f4f4;
-            }
+        display: none;
+        @include media('xs') {
+            align-items: center;
+            display: flex;
+            max-width: 300px;
+            position: fixed;
+            right: 1rem;
+            top: 26px;
+            z-index: $z-wrapper-archive-toggle-menu;
         }
 
         .label-menu {
@@ -377,6 +347,39 @@
             }
         }
 
+        .button-admin {
+            display: none;
+
+            @include media('xs') {
+                margin-left: 1rem;
+                margin-right: 1rem;
+                position: fixed;
+                bottom: 2rem;
+                left: 120%;
+                opacity: 0;
+                text-align: center;
+                transition: all 500ms ease;
+                @include centerPosition;
+
+                &.open-menu {
+                    opacity: 1;
+                    left: 1rem;
+                }
+
+                .wrapper-button-admin {
+
+                    .icon {
+                        cursor: pointer;
+                        font-size: 2.2rem;
+                        transition: opacity 300ms ease;
+
+                        &:hover {
+                            opacity: 0.85;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

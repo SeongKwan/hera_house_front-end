@@ -22,7 +22,7 @@ const cn = {
 @inject('categoryStore', 'loginStore', 'commonStore')
 @observer
 class Archive extends Component {
-    state = { isShownScrollButton: false, isVisibleCategory: false , openMenu: false}
+    state = { isShownScrollButton: false , openMenu: false}
 
     componentDidMount() {
         this.props.categoryStore.loadCategories();
@@ -86,11 +86,6 @@ class Archive extends Component {
                     <div className={cx('wrapper-brand-logo')} data-device="mobile">
                         <span onClick={this._handleClickOnBrandLogo}>HH</span>
                     </div>
-                    {
-                        isLoggedIn &&
-                        <div className={cx('button-admin')} onClick={()=>this.props.history.push('/admin')}>
-                        <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div></div>
-                    }
                 </header>
                 <div className={cx('container', {'covered-menu': this.state.openMenu})}>
                     <aside className={cx('aside', {listPage: !isDetailPage})}>
@@ -141,6 +136,12 @@ class Archive extends Component {
                         const { name } = category;
                         return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', {selected: currentCategory === name})}>{name}</li></Link>
                         })
+                    }
+                    {
+                        isLoggedIn &&
+                        <div className={cx('button-admin', {'open-menu': this.state.openMenu})} onClick={()=>this.props.history.push('/admin')}>
+                            <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div>
+                        </div>
                     }
                 </ul>
             </div>
