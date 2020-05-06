@@ -1,6 +1,29 @@
 /** 
 *** flex를 이용하여 요소를 가운데로 위치시키기
 **/
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -10%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: translate3d(0, -10%, 0);
+    }
+}
+
 @mixin centerPosition {
     display: flex;
     justify-content: center;
@@ -56,6 +79,22 @@
 
 @mixin transitionTime($time) {
     transition: all $time ease;
+}
+
+@mixin animated {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@mixin fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
+
+
+@mixin fadeOutUp {
+    -webkit-animation-name: fadeOutUp;
+    animation-name: fadeOutUp;
 }
 
 

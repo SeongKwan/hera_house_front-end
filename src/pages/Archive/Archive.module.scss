@@ -6,6 +6,9 @@
         right: 2rem;
         top: 2rem;
         z-index: $z-button-to-admin;
+        @include media('xs') {
+            display: none;
+        }
 
         button {
             background-color: $white;
@@ -21,14 +24,20 @@
     }
 
     .header {
+        align-items: center;
         background-color: $white;
+        display: flex;
         height: $height-header;
         opacity: 0.95;
         position: sticky;
         top: 0;
         z-index: $z-header-archive;
-        display: flex;
-        align-items: center;
+        @include media('xs') {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
 
         .wrapper-brand-logo {
             cursor: pointer;
@@ -39,9 +48,105 @@
             transition: opacity 300ms ease;
             user-select: none;
             width: 320px;
+            &[data-device="desktop"] {
+                display: block;
+                &:hover {
+                    opacity: 0.85;
+                }
+            }
+            &[data-device="mobile"] {
+                display: none;
+            }
             @include fontEn;
-            &:hover {
-                opacity: 0.85;
+            @include media('xs') {
+                &[data-device="desktop"] {
+                    display: none;
+                }
+                &[data-device="mobile"] {
+                    cursor: default;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 16px;
+                    margin-left: 0;
+                    width: 100%;
+
+                    span:hover {
+                        cursor: pointer;
+                        opacity: 0.85;
+                    }
+                }
+            }
+        }
+
+        .container-dropmenu-category {
+            position: relative;
+            user-select: none;
+            width: 100%;
+
+            .current-category {
+                background-color: rgb(243, 243, 243);
+                padding: 0.5rem;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0;
+                text-transform: capitalize;
+            }
+
+            .dropmenu-list {
+                background-color: $white;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                top: calc(100% + 4px);
+                width: 100%;
+                @include animated;
+                
+                &.isVisible {
+                    @include fadeInDown;
+                    .dropmenu-link, .dropmenu-item {
+                        display: block;
+                    }
+                }
+                &.notVisible {
+                    @include fadeOutUp;
+                    .dropmenu-link, .dropmenu-item {
+                        display: none;
+                    }
+                }
+
+                .dropmenu-link {
+                    display: none;
+                    color: $font-color-dark;
+                    text-decoration: none;
+                }
+                
+                .dropmenu-item {
+                    display: none;
+                    text-transform: capitalize;
+                    padding: 0.95rem;
+                    &:active, &:focus {
+                        background-color: rgb(243, 243, 243);
+                    }
+                }
+            }
+        }
+
+        .button-admin {
+            display: none;
+            @include media('xs') {
+                text-align: center;
+                @include centerPosition;
+
+                .wrapper-button-admin {
+                    
+                    .icon {
+                        cursor: pointer;
+                        font-size: 2.2rem;
+                        &:hover {
+                            opacity: 0.85;
+                        }
+                    }
+                }
             }
         }
     }
