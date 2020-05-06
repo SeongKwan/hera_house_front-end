@@ -124,7 +124,7 @@
                 display: flex;
 
                 span {
-                    font-size: 0.9rem;
+                    font-size: 0.8rem;
                     text-transform: capitalize;
                 }
 
@@ -239,6 +239,9 @@
             flex: 1;
             padding: 2rem 0rem;
             width: 100%;
+            @include media('xs') {
+                padding: 2rem 1rem;
+            }
         }
 
         .wrapper-button-top-scroll {
