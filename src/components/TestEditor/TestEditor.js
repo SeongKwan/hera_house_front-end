@@ -5,9 +5,11 @@ import classNames from 'classnames/bind';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
 import { isMobile } from 'react-device-detect';
-import ReactSummernote from 'react-summernote';
-import 'react-summernote/lang/summernote-ko-KR'; // you can import any other locale
+// import ReactSummernote from 'react-summernote';
+// import 'react-summernote/lang/summernote-ko-KR'; // you can import any other locale
+import summernote from 'summernote/dist/summernote-lite';
 import 'summernote/dist/summernote-lite.css';
+import 'summernote/dist/lang/summernote-ko-KR';
 // import 'bootstrap/js/dist/modal';
 // import 'bootstrap/js/dist/dropdown';
 // import 'bootstrap/js/dist/tooltip';
@@ -20,7 +22,6 @@ import staticUrl from '../../constants/staticUrl';
 import Loader from '../Loader/Loader';
 import $ from 'jquery';
 
-const summernote = require('summernote/dist/summernote-lite');
 const cx = classNames.bind(styles);
 
 @withRouter
@@ -45,7 +46,7 @@ class TestEditor extends Component {
         console.log($('.note-editable').on('focus', () => {console.log('focus')}))
         const { type } = this.props;
         this._initialize(type)
-        this.editor.onInit(() => {console.log('init')});
+        // this.editor.onInit(() => {console.log('init')});
     }
 
     componentWillUnmount() {
@@ -257,14 +258,14 @@ class TestEditor extends Component {
                 }
 
 
-                <ReactSummernote
+                {/* <ReactSummernote
                     className={cx('')}
                     value={type === 'edit' ? content : ''}
                     ref={ref => this.editor = ref}
                     options={isMobile ? optionsForMobile : options}
                     onChange={this._handleOnChange}
                     onImageUpload={this._handleOnImageUpload}
-                />
+                /> */}
             </div>
         );
     }
