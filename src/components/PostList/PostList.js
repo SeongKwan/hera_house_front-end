@@ -26,7 +26,7 @@ class PostList extends Component {
     }
 
     componentWillUnmount() {
-        this.props.postStore.clearRegistry();
+        // this.props.postStore.clearRegistry();
     }
 
     _initialize = () => {
