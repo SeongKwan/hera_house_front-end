@@ -55,12 +55,7 @@ div#root {
     box-sizing: inherit;
 }
 
-*{
-    -webkit-user-modify:read-write;
-}
-
 [contenteditable] {
-    -webkit-user-select: text;
     user-select: text;
 }
 
