@@ -11,7 +11,7 @@
         top: 2rem;
         z-index: $z-button-to-admin;
 
-        @include media('xs') {
+        @include media('md') {
             display: none;
         }
 
@@ -40,7 +40,7 @@
         top: 0;
         z-index: $z-header-archive;
 
-        @include media('xs') {
+        @include media('md') {
             display: flex;
             height: auto;
             min-height: 50px;
@@ -76,7 +76,7 @@
                 @include fontEn;
             }
 
-            @include media('xs') {
+            @include media('md') {
                 &[data-device="desktop"] {
                     display: none;
                 }
@@ -176,7 +176,7 @@
             flex: 1;
             width: 100%;
 
-            @include media('xs') {
+            @include media('md') {
                 padding: 2rem 1rem;
             }
         }
@@ -221,7 +221,7 @@
 
     .wrapper-toggle-menu {
         display: none;
-        @include media('xs') {
+        @include media('md') {
             align-items: center;
             display: flex;
             max-width: 300px;

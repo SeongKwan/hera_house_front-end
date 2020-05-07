@@ -19,6 +19,18 @@
         overflow: hidden;
         width: 24rem;
         transition: opacity 300ms ease;
+        @include media('lg') {
+            width: 20rem;
+        }
+        @include media('md') {
+            width: 49%;
+            margin: 0.5%;
+        }
+        @include media('xs') {
+            width: 100%;
+            margin: 0.5%;
+        }
+
         &:hover {
             opacity: 0.85;
         }
