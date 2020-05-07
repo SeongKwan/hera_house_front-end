@@ -3,9 +3,13 @@
 
     .floating-container {
         position: fixed;
-        left: 2rem;
-        bottom: 2rem;
+        top: 2rem;
+        right: 2rem;
         z-index: $z-button-to-admin;
+        @include media('md') {
+            left: 2rem;
+            bottom: 2rem;
+        }
 
         button {
             background-color: $white;
