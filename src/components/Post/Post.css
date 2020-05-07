@@ -5,7 +5,7 @@
 .Post-CSS h5,
 .Post-CSS h6,
 .Post-CSS p {
-    padding: 0 0.5rem;
+    padding: 0 0.5%;
     word-break: break-all;
     white-space: normal;
 }

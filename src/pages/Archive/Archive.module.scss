@@ -296,13 +296,14 @@
         justify-content: center;
         opacity: 0;
         position: fixed;
-        right: 0;
+        right: -100%;
         top: 0;
         transition: all .5s ease;
         width: 0%;
         z-index: $z-ul-archive-menu-list;
         &.going-in {
             opacity: 1;
+            right: 0;
             width: 100%;
         }
 
