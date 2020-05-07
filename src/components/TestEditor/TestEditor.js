@@ -234,45 +234,10 @@ class TestEditor extends Component {
         });
     }
 
-    renderTextarea = () => {
-        $('#summernote').summernote({
-            height: 300,                 // 에디터 높이
-            minHeight: null,             // 최소 높이
-            maxHeight: null,             // 최대 높이
-            focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-            lang: "ko-KR",					// 한글 설정
-            placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
-            
-      });
-    }
 
-
-
-    _onTouchStart(e) {
-        console.log('touch start')
-        const touch = e.touches[0];
-        this._swipe = { x: touch.clientX };
-        this.setState({ swiped: false });
+    _renderSummernote = () => {
+        $('#summernote').summernote();
     }
-    
-    _onTouchMove(e) {
-        console.log('touch move')
-        if (e.changedTouches && e.changedTouches.length) {
-            const touch = e.changedTouches[0];
-            this._swipe.swiping = true;
-        }
-    }
-    
-    _onTouchEnd(e) {
-        console.log('touch end')
-        const touch = e.changedTouches[0];
-        const absX = Math.abs(touch.clientX - this._swipe.x);
-        if (this._swipe.swiping && absX > this.minDistance ) {
-          this.props.onSwiped && this.props.onSwiped();
-          this.setState({ swiped: true });
-        }
-        this._swipe = {};
-      }
 
     render() {
         const { isLoading, value: {title, category, content} } = this.props.postStore;
@@ -286,16 +251,10 @@ class TestEditor extends Component {
         }
         return (
             <div className={cx('')}>     
-                {/* <div
-                    onTouchStart={this._onTouchStart}
-                    onTouchMove={this._onTouchMove}
-                    onTouchEnd={this._onTouchEnd}>
-                    {`Component-${this.state.swiped ? 'swiped' : ''}`}
-                </div> */}
-
-                {/* <textarea name="summernote" id="summernote" /> */}
-
-                <div role="textbox" contenteditable="true" aria-placeholder="5-digit zipcode" aria-labelledby="txtboxLabel" style={{background: 'red'}}></div> 
+                <textarea id="summernote" name="editordata" />
+                {
+                    this._renderSummernote()
+                }
 
 
                 <ReactSummernote
