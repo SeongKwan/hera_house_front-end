@@ -1,4 +1,5 @@
 .LayoutAdminMain {
+    background-color: $admin-main-container-color;
     color: $white;
     display: flex;
     height: 100%;
@@ -270,7 +271,6 @@
         background-color: $admin-main-container-color;
         color: $font-color-dark;
         @include media('xs') {
-            height: 100%;
             width: 100%;
         }
     }

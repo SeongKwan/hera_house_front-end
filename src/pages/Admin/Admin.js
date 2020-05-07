@@ -69,7 +69,7 @@ class Admin extends Component {
                     </Route>
                     <Route path={`${path}/manual`}>
                         <LayoutAdminMain path={path}>
-                            <LayoutAdmin sectionTitle="게시물 관리">
+                            <LayoutAdmin sectionTitle="사이트 사용설명서">
                                 <AdminManual />
                             </LayoutAdmin>
                         </LayoutAdminMain>
