@@ -1,0 +1,76 @@
+.note-editor.note-frame {
+    border: 0 !important;
+}
+
+.note-editor.note-frame.card {
+    background-color: transparent !important;
+}
+
+.note-editor.note-frame .note-statusbar .note-resizebar,
+.note-editor.note-airframe .note-statusbar .note-resizebar {
+    background-color: #f5f5f5;
+    padding-top: 5px !important;
+}
+
+.note-status-output {
+    border: 0 !important;
+}
+
+.note-editor.note-frame .note-statusbar,
+.note-editor.note-airframe .note-statusbar {
+    border-top: 0 !important;
+}
+
+.card-header {
+    background-color: white !important;
+    border-bottom: 0 !important;
+    padding: 1rem 1.25rem 1.5rem !important;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
+
+.custom-blockquote {
+    font-size: 1.2em;
+    /* width: 60%; */
+    /* margin: 0 auto; */
+    font-family: Open Sans;
+    font-style: italic;
+    color: #555555;
+    padding: 0.5em 30px 0.3em 35px;
+    border-left: 8px solid #0a1d58;
+    line-height: 1.6;
+    position: relative;
+    background: white;
+}
+
+/* 
+.custom-blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#78C0A8;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
+} */
+
+.custom-blockquote::after {
+    content: '';
+}
+
+.custom-blockquote span {
+    display: block;
+    color: #a0a0a0;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.note-editor.note-frame .note-placeholder, .note-editor.note-airframe .note-placeholder {
+    padding: 1rem !important;
+}
+
+.note-editor.note-airframe .note-editing-area .note-editable {
+    padding: 1rem !important;
+    min-height: 400px !important;
+}
