@@ -4,8 +4,8 @@
     color: $font-color-dark;
     border-radius: $radius-easy;
     padding: 3rem 4rem 3rem;
-    width: 100%;
     @include media('xs') {
+        width: 100%;
         padding: 3rem 1rem;
     }
 
