@@ -224,7 +224,6 @@ class Editor extends Component {
     render() {
         const { isLoading, value: {title, category, content} } = this.props.postStore;
         const { type } = this.props;
-        console.log(this.state.leaving)
 
         if (isLoading) {
             return <div className={cx('Editor', {isLoading})}>
