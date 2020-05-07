@@ -26,7 +26,7 @@ const cx = classNames.bind(styles);
 @inject('postStore', 'categoryStore')
 @observer
 class Editor extends Component {
-    state = {fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: ''}
+    state = {leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: ''}
 
     componentDidMount() {
         const { type } = this.props;
@@ -54,7 +54,7 @@ class Editor extends Component {
     }
 
     clearState = () => {
-        this.setState({fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: ''})
+        this.setState({leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: ''})
     }
 
     _handleOnChange = (content) => {
@@ -205,6 +205,7 @@ class Editor extends Component {
                 });
             }
             if (type === 'edit') {
+                this.setState({leaving: !this.state.leaving});
                 return this.props.postStore.updatePost(postId)
                 .then((res) => {
                     this.props.history.goBack();
@@ -223,11 +224,16 @@ class Editor extends Component {
     render() {
         const { isLoading, value: {title, category, content} } = this.props.postStore;
         const { type } = this.props;
+        console.log(this.state.leaving)
 
         if (isLoading) {
             return <div className={cx('Editor', {isLoading})}>
                 <Loader />
-                <p>에디터를 준비중입니다 ^^</p>
+                {
+                    !this.state.leaving ?
+                    <p>에디터를 준비중입니다 ^^</p>
+                    : <p>목록으로 돌아가는 중...</p>
+                }
             </div>
         }
         return (
