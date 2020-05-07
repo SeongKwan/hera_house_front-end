@@ -5,10 +5,14 @@
     width: 100%;
     position: relative;
     user-select: none;
+    @include media('xs') {
+        padding: 0 1rem;
+    }
 
     &.is-not-logged-in {
         background-color: $admin-main-container-color;
-        height: 100vh;
+        height: 100%;
+        width: 100%;
         @include centerPosition;
     }
     
