@@ -1,6 +1,6 @@
 const options = {
     lang: 'ko-KR',
-    height: '50vh',
+    height: '60vh',
     dialogsFade: true,
     dialogsInBody: true,
     tabDisable: true,
