@@ -55,6 +55,10 @@ div#root {
     box-sizing: inherit;
 }
 
+*{
+    -webkit-user-modify:read-write;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
