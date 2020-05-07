@@ -59,6 +59,11 @@ div#root {
     -webkit-user-modify:read-write;
 }
 
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
