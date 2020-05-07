@@ -3,6 +3,14 @@ import { withRouter } from 'react-router-dom';
 import styles from './AdminPost.module.scss';
 import classNames from 'classnames/bind';
 import TableBoard from '../TableBoard/TableBoard';
+import {
+    isMobile,
+    isBrowser,
+    BrowserView,
+    MobileView
+} from "react-device-detect";
+import TableBoardMobile from '../TableBoardMobile/TableBoardMobile';
+import { IoMdAdd } from 'react-icons/io';
 
 const cx = classNames.bind(styles);
 
@@ -15,8 +23,20 @@ class AdminPost extends Component {
     render() {
         return (
             <main className={cx('AdminPost')}>
-                <button className={cx('button-add-post')} onClick={this._handleClickOnButtonAddPost}>글작성</button>
-                <TableBoard />
+                {
+                    isBrowser &&
+                    <BrowserView>
+                        <button className={cx('button-add-post')} onClick={this._handleClickOnButtonAddPost}>글작성</button>
+                        <TableBoard />
+                    </BrowserView>
+                }
+                {
+                    isMobile &&
+                    <MobileView>
+                        <button className={cx('floating-button-add-post')} onClick={this._handleClickOnButtonAddPost}><IoMdAdd className={cx('icon')} /></button>
+                        <TableBoardMobile />
+                    </MobileView>
+                }
             </main>
         );
     }

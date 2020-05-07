@@ -65,3 +65,12 @@
     font-weight: bold;
     margin-top: 1em;
 }
+
+.note-editor.note-frame .note-placeholder, .note-editor.note-airframe .note-placeholder {
+    padding: 1rem !important;
+}
+
+.note-editor.note-airframe .note-editing-area .note-editable {
+    padding: 1rem !important;
+    min-height: 400px !important;
+}

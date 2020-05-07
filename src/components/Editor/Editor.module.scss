@@ -3,6 +3,8 @@
     flex-direction: column;
     padding-bottom: 5rem;
     position: relative;
+    width: 100%;
+    overflow: hidden;
     
     &.isLoading {
         height: 100vh;
@@ -18,6 +20,9 @@
     .wrapper-textarea {
         background-color: $white;
         padding-bottom: 1rem;
+        @include media('xs') {
+            padding-bottom: 0;
+        }
 
         .textarea-post-title {
             border: 0;
@@ -27,6 +32,10 @@
             outline: 0;
             resize: none;
             width: 100%;
+            @include media('xs') {
+                font-size: 1.75rem;
+                padding: 1rem;
+            }
         }
     }
 
@@ -133,6 +142,9 @@
             &-publish {
                 background-color: $admin-sidebar-color;
                 margin-right: 1rem;
+                @include media('xs') {
+                    margin-right: 0rem;
+                }
             }
         }
     }

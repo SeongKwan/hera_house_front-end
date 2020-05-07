@@ -23,6 +23,12 @@ class PostStore {
 		).length;
     }
 
+    @computed get postsByCreatedAt() {
+        return this.registry.sort((a, b) => {
+            return a.createdAt > b.createdAt ? -1 : a.createdAt < b.createdAt ? 1 : 0;
+        });
+    }
+
     @action changeValue(type, value) {
         this.value[type] = value;
     };
@@ -79,8 +85,6 @@ class PostStore {
             }))
             .then(action((res) => {
                 this.isLoading = false;
-                setTimeout(action(() => {
-                }), 2000);
                 return res;
             }))
             .catch(action((err) => {
@@ -112,8 +116,6 @@ class PostStore {
             }))
             .then(action((res) => {
                 this.isLoading = false;
-                setTimeout(action(() => {
-                }), 2000);
                 return res;
             }))
             .catch(action((err) => {

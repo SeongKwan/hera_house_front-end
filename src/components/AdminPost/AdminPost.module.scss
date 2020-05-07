@@ -1,5 +1,7 @@
 .AdminPost {
-
+    width: 100%;
+    overflow: hidden;
+    
     .button-add-post {
         background-color: $admin-sidebar-color;
         border: 1px solid transparent;
@@ -10,10 +12,30 @@
         margin-bottom: 0.5rem;
         outline: 0;
         padding: 0.5rem 1rem;
-        @include fontEn;
+        @include fontEn; // 글 높이 정렬
         &:active {
             background-color: rgba($admin-sidebar-color, 0.8);
             border: 1px solid transparent;
+        }
+    }
+
+    .floating-button-add-post {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        background-color: $admin-sidebar-color;
+        border: 1px solid transparent;
+        border-radius: $radius-circle;
+        color: $white;
+        cursor: pointer;
+        outline: 0;
+        width: 60px;
+        height: 60px;
+        @include fontEn; // 글 높이 정렬
+        @include centerPosition;
+        
+        .icon {
+            font-size: 2rem;
         }
     }
 }

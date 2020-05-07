@@ -1,9 +1,13 @@
 .LayoutAdminMain {
     color: $white;
     display: flex;
+    height: 100%;
     position: relative;
     user-select: none;
     width: 100%;
+    @include media('xs') {
+        flex-direction: column;
+    }
 
     &.is-not-logged-in {
         background-color: $admin-main-container-color;
@@ -11,6 +15,125 @@
         @include centerPosition;
     }
 
+    .header {
+        align-items: center;
+        background-color: rgba($admin-sidebar-color, 1);
+        display: flex;
+        height: 60px;
+        justify-content: space-between;
+        padding: 0.75rem  1rem 0.75rem 1.5rem;
+        position: sticky;
+        top: 0;
+        z-index: $z-header-admin;
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .wrapper-hamburger-menu {
+            color: $white;
+            cursor: pointer;
+            padding: 1rem 0.5rem;
+            @include centerPosition;
+
+            .icon-menu {
+                position: relative;
+    
+                &,
+                &::before,
+                &::after {
+                    background-color: $white;
+                    display: inline-block;
+                    height: 2px;
+                    width: 1.5rem;
+                }
+    
+                &::before,
+                &::after {
+                    content: "";
+                    left: 0;
+                    position: absolute;
+                    transition: all .2s;
+                }
+    
+                &::before {
+                    top: -5px;
+                }
+    
+                &::after {
+                    top: 5px;
+                }
+    
+                &.isOpened {
+                    background-color: transparent;
+    
+                    &::before {
+                        top: 0;
+                        transform: rotate(135deg);
+                    }
+    
+                    &::after {
+                        top: 0;
+                        transform: rotate(-135deg);
+                    }
+                }
+            }
+        }
+
+    }
+    
+    .hamburger-contents {
+        align-items: center;
+        background-color: $admin-toggle-menu-color;
+        box-shadow: $box-shadow-admin-menu;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        left: 0;
+        top: -400px;
+        opacity: 0;
+        transition: all 300ms ease;
+        position: fixed;
+        z-index: 2700;
+        
+        &.isOpened {
+            top: 58px;
+            opacity: 1;
+        }
+        .list-item-category {
+            text-align: center;
+            padding: 1.2rem 0;
+            width: 100%;
+            background-color: $admin-toggle-menu-color;
+            color: $font-color-dark;
+
+            &.horizon-divider {
+                padding: 2rem 0;
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%);
+                    width: 10%;
+                    height: 1px;
+                    background-color: $font-color-light;
+                }
+            }
+        }
+        .button-logout {
+            border: 0;
+        }
+
+        .link-to-site {
+            .icon {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+    
     .aside {
         background-color: $admin-sidebar-color;
         display: flex;
@@ -23,6 +146,9 @@
         top: 0;
         width: 360px;
         z-index: $z-aside;
+        @include media('xs') {
+            display: none;
+        }
 
         .logo {
             cursor: pointer;
@@ -136,9 +262,13 @@
         }
 
     }
+
     .main {
         background-color: $admin-main-container-color;
         color: $font-color-dark;
-        width: 100%;
+        @include media('xs') {
+            height: 100%;
+            width: 100%;
+        }
     }
 }

@@ -1,10 +1,15 @@
 .LayoutAdmin {
     display: flex;
     flex-direction: column;
+    width: 100%;
     
     .wrapper-section-title {
         flex: 1;
         padding: 4rem;
+        @include media('xs') {
+            padding: 3rem 2rem;
+        }
+
         .section-title {
             font-size: 1.8rem;
             position: relative;
@@ -24,5 +29,8 @@
         flex: 1;
         padding: 4rem 6rem;
         position: relative;
+        @include media('xs') {
+            padding: 2rem 1rem;
+        }
     }
 }

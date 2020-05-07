@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import './Editor.css';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
+import { isMobile } from 'react-device-detect';
 import ReactSummernote from 'react-summernote';
 import 'react-summernote/lang/summernote-ko-KR'; // you can import any other locale
 import 'summernote/dist/summernote-bs4';
@@ -15,6 +16,7 @@ import 'bootstrap/js/dist/tooltip';
 import { FiArrowLeft } from 'react-icons/fi';
 import TextareaAutosize from 'react-textarea-autosize';
 import options from './options';
+import optionsForMobile from './optionsForMobile';
 import staticUrl from '../../constants/staticUrl';
 import Loader from '../Loader/Loader';
 
@@ -288,7 +290,7 @@ class Editor extends Component {
                     className={cx('editor-container')}
                     value={type === 'edit' ? content : ''}
                     ref={ref => this.editor = ref}
-                    options={options}
+                    options={isMobile ? optionsForMobile : options}
                     onChange={this._handleOnChange}
                     onImageUpload={this._handleOnImageUpload}
                 />

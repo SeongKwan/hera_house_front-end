@@ -1,0 +1,133 @@
+.TableBoardMobile {
+    width: 100%;
+
+    li {
+        margin-bottom: 2rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .card-post {
+        background-color: $white;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-shadow: $box-shadow-admin-element;
+        border-radius: $radius-easy;
+
+        .header {
+            display: flex;
+            border-bottom: 1px solid rgb(245, 245, 245);
+            border-radius: $radius-easy;
+            
+            .thumbnail {
+                width: 25%;
+                min-width: 100px;
+                img {
+                    border-radius: $radius-easy;
+                    width: 100%;
+                }
+            }
+            .title {
+                width: 75%;
+                padding: 1rem;
+                font-size: 1.4rem;
+            }
+        }
+
+        .body {
+            border-bottom: 1px solid rgb(245, 245, 245);
+            border-radius: $radius-easy;
+            padding-top: 0.5rem;
+
+            .component {
+                display: flex;
+                font-size: 0.9rem;
+                font-weight: 100;
+                
+                .name {
+                    padding: 0.5rem 1rem;
+                    min-width: 100px;
+                    flex: 1;
+                    max-width: 200px;
+                }
+                .content {
+                    padding: 0.5rem 1rem;
+                    flex: 8;
+                    &.category {
+                        text-transform: capitalize;
+                    }
+
+                    .wrapper-toggle-switch {
+                        align-items: center;
+                        flex: 0.1;
+    
+                        input[type=checkbox] {
+                            display: none;
+                            height: 0;
+                            visibility: hidden;
+                            width: 0;
+                        }
+    
+                        label {
+                            background: $font-color-light;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            display: block;
+                            height: 24px;
+                            margin-bottom: 0;
+                            position: relative;
+                            text-indent: -9999px;
+                            width: 40px;
+                        }
+    
+                        label:after {
+                            background: $white;
+                            border-radius: 18px;
+                            content: '';
+                            height: 20px;
+                            left: 2px;
+                            position: absolute;
+                            top: 2px;
+                            transition: 0.3s;
+                            width: 20px;
+                        }
+    
+                        input:checked+label {
+                            background: $admin-sidebar-color;
+                        }
+    
+                        input:checked+label:after {
+                            left: calc(100% - 2px);
+                            transform: translateX(-100%);
+                        }
+    
+                        label:active:after {
+                            width: 24px;
+                        }
+    
+                        // centering
+                        body {
+                            align-items: center;
+                            display: flex;
+                            height: 100vh;
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer {
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: flex-end;
+
+            .button-delete {
+                color: $delete;
+            }
+        }
+        
+    }
+}

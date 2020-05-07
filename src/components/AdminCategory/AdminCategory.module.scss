@@ -1,5 +1,8 @@
 .AdminCategory {
     display: flex;
+    @include media('xs') {
+        flex-direction: column;
+    }
 
     .left-container {
         flex: 1;

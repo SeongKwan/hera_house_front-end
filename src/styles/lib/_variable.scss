@@ -2,6 +2,7 @@
 *** BOX SHADOW -----------------------
 **/
 $box-shadow-admin-element: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
+$box-shadow-admin-menu: rgba(0, 0, 0, 0.2) 0px 4px 16px 0px;
 
 
 
@@ -16,6 +17,8 @@ $font-color-dark: #100c08; // Smoky Black
 $font-color-light: #878583; // 6th Tints of Smoky Black
 
 $button-color-back: #044389; // Dark Cornflower Blueon
+
+$admin-toggle-menu-color: lighten(#003366, 75%);
 
 $admin-sidebar-color: #003366; // Midnight Blue 
 $admin-sidebar-color-100: #e5f2ff; // Midnight Blue Shade100
@@ -61,6 +64,7 @@ $z-ul-archive-menu-list: 1200;
 $z-wrapper-archive-toggle-menu: 1300;
 $z-icon-archive-label-menu: 2000;
 
+$z-header-admin: 2800;
 
 $z-button-to-admin: 9999;
 
