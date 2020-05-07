@@ -128,7 +128,7 @@ class Archive extends Component {
                         className={cx('label-menu', "hamburger-menu")} 
                         htmlFor="navi-toggle" >
                         <span>{currentCategory}</span>
-                        <span className={cx("icon-menu")}>&nbsp;</span>
+                        <span className={cx("icon-menu", {'open-menu': this.state.openMenu})}>&nbsp;</span>
                     </label>
                 </div>
                 <ul className={cx('menu-list', {'going-in': this.state.openMenu})}>

@@ -271,25 +271,19 @@
                 &::after {
                     top: 5px;
                 }
+
+                &.open-menu {
+                    background-color: transparent;
+                    &::before {
+                        top: 0;
+                        transform: rotate(135deg);
+                    }
+                    &::after {
+                        top: 0;
+                        transform: rotate(-135deg);
+                    }
+                }
             }
-        }
-
-        .input-checkbox-menu:checked+.hamburger-menu .icon-menu {
-            background-color: transparent;
-        }
-
-        .input-checkbox-menu:checked+.hamburger-menu .icon-menu::before {
-            top: 0;
-            transform: rotate(135deg);
-        }
-
-        .input-checkbox-menu:checked+.hamburger-menu .icon-menu::after {
-            top: 0;
-            transform: rotate(-135deg);
-        }
-
-        .input-checkbox-menu:checked {
-            margin-top: 4rem;
         }
     }
 
