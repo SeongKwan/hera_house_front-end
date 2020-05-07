@@ -73,7 +73,10 @@ class AdminCategory extends Component {
                                 onKeyDown={(e) => { if (e.keyCode === 13) {this._handleClickOnAdd();}}}
                             />
                             <label htmlFor="name" hidden>카테고리명</label>
-                            <div className={cx('clear')} onClick={this._handleClickOnClear}>X</div>
+                            {
+                                name.length > 0 &&
+                                <div className={cx('clear')} onClick={this._handleClickOnClear}>X</div>
+                            }
                         </div>
                         <button className={cx('button-add')} onClick={this._handleClickOnAdd}>
                             등록
