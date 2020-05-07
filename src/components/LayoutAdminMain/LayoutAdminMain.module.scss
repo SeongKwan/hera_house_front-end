@@ -270,6 +270,7 @@
     .main {
         background-color: $admin-main-container-color;
         color: $font-color-dark;
+        width: 100%;
         @include media('xs') {
             width: 100%;
         }
