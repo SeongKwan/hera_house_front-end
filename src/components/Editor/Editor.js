@@ -295,7 +295,7 @@ class Editor extends Component {
                     onImageUpload={this._handleOnImageUpload}
                 />
                 <div className={cx('wrapper-buttons')}>
-                    <button className={cx('button', 'button-back')} onClick={this._handleClickOnButtonBack}><FiArrowLeft className={cx('icon')} /> 뒤로</button>
+                    <button className={cx('button', 'button-back')} onClick={this._handleClickOnButtonBack}>취소</button>
                     <button className={cx('button', 'button-publish')} onClick={this._handleClickOnButtonPublish}>
                         { type === "write" ? '출간하기' : '수정하기'}
                     </button>
