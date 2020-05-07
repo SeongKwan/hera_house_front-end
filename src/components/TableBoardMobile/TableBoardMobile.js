@@ -102,7 +102,7 @@ class TableBoardMobile extends Component {
                                         <div className={cx('content')}>{updatedAt > 0 ? getLocaleFullDateWithTime(updatedAt) : '-'}</div>
                                     </div>
                                     <div className={cx('component')}>
-                                        <div className={cx('name')}>❏ 발행상태</div>
+                                        <div className={cx('name')}>❏ 공개상태</div>
                                         <div className={cx('content')}>
                                             <div className={cx('wrapper-toggle-switch')}>
                                             <input className={cx('toggle-switch')} type="checkbox" id={`switch-${_id}`} checked={isPublished} onChange={() => {this._handleClickOnToggleSwitch(post)}} /><label htmlFor={`switch-${_id}`}>Toggle</label>

@@ -302,7 +302,7 @@ class Editor extends Component {
                 <div className={cx('wrapper-buttons')}>
                     <button className={cx('button', 'button-back')} onClick={this._handleClickOnButtonBack}>취소</button>
                     <button className={cx('button', 'button-publish')} onClick={this._handleClickOnButtonPublish}>
-                        { type === "write" ? '출간하기' : '수정하기'}
+                        { type === "write" ? '공개하기' : '수정하기'}
                     </button>
                 </div>
             </div>

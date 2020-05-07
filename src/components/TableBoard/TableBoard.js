@@ -74,7 +74,7 @@ class TableBoard extends Component {
             <div className={cx('TableBoard')}>
                 
                 <div className={cx('table-header')}>
-                    {['분류', '제목', '생성일', '수정일', '발행상태', ''].map((th, i) => {return <div className={cx('table-header-data', `${i + 1}`)} key={i}>{th}</div>})}
+                    {['분류', '제목', '생성일', '수정일', '공개', ''].map((th, i) => {return <div className={cx('table-header-data', `${i + 1}`)} key={i}>{th}</div>})}
                 </div>
                 <ul className={cx('table-body', {isLoading})}>
                     {
