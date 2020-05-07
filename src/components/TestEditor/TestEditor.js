@@ -7,11 +7,10 @@ import { inject, observer } from 'mobx-react';
 import { isMobile } from 'react-device-detect';
 import ReactSummernote from 'react-summernote';
 import 'react-summernote/lang/summernote-ko-KR'; // you can import any other locale
-import 'summernote/dist/summernote-bs4';
-import 'summernote/dist/summernote-bs4.css';
-import 'bootstrap/js/dist/modal';
-import 'bootstrap/js/dist/dropdown';
-import 'bootstrap/js/dist/tooltip';
+import 'summernote/dist/summernote-lite.css';
+// import 'bootstrap/js/dist/modal';
+// import 'bootstrap/js/dist/dropdown';
+// import 'bootstrap/js/dist/tooltip';
 
 import { FiArrowLeft } from 'react-icons/fi';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -19,16 +18,31 @@ import options from './options';
 import optionsForMobile from './optionsForMobile';
 import staticUrl from '../../constants/staticUrl';
 import Loader from '../Loader/Loader';
+import $ from 'jquery';
 
+const summernote = require('summernote/dist/summernote-lite');
 const cx = classNames.bind(styles);
 
 @withRouter
 @inject('postStore', 'categoryStore')
 @observer
 class TestEditor extends Component {
-    state = {fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: ''}
+    constructor(props) {
+        super(props);
+    
+        // this._onTouchStart = this._onTouchStart.bind(this);
+        // this._onTouchMove = this._onTouchMove.bind(this);
+        // this._onTouchEnd = this._onTouchEnd.bind(this);
+    
+        // this._swipe = {};
+        // this.minDistance = 50;
+        this.summernote = summernote;
+    }
+
+    state = {fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '', swiped: false}
 
     componentDidMount() {
+        console.log($('.note-editable').on('focus', () => {console.log('focus')}))
         const { type } = this.props;
         this._initialize(type)
         this.editor.onInit(() => {console.log('init')});
@@ -220,6 +234,46 @@ class TestEditor extends Component {
         });
     }
 
+    renderTextarea = () => {
+        $('#summernote').summernote({
+            height: 300,                 // 에디터 높이
+            minHeight: null,             // 최소 높이
+            maxHeight: null,             // 최대 높이
+            focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+            lang: "ko-KR",					// 한글 설정
+            placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
+            
+      });
+    }
+
+
+
+    _onTouchStart(e) {
+        console.log('touch start')
+        const touch = e.touches[0];
+        this._swipe = { x: touch.clientX };
+        this.setState({ swiped: false });
+    }
+    
+    _onTouchMove(e) {
+        console.log('touch move')
+        if (e.changedTouches && e.changedTouches.length) {
+            const touch = e.changedTouches[0];
+            this._swipe.swiping = true;
+        }
+    }
+    
+    _onTouchEnd(e) {
+        console.log('touch end')
+        const touch = e.changedTouches[0];
+        const absX = Math.abs(touch.clientX - this._swipe.x);
+        if (this._swipe.swiping && absX > this.minDistance ) {
+          this.props.onSwiped && this.props.onSwiped();
+          this.setState({ swiped: true });
+        }
+        this._swipe = {};
+      }
+
     render() {
         const { isLoading, value: {title, category, content} } = this.props.postStore;
         const { type } = this.props;
@@ -231,7 +285,19 @@ class TestEditor extends Component {
             </div>
         }
         return (
-            <div className={cx('')}>                 
+            <div className={cx('')}>     
+                {/* <div
+                    onTouchStart={this._onTouchStart}
+                    onTouchMove={this._onTouchMove}
+                    onTouchEnd={this._onTouchEnd}>
+                    {`Component-${this.state.swiped ? 'swiped' : ''}`}
+                </div> */}
+
+                {/* <textarea name="summernote" id="summernote" /> */}
+
+                <div role="textbox" contenteditable="true" aria-placeholder="5-digit zipcode" aria-labelledby="txtboxLabel" style={{background: 'red'}}></div> 
+
+
                 <ReactSummernote
                     className={cx('')}
                     value={type === 'edit' ? content : ''}
