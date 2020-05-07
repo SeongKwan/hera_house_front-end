@@ -25,6 +25,9 @@
         position: sticky;
         top: 0;
         z-index: $z-header-admin;
+        @include media('xs') {
+            min-height: 60px;
+        }
 
         .logo {
             font-size: 1.2rem;

@@ -42,14 +42,14 @@ class LayoutAdminMain extends Component {
 
         return (
             <div className={cx('LayoutAdminMain')}>
-                <header className={cx('header')}>
+                <div className={cx('header')}>
                     <div className={cx('logo')} onClick={this._handleClickOnLogo}>
                         HH.Manager
                     </div>
                     <div className={cx('wrapper-hamburger-menu')} onClick={this._handleClickOnHamburgerMenu}>
                         <div className={cx("icon-menu", {isOpened})}>&nbsp;</div>
                     </div>
-                </header>
+                </div>
                 <div className={cx('hamburger-contents', {isOpened})}>
                     <Link 
                         className={cx('list-item-category')} 
