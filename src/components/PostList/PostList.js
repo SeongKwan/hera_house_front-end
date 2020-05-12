@@ -14,7 +14,9 @@ const cx = classNames.bind(styles);
 @observer
 class PostList extends Component {
     componentDidMount() {
-        this._initialize();
+        if (JSON.parse(JSON.stringify(this.props.postStore.filteredRegistry)).length <= 0) {
+            this._initialize();
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -23,10 +25,6 @@ class PostList extends Component {
         if (prevCategory !== currentCategory) {
             this._initialize();
         }
-    }
-
-    componentWillUnmount() {
-        // this.props.postStore.clearRegistry();
     }
 
     _initialize = () => {
