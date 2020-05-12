@@ -1,3 +1,3 @@
-const staticUrl = `http://15.165.30.197:5001/`;
+const staticUrl = `http://15.164.231.173:5001/`;
 
 export default staticUrl;
