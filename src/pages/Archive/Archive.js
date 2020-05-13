@@ -11,12 +11,9 @@ import classNames from 'classnames/bind';
 import PostList from '../../components/PostList/PostList';
 import Post from '../../components/Post/Post';
 import { IoIosArrowUp, IoIosSettings } from "react-icons/io";
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 const cx = classNames.bind(styles);
-const cn = {
-    list: 'list-main-category',
-    item: 'list-item-main-category',
-}
 
 @withRouter
 @inject('categoryStore', 'loginStore', 'commonStore')
@@ -71,7 +68,6 @@ class Archive extends Component {
         const currentCategory = this.props.location.pathname.split('/')[2];
         const { isLoggedIn } = this.props.loginStore;
         let { path } = this.props.match;
-        let isDetailPage = window.location.pathname.split('/').length > 3 ? true : false;
 
         return (
             <div className={cx('Archive')}>
@@ -88,14 +84,7 @@ class Archive extends Component {
                     </div>
                 </header>
                 <div className={cx('container', {'covered-menu': this.state.openMenu})}>
-                    <aside className={cx('aside', {listPage: !isDetailPage})}>
-                        <nav className={cx(cn.list)}>
-                            {categories.map(category => {
-                                const { name } = category;
-                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item, {selected: currentCategory === name})}>{name}</li></Link>
-                            })}
-                        </nav>
-                    </aside>
+                    <Sidebar />
                     <main className={cx('main')} ref={ref => this.mainContainer = ref}>
                         <Switch>
                             <Route exact path={`${path}/:category`}>

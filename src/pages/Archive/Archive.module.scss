@@ -97,6 +97,7 @@
         }
     }
 
+
     .container {
         display: flex;
         position: relative;
@@ -106,74 +107,14 @@
             z-index: $z-container-archive-covered-menu;
         }
 
-        .aside {
-            height: calc(85vh);
-            left: 0;
-            margin-left: 2rem;
-            max-width: 320px;
-            overflow: scroll;
-            padding: 2rem 0rem;
-            position: sticky;
-            top: $height-header;
-            width: 20%;
-            z-index: $z-aside-archive;
-
-            @include media('md') {
-                display: none;
-            }
-
-            &.listPage {
-                margin-right: 6rem;
-            }
-
-            .list-main-category {
-                list-style: none;
-
-                .link-nav-item {
-                    color: $font-color-dark;
-                    text-decoration: none;
-                    user-select: none;
-
-                    &:last-child {
-                        .list-item-main-category {
-                            margin-bottom: 0;
-                        }
-                    }
-                }
-
-                .list-item-main-category {
-                    cursor: pointer;
-                    font-weight: 300;
-                    margin-bottom: 2.5rem;
-                    padding: 0.3rem;
-                    position: relative;
-                    text-align: center;
-                    text-transform: capitalize;
-                    transition: color 400ms ease;
-                    @include fontEn;
-
-                    &:hover {
-                        color: $font-color-light;
-                    }
-
-                    &.selected {
-                        &::before {
-                            background-color: $font-color-dark;
-                            content: '';
-                            height: 100%;
-                            left: 50px;
-                            position: absolute;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            width: 5px;
-                        }
-                    }
-                }
-            }
-        }
+    /*
+    ** Sidebar
+    **/
+        
 
         .main {
             flex: 1;
+            padding-top: 2rem;
             width: 100%;
 
             @include media('md') {

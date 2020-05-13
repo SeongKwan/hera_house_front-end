@@ -1,4 +1,18 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .Post {
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    opacity: 0;
     position: relative;
 
     h1.title {

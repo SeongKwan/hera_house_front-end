@@ -13,7 +13,6 @@ import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
 
-import { FiArrowLeft } from 'react-icons/fi';
 import TextareaAutosize from 'react-textarea-autosize';
 import options from './options';
 import optionsForMobile from './optionsForMobile';

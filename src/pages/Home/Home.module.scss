@@ -1,3 +1,13 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .Home {
     height: 100%;
 
@@ -45,7 +55,11 @@
         }
 
         .list-main-category {
+            animation-name: fadeIn;
+            animation-duration: 1.5s;
+            animation-fill-mode: both;
             list-style: none;
+            opacity: 0;
             @include media('xs') {
                 padding-top: 100px;
             }
