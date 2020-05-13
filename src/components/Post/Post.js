@@ -5,11 +5,12 @@ import classNames from 'classnames/bind';
 import Markdown from 'react-markdown';
 import './Post.css';
 import { inject, observer } from 'mobx-react';
+import { Helmet } from 'react-helmet';
 
 const cx = classNames.bind(styles);
 
 @withRouter
-@inject('postStore')
+@inject('postStore', 'categoryStore')
 @observer
 class Post extends Component {
     componentDidMount() {
@@ -31,13 +32,26 @@ class Post extends Component {
 
     render() {
         const { thePost } = this.props.postStore;
+        const { currentCategory } = this.props.categoryStore;
         const {
-            // title,
+            _id,
+            title,
             content
         } = thePost;
 
+        if (!!title === false) {
+            return <div></div>
+        } 
+
         return (
             <article className={cx('Post', 'Post-CSS')}>
+                <Helmet>
+                    <title>HH Post - {title}</title>
+                    <link rel="canonical" href={`http://hera-house.site/archive/${currentCategory}/${_id}`} />
+                    <meta http-equiv="Title" content={`HH Post - ${title}`} />
+                    {/* <meta name="Keywords" content="fashion, brand, design, art, music" /> */}
+                    {/* <meta name="Description" content="Hera House Archive" /> */}
+                </Helmet>
                 <section className={cx('section')}>
                     <Markdown 
                         escapeHtml={false}

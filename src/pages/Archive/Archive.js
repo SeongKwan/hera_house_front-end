@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { withRouter } from "react-router";
 import { inject, observer } from 'mobx-react';
+import { Helmet } from 'react-helmet';
 import styles from './Archive.module.scss';
 import classNames from 'classnames/bind';
 import PostList from '../../components/PostList/PostList';
@@ -71,6 +72,13 @@ class Archive extends Component {
 
         return (
             <div className={cx('Archive')}>
+            <Helmet>
+                <title>HH Archive - {currentCategory}</title>
+                <link rel="canonical" href={`http://hera-house.site/archive/${currentCategory}`} />
+                <meta http-equiv="Title" content={`Hera House - ${currentCategory}`} />
+                <meta name="Keywords" content="fashion, brand, design, art, music" />
+                <meta name="Description" content="Hera House Archive" />
+            </Helmet>
             {
                 isLoggedIn &&
                 <div className={cx('floating-container')}>

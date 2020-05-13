@@ -5,6 +5,7 @@ import styles from './Home.module.scss';
 import classNames from 'classnames/bind';
 import { inject, observer } from 'mobx-react';
 import { IoIosSettings } from "react-icons/io";
+import { Helmet } from "react-helmet";
 
 const cx = classNames.bind(styles);
 const cn = {
@@ -25,6 +26,23 @@ class Home extends Component {
 
         return (
             <div className={cx('Home')}>
+                <Helmet>
+                    <title>Hera House - Home</title>
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                    <link rel="canonical" href="http://hera-house.site" />
+                    {/* 검색엔진 단어 */}
+                    <meta name="Keywords" content="fashion, brand, design, art, music" />
+                    <meta name="Description" content="브랜드 디자이너 에일의 다양한 분야에 관한 그 만의 글이 모여있는 곳" />
+                    {/* 사이트 제목 */}
+                    <meta http-equiv="Title" content="Hera's House" />
+                    {/* 사이트 주제 */}
+                    <meta http-equiv="Subject" content="영감을 얻어가기 좋은 곳" />
+                    {/* 자작사 */}
+                    <meta http-equiv="Publisher" content="HhEeRrAa" />
+                    {/* 메일 주소 */}
+                    {/* <meta http-equiv="Reply-To" content="we@naver.com" /> 
+                    <meta http-equiv="Email" content="naver@naver.com" /> */}
+                </Helmet>
                 {
                     isLoggedIn &&
                     <div className={cx('floating-container')}>
