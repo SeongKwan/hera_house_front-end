@@ -8,10 +8,15 @@ class CategoryStore {
     @observable value = {
         name: '',
         description: ''
-    }
+    };
+    @observable currentCategory = '';
 
     @action changeInput(type, content) {
         this.value[type] = content;
+    }
+
+    @action setCurrentCategory(currentCategory) {
+        this.currentCategory = currentCategory;
     }
 
     @action loadCategories() {
@@ -79,6 +84,10 @@ class CategoryStore {
             description: ''
         };
         this.isLoading = false;
+    }
+    
+    @action clearCurrentCategory() {
+        this.currentCategory = '';
     }
 }
 

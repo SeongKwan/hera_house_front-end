@@ -10,19 +10,26 @@ import disapointedFace from '../../styles/img/disappointed-face.svg';
 const cx = classNames.bind(styles);
 
 @withRouter
-@inject('postStore')
+@inject('postStore', 'categoryStore')
 @observer
 class PostList extends Component {
     componentDidMount() {
-        if (JSON.parse(JSON.stringify(this.props.postStore.filteredRegistry)).length <= 0) {
+        const { currentCategory } = this.props.categoryStore;
+        const { filteredRegistry } = this.props.postStore;
+        const currentCategoryFromURL = this.props.match.params.category;
+        let isRequiredReload = currentCategoryFromURL !== currentCategory;
+
+        if (isRequiredReload || filteredRegistry.length <= 0) {
+            this.props.categoryStore.setCurrentCategory(currentCategoryFromURL);
             this._initialize();
         }
     }
 
     componentDidUpdate(prevProps) {
         const prevCategory = prevProps.match.params.category;
-        const currentCategory = this.props.match.params.category;
-        if (prevCategory !== currentCategory) {
+        const currentCategoryFromURL = this.props.match.params.category;
+        if (prevCategory !== currentCategoryFromURL) {
+            this.props.categoryStore.setCurrentCategory(currentCategoryFromURL);
             this._initialize();
         }
     }
