@@ -71,48 +71,16 @@ class Editor extends Component {
         let reader = new FileReader();
         let file = e.target.files[0];
 
-        let renamedFile = {
-            lastModified: null,
-            name: '',
-            size: null,
-            type: '',
-            webkitRelativePath: ''
-        };
-
-        let passingFile;
-
-        console.log(file)
-
-        console.log(file.name.split('.'))
-        console.log(file.name.split('.')[0])
-        console.log(file.name.split('.')[1])
-
-        passingFile = file;
-        
-        if (file.name === 'image.jpg') {
-            renamedFile = {
-                lastModified: file.lastModified,
-                size: file.size,
-                type: file.type,
-                webkitRelativePath: file.webkitRelativePath,
-                name: `${Date.now()}_img_camera.jpg`
-            };
-
-            passingFile = renamedFile;
-        }
-
-        console.log(passingFile);
-        // console.log(file.name);
         
         return new Promise(function (resolve, reject) {
             if (!!e.target.files[0] === true) {
                 reader.onloadend = () => {
                     THIS.setState({
-                        thumbnail: passingFile,
+                        thumbnail: file,
                         thumbnailData: reader.result
                     });
                 }
-                reader.readAsDataURL(passingFile)
+                reader.readAsDataURL(file)
                 return resolve({success: true});
             } else {
                 THIS.setState({
