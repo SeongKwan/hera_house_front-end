@@ -47,7 +47,6 @@
             user-select: none;
 
             &.is-active {
-                font-size: 1.4rem;
             }
 
             &:last-child {
@@ -66,7 +65,7 @@
             position: relative;
             text-align: center;
             text-transform: capitalize;
-            transition: color 400ms ease;
+            transition: all 400ms ease;
             @include fontEn;
             @include centerPosition;
 
@@ -81,10 +80,11 @@
         animation-name: fadeIn;
         animation-duration: 3s;
         animation-fill-mode: both;
-        background-color: $font-color-dark;
+        background-color: $font-color-light;
         display: none;
         height: 2.5rem;
         opacity: 0;
+        border-radius: $radius-easy;
         transform: translateY(0px);
         transition: all 400ms ease-in-out;
         width: 6px;
