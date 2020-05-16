@@ -87,7 +87,10 @@ class Editor extends Component {
 
         if (file.name === 'image.jpg') {
             renamedFile = {
-                ...file,
+                lastModified: file.lastModified,
+                size: file.size,
+                type: file.type,
+                webkitRelativePath: file.webkitRelativePath,
                 name: `${Date.now()}_img_camera.jpg`
             };
         }
