@@ -92,7 +92,8 @@ class Editor extends Component {
             };
         }
 
-        console.log(file.name);
+        console.log(renamedFile);
+        // console.log(file.name);
         
         return new Promise(function (resolve, reject) {
             if (!!e.target.files[0] === true) {
