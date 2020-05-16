@@ -71,6 +71,14 @@ class Editor extends Component {
         let reader = new FileReader();
         let file = e.target.files[0];
 
+        let renamedFile = {
+            lastModified: null,
+            name: '',
+            size: null,
+            type: '',
+            webkitRelativePath: ''
+        };
+
         console.log(file)
 
         console.log(file.name.split('.'))
@@ -78,7 +86,10 @@ class Editor extends Component {
         console.log(file.name.split('.')[1])
 
         if (file.name === 'image.jpg') {
-            file.name = `${Date.now()}_img_camera.jpg`;
+            renamedFile = {
+                ...file,
+                name: `${Date.now()}_img_camera.jpg`
+            };
         }
 
         console.log(file.name);
