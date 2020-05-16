@@ -63,12 +63,7 @@ class Archive extends Component {
     }
 
     _handleOnClickSns = (e, type) => {
-        console.log(e.currentTarget)
-        const element = e.currentTarget;
-        setTimeout(() => {
-            element.blur();
-        }, 300);
-        // return window.open(sns[type], '_blank');
+        return window.open(sns[type], '_blank');
     }
 
     render() {
@@ -131,7 +126,7 @@ class Archive extends Component {
                         onClick={() => this._handleClickOnToggleMenu()}
                         className={cx('label-menu', "hamburger-menu")} 
                         htmlFor="navi-toggle" >
-                        <span>{currentCategory}</span>
+                        <span className={cx({blind: this.state.openMenu})}>{currentCategory}</span>
                         <span className={cx("icon-menu", {'open-menu': this.state.openMenu})}>&nbsp;</span>
                     </label>
                 </div>
