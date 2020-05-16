@@ -92,6 +92,7 @@
     }
 
     .container-sns {
+        
         bottom: 10%;
         display: flex;
         justify-content: center;
@@ -99,11 +100,15 @@
         position: absolute;
         transform: translateX(-50%);
         width: 100%;
-
+        
         .icon {
+            animation-name: fadeIn;
+            animation-duration: 2s;
+            animation-fill-mode: both;
             color: $font-color-light;
             cursor: pointer;
             font-size: 1.45rem;
+            opacity: 0;
             transition: color 300ms ease-in-out;
 
             &:nth-child(2) {
