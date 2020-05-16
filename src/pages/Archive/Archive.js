@@ -81,7 +81,7 @@ class Archive extends Component {
         let { path } = this.props.match;
 
         return (
-            <div className={cx('Archive')}>
+            <div className={cx('Archive', {'no-scroll': this.state.openMenu})}>
             <Helmet>
                 <title>HH Archive - {currentCategory}</title>
                 <link rel="canonical" href={`http://hera-house.site/archive/${currentCategory}`} />

@@ -1,5 +1,10 @@
 .Archive {
     position: relative;
+    
+    &.no-scroll {
+        height: 100%;
+        overflow: hidden;
+    }
 
     label {
         margin-bottom: 0;
