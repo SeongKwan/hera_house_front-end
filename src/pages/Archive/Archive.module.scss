@@ -181,6 +181,12 @@
             span:first-child {
                 font-size: 0.8rem;
                 text-transform: capitalize;
+                transition: all 500ms ease;
+            }
+
+            span.blind {
+                transform: translateX(-100%);
+                opacity: 0;
             }
 
             //Hamburger
