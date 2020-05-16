@@ -87,6 +87,8 @@ class Editor extends Component {
         console.log(file.name.split('.')[0])
         console.log(file.name.split('.')[1])
 
+        passingFile = file;
+        
         if (file.name === 'image.jpg') {
             renamedFile = {
                 lastModified: file.lastModified,
@@ -98,8 +100,6 @@ class Editor extends Component {
 
             passingFile = renamedFile;
         }
-
-        passingFile = file;
 
         console.log(passingFile);
         // console.log(file.name);
