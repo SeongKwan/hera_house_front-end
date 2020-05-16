@@ -13,6 +13,10 @@ import PostList from '../../components/PostList/PostList';
 import Post from '../../components/Post/Post';
 import { IoIosArrowUp, IoIosSettings } from "react-icons/io";
 import Sidebar from '../../components/Sidebar/Sidebar';
+import { IoLogoInstagram } from 'react-icons/io';
+import { TiSocialPinterest } from 'react-icons/ti';
+import { AiOutlineYoutube } from 'react-icons/ai';
+import sns from '../../constants/sns';
 
 const cx = classNames.bind(styles);
 
@@ -58,10 +62,13 @@ class Archive extends Component {
         });
     }
 
-    _handleClickOnListItemInMenu = () => {
-        this.setState({
-            openMenu: !this.state.openMenu
-        });
+    _handleOnClickSns = (e, type) => {
+        console.log(e.currentTarget)
+        const element = e.currentTarget;
+        setTimeout(() => {
+            element.blur();
+        }, 300);
+        // return window.open(sns[type], '_blank');
     }
 
     render() {
@@ -140,6 +147,11 @@ class Archive extends Component {
                             <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div>
                         </div>
                     }
+                    <div className={cx('container-sns')}>
+                        <IoLogoInstagram className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'instagram')} />
+                        <TiSocialPinterest className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'pinterest')} />
+                        <AiOutlineYoutube className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'youtube')} />
+                    </div>
                 </ul>
             </div>
         );

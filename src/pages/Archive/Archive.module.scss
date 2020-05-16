@@ -263,22 +263,47 @@
                 font-weight: 100;
                 margin-bottom: 2.5rem;
                 padding: 0.3rem;
+                position: relative;
                 text-align: center;
                 text-transform: capitalize;
-                transition: color 400ms ease;
+                transition-property: color, font-size;
+                transition-duration: 300ms, 300ms;
+                transition-timing-function: ease-in-out;
                 @include fontEn;
-
                 @include media('xs') {
                     margin-bottom: 25px;
                 }
 
-                &:hover {
-                    color: $font-color-light;
-                }
-
                 &.selected {
+                    font-size: 1.5rem;
                     font-weight: 700;
                 }
+            }
+        }
+
+        .container-sns {
+            bottom: 10%;
+            display: flex;
+            justify-content: center;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+            width: 100%;
+    
+            .icon {
+                color: $font-color-light;
+                cursor: pointer;
+                font-size: 1.45rem;
+                transition: color 300ms ease-in-out;
+    
+                &:nth-child(2) {
+                    margin: 0 1rem;
+                }
+    
+                &:hover {
+                    color: $font-color-dark;
+                }
+    
             }
         }
 

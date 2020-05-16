@@ -4,6 +4,10 @@ import { withRouter } from "react-router";
 import { inject, observer } from 'mobx-react';
 import styles from './Sidebar.module.scss';
 import classNames from 'classnames/bind';
+import { IoLogoInstagram } from 'react-icons/io';
+import { TiSocialPinterest } from 'react-icons/ti';
+import { AiOutlineYoutube } from 'react-icons/ai';
+import sns from '../../constants/sns';
 
 const cx = classNames.bind(styles);
 const cn = {
@@ -53,6 +57,10 @@ class Sidebar extends Component {
         this.moveMarker(offset);
     };
 
+    _handleOnClickSns = (type) => {
+        return window.open(sns[type], '_blank');
+    }
+
     render() {
         const categories = this.props.categoryStore.registry;
         const currentCategory = this.props.location.pathname.split('/')[2];
@@ -77,6 +85,11 @@ class Sidebar extends Component {
                         </Link>
                     })}
                 </nav>
+                <div className={cx('container-sns')}>
+                    <IoLogoInstagram className={cx('icon')} onClick={() => this._handleOnClickSns('instagram')} />
+                    <TiSocialPinterest className={cx('icon')} onClick={() => this._handleOnClickSns('pinterest')} />
+                    <AiOutlineYoutube className={cx('icon')} onClick={() => this._handleOnClickSns('youtube')} />
+                </div>
             </aside>
         )
     }
