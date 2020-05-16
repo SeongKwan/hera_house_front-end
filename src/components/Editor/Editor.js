@@ -70,6 +70,8 @@ class Editor extends Component {
         const THIS = this;
         let reader = new FileReader();
         let file = e.target.files[0];
+
+        console.log(file)
         
         return new Promise(function (resolve, reject) {
             if (!!e.target.files[0] === true) {
@@ -132,9 +134,12 @@ class Editor extends Component {
             "file",
             this.state.thumbnail
         );
+
+        console.log(formData)
         
         return this.props.postStore.uploadImage(formData)
             .then(res => {
+                console.log(JSON.parse(JSON.stringify(res.files)))
                 let array = [];
                 res.files.forEach(file => {
                     array.push(file.filename);
@@ -149,6 +154,7 @@ class Editor extends Component {
     }
 
     _handleOnImageUpload = (images, insertImage) => {
+        console.log(images)
         this._setImagesToState(images)
         .then(res => {
             if (res.success) {
