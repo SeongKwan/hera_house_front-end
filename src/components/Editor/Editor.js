@@ -72,6 +72,16 @@ class Editor extends Component {
         let file = e.target.files[0];
 
         console.log(file)
+
+        console.log(file.name.split('.'))
+        console.log(file.name.split('.')[0])
+        console.log(file.name.split('.')[1])
+
+        if (file.name === 'image.jpg') {
+            file.name = `${Date.now()}_img_camera.jpg`;
+        }
+
+        console.log(file.name);
         
         return new Promise(function (resolve, reject) {
             if (!!e.target.files[0] === true) {
