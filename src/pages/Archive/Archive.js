@@ -62,6 +62,14 @@ class Archive extends Component {
         });
     }
 
+    _handleClickOnListItemInMenu = () => {
+        setTimeout(()=> {
+            this.setState({
+                openMenu: !this.state.openMenu
+            });
+        }, 500)
+    }
+
     _handleOnClickSns = (e, type) => {
         return window.open(sns[type], '_blank');
     }
