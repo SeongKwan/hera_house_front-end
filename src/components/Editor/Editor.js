@@ -79,6 +79,8 @@ class Editor extends Component {
             webkitRelativePath: ''
         };
 
+        let passingFile;
+
         console.log(file)
 
         console.log(file.name.split('.'))
@@ -93,20 +95,24 @@ class Editor extends Component {
                 webkitRelativePath: file.webkitRelativePath,
                 name: `${Date.now()}_img_camera.jpg`
             };
+
+            passingFile = renamedFile;
         }
 
-        console.log(renamedFile);
+        passingFile = file;
+
+        console.log(passingFile);
         // console.log(file.name);
         
         return new Promise(function (resolve, reject) {
             if (!!e.target.files[0] === true) {
                 reader.onloadend = () => {
                     THIS.setState({
-                        thumbnail: file,
+                        thumbnail: passingFile,
                         thumbnailData: reader.result
                     });
                 }
-                reader.readAsDataURL(file)
+                reader.readAsDataURL(passingFile)
                 return resolve({success: true});
             } else {
                 THIS.setState({
