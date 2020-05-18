@@ -54,7 +54,10 @@ class Home extends Component {
                         <nav className={cx(cn.list)}>
                             {categories.map(category => {
                                 const { name } = category;
-                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>{name}</li></Link>
+                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                                    <span>{name}</span>
+                                </li>
+                            </Link>
                             })}
                         </nav>
                     </main>
