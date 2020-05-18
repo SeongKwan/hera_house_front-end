@@ -12,7 +12,7 @@ import classNames from 'classnames/bind';
 import PostList from '../../components/PostList/PostList';
 import Post from '../../components/Post/Post';
 import { IoIosArrowUp, IoIosSettings } from "react-icons/io";
-import Sidebar from '../../components/Sidebar/Sidebar';
+import NavBar from '../../components/Navbar/NavBar';
 import { IoLogoInstagram } from 'react-icons/io';
 import { TiSocialPinterest } from 'react-icons/ti';
 import { AiOutlineYoutube } from 'react-icons/ai';
@@ -101,8 +101,8 @@ class Archive extends Component {
                         <span onClick={this._handleClickOnBrandLogo}>HH</span>
                     </div>
                 </header>
+                <NavBar />
                 <div className={cx('container', {'covered-menu': this.state.openMenu})}>
-                    <Sidebar />
                     <main className={cx('main')} ref={ref => this.mainContainer = ref}>
                         <Switch>
                             <Route exact path={`${path}/:category`}>

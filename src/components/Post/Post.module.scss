@@ -12,8 +12,21 @@
     animation-name: fadeIn;
     animation-duration: 2s;
     animation-fill-mode: both;
+    margin: auto;
     opacity: 0;
     position: relative;
+    padding-top: 2rem;
+    width: 60%;
+    @include media('xl') {}
+    @include media('lg') {
+        width: 70%;
+    }
+    @include media('md') {
+        width: 90%;
+    }
+    @include media('sm') {
+        width: 95%;
+    }
 
     h1.title {
         background-color: $fake-box-color;

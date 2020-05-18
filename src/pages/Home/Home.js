@@ -52,13 +52,23 @@ class Home extends Component {
                     <main className={cx('main')}>
                         <div className={cx('wrapper-brand-logo')}>Hera House</div>
                         <nav className={cx(cn.list)}>
-                            {categories.map(category => {
+                            {
+                                categories.length > 0 ? categories.map(category => {
                                 const { name } = category;
                                 return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
                                     <span>{name}</span>
                                 </li>
                             </Link>
-                            })}
+                            })
+                            : <div></div>
+                            }
+                            {/* {categories.map(category => {
+                                const { name } = category;
+                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                                    <span>{name}</span>
+                                </li>
+                            </Link>
+                            })} */}
                         </nav>
                     </main>
                 </div>

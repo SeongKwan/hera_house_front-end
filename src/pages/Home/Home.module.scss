@@ -27,13 +27,14 @@
         }
 
         button {
-            background-color: $white;
+            background-color: transparent;
             border: 0;
             &:hover {
                 text-decoration: underline;
             }
 
             .icon {
+                color: $white;
                 font-size: 2rem;
             }
         }
@@ -47,6 +48,14 @@
             height: auto;
             max-height: 100%;
             
+        }
+
+        &--left, &--right {
+            animation-name: fadeIn;
+            animation-duration: 1.5s;
+            animation-fill-mode: both;
+            flex: 1;
+            opacity: 0;
         }
 
         &--left {
@@ -95,8 +104,8 @@
             animation-name: fadeIn;
             animation-duration: 1.5s;
             animation-fill-mode: both;
-            list-style: none;
             opacity: 0;
+            list-style: none;
             
             .link-nav-item {
                 color: $white;

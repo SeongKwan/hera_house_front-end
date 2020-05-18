@@ -21,7 +21,7 @@
         }
 
         button {
-            background-color: $white;
+            background-color: transparent;
             border: 0;
 
             &:hover {
@@ -29,6 +29,7 @@
             }
 
             .icon {
+                color: $white;
                 font-size: 2rem;
             }
         }
@@ -36,11 +37,11 @@
 
     .header {
         align-items: center;
-        background-color: $white;
+        background-color: $primary-color;
         display: flex;
-        height: $height-header;
-        opacity: 0.95;
-        padding: 0 1rem;
+        // height: $height-header;
+        justify-content: center;
+        padding: 1rem 1rem 1rem;
         position: sticky;
         top: 0;
         z-index: $z-header-archive;
@@ -52,7 +53,6 @@
         }
 
         .wrapper-brand-logo {
-            margin-left: 2rem;
             text-align: center;
             transition: opacity 300ms ease;
             user-select: none;
@@ -75,7 +75,8 @@
             // Logo
             span {
                 cursor: pointer;
-                font-size: 3rem;
+                font-size: 30px;
+                color: $white;
                 font-weight: 800;
                 transition: opacity 300ms ease;
                 @include fontEn;
@@ -104,7 +105,6 @@
 
 
     .container {
-        display: flex;
         position: relative;
         z-index: $z-container-archive;
 
@@ -118,12 +118,24 @@
         
 
         .main {
-            flex: 1;
             padding-top: 2rem;
-            width: 100%;
-
+            width: calc(540px * 3 + 48px);
+            margin: auto;
+            @include media('xl') {
+                width: calc(540px * 2 + 48px);
+            }
+            @include media('lg') {
+                // width: calc(540px * 1 + 48px);
+                width: 100%;
+            }
             @include media('md') {
-                padding: 2rem 0.5%;
+                
+            }
+            @include media('sm') {
+                
+            }
+            @include media('sm') {
+                
             }
         }
 
@@ -166,6 +178,7 @@
     }
 
     .wrapper-toggle-menu {
+        color: $white;
         display: none;
         @include media('md') {
             align-items: center;
@@ -196,13 +209,14 @@
 
             //Hamburger
             .icon-menu {
+                color: $white;
                 margin-left: 1rem;
                 position: relative;
-
+                
                 &,
                 &::before,
                 &::after {
-                    background-color: $font-color-dark;
+                    background-color: $white;
                     display: inline-block;
                     height: 2px;
                     width: 1.5rem;
@@ -241,7 +255,8 @@
 
     .menu-list {
         align-items: center;
-        background-color: rgba($white, 1);
+        color: $white;
+        background-color: $primary-color;
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -271,7 +286,8 @@
 
             .list-item {
                 cursor: pointer;
-                font-weight: 100;
+                color: $white;
+                font-size: 28px;
                 margin-bottom: 2.5rem;
                 padding: 0.3rem;
                 position: relative;
@@ -284,7 +300,15 @@
                 }
 
                 &.selected {
-                    transform: scale(1.6);
+                    &::after {
+                        content: '';
+                        width: 100%;
+                        height: 1px;
+                        background-color: $white;
+                        position: absolute;
+                        bottom: 11px;
+                        left: 0;
+                    }
                 }
             }
         }
@@ -299,7 +323,7 @@
             width: 100%;
     
             .icon {
-                color: $font-color-light;
+                color: $white;
                 cursor: pointer;
                 font-size: 1.45rem;
                 transition: color 300ms ease-in-out;

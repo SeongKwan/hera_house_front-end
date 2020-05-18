@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { inject, observer } from 'mobx-react';
-import styles from './Sidebar.module.scss';
+import styles from './NavBar.module.scss';
 import classNames from 'classnames/bind';
-import { IoLogoInstagram } from 'react-icons/io';
-import { TiSocialPinterest } from 'react-icons/ti';
-import { AiOutlineYoutube } from 'react-icons/ai';
+// import { IoLogoInstagram } from 'react-icons/io';
+// import { TiSocialPinterest } from 'react-icons/ti';
+// import { AiOutlineYoutube } from 'react-icons/ai';
 import sns from '../../constants/sns';
 
 const cx = classNames.bind(styles);
@@ -18,12 +18,13 @@ const cn = {
 @withRouter
 @inject('categoryStore', 'loginStore', 'commonStore')
 @observer
-class Sidebar extends Component {
+class NavBar extends Component {
     state = { activeLink: '',  };
     componentDidMount() {
         const currentCategory = this.props.location.pathname.split('/')[2];
         this.setState({ activeLink: currentCategory });
         this._checkRefsAre();
+        window.addEventListener('resize', this._checkRefsAre);
     }
 
     componentDidUpdate() {
@@ -40,12 +41,18 @@ class Sidebar extends Component {
     }
 
     getItemOffset = (item) => {
-        return item.offsetTop;
+        const {
+            offsetLeft,
+            offsetWidth
+        } = item.children[0];
+        
+        return {offsetLeft, offsetWidth};
     };
 
-    moveMarker = (offset) => {
+    moveMarker = ({offsetLeft, offsetWidth}) => {
         const marker = this.activeMarker;
-        marker.style.transform = `translateY(${offset}px)`;
+        marker.style.left = `${offsetLeft}px`;
+        marker.style.width = `${offsetWidth}px`;
     };
 
     toggleActive = ({e = null, name}) => {
@@ -66,12 +73,15 @@ class Sidebar extends Component {
         const currentCategory = this.props.location.pathname.split('/')[2];
         let isDetailPage = window.location.pathname.split('/').length > 3 ? true : false;
         if (categories.length <= 0) {
-            return <div></div>
+            return <div className={cx('NavBar')}>
+            <nav ref={ref => this.nav = ref} className={cx(cn.list)}>
+                <li style={{height: '40px', width: 100}}></li>
+            </nav>
+        </div>
         }
         
         return (
-            <aside className={cx('aside', {listPage: !isDetailPage})}>
-                <i ref={ref => this.activeMarker = ref} className={cx('active-marker')}></i>
+            <div className={cx('NavBar')}>
                 <nav ref={ref => this.nav = ref} className={cx(cn.list)}>
                     {categories.map((category, index) => {
                         const { name } = category;
@@ -85,14 +95,15 @@ class Sidebar extends Component {
                         </Link>
                     })}
                 </nav>
-                <div className={cx('container-sns')}>
+                <i ref={ref => this.activeMarker = ref} className={cx('active-marker')}></i>
+                {/* <div className={cx('container-sns')}>
                     <IoLogoInstagram className={cx('icon')} onClick={() => this._handleOnClickSns('instagram')} />
                     <TiSocialPinterest className={cx('icon')} onClick={() => this._handleOnClickSns('pinterest')} />
                     <AiOutlineYoutube className={cx('icon')} onClick={() => this._handleOnClickSns('youtube')} />
-                </div>
-            </aside>
+                </div> */}
+            </div>
         )
     }
 }
 
-export default Sidebar;
+export default NavBar;

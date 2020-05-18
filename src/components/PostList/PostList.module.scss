@@ -2,8 +2,9 @@
     user-select: none;
     display: flex;
     flex-wrap: wrap;
-    margin: -0.25rem 2rem 0 0;
+    // margin: auto;
     padding-bottom: 1rem;
+    width: 100%;
     &.no-posts {
         height: 100%;
     }
@@ -12,23 +13,19 @@
     }
     
     .list-item-post, .fake-container {
+        background-color: lightgray;
         border-radius: 2px;
-        display: flex;
-        flex-direction: column;
-        margin: 0.25rem;
+        margin: 8px;
         overflow: hidden;
-        width: 24rem;
+        width: 540px;
+        height: 810px;
         transition: opacity 300ms ease;
         @include media('lg') {
-            width: 20rem;
+            width: calc(50% - 1rem);
+            height: 100%;
         }
-        @include media('md') {
-            width: 49%;
-            margin: 0.5%;
-        }
-        @include media('xs') {
+        @include media('sm') {
             width: 100%;
-            margin: 0.5%;
         }
 
         &:hover {
