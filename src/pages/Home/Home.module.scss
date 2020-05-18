@@ -106,6 +106,9 @@
             animation-fill-mode: both;
             opacity: 0;
             list-style: none;
+            @include media('xs') {
+                margin-top: 4rem;
+            }
             
             .link-nav-item {
                 color: $white;
