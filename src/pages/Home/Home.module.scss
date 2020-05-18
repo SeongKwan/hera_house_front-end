@@ -9,6 +9,10 @@
 }
 
 .Home {
+    background-color: $primary-color;
+    color: $white;
+    display: flex;
+    justify-content: center;
     height: 100%;
 
     .floating-container {
@@ -35,6 +39,39 @@
         }
     }
 
+    .container {
+        height: 100%;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+            
+        }
+
+        &--left {
+            
+            margin-left: 2rem;
+            @include centerPosition;
+            @include media('xs') {
+                display: none;
+            }
+        }
+        
+        &--center {
+            min-width: 300px;
+        }
+        
+        &--right {
+            
+            margin-right: 2rem;
+            @include centerPosition;
+            @include media('xs') {
+                display: none;
+            }
+        }
+    }
+
     .main {
         display: flex;
         flex-direction: column;
@@ -43,7 +80,7 @@
         @include centerPosition;
 
         .wrapper-brand-logo {
-            font-size: 2rem;
+            font-size: 35px;
             font-weight: 800;
             position: absolute;
             top: $top-main-logo;
@@ -60,12 +97,9 @@
             animation-fill-mode: both;
             list-style: none;
             opacity: 0;
-            @include media('xs') {
-                padding-top: 100px;
-            }
             
             .link-nav-item {
-                color: $font-color-dark;
+                color: $white;
                 text-decoration: none;
                 user-select: none;
                 &:last-child {
@@ -77,9 +111,10 @@
 
             .list-item-main-category {
                 cursor: pointer;
-                font-weight: 300;
+                font-size: 30px;
                 margin-bottom: 2.5rem;
                 padding: 0.3rem;
+                position: relative;
                 text-align: center;
                 text-transform: capitalize;
                 transition: color 400ms ease;
@@ -88,7 +123,16 @@
                     margin-bottom: 25px;
                 }
                 &:hover {
-                    color: $font-color-light;
+                    &::after {
+                        content: '';
+                        width: 100%;
+                        height: 1px;
+                        background-color: $white;
+                        position: absolute;
+                        bottom: 8px;
+                        left: 0;
+                    }
+                    // color: $font-color-light;
                 }
             }
         }

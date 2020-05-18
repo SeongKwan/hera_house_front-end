@@ -6,6 +6,8 @@ import classNames from 'classnames/bind';
 import { inject, observer } from 'mobx-react';
 import { IoIosSettings } from "react-icons/io";
 import { Helmet } from "react-helmet";
+import LeftBG from '../../styles/img/home_left_background.png'
+import RightBG from '../../styles/img/home_right_background.png'
 
 const cx = classNames.bind(styles);
 const cn = {
@@ -43,21 +45,30 @@ class Home extends Component {
                     {/* <meta http-equiv="Reply-To" content="we@naver.com" /> 
                     <meta http-equiv="Email" content="naver@naver.com" /> */}
                 </Helmet>
+                <div className={cx('container', 'container--left')}>
+                    <img src={LeftBG} alt="left side background" />
+                </div>
+                <div className={cx('container', 'container--center')}>
+                    <main className={cx('main')}>
+                        <div className={cx('wrapper-brand-logo')}>Hera House</div>
+                        <nav className={cx(cn.list)}>
+                            {categories.map(category => {
+                                const { name } = category;
+                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>{name}</li></Link>
+                            })}
+                        </nav>
+                    </main>
+                </div>
+                <div className={cx('container', 'container--right')}>
+                    <img src={RightBG} alt="right side background" />
+                </div>
                 {
                     isLoggedIn &&
                     <div className={cx('floating-container')}>
                         <button onClick={()=>this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
                     </div>
                 }
-                <main className={cx('main')}>
-                    <div className={cx('wrapper-brand-logo')}>Hera House</div>
-                    <nav className={cx(cn.list)}>
-                        {categories.map(category => {
-                            const { name } = category;
-                            return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>{name}</li></Link>
-                        })}
-                    </nav>
-                </main>
+                
             </div>
         );
     }
