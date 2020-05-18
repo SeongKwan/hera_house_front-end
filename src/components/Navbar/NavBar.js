@@ -71,7 +71,7 @@ class NavBar extends Component {
     render() {
         const categories = this.props.categoryStore.registry;
         const currentCategory = this.props.location.pathname.split('/')[2];
-        let isDetailPage = window.location.pathname.split('/').length > 3 ? true : false;
+        // let isDetailPage = window.location.pathname.split('/').length > 3 ? true : false;
         if (categories.length <= 0) {
             return <div className={cx('NavBar')}>
             <nav ref={ref => this.nav = ref} className={cx(cn.list)}>
