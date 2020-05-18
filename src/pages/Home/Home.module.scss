@@ -128,7 +128,7 @@
                 transition: color 400ms ease;
                 @include fontEn;
                 @include media('xs') {
-                    margin-bottom: 25px;
+                    margin-bottom: 20px;
                 }
                 
                 &:hover {
