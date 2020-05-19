@@ -13,7 +13,7 @@
     .floating-container {
         position: fixed;
         right: 2rem;
-        top: 2rem;
+        top: 0.3rem;
         z-index: $z-button-to-admin;
 
         @include media('md') {

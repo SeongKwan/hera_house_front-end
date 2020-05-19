@@ -4,9 +4,10 @@ import { withRouter } from "react-router";
 import { inject, observer } from 'mobx-react';
 import styles from './NavBar.module.scss';
 import classNames from 'classnames/bind';
-// import { IoLogoInstagram } from 'react-icons/io';
-// import { TiSocialPinterest } from 'react-icons/ti';
-// import { AiOutlineYoutube } from 'react-icons/ai';
+import { IoLogoInstagram } from 'react-icons/io';
+import { TiSocialPinterest } from 'react-icons/ti';
+import { AiOutlineYoutube } from 'react-icons/ai';
+import { IoIosArrowUp, IoIosSettings } from "react-icons/io";
 import sns from '../../constants/sns';
 
 const cx = classNames.bind(styles);
@@ -19,7 +20,7 @@ const cn = {
 @inject('categoryStore', 'loginStore', 'commonStore')
 @observer
 class NavBar extends Component {
-    state = { activeLink: '',  };
+    state = { activeLink: '', isShownScrollButton: false , openMenu: false}
     componentDidMount() {
         const currentCategory = this.props.location.pathname.split('/')[2];
         this.setState({ activeLink: currentCategory });
@@ -68,9 +69,21 @@ class NavBar extends Component {
         return window.open(sns[type], '_blank');
     }
 
+    _handleClickOnBrandLogo = () => {
+        this.props.history.push('/');
+    }
+
+    _handleClickOnToggleMenu() {
+        this.setState({
+            openMenu: !this.state.openMenu
+        });
+    }
+
     render() {
         const categories = this.props.categoryStore.registry;
         const currentCategory = this.props.location.pathname.split('/')[2];
+
+        const { isLoggedIn } = this.props.loginStore;
         // let isDetailPage = window.location.pathname.split('/').length > 3 ? true : false;
         if (categories.length <= 0) {
             return <div className={cx('NavBar')}>
@@ -82,6 +95,10 @@ class NavBar extends Component {
         
         return (
             <div className={cx('NavBar')}>
+                <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._handleClickOnBrandLogo}><span>HR ARCHIVE</span></div>
+                <div className={cx('wrapper-brand-logo')} data-device="mobile">
+                    <span onClick={this._handleClickOnBrandLogo}>HR</span>
+                </div>
                 <nav ref={ref => this.nav = ref} className={cx(cn.list)}>
                     {categories.map((category, index) => {
                         const { name } = category;
@@ -101,6 +118,39 @@ class NavBar extends Component {
                     <TiSocialPinterest className={cx('icon')} onClick={() => this._handleOnClickSns('pinterest')} />
                     <AiOutlineYoutube className={cx('icon')} onClick={() => this._handleOnClickSns('youtube')} />
                 </div> */}
+                <div className={cx('wrapper-toggle-menu')}>
+                    <input 
+                        ref={ref => this.menuCheckbox = ref}
+                        className={cx("input-checkbox-menu")} 
+                        hidden
+                        type="checkbox" 
+                        id="navi-toggle" />
+                    <label 
+                        onClick={() => this._handleClickOnToggleMenu()}
+                        className={cx('label-menu', "hamburger-menu")} 
+                        htmlFor="navi-toggle" >
+                        <span className={cx({blind: this.state.openMenu})}>{currentCategory}</span>
+                        <span className={cx("icon-menu", {'open-menu': this.state.openMenu})}>&nbsp;</span>
+                    </label>
+                </div>
+                <ul className={cx('menu-list', {'going-in': this.state.openMenu})}>
+                    {categories.map((category, i) =>{ 
+                        const { name } = category;
+                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', {selected: currentCategory === name})}>{name}</li></Link>
+                        })
+                    }
+                    {
+                        isLoggedIn &&
+                        <div className={cx('button-admin', {'open-menu': this.state.openMenu})} onClick={()=>this.props.history.push('/admin')}>
+                            <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div>
+                        </div>
+                    }
+                    <div className={cx('container-sns')}>
+                        <IoLogoInstagram className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'instagram')} />
+                        <TiSocialPinterest className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'pinterest')} />
+                        <AiOutlineYoutube className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'youtube')} />
+                    </div>
+                </ul>
             </div>
         )
     }

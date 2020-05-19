@@ -95,12 +95,12 @@ class Archive extends Component {
                     <button onClick={()=>this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
                 </div>
             }
-                <header className={cx('header')}>
+                {/* <header className={cx('header')}>
                     <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._handleClickOnBrandLogo}><span>Hera House</span></div>
                     <div className={cx('wrapper-brand-logo')} data-device="mobile">
                         <span onClick={this._handleClickOnBrandLogo}>HR</span>
                     </div>
-                </header>
+                </header> */}
                 <NavBar />
                 <div className={cx('container', {'covered-menu': this.state.openMenu})}>
                     <main className={cx('main')} ref={ref => this.mainContainer = ref}>
@@ -123,39 +123,7 @@ class Archive extends Component {
                     </main>
                 </div>
 
-                <div className={cx('wrapper-toggle-menu')}>
-                    <input 
-                        ref={ref => this.menuCheckbox = ref}
-                        className={cx("input-checkbox-menu")} 
-                        hidden
-                        type="checkbox" 
-                        id="navi-toggle" />
-                    <label 
-                        onClick={() => this._handleClickOnToggleMenu()}
-                        className={cx('label-menu', "hamburger-menu")} 
-                        htmlFor="navi-toggle" >
-                        <span className={cx({blind: this.state.openMenu})}>{currentCategory}</span>
-                        <span className={cx("icon-menu", {'open-menu': this.state.openMenu})}>&nbsp;</span>
-                    </label>
-                </div>
-                <ul className={cx('menu-list', {'going-in': this.state.openMenu})}>
-                    {categories.map((category, i) =>{ 
-                        const { name } = category;
-                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', {selected: currentCategory === name})}>{name}</li></Link>
-                        })
-                    }
-                    {
-                        isLoggedIn &&
-                        <div className={cx('button-admin', {'open-menu': this.state.openMenu})} onClick={()=>this.props.history.push('/admin')}>
-                            <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div>
-                        </div>
-                    }
-                    <div className={cx('container-sns')}>
-                        <IoLogoInstagram className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'instagram')} />
-                        <TiSocialPinterest className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'pinterest')} />
-                        <AiOutlineYoutube className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'youtube')} />
-                    </div>
-                </ul>
+                
             </div>
         );
     }
