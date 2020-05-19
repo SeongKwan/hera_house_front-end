@@ -132,7 +132,7 @@
             text-align: left;
             top: 6rem;
             @include media('xs') {
-                // margin-top: 4rem;
+                margin-top: -2rem;
             }
             
             .link-nav-item {
@@ -149,7 +149,7 @@
             .list-item-main-category {
                 cursor: pointer;
                 font-size: 30px;
-                margin-bottom: 2.5rem;
+                margin-bottom: 2.2rem;
                 padding: 0.3rem;
                 text-transform: capitalize;
                 transition: color 400ms ease;
