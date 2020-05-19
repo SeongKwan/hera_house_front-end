@@ -22,9 +22,9 @@
         right: 2rem;
         z-index: $z-button-to-admin;
         @include media('md') {
-            top: initial;
+            // top: initial;
             left: 2rem;
-            bottom: 2rem;
+            // bottom: 2rem;
         }
 
         button {
@@ -132,7 +132,7 @@
             text-align: left;
             top: 6rem;
             @include media('xs') {
-                margin-top: 4rem;
+                // margin-top: 4rem;
             }
             
             .link-nav-item {
