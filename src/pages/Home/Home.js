@@ -45,36 +45,36 @@ class Home extends Component {
                     {/* <meta http-equiv="Reply-To" content="we@naver.com" /> 
                     <meta http-equiv="Email" content="naver@naver.com" /> */}
                 </Helmet>
-                <div className={cx('container', 'container--left')}>
+                {/* <div className={cx('container', 'container--left')}>
                     <img src={LeftBG} alt="left side background" />
-                </div>
-                <div className={cx('container', 'container--center')}>
-                    <main className={cx('main')}>
-                        <div className={cx('wrapper-brand-logo')}>Hera House</div>
-                        <nav className={cx(cn.list)}>
-                            {
-                                categories.length > 0 ? categories.map(category => {
-                                const { name } = category;
-                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                                    <span>{name}</span>
-                                </li>
-                            </Link>
-                            })
-                            : <div></div>
-                            }
-                            {/* {categories.map(category => {
-                                const { name } = category;
-                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                                    <span>{name}</span>
-                                </li>
-                            </Link>
-                            })} */}
-                        </nav>
-                    </main>
-                </div>
-                <div className={cx('container', 'container--right')}>
+                </div> */}
+                <main className={cx('main')}>
+                    <div className={cx('wrapper-brand-logo')}>HR ARCHIVE</div>
+                    <nav className={cx(cn.list)}>
+                        {
+                            categories.length > 0 ? categories.map(category => {
+                            const { name } = category;
+                            return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                                <span>{name}</span>
+                            </li>
+                        </Link>
+                        })
+                        : <div></div>
+                        }
+                        {/* {categories.map(category => {
+                            const { name } = category;
+                            return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                                <span>{name}</span>
+                            </li>
+                        </Link>
+                        })} */}
+                    </nav>
+                </main>
+                {/* <div className={cx('container', 'container--center')}>
+                </div> */}
+                {/* <div className={cx('container', 'container--right')}>
                     <img src={RightBG} alt="right side background" />
-                </div>
+                </div> */}
                 {
                     isLoggedIn &&
                     <div className={cx('floating-container')}>
