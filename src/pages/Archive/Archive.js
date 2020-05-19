@@ -83,7 +83,7 @@ class Archive extends Component {
         return (
             <div className={cx('Archive', {'no-scroll': this.state.openMenu})}>
             <Helmet>
-                <title>HH Archive - {currentCategory}</title>
+                <title>HR Archive - {currentCategory}</title>
                 <link rel="canonical" href={`http://hera-house.site/archive/${currentCategory}`} />
                 <meta http-equiv="Title" content={`Hera House - ${currentCategory}`} />
                 <meta name="Keywords" content="fashion, brand, design, art, music" />
@@ -98,7 +98,7 @@ class Archive extends Component {
                 <header className={cx('header')}>
                     <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._handleClickOnBrandLogo}><span>Hera House</span></div>
                     <div className={cx('wrapper-brand-logo')} data-device="mobile">
-                        <span onClick={this._handleClickOnBrandLogo}>HH</span>
+                        <span onClick={this._handleClickOnBrandLogo}>HR</span>
                     </div>
                 </header>
                 <NavBar />

@@ -50,8 +50,8 @@
         display: flex;
         height: 100%;
         flex-direction: column;
-        margin-top: 4rem;
-        width: 70%;
+        margin-top: 6rem;
+        width: 100%;
         @include media('md') {
             width: 100%;
         }
