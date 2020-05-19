@@ -28,6 +28,7 @@
         transition: opacity 300ms ease;
         user-select: none;
         line-height: 9px;
+        z-index: 1400;
 
         // Main Logo for Desktop
         &[data-device="desktop"] {

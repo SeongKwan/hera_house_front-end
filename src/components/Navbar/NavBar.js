@@ -95,7 +95,7 @@ class NavBar extends Component {
         
         return (
             <div className={cx('NavBar')}>
-                <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._handleClickOnBrandLogo}><span>HR ARCHIVE</span></div>
+                <div className={cx('wrapper-brand-logo')} data-device="desktop"><span onClick={this._handleClickOnBrandLogo}>HR ARCHIVE</span></div>
                 <div className={cx('wrapper-brand-logo')} data-device="mobile">
                     <span onClick={this._handleClickOnBrandLogo}>HR</span>
                 </div>
