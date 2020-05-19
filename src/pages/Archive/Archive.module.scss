@@ -39,7 +39,6 @@
         align-items: center;
         background-color: $primary-color;
         display: flex;
-        // height: $height-header;
         justify-content: center;
         padding: 1rem 1rem 0rem;
         position: sticky;
@@ -288,7 +287,7 @@
                 cursor: pointer;
                 color: $white;
                 font-size: 28px;
-                margin-bottom: 2.5rem;
+                margin-bottom: 2rem;
                 padding: 0.3rem;
                 position: relative;
                 text-align: center;
@@ -306,7 +305,7 @@
                         height: 1px;
                         background-color: $white;
                         position: absolute;
-                        bottom: 11px;
+                        bottom: 12px;
                         left: 0;
                     }
                 }
