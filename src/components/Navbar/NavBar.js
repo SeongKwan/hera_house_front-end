@@ -79,6 +79,14 @@ class NavBar extends Component {
         });
     }
 
+    _handleClickOnListItemInMenu = () => {
+        setTimeout(()=> {
+            this.setState({
+                openMenu: !this.state.openMenu
+            });
+        }, 500)
+    }
+
     render() {
         const categories = this.props.categoryStore.registry;
         const currentCategory = this.props.location.pathname.split('/')[2];
