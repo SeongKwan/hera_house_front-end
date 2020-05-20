@@ -46,7 +46,7 @@ class Post extends Component {
         return (
             <article className={cx('Post', 'Post-CSS')}>
                 <Helmet>
-                    <title>HH Post - {title}</title>
+                    <title>HR Post - {title}</title>
                     <link rel="canonical" href={`http://hera-house.site/archive/${currentCategory}/${_id}`} />
                     <meta http-equiv="Title" content={`HH Post - ${title}`} />
                     {/* <meta name="Keywords" content="fashion, brand, design, art, music" /> */}
