@@ -180,6 +180,10 @@
                         position: absolute;
                         bottom: 7px;
                         left: 0;
+
+                        @include media('xs') {
+                            bottom: 4px;
+                        }
                     }
                 }
                 
