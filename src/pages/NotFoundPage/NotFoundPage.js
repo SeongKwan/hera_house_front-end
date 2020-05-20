@@ -15,7 +15,7 @@ class NotFoundPage extends Component {
         return (
             <div className={cx('NotFoundPage')}>
                 <Helmet>
-                    <title>Page not found - Hera House</title>
+                    <title>Page not found - HR-ARCHIVE</title>
                 </Helmet>
                 <h6>찾으시는 페이지가 없는 듯하네요.</h6>
                 <button onClick={this._onClickBackButton}>처음화면으로...</button>

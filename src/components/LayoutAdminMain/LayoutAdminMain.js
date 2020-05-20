@@ -85,7 +85,7 @@ class LayoutAdminMain extends Component {
                 }
                 <aside className={cx('aside')}>
                     <div className={cx('logo')} onClick={this._handleClickOnLogo}>
-                        Hera House Manager
+                        HR-ARCHIVE Manager
                     </div>
                     <ul className={cx('list-category')}>
                         <li className={cx('list-item-wrapper')}>
@@ -117,7 +117,7 @@ class LayoutAdminMain extends Component {
                             to={`/`}>
                             <FaLongArrowAltLeft className={cx('icon')} /><span>사이트로 돌아가기</span>
                         </Link>
-                        <div className={cx('footer-content')}>2020 Hera House</div>
+                        <div className={cx('footer-content')}>2020 HR-ARCHIVE</div>
                     </footer>
                 </aside>
                 <main className={cx('main')}>
