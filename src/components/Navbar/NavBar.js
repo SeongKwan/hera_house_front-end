@@ -144,7 +144,7 @@ class NavBar extends Component {
                 <ul className={cx('menu-list', {'going-in': this.state.openMenu})}>
                     {categories.map((category, i) =>{ 
                         const { name } = category;
-                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', {selected: currentCategory === name})}>{name}</li></Link>
+                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', {selected: currentCategory === name})}><span>{name}</span></li></Link>
                         })
                     }
                     {

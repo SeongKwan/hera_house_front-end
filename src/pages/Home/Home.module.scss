@@ -88,7 +88,12 @@
         height: $height-full;
         position: relative;
         width: 100%;
-        @include centerPosition;
+        
+        @include media('xs') {
+            display: flex;
+
+            @include centerPosition;
+        }
 
         .wrapper-brand-logo {
             text-align: center;
@@ -117,8 +122,8 @@
                 line-height: 60px;
             }
             @include media('sm') {
-                font-size: 60px;
-                line-height: 50px;
+                font-size: 48px;
+                line-height: 34px;
             }
         }
 
@@ -133,7 +138,10 @@
             text-align: left;
             top: 6rem;
             @include media('xs') {
-                margin-top: -2rem;
+                // margin-top: -2rem;
+                position: relative;
+                top: initial;
+                left: initial;
             }
             
             .link-nav-item {
@@ -156,7 +164,10 @@
                 transition: color 400ms ease;
                 @include fontEn;
                 @include media('xs') {
-                    margin-bottom: 20px;
+                    margin-bottom: 38px;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    text-align: center;
                 }
                 
                 &:hover {

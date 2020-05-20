@@ -136,6 +136,13 @@
             @include media('sm') {
                 
             }
+
+            .current-category {
+                color: $primary-color;
+                padding-bottom: 2rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
         }
 
         .wrapper-button-top-scroll {

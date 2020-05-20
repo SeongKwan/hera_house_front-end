@@ -98,6 +98,9 @@ class Archive extends Component {
                 <NavBar />
                 <div className={cx('container', {'covered-menu': this.state.openMenu})}>
                     <main className={cx('main')} ref={ref => this.mainContainer = ref}>
+                        <div className={cx('current-category')}>
+                            {currentCategory}
+                        </div>
                         <Switch>
                             <Route exact path={`${path}/:category`}>
                                 <PostList />
