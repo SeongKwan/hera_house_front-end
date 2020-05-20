@@ -29,9 +29,9 @@ class Home extends Component {
         return (
             <div className={cx('Home')}>
                 <Helmet>
-                    <title>HR ARCHIVE - Home</title>
+                    <title>HR Archive - Home</title>
                     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                    <link rel="canonical" href="http://hr-archive.com" />
+                    <link rel="canonical" href="http://HR Archive.com" />
                     {/* 검색엔진 단어 */}
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="브랜드 디자이너 에일의 다양한 분야에 관한 그 만의 글이 모여있는 곳" />

@@ -78,10 +78,10 @@ class Archive extends Component {
             <div className={cx('Archive', {'no-scroll': this.state.openMenu})}>
             <Helmet>
                 <title>HR Archive - {currentCategory}</title>
-                <link rel="canonical" href={`http://hr-archive/archive/${currentCategory}`} />
-                <meta http-equiv="Title" content={`HR-ARCHIVE - ${currentCategory}`} />
+                <link rel="canonical" href={`http://HR Archive/archive/${currentCategory}`} />
+                <meta http-equiv="Title" content={`HR Archive - ${currentCategory}`} />
                 <meta name="Keywords" content="fashion, brand, design, art, music" />
-                <meta name="Description" content="HR-ARCHIVE Archive" />
+                <meta name="Description" content="HR Archive Archive" />
             </Helmet>
             {
                 isLoggedIn &&
