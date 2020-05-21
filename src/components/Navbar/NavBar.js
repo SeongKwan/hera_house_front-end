@@ -105,7 +105,7 @@ class NavBar extends Component {
             <div className={cx('NavBar')}>
                 <div className={cx('wrapper-brand-logo')} data-device="desktop"><span onClick={this._handleClickOnBrandLogo}>HR ARCHIVE</span></div>
                 <div className={cx('wrapper-brand-logo')} data-device="mobile">
-                    <span onClick={this._handleClickOnBrandLogo}>HR</span>
+                    <span onClick={this._handleClickOnBrandLogo}>HR ARCHIVE</span>
                 </div>
                 <nav ref={ref => this.nav = ref} className={cx(cn.list)}>
                     {categories.map((category, index) => {
