@@ -54,8 +54,8 @@
             font-weight: 900;
 
             @include media('md') {
-                font-size: 26px;
-                line-height: 17px;
+                font-size: 18px;
+                line-height: 12px;
             }
         }
 
@@ -179,7 +179,7 @@
         @include media('md') {
             align-items: center;
             display: flex;
-            min-height: 40px;
+            min-height: 26px;
             // position: fixed;
             // right: 1rem;
             // top: 26px;
@@ -218,8 +218,8 @@
                 &::after {
                     background-color: $white;
                     display: inline-block;
-                    height: 2px;
-                    width: 1.5rem;
+                    height: 1px;
+                    width: 1rem;
                 }
 
                 &::before,
