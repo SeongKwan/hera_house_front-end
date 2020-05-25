@@ -157,8 +157,8 @@
 
             .list-item-main-category {
                 cursor: pointer;
-                font-size: 30px;
-                margin-bottom: 2.2rem;
+                font-size: 17px;
+                margin-bottom: 30px;
                 padding: 0.3rem;
                 text-transform: capitalize;
                 transition: color 400ms ease;
@@ -178,7 +178,7 @@
                         height: 1px;
                         background-color: $white;
                         position: absolute;
-                        bottom: 7px;
+                        bottom: 2px;
                         left: 0;
 
                         @include media('xs') {

@@ -141,7 +141,9 @@
                 color: $primary-color;
                 padding-bottom: 2rem;
                 text-align: center;
-                text-transform: uppercase;
+                text-transform: capitalize;
+                font-size: 15px;
+                @include fontEn;
             }
         }
 
