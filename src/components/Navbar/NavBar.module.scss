@@ -300,7 +300,7 @@
                 @include media('xs') {
                     margin-bottom: 38px;
                     font-size: 14px;
-                    text-transform: uppercase;
+                    text-transform: capitalize;
                     text-align: center;
                 }
 
@@ -315,7 +315,7 @@
                         height: 1px;
                         background-color: $font-color-light;
                         position: absolute;
-                        bottom: 4px;
+                        bottom: 2px;
                         left: 0;
                     }
                 }

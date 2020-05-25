@@ -166,7 +166,7 @@
                 @include media('xs') {
                     margin-bottom: 38px;
                     font-size: 14px;
-                    text-transform: uppercase;
+                    text-transform: capitalize;
                     text-align: center;
                 }
                 
