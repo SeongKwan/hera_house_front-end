@@ -182,7 +182,10 @@
                         left: 0;
 
                         @include media('xs') {
-                            bottom: 4px;
+                            display: none;
+                            height: 0;
+                            // bottom: 4px;
+                            width: 0;
                         }
                     }
                 }
