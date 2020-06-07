@@ -9,6 +9,7 @@ import { TiSocialPinterest } from 'react-icons/ti';
 import { AiOutlineYoutube } from 'react-icons/ai';
 import { IoIosArrowUp, IoIosSettings } from "react-icons/io";
 import sns from '../../constants/sns';
+import Instagram from '../../styles/img/instagram.png'
 
 const cx = classNames.bind(styles);
 const cn = {
@@ -147,6 +148,10 @@ class NavBar extends Component {
                         return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', {selected: currentCategory === name})}><span>{name}</span></li></Link>
                         })
                     }
+                    <a target="_blank" href={`https://www.instagram.com/hr_archive_`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                                <img src={Instagram} alt="instgram logo" width={32}/>
+                            </li>
+                        </a>
                     {
                         isLoggedIn &&
                         <div className={cx('button-admin', {'open-menu': this.state.openMenu})} onClick={()=>this.props.history.push('/admin')}>

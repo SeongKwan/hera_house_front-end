@@ -46,6 +46,7 @@ class PostList extends Component {
     }
 
     render() {
+        const { category } = this.props.match.params;
         const { url } = this.props.match;
         let { filteredRegistry: posts, isLoading, postsLength } = this.props.postStore;
 
@@ -61,8 +62,8 @@ class PostList extends Component {
                     posts.map((post, i) => {
                         const { isPublished } = post;
                         if (isPublished) {
-                            return <Link key={i} to={`${url}/${post._id}`} className={cx('list-item-post')}>
-                                <img className={cx('img')} src={`${staticUrl}/${post.thumbnail}`} alt="post thumbnail" />
+                            return <Link key={i} to={`${url}/${post._id}`} className={cx('list-item-post', {'list-item-post--clothing': category === 'Clothing'})}>
+                                <img className={cx({img: category !== 'Clothing'}, {'img--clothing': category === 'Clothing'})} src={`${staticUrl}/${post.thumbnail}`} alt="post thumbnail" />
                             </Link>
                         } else {
                             return false;

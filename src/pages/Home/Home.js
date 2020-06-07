@@ -6,8 +6,9 @@ import classNames from 'classnames/bind';
 import { inject, observer } from 'mobx-react';
 import { IoIosSettings } from "react-icons/io";
 import { Helmet } from "react-helmet";
-import LeftBG from '../../styles/img/home_left_background.png'
-import RightBG from '../../styles/img/home_right_background.png'
+import Instagram from '../../styles/img/instagram-white.png'
+// import LeftBG from '../../styles/img/home_left_background.png'
+// import RightBG from '../../styles/img/home_right_background.png'
 
 const cx = classNames.bind(styles);
 const cn = {
@@ -61,6 +62,10 @@ class Home extends Component {
                         })
                         : <div></div>
                         }
+                        <a target="_blank" href={`https://www.instagram.com/hr_archive_`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                                <img src={Instagram} alt="instgram logo" width={32}/>
+                            </li>
+                        </a>
                         {/* {categories.map(category => {
                             const { name } = category;
                             return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
