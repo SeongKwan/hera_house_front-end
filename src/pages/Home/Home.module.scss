@@ -153,6 +153,12 @@
                         margin-bottom: 0;
                     }
                 }
+
+                &.sns-link {
+                    @include media('sm') {
+                        display: none;
+                    }
+                }
             }
 
             .list-item-main-category {

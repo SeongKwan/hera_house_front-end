@@ -62,10 +62,13 @@ class Home extends Component {
                         })
                         : <div></div>
                         }
-                        <a target="_blank" href={`https://www.instagram.com/hr_archive_`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                                <img src={Instagram} alt="instgram logo" width={32}/>
-                            </li>
-                        </a>
+                        {
+                            categories.length > 0 &&
+                            <a target="_blank" href={`https://www.instagram.com/hr_archive_`} className={cx('link-nav-item', 'sns-link')}><li className={cx(cn.item)}>
+                                    <img src={Instagram} alt="instgram logo" width={32}/>
+                                </li>
+                            </a>
+                        }
                         {/* {categories.map(category => {
                             const { name } = category;
                             return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
