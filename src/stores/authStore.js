@@ -11,7 +11,7 @@ class AuthStore {
     @observable user_id = window.localStorage.getItem('user_id');
     @observable authError = false;
     @observable expiredToken = false;
-    
+
 
     constructor() {
         this._initTokenAndUuidWithLocalStorage();
@@ -91,76 +91,76 @@ class AuthStore {
 
     @action validateToken() {
         return agent.validateToken()
-        .then(action((response) => {
-            if (!response.data) {
-                this.setExpiredToken(true);
-            }
-            return response;
-        }))
-        .then((response) => {
-            if (!response.data) {
-                setTimeout(() => {
-                    alert("로그인 시간이 만료되었습니다. 다시 로그인하여 주세요.")
-                }, 100);
-                setTimeout(() => {
-                    this.logout('expiredRefreshToken');
-                }, 150);
-                setTimeout(() => {
-                    window.location.href = "http://cloudoc.net.s3-website.ap-northeast-2.amazonaws.com/login";
-                }, 200);
-            }
-            return response.data;
-        })
-        .catch((error) => {
-            throw error;
-        })
+            .then(action((response) => {
+                if (!response.data) {
+                    this.setExpiredToken(true);
+                }
+                return response;
+            }))
+            .then((response) => {
+                if (!response.data) {
+                    setTimeout(() => {
+                        alert("로그인 시간이 만료되었습니다. 다시 로그인하여 주세요.")
+                    }, 100);
+                    setTimeout(() => {
+                        this.logout('expiredRefreshToken');
+                    }, 150);
+                    setTimeout(() => {
+                        window.location.href = "http://cloudoc.net.s3-website.ap-northeast-2.amazonaws.com/login";
+                    }, 200);
+                }
+                return response.data;
+            })
+            .catch((error) => {
+                throw error;
+            })
     }
 
     @action clearAuthError() {
         this.authError = false;
     }
-    
+
     @action login() {
         this.isLoading = true;
         const { email, password } = loginStore.inputValuesForLogin;
 
-        return agent.login({email, password})
-        .then(action((res) => {
-            let { 
-                token,
-                refreshToken
-            } = res.data;
-            this.setTokenAndEmailAndUserTypeAndType(token, refreshToken, email, res.data.user.id);
+        return agent.login({ email, password })
+            .then(action((res) => {
+                let {
+                    token,
+                    refreshToken
+                } = res.data;
+                this.setTokenAndEmailAndUserTypeAndType(token, refreshToken, email, res.data.user.id);
 
-            loginStore.setLoggedIn(true);
-            this.isLoading = false;
-            return res.data;
-        }))
-        .catch(action((err) => {
-            // this.errors = err.response && err.response.body && err.response.body.errors;
-            this.isLoading = false;
-            loginStore.setLoggedIn(false);
-            // const { email, password } = err.data.errors || {};
-            // const { message } = err.data || {};
+                loginStore.setLoggedIn(true);
+                this.isLoading = false;
+                return res.data;
+            }))
+            .catch(action((err) => {
+                // this.errors = err.response && err.response.body && err.response.body.errors;
+                this.isLoading = false;
+                loginStore.setLoggedIn(false);
+                // const { email, password } = err.data.errors || {};
+                // const { message } = err.data || {};
 
-            // if (email && !password) {
-            //     this.errorValues.noIdValue = true;
-            //     throw err;
-            // } 
-            // if (!email && password) {
-            //     this.errorValues.noPasswordValue = true;
-            //     throw err;
-            // } 
-            // if (email && password) {
-            //     this.errorValues.noIdValue = true;
-            //     this.errorValues.noPasswordValue = true;
-            //     throw err;
-            // }
-            // if (message === "unregistered email" || message === "Incorrect password") {
-            //     this.errorValues.inputError = true;
-            //     throw err;
-            // }
-        }));
+                // if (email && !password) {
+                //     this.errorValues.noIdValue = true;
+                //     throw err;
+                // } 
+                // if (!email && password) {
+                //     this.errorValues.noPasswordValue = true;
+                //     throw err;
+                // } 
+                // if (email && password) {
+                //     this.errorValues.noIdValue = true;
+                //     this.errorValues.noPasswordValue = true;
+                //     throw err;
+                // }
+                // if (message === "unregistered email" || message === "Incorrect password") {
+                //     this.errorValues.inputError = true;
+                //     throw err;
+                // }
+            }));
     }
 
     _removeItem() {
@@ -174,23 +174,23 @@ class AuthStore {
         const THIS = this;
         return new Promise(function (resolve, reject) {
             if (type !== 'expiredRefreshToken') {
-                console.log('1')
+
                 if (true) {
                     THIS._removeItem()
                     loginStore.setLoggedIn(false);
                     THIS.destroyTokenAndUuid();
                     loginStore.clearLoggedIn();
-                    return resolve({success: true});
-                } else { 
+                    return resolve({ success: true });
+                } else {
                     return false;
                 }
             } else THIS._removeItem();
-            
-            console.log('2')
+
+
             loginStore.setLoggedIn(false);
             THIS.destroyTokenAndUuid();
             loginStore.clearLoggedIn();
-            return resolve({success: true});
+            return resolve({ success: true });
         });
     }
 
@@ -203,7 +203,7 @@ class AuthStore {
                 console.log(err)
             })
     }
-    
+
 }
 
 export default new AuthStore();

@@ -10,11 +10,12 @@ const cx = classNames.bind(styles);
 @inject('categoryStore', 'dndStore')
 @observer
 class ColumnItem extends Component {
-    _handleClickOnButtonDelete = (id) => {
-        this.props.categoryStore.deleteCategory(id)
-        .then(res => {
-            this.props.dndStore.initialize('category');
-        });
+    _handleClickOnButtonDelete = (category) => {
+        if (window.confirm(`'${category.name}'을(를) 삭제하는게 맞나요?`))
+            this.props.categoryStore.deleteCategory(category.id)
+                .then(res => {
+                    this.props.dndStore.initialize('category');
+                });
     }
 
     render() {
@@ -22,26 +23,26 @@ class ColumnItem extends Component {
         return (
             <Draggable draggableId={category.id} index={index} >
                 {(provided, snapshot) => (
-                    <div 
+                    <div
                         {...provided.draggableProps}
                         ref={provided.innerRef}
-                        className={cx('column-item', {isDragging: snapshot.isDragging})}
+                        className={cx('column-item', { isDragging: snapshot.isDragging })}
                     >
                         <div {...provided.dragHandleProps} className={cx('drag-handle')}>
                             <IoIosMenu />
                         </div>
-                        <div 
+                        <div
                             className={cx('wrapper-content')}
                         >
-                            <div 
+                            <div
                                 className={cx('content')}
                                 onClick={() => this.props.onClickListItem(index)}
                             >
                                 {category.name}
                             </div>
                             {/* <button className={cx('button', 'button-edit')}>수정</button> */}
-                            {this.props.selectedItem === index && <button className={cx('button', 'button-delete')} onClick={() => this._handleClickOnButtonDelete(category.id)}>삭제</button>}
-                            
+                            {this.props.selectedItem === index && <button className={cx('button', 'button-delete')} onClick={() => this._handleClickOnButtonDelete(category)}>삭제</button>}
+
                         </div>
                     </div>
                 )}

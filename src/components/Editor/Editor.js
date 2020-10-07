@@ -25,12 +25,12 @@ const cx = classNames.bind(styles);
 @inject('postStore', 'categoryStore')
 @observer
 class Editor extends Component {
-    state = {leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: ''}
+    state = { leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '' }
 
     componentDidMount() {
         const { type } = this.props;
         this._initialize(type)
-        this.editor.onInit(() => {console.log('init')});
+        this.editor.onInit(() => { console.log('init') });
     }
 
     componentWillUnmount() {
@@ -41,19 +41,19 @@ class Editor extends Component {
     _initialize = (type) => {
         const { postId } = this.props.match.params;
         this.props.categoryStore.loadCategories()
-        .then(res => {
-            this.props.postStore.changeValue('category', res[0].name);
-        });
+            .then(res => {
+                this.props.postStore.changeValue('category', res[0].name);
+            });
         if (type === 'edit') {
             this.props.postStore.loadPost(postId)
-            .then(res => {
-                this.setState({ thumbnailUrl: res.thumbnail });
-            });
+                .then(res => {
+                    this.setState({ thumbnailUrl: res.thumbnail });
+                });
         }
     }
 
     clearState = () => {
-        this.setState({leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: ''})
+        this.setState({ leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '' })
     }
 
     _handleOnChange = (content) => {
@@ -71,7 +71,7 @@ class Editor extends Component {
         let reader = new FileReader();
         let file = e.target.files[0];
 
-        
+
         return new Promise(function (resolve, reject) {
             if (!!e.target.files[0] === true) {
                 reader.onloadend = () => {
@@ -81,14 +81,14 @@ class Editor extends Component {
                     });
                 }
                 reader.readAsDataURL(file)
-                return resolve({success: true});
+                return resolve({ success: true });
             } else {
                 THIS.setState({
                     thumbnail: '',
                     thumbnailUrl: ''
                 });
                 THIS.props.postStore.changeValue('thumbnail', '')
-                return resolve({success: false});
+                return resolve({ success: false });
             }
         });
     }
@@ -104,10 +104,10 @@ class Editor extends Component {
         ];
         const THIS = this;
         return new Promise(function (resolve, reject) {
-            for (let i = 0 ; i < images.length; i++){
+            for (let i = 0; i < images.length; i++) {
                 const reader = new FileReader();
                 reader.readAsDataURL(file[i]);
-    
+
                 for (let j = 0; j < fileTypes.length; j++) {
                     if (file[i].type === fileTypes[j]) {
                         reader.onloadend = () => {
@@ -118,12 +118,12 @@ class Editor extends Component {
                                 category: file[i].type,
                                 multipart_form_data: file[i]
                             });
-                            THIS.setState({ fileName: THIS.state.fileName.concat(concatName), file: THIS.state.file.concat(concatFile)}, () => {});
+                            THIS.setState({ fileName: THIS.state.fileName.concat(concatName), file: THIS.state.file.concat(concatFile) }, () => { });
                         };
                     }
                 }
             }
-            return resolve({success: true});
+            return resolve({ success: true });
         });
     }
 
@@ -134,17 +134,17 @@ class Editor extends Component {
             this.state.thumbnail
         );
 
-        console.log(formData)
-        
+        // console.log(formData)
+
         return this.props.postStore.uploadImage(formData)
             .then(res => {
-                console.log(JSON.parse(JSON.stringify(res.files)))
+                // console.log(JSON.parse(JSON.stringify(res.files)))
                 let array = [];
                 res.files.forEach(file => {
                     array.push(file.filename);
                 })
                 // this.setState({imageUrls: array});
-                this.setState({thumbnailUrl: array[0]});
+                this.setState({ thumbnailUrl: array[0] });
                 this.props.postStore.changeValue('thumbnail', array[0])
             })
             .catch(err => {
@@ -153,45 +153,45 @@ class Editor extends Component {
     }
 
     _handleOnImageUpload = (images, insertImage) => {
-        console.log(images)
+        // console.log(images)
         this._setImagesToState(images)
-        .then(res => {
-            if (res.success) {
-                setTimeout(() => {
-                    let formData = new FormData();
+            .then(res => {
+                if (res.success) {
+                    setTimeout(() => {
+                        let formData = new FormData();
 
-                    for (let i = 0; i < this.state.file.length; i++) {
-                        formData.append(
-                            "file",
-                            this.state.file[i].multipart_form_data
-                        );
-                    }
+                        for (let i = 0; i < this.state.file.length; i++) {
+                            formData.append(
+                                "file",
+                                this.state.file[i].multipart_form_data
+                            );
+                        }
 
-                    // for (var key of formData.entries()) {
-                    //     console.log(key[0] + ', ' + key[1]);
-                    // }
+                        // for (var key of formData.entries()) {
+                        //     console.log(key[0] + ', ' + key[1]);
+                        // }
 
-                    return this.props.postStore.uploadImage(formData)
-                    .then(res => {
-                        let array = [];
-                        res.files.forEach(file => {
-                            array.push(file.filename);
-                        })
-                        this.setState({imageUrls: array});
-                    })
-                    .then(res => {
-                        this.state.imageUrls.forEach(url => {
-                            insertImage(`${staticUrl}${url}`);
-                        });
-                        this.setState({fileName: [], file: [], imageUrls: []});
-                    })
-                    .catch(err => {
-                        console.error(err)
-                    });
-                }, 300);
-            }
-            return res;
-        })
+                        return this.props.postStore.uploadImage(formData)
+                            .then(res => {
+                                let array = [];
+                                res.files.forEach(file => {
+                                    array.push(file.filename);
+                                })
+                                this.setState({ imageUrls: array });
+                            })
+                            .then(res => {
+                                this.state.imageUrls.forEach(url => {
+                                    insertImage(`${staticUrl}${url}`);
+                                });
+                                this.setState({ fileName: [], file: [], imageUrls: [] });
+                            })
+                            .catch(err => {
+                                console.error(err)
+                            });
+                    }, 300);
+                }
+                return res;
+            })
     }
 
     _handleClickOnButtonBack = () => {
@@ -199,21 +199,21 @@ class Editor extends Component {
     }
 
     _handleClickOnButtonPublish = () => {
-        const { type, match: {params: {postId}} } = this.props;
+        const { type, match: { params: { postId } } } = this.props;
         const contents = type === 'write' ? '작성한 내용대로 글을 작성할까요?' : '변경한 내용으로 수정할까요?';
         if (window.confirm(contents)) {
             if (type === 'write') {
                 return this.props.postStore.createPost()
-                .then((res) => {
-                    this.props.history.goBack();
-                });
+                    .then((res) => {
+                        this.props.history.goBack();
+                    });
             }
             if (type === 'edit') {
-                this.setState({leaving: !this.state.leaving});
+                this.setState({ leaving: !this.state.leaving });
                 return this.props.postStore.updatePost(postId)
-                .then((res) => {
-                    this.props.history.goBack();
-                });
+                    .then((res) => {
+                        this.props.history.goBack();
+                    });
             }
         }
         return false;
@@ -226,29 +226,29 @@ class Editor extends Component {
     }
 
     render() {
-        const { isLoading, value: {title, category, content} } = this.props.postStore;
+        const { isLoading, value: { title, category, content } } = this.props.postStore;
         const { type } = this.props;
 
         if (isLoading) {
-            return <div className={cx('Editor', {isLoading})}>
+            return <div className={cx('Editor', { isLoading })}>
                 <Loader />
                 {
                     !this.state.leaving ?
-                    <p>에디터를 준비중입니다 ^^</p>
-                    : <p>목록으로 돌아가는 중...</p>
+                        <p>에디터를 준비중입니다 ^^</p>
+                        : <p>목록으로 돌아가는 중...</p>
                 }
             </div>
         }
         return (
             <div className={cx('Editor', 'Editor-Only')}>
                 <div className={cx('wrapper-textarea')}>
-                    <TextareaAutosize 
+                    <TextareaAutosize
                         autoFocus
                         className={cx('textarea-post-title')}
-                        name="title" 
-                        id="postTitle" 
+                        name="title"
+                        id="postTitle"
                         type="text"
-                        placeholder="제목을 입력해 주세요"  
+                        placeholder="제목을 입력해 주세요"
                         onChange={this._handleChangeValue}
                         value={title}
                     />
@@ -256,10 +256,10 @@ class Editor extends Component {
                 <div className={cx('wrapper-category-thumbnail')}>
                     <div className={cx('category')}>
                         <label hidden htmlFor="select-category">분류</label>
-                        <select 
+                        <select
                             id="select-category"
                             name="category"
-                            value={category} 
+                            value={category}
                             onChange={this._handleChangeValue}
                         >
                             <option disabled>카테고리 선택</option>
@@ -269,29 +269,29 @@ class Editor extends Component {
                     <div className={cx('preview')}>
                         <label htmlFor="input-thumbnail">
                             썸네일 업로드
-                            <input 
+                            <input
                                 id="input-thumbnail"
-                                className={cx('file-input')} 
-                                type="file" 
+                                className={cx('file-input')}
+                                type="file"
                                 hidden
-                                onChange={(e)=>
+                                onChange={(e) =>
                                     this._handleImageChange(e)
-                                    .then(res => {
-                                        if (res.success) {
-                                            setTimeout(() => {
-                                                this._getThumnbnameUrlFromServer();
-                                            }, 300);
-                                        }
-                                    })
+                                        .then(res => {
+                                            if (res.success) {
+                                                setTimeout(() => {
+                                                    this._getThumnbnameUrlFromServer();
+                                                }, 300);
+                                            }
+                                        })
                                 }
                             />
                         </label>
                         {
                             this.state.thumbnailUrl !== '' ?
-                            <figure>
-                                <img src={`${staticUrl}${this.state.thumbnailUrl}`} alt="thumbnail preview"/>
-                            </figure>
-                            : <div className={cx('fake-img')}>미리보기</div>
+                                <figure>
+                                    <img src={`${staticUrl}${this.state.thumbnailUrl}`} alt="thumbnail preview" />
+                                </figure>
+                                : <div className={cx('fake-img')}>미리보기</div>
                         }
                     </div>
                 </div>
@@ -306,7 +306,7 @@ class Editor extends Component {
                 <div className={cx('wrapper-buttons')}>
                     <button className={cx('button', 'button-back')} onClick={this._handleClickOnButtonBack}>취소</button>
                     <button className={cx('button', 'button-publish')} onClick={this._handleClickOnButtonPublish}>
-                        { type === "write" ? '공개하기' : '수정하기'}
+                        {type === "write" ? '공개하기' : '수정하기'}
                     </button>
                 </div>
             </div>

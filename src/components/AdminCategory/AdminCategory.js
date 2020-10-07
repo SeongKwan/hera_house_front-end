@@ -10,12 +10,12 @@ const cx = classNames.bind(styles);
 @inject('categoryStore', 'authStore', 'dndStore')
 @observer
 class AdminCategory extends Component {
-    state = { selectedItem: -1};
+    state = { selectedItem: -1 };
 
     componentDidMount() {
         this.props.dndStore.initialize('category');
     }
-    componentWillUnmount() {}
+    componentWillUnmount() { }
 
     _handleChangeOnInput = (e) => {
         const { name: type, value: content } = e.target;
@@ -28,21 +28,21 @@ class AdminCategory extends Component {
 
     _handleClickOnAdd = () => {
         this.props.categoryStore.createCategory()
-        .then(res => {
-            this.props.dndStore.initialize('category')
-        })
+            .then(res => {
+                this.props.dndStore.initialize('category')
+            })
     }
 
     handleClickOnListItem = (index) => {
-        this.setState({selectedItem: index});
+        this.setState({ selectedItem: index });
     }
 
     handleMouseLeaveFromList = () => {
-        this.setState({selectedItem: -1});
+        this.setState({ selectedItem: -1 });
     }
-    
+
     handleOnDragStart = () => {
-        this.setState({selectedItem: -1});
+        this.setState({ selectedItem: -1 });
     }
 
     handleOnDragEnd = (result) => {
@@ -53,24 +53,28 @@ class AdminCategory extends Component {
         this.props.dndStore.applyUpdatedOrder();
     }
 
+    _handleClickOnRestoreOrder = () => {
+        this.props.dndStore.restore();
+    }
+
     render() {
         const { value: { name } } = this.props.categoryStore;
-        const { categories, columns, columnOrder, isLoading } = this.props.dndStore;
+        const { categories, columns, columnOrder, isLoading, hasChanged } = this.props.dndStore;
 
         return (
             <div className={cx('AdminCategory')}>
                 <div className={cx('left-container')}>
                     <div className={cx('wrapper-add-category')}>
                         <div className={cx('wrapper-input')}>
-                            <input 
-                                className={cx('input-category')} 
+                            <input
+                                className={cx('input-category')}
                                 id="name"
                                 name="name"
-                                type="text" 
+                                type="text"
                                 value={name}
                                 autoComplete="off"
                                 onChange={this._handleChangeOnInput}
-                                onKeyDown={(e) => { if (e.keyCode === 13) {this._handleClickOnAdd();}}}
+                                onKeyDown={(e) => { if (e.keyCode === 13) { this._handleClickOnAdd(); } }}
                             />
                             <label htmlFor="name" hidden>카테고리명</label>
                             {
@@ -85,42 +89,43 @@ class AdminCategory extends Component {
                     <div className={cx('list-category')}>
                         {
                             isLoading ?
-                            <div className={cx('list-category-fake')}>
-                                <div className={cx('fake-list')}></div>
-                                <div className={cx('fake-button')}></div>
-                            </div>
-                            :
-                            <>
-                                <DragDropContext 
-                                    onDragStart={this.handleOnDragStart}
-                                    onDragEnd={this.handleOnDragEnd}
-                                >
-                                    {
-                                        columnOrder.map(columnId => {
-                                            const column = columns[columnId];
-                                            const data = column.categoryIds.map(categoryId => categories[categoryId]);
-                                            return <Column 
-                                                key={column.id} 
-                                                column={column} 
-                                                categories={data} 
-                                                selectedItem={this.state.selectedItem}
-                                                onClickListItem={this.handleClickOnListItem}
-                                                onMouseLeaveList={this.handleMouseLeaveFromList}
-                                            />
-                                        })
-                                    }
-                                </DragDropContext>
-                                <button className={cx('button-apply-order')} onClick={this._handleClickOnApplyOrder}>
-                                    적용하기
-                                </button>
-                            </>
+                                <div className={cx('list-category-fake')}>
+                                    <div className={cx('fake-list')}></div>
+                                    <div className={cx('fake-button')}></div>
+                                </div>
+                                :
+                                <>
+                                    <DragDropContext
+                                        onDragStart={this.handleOnDragStart}
+                                        onDragEnd={this.handleOnDragEnd}
+                                    >
+                                        {
+                                            columnOrder.map(columnId => {
+                                                const column = columns[columnId];
+                                                const data = column.categoryIds.map(categoryId => categories[categoryId]);
+                                                return <Column
+                                                    key={column.id}
+                                                    column={column}
+                                                    categories={data}
+                                                    selectedItem={this.state.selectedItem}
+                                                    onClickListItem={this.handleClickOnListItem}
+                                                    onMouseLeaveList={this.handleMouseLeaveFromList}
+                                                />
+                                            })
+                                        }
+                                    </DragDropContext>
+                                    <div className={cx('button-bar')}>
+                                        <button className={cx('button-restore-order', { 'disabled': !hasChanged })} onClick={this._handleClickOnRestoreOrder} disabled={!hasChanged}>되돌리기</button>
+                                        <button className={cx('button-apply-order', { 'disabled': !hasChanged })} onClick={this._handleClickOnApplyOrder} disabled={!hasChanged}>순서적용</button>
+                                    </div>
+                                </>
                         }
                     </div>
-                    
+
                 </div>
                 <div className={cx('right-container')}>
                     <div className={cx('detail-category')}>
-                        
+
                     </div>
                 </div>
             </div>

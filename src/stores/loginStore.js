@@ -42,12 +42,12 @@ class LoginStore {
     }
 
     @action setLoggedIn(status) {
-        console.log(status)
-        console.log('loggedIn setting')
+        // console.log(status)
+        // console.log('loggedIn setting')
         this.loggedIn = status;
     }
 
-    @action errorHandle({email, password, input}) {
+    @action errorHandle({ email, password, input }) {
         if (email) {
             this.errorValues.noIdValue = true;
         }

@@ -1,6 +1,6 @@
 .AdminCategory {
     display: flex;
-    @include media('xs') {
+    @include media("xs") {
         flex-direction: column;
     }
 
@@ -17,7 +17,7 @@
                 height: 280px;
                 margin-bottom: 0.5rem;
             }
-            
+
             .fake-button {
                 width: 100%;
                 height: 50px;
@@ -51,7 +51,7 @@
                     padding-left: 1rem;
                     padding-right: 2.5rem;
                     width: 100%;
-    
+
                     &::placeholder {
                         color: rgba($font-color-light, 0.5);
                     }
@@ -65,10 +65,15 @@
                     transform: translateY(-50%);
                 }
             }
-            
-            
         }
-        .button-add, .button-apply-order {
+
+        .button-bar {
+            display: flex;
+        }
+
+        .button-add,
+        .button-apply-order,
+        .button-restore-order {
             background-color: $admin-sidebar-color;
             border: 1px solid transparent;
             border-radius: $radius-easy;
@@ -82,13 +87,30 @@
                 background-color: rgba($admin-sidebar-color, 0.8);
                 border: 1px solid transparent;
             }
+            &:first-child {
+                margin-right: 0.5rem;
+            }
         }
 
-        .button-apply-order {
+        .button-restore-order {
+            background-color: $font-color-light;
+            color: $white;
+            &:active {
+                background-color: rgba($font-color-light, 0.7);
+                border: 1px solid transparent;
+            }
+        }
+
+        .button-apply-order,
+        .button-restore-order {
             margin-top: 0.5rem;
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
             width: 100%;
+            &.disabled {
+                background-color: rgba($black, 0.1);
+                cursor: not-allowed;
+            }
         }
     }
 

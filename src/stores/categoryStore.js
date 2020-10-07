@@ -36,7 +36,7 @@ class CategoryStore {
     @action createCategory() {
         this.isLoading = true;
         const { name, description } = this.value;
-        return agent.createCategory({name, description})
+        return agent.createCategory({ name, description })
             .then(action((res) => {
                 this.isLoading = false;
                 this.clearValue('name');
@@ -48,8 +48,8 @@ class CategoryStore {
             }))
     }
 
-    @action updateCategoryOrder({categories}) {
-        return agent.updateCategoryOrder({categories})
+    @action updateCategoryOrder({ categories }) {
+        return agent.updateCategoryOrder({ categories })
             .then(action(res => {
                 this.isLoading = false;
                 return res.data;
@@ -63,20 +63,20 @@ class CategoryStore {
     @action deleteCategory(id) {
         this.isLoading = true;
         return agent.deleteCategory(id)
-        .then(action(res => {
-            this.isLoading = false;
-            return res.data;
-        }))
-        .catch(action(err => {
-            this.isLoading = false;
-            throw err;
-        }));
+            .then(action(res => {
+                this.isLoading = false;
+                return res.data;
+            }))
+            .catch(action(err => {
+                this.isLoading = false;
+                throw err;
+            }));
     }
 
     @action clearValue(type) {
         this.value[type] = '';
     }
-    
+
     @action clearKeyword() {
         this.registry = [];
         this.value = {
@@ -85,7 +85,7 @@ class CategoryStore {
         };
         this.isLoading = false;
     }
-    
+
     @action clearCurrentCategory() {
         this.currentCategory = '';
     }
