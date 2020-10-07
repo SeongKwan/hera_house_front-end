@@ -23,7 +23,7 @@ class AdminLogin extends Component {
 
     _handleClickOnButtonLogin = () => {
         this.props.authStore.login()
-        .then(res => this.props.history.push('/admin'));
+            .then(res => this.props.history.push('/admin'));
     }
 
     _handleClickOnButtonBack = () => {
@@ -39,27 +39,27 @@ class AdminLogin extends Component {
                 <div className={cx('form')}>
                     <div className={cx('wrapper-input')}>
                         <FiMail className={cx('icon')} />
-                        <input 
+                        <input
                             className={cx('input', 'input-email')}
-                            name="email" 
+                            name="email"
                             autoFocus
-                            id="email" 
-                            type="text" 
-                            placeholder="이메일" 
+                            id="email"
+                            type="text"
+                            placeholder="관리자 계정"
                             onChange={this._handleChangeOnInput}
                             value={email}
                         />
-                        <label htmlFor="email">이메일</label>
+                        <label htmlFor="email">계정</label>
                     </div>
                     <div className={cx('wrapper-input')}>
                         <FiLock className={cx('icon')} />
-                        <input 
+                        <input
                             className={cx('input', 'input-password')}
-                            name="password" 
-                            id="password" 
-                            type="password" 
-                            autoComplete='off' 
-                            placeholder="비밀번호" 
+                            name="password"
+                            id="password"
+                            type="password"
+                            autoComplete='off'
+                            placeholder="비밀번호"
                             onChange={this._handleChangeOnInput}
                             onKeyDown={(e) => {
                                 if (password.length > 4 && e.keyCode === 13) {
@@ -70,7 +70,7 @@ class AdminLogin extends Component {
                         />
                         <label htmlFor="password">비밀번호</label>
                     </div>
-                    <button className={cx('button-login')} onClick={this._handleClickOnButtonLogin} onKeyDown={(e) => {if(e.keyCode === 27) {this._handleClickOnButtonLogin()}}}>로그인</button>
+                    <button className={cx('button-login')} onClick={this._handleClickOnButtonLogin} onKeyDown={(e) => { if (e.keyCode === 27) { this._handleClickOnButtonLogin() } }}>로그인</button>
                     <button className={cx('button-back')} onClick={this._handleClickOnButtonBack}><FaLongArrowAltLeft className={cx('icon')} />사이트로 돌아가기</button>
                 </div>
             </div>
