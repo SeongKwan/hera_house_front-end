@@ -41,21 +41,21 @@ class Post extends Component {
 
         if (!!title === false) {
             return <div></div>
-        } 
+        }
 
         return (
             <article className={cx('Post', 'Post-CSS')}>
                 <Helmet>
                     <title>HR Post - {title}</title>
-                    <link rel="canonical" href={`http://hera-house.site/archive/${currentCategory}/${_id}`} />
-                    <meta http-equiv="Title" content={`HH Post - ${title}`} />
+                    <link rel="canonical" href={`http://hr-archive.com/archive/${currentCategory}/${_id}`} />
+                    <meta http-equiv="Title" content={`Post - ${title}`} />
                     {/* <meta name="Keywords" content="fashion, brand, design, art, music" /> */}
                     {/* <meta name="Description" content="Hera House Archive" /> */}
                 </Helmet>
                 <section className={cx('section')}>
-                    <Markdown 
+                    <Markdown
                         escapeHtml={false}
-                        source={content} 
+                        source={content}
                     />
                 </section>
             </article>
