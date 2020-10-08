@@ -3,7 +3,7 @@
     border-radius: $radius-easy;
     display: flex;
     @include fontEn;
-    
+
     &.isDragging {
         background-color: $admin-sidebar-color-100;
     }
@@ -22,7 +22,7 @@
         width: 100%;
 
         .content {
-            cursor: pointer;
+            cursor: default;
             padding: 1rem;
             &:hover {
                 text-decoration: underline;
@@ -33,7 +33,7 @@
             background-color: transparent;
             border: 0;
             color: $delete;
-            cursor: pointer;
+            cursor: default;
             position: absolute;
             font-size: 0.85rem;
             padding: 0.2rem 0.75rem;
