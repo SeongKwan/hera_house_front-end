@@ -40,6 +40,7 @@
 
     .table-body {
         margin-bottom: 0;
+        padding: 0;
 
         &.isLoading {
             align-items: center;
@@ -65,6 +66,10 @@
 
             &:hover {
                 background-color: $table-list-select;
+
+                .button-delete {
+                    z-index: 1;
+                }
             }
 
             div {
@@ -113,7 +118,7 @@
                     align-items: center;
                     flex: 0.1;
 
-                    input[type=checkbox] {
+                    input[type="checkbox"] {
                         display: none;
                         height: 0;
                         visibility: hidden;
@@ -135,7 +140,7 @@
                     label:after {
                         background: $white;
                         border-radius: 18px;
-                        content: '';
+                        content: "";
                         height: 20px;
                         left: 2px;
                         position: absolute;
@@ -144,11 +149,11 @@
                         width: 20px;
                     }
 
-                    input:checked+label {
+                    input:checked + label {
                         background: $admin-sidebar-color;
                     }
 
-                    input:checked+label:after {
+                    input:checked + label:after {
                         left: calc(100% - 2px);
                         transform: translateX(-100%);
                     }
@@ -169,6 +174,7 @@
         }
 
         .button-delete {
+            z-index: -1;
             background-color: transparent;
             border: 0;
             outline: 0;
@@ -188,6 +194,7 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         padding: 1rem;
+        list-style: none;
 
         button {
             align-items: center;
@@ -200,7 +207,7 @@
             justify-content: center;
             width: 42px;
 
-            @include media('lg') {
+            @include media("lg") {
                 width: 32px;
                 height: 32px;
             }

@@ -50,23 +50,23 @@ class Home extends Component {
                     <img src={LeftBG} alt="left side background" />
                 </div> */}
                 <main className={cx('main')}>
-                    <div className={cx('wrapper-brand-logo')}>HR ARCHIVE</div>
+                    <div className={cx('wrapper-brand-logo')}><span>HR ARCHIVE</span></div>
                     <nav className={cx(cn.list)}>
                         {
                             categories.length > 0 ? categories.map(category => {
-                            const { name } = category;
-                            return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                                <span>{name}</span>
-                            </li>
-                        </Link>
-                        })
-                        : <div></div>
+                                const { name } = category;
+                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                                    <span>{name}</span>
+                                </li>
+                                </Link>
+                            })
+                                : <div></div>
                         }
                         {
                             categories.length > 0 &&
-                            <a target="_blank" href={`https://www.instagram.com/hr_archive_`} className={cx('link-nav-item', 'sns-link')}><li className={cx(cn.item)}>
-                                    <img src={Instagram} alt="instgram logo" width={32}/>
-                                </li>
+                            <a target="_blank" rel="noopener noreferrer" href={`https://www.instagram.com/hr_archive_`} className={cx('link-nav-item', 'sns-link')}><li className={cx(cn.item)}>
+                                <img src={Instagram} alt="instgram logo" width={32} />
+                            </li>
                             </a>
                         }
                         {/* {categories.map(category => {
@@ -86,10 +86,10 @@ class Home extends Component {
                 {
                     isLoggedIn &&
                     <div className={cx('floating-container')}>
-                        <button onClick={()=>this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
+                        <button onClick={() => this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
                     </div>
                 }
-                
+
             </div>
         );
     }

@@ -19,8 +19,8 @@ class PostStore {
 
     @computed get postsLength() {
         return this.filteredRegistry.filter(
-			post => post.isPublished === true
-		).length;
+            post => post.isPublished === true
+        ).length;
     }
 
     @computed get postsByCreatedAt() {
@@ -29,18 +29,22 @@ class PostStore {
         });
     }
 
+    @computed get titleIsEmpty() {
+        return this.value['title'].length <= 0;
+    }
+
     @action changeValue(type, value) {
         this.value[type] = value;
     };
 
     @action uploadImage(formData) {
         return agent.uploadImage(formData)
-        .then(action((res) => {
-            return res.data;
-        }))
-        .catch(action((err) => {
-            throw err;
-        }))
+            .then(action((res) => {
+                return res.data;
+            }))
+            .catch(action((err) => {
+                throw err;
+            }))
     };
 
     @action loadPosts() {
@@ -150,6 +154,7 @@ class PostStore {
                 return res.data;
             }))
             .catch(action((err) => {
+                console.log(err);
                 this.isLoading = false;
                 throw err;
             }))
@@ -201,7 +206,7 @@ class PostStore {
     };
 
     @action filterRegistry(posts, category) {
-        this.filteredRegistry = _.filter(posts, {category});
+        this.filteredRegistry = _.filter(posts, { category });
     }
 
     @action clear() {
@@ -220,7 +225,7 @@ class PostStore {
             thumbnail: ''
         };
     }
-    
+
     @action clearThePost() {
         this.thePost = {};
     }

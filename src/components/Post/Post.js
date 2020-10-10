@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet';
 const cx = classNames.bind(styles);
 
 @withRouter
-@inject('postStore', 'categoryStore')
+@inject('postStore', 'categoryStore', 'loginStore')
 @observer
 class Post extends Component {
     componentDidMount() {
@@ -30,6 +30,22 @@ class Post extends Component {
         this.props.history.goBack();
     }
 
+    _handleOnClickEditButton = () => {
+        const { thePost } = this.props.postStore;
+        this.props.history.push(`/admin/post/edit/${thePost._id}`);
+    }
+
+    _handleOnClickUnpublishButton = (post) => {
+        const THIS = this;
+        this.props.postStore.toggleIsPublishedPost(post)
+            .then(res => {
+                THIS.props.history.goBack();
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    }
+
     render() {
         const { thePost } = this.props.postStore;
         const { currentCategory } = this.props.categoryStore;
@@ -38,6 +54,7 @@ class Post extends Component {
             title,
             content
         } = thePost;
+        const { isLoggedIn } = this.props.loginStore;
 
         if (!!title === false) {
             return <div></div>
@@ -46,12 +63,19 @@ class Post extends Component {
         return (
             <article className={cx('Post', 'Post-CSS')}>
                 <Helmet>
-                    <title>HR Post - {title}</title>
+                    <title>{currentCategory} - {title}</title>
                     <link rel="canonical" href={`http://hr-archive.com/archive/${currentCategory}/${_id}`} />
                     <meta http-equiv="Title" content={`Post - ${title}`} />
                     {/* <meta name="Keywords" content="fashion, brand, design, art, music" /> */}
                     {/* <meta name="Description" content="Hera House Archive" /> */}
                 </Helmet>
+                {
+                    isLoggedIn &&
+                    <div className={cx('button-bar')}>
+                        <button className={cx('button-post', 'button-post--edit')} onClick={this._handleOnClickEditButton}>수정</button>
+                        <button className={cx('button-post', 'button-post--unpublish')} onClick={() => { this._handleOnClickUnpublishButton(thePost) }}>비공개</button>
+                    </div>
+                }
                 <section className={cx('section')}>
                     <Markdown
                         escapeHtml={false}

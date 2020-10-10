@@ -3,9 +3,22 @@
     flex-direction: column;
     padding-bottom: 5rem;
     position: relative;
-    width: 100%;
-    overflow: hidden;
-    
+    // overflow: hidden;
+    // width: 100%;
+    margin: auto;
+    width: 60%;
+    @include media("xl") {
+    }
+    @include media("lg") {
+        width: 70%;
+    }
+    @include media("md") {
+        width: 90%;
+    }
+    @include media("sm") {
+        width: 95%;
+    }
+
     &.isLoading {
         height: 100vh;
         @include centerPosition;
@@ -20,7 +33,7 @@
     .wrapper-textarea {
         background-color: $white;
         padding-bottom: 1rem;
-        @include media('xs') {
+        @include media("xs") {
             padding-bottom: 0;
         }
 
@@ -28,13 +41,17 @@
             border: 0;
             border-radius: $radius-easy;
             font-size: 2.5rem;
-            padding: 1.5rem;
+            padding: 1.5rem 0;
             outline: 0;
             resize: none;
             width: 100%;
-            @include media('xs') {
+            @include media("xs") {
                 font-size: 1.75rem;
                 padding: 1rem;
+            }
+            &::placeholder {
+                color: $font-color-light;
+                opacity: 0.2;
             }
         }
     }
@@ -43,7 +60,7 @@
         background-color: #f5f5f5;
         display: flex;
         padding: 0rem 1rem;
-        
+
         .category {
             align-items: center;
             display: flex;
@@ -91,10 +108,22 @@
                 @include centerPosition;
             }
 
+            .thumbnail-tip-flexbox {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .thumbnail-tip {
+                font-size: 0.7rem;
+                color: $font-color-dark;
+                opacity: 0.5;
+                margin-left: 0.5rem;
+            }
+
             figure {
                 margin: 0;
             }
-            
+
             img {
                 border: 1px solid lightgrey;
                 border-radius: 2px;
@@ -106,15 +135,32 @@
         }
     }
 
+    .editor-container {
+    }
+
     .wrapper-buttons {
         background-color: rgba($white, 0.85);
         bottom: 0;
         display: flex;
-        left: 0;
+        // left: 0;
         justify-content: space-between;
-        padding: 1rem 1rem;
+        padding: 1rem 0rem;
         position: fixed;
-        width: 100%;
+        width: calc((540px * 3 + 48px) * 0.6);
+        margin: auto;
+        @include media("xl") {
+            width: calc((540px * 2 + 48px) * 0.6);
+        }
+        @include media("lg") {
+            // width: calc(540px * 1 + 48px);
+            width: 70%;
+        }
+        @include media("md") {
+            width: 90%;
+        }
+        @include media("sm") {
+            width: 95%;
+        }
 
         .button {
             border: 1px solid transparent;
@@ -141,9 +187,14 @@
 
             &-publish {
                 background-color: $admin-sidebar-color;
-                margin-right: 1rem;
-                @include media('xs') {
+                // margin-right: 1rem;
+                @include media("xs") {
                     margin-right: 0rem;
+                }
+
+                &.disabled {
+                    background-color: rgba($black, 0.1);
+                    cursor: not-allowed;
                 }
             }
         }

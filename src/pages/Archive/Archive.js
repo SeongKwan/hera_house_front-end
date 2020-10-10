@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     Switch,
     Route,
-    Link
+    // Link
 } from "react-router-dom";
 import { withRouter } from "react-router";
 import { inject, observer } from 'mobx-react';
@@ -13,9 +13,9 @@ import PostList from '../../components/PostList/PostList';
 import Post from '../../components/Post/Post';
 import { IoIosArrowUp, IoIosSettings } from "react-icons/io";
 import NavBar from '../../components/Navbar/NavBar';
-import { IoLogoInstagram } from 'react-icons/io';
-import { TiSocialPinterest } from 'react-icons/ti';
-import { AiOutlineYoutube } from 'react-icons/ai';
+// import { IoLogoInstagram } from 'react-icons/io';
+// import { TiSocialPinterest } from 'react-icons/ti';
+// import { AiOutlineYoutube } from 'react-icons/ai';
 import sns from '../../constants/sns';
 
 const cx = classNames.bind(styles);
@@ -24,7 +24,7 @@ const cx = classNames.bind(styles);
 @inject('categoryStore', 'loginStore', 'commonStore')
 @observer
 class Archive extends Component {
-    state = { isShownScrollButton: false , openMenu: false}
+    state = { isShownScrollButton: false, openMenu: false }
 
     componentDidMount() {
         this.props.categoryStore.loadCategories();
@@ -41,9 +41,9 @@ class Archive extends Component {
         let touchDown = ((scrollY / scrollHeight) > 0.1) || scrollY > 100;
 
         if (touchDown && !this.state.isShownScrollButton) {
-            this.setState({isShownScrollButton: true});
+            this.setState({ isShownScrollButton: true });
         } else if (!touchDown && this.state.isShownScrollButton) {
-            this.setState({isShownScrollButton: false});
+            this.setState({ isShownScrollButton: false });
         }
     }
 
@@ -62,33 +62,33 @@ class Archive extends Component {
         });
     }
 
-    
+
 
     _handleOnClickSns = (e, type) => {
         return window.open(sns[type], '_blank');
     }
 
     render() {
-        const categories = this.props.categoryStore.registry;
+        // const categories = this.props.categoryStore.registry;
         const currentCategory = this.props.location.pathname.split('/')[2];
         const { isLoggedIn } = this.props.loginStore;
         let { path } = this.props.match;
 
         return (
-            <div className={cx('Archive', {'no-scroll': this.state.openMenu})}>
-            <Helmet>
-                <title>HR Archive - {currentCategory}</title>
-                <link rel="canonical" href={`http://hr-archive/archive/${currentCategory}`} />
-                <meta http-equiv="Title" content={`HR Archive - ${currentCategory}`} />
-                <meta name="Keywords" content="fashion, brand, design, art, music" />
-                <meta name="Description" content="HR Archive Archive" />
-            </Helmet>
-            {
-                isLoggedIn &&
-                <div className={cx('floating-container')}>
-                    <button onClick={()=>this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
-                </div>
-            }
+            <div className={cx('Archive', { 'no-scroll': this.state.openMenu })}>
+                <Helmet>
+                    <title>HR Archive - {currentCategory}</title>
+                    <link rel="canonical" href={`http://hr-archive/archive/${currentCategory}`} />
+                    <meta http-equiv="Title" content={`HR Archive - ${currentCategory}`} />
+                    <meta name="Keywords" content="fashion, brand, design, art, music" />
+                    <meta name="Description" content="HR Archive Archive" />
+                </Helmet>
+                {
+                    isLoggedIn &&
+                    <div className={cx('floating-container')}>
+                        <button onClick={() => this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
+                    </div>
+                }
                 {/* <header className={cx('header')}>
                     <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._handleClickOnBrandLogo}><span>Hera House</span></div>
                     <div className={cx('wrapper-brand-logo')} data-device="mobile">
@@ -96,7 +96,7 @@ class Archive extends Component {
                     </div>
                 </header> */}
                 <NavBar />
-                <div className={cx('container', {'covered-menu': this.state.openMenu})}>
+                <div className={cx('container', { 'covered-menu': this.state.openMenu })}>
                     <main className={cx('main')} ref={ref => this.mainContainer = ref}>
                         <div className={cx('current-category')}>
                             {currentCategory}
@@ -110,7 +110,7 @@ class Archive extends Component {
                             </Route>
                         </Switch>
                         {
-                            this.state.isShownScrollButton && 
+                            this.state.isShownScrollButton &&
                             <div className={cx('wrapper-button-top-scroll')}>
                                 <div className={cx('wrapper-icon')} onClick={this._handleClickOnTopScrollButton}>
                                     <IoIosArrowUp className={cx('icon')} />
@@ -120,7 +120,7 @@ class Archive extends Component {
                     </main>
                 </div>
 
-                
+
             </div>
         );
     }

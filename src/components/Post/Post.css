@@ -8,6 +8,7 @@
     padding: 0 0.5%;
     word-break: break-all;
     white-space: normal;
+    margin-bottom: 6px !important;
 }
 
 .Post-CSS img {

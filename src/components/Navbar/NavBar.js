@@ -7,7 +7,10 @@ import classNames from 'classnames/bind';
 import { IoLogoInstagram } from 'react-icons/io';
 import { TiSocialPinterest } from 'react-icons/ti';
 import { AiOutlineYoutube } from 'react-icons/ai';
-import { IoIosArrowUp, IoIosSettings } from "react-icons/io";
+import {
+    // IoIosArrowUp, 
+    IoIosSettings,
+} from "react-icons/io";
 import sns from '../../constants/sns';
 import Instagram from '../../styles/img/instagram.png'
 
@@ -21,7 +24,7 @@ const cn = {
 @inject('categoryStore', 'loginStore', 'commonStore')
 @observer
 class NavBar extends Component {
-    state = { activeLink: '', isShownScrollButton: false , openMenu: false}
+    state = { activeLink: '', isShownScrollButton: false, openMenu: false }
     componentDidMount() {
         const currentCategory = this.props.location.pathname.split('/')[2];
         this.setState({ activeLink: currentCategory });
@@ -47,19 +50,19 @@ class NavBar extends Component {
             offsetLeft,
             offsetWidth
         } = item.children[0];
-        
-        return {offsetLeft, offsetWidth};
+
+        return { offsetLeft, offsetWidth };
     };
 
-    moveMarker = ({offsetLeft, offsetWidth}) => {
+    moveMarker = ({ offsetLeft, offsetWidth }) => {
         const marker = this.activeMarker;
         marker.style.left = `${offsetLeft}px`;
         marker.style.width = `${offsetWidth}px`;
     };
 
-    toggleActive = ({e = null, name}) => {
+    toggleActive = ({ e = null, name }) => {
         this.setState({ activeLink: name });
-        
+
         // Add class to active link
         const activeItem = this[`category-${name}`];
         const offset = this.getItemOffset(activeItem);
@@ -81,7 +84,7 @@ class NavBar extends Component {
     }
 
     _handleClickOnListItemInMenu = () => {
-        setTimeout(()=> {
+        setTimeout(() => {
             this.setState({
                 openMenu: !this.state.openMenu
             });
@@ -96,12 +99,12 @@ class NavBar extends Component {
         // let isDetailPage = window.location.pathname.split('/').length > 3 ? true : false;
         if (categories.length <= 0) {
             return <div className={cx('NavBar')}>
-            <nav ref={ref => this.nav = ref} className={cx(cn.list)}>
-                <li style={{height: '40px', width: 100}}></li>
-            </nav>
-        </div>
+                <nav ref={ref => this.nav = ref} className={cx(cn.list)}>
+                    <li style={{ height: '40px', width: 100 }}></li>
+                </nav>
+            </div>
         }
-        
+
         return (
             <div className={cx('NavBar')}>
                 <div className={cx('wrapper-brand-logo')} data-device="desktop"><span onClick={this._handleClickOnBrandLogo}>HR ARCHIVE</span></div>
@@ -111,13 +114,13 @@ class NavBar extends Component {
                 <nav ref={ref => this.nav = ref} className={cx(cn.list)}>
                     {categories.map((category, index) => {
                         const { name } = category;
-                        return <Link 
-                            ref={ref => {this[`category-${name}`] = ref;}} 
-                            key={name} to={`/archive/${name}`} 
-                            className={cx('link-nav-item', {'is-active': name === this.state.activeLink})}
-                            onClick={(e) => this.toggleActive({e, name})}
-                            >
-                            <li className={cx(cn.item, {selected: currentCategory === name})}>{name}</li>
+                        return <Link
+                            ref={ref => { this[`category-${name}`] = ref; }}
+                            key={name} to={`/archive/${name}`}
+                            className={cx('link-nav-item', { 'is-active': name === this.state.activeLink })}
+                            onClick={(e) => this.toggleActive({ e, name })}
+                        >
+                            <li className={cx(cn.item, { selected: currentCategory === name })}>{name}</li>
                         </Link>
                     })}
                 </nav>
@@ -128,33 +131,33 @@ class NavBar extends Component {
                     <AiOutlineYoutube className={cx('icon')} onClick={() => this._handleOnClickSns('youtube')} />
                 </div> */}
                 <div className={cx('wrapper-toggle-menu')}>
-                    <input 
+                    <input
                         ref={ref => this.menuCheckbox = ref}
-                        className={cx("input-checkbox-menu")} 
+                        className={cx("input-checkbox-menu")}
                         hidden
-                        type="checkbox" 
+                        type="checkbox"
                         id="navi-toggle" />
-                    <label 
+                    <label
                         onClick={() => this._handleClickOnToggleMenu()}
-                        className={cx('label-menu', "hamburger-menu")} 
+                        className={cx('label-menu', "hamburger-menu")}
                         htmlFor="navi-toggle" >
-                        <span className={cx({blind: this.state.openMenu})}>{currentCategory}</span>
-                        <span className={cx("icon-menu", {'open-menu': this.state.openMenu})}>&nbsp;</span>
+                        <span className={cx({ blind: this.state.openMenu })}>{currentCategory}</span>
+                        <span className={cx("icon-menu", { 'open-menu': this.state.openMenu })}>&nbsp;</span>
                     </label>
                 </div>
-                <ul className={cx('menu-list', {'going-in': this.state.openMenu})}>
-                    {categories.map((category, i) =>{ 
+                <ul className={cx('menu-list', { 'going-in': this.state.openMenu })}>
+                    {categories.map((category, i) => {
                         const { name } = category;
-                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', {selected: currentCategory === name})}><span>{name}</span></li></Link>
-                        })
+                        return <Link key={name} to={`/archive/${name}`} className={cx('nav-link')}><li onClick={this._handleClickOnListItemInMenu} className={cx('list-item', { selected: currentCategory === name })}><span>{name}</span></li></Link>
+                    })
                     }
-                    <a target="_blank" href={`https://www.instagram.com/hr_archive_`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                                <img src={Instagram} alt="instgram logo" width={32}/>
-                            </li>
-                        </a>
+                    <a target="_blank" rel="noopener noreferrer" href={`https://www.instagram.com/hr_archive_`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                        <img src={Instagram} alt="instgram logo" width={32} />
+                    </li>
+                    </a>
                     {
                         isLoggedIn &&
-                        <div className={cx('button-admin', {'open-menu': this.state.openMenu})} onClick={()=>this.props.history.push('/admin')}>
+                        <div className={cx('button-admin', { 'open-menu': this.state.openMenu })} onClick={() => this.props.history.push('/admin')}>
                             <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div>
                         </div>
                     }

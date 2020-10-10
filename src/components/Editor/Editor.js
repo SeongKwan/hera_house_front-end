@@ -22,15 +22,14 @@ import Loader from '../Loader/Loader';
 const cx = classNames.bind(styles);
 
 @withRouter
-@inject('postStore', 'categoryStore')
+@inject('postStore', 'categoryStore', 'editorStore')
 @observer
 class Editor extends Component {
     state = { leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '' }
 
     componentDidMount() {
         const { type } = this.props;
-        this._initialize(type)
-        this.editor.onInit(() => { console.log('init') });
+        this._initialize(type);
     }
 
     componentWillUnmount() {
@@ -38,18 +37,29 @@ class Editor extends Component {
         this.props.postStore.clear();
     }
 
-    _initialize = (type) => {
+    _initialize = async (type) => {
+        this.props.editorStore.setLoadingState(true);
+
         const { postId } = this.props.match.params;
-        this.props.categoryStore.loadCategories()
+        await this.props.categoryStore.loadCategories()
             .then(res => {
+
                 this.props.postStore.changeValue('category', res[0].name);
-            });
+            })
+            .catch(err => alert(err));
         if (type === 'edit') {
-            this.props.postStore.loadPost(postId)
+            await this.props.postStore.loadPost(postId)
                 .then(res => {
+
                     this.setState({ thumbnailUrl: res.thumbnail });
-                });
+                }).catch(err => alert(err));
         }
+        await this._initEditor();
+    }
+    _initEditor = () => {
+
+        this.props.editorStore.setLoadingState(false);
+        this.editor.onInit(() => { console.log('init') });
     }
 
     clearState = () => {
@@ -200,20 +210,24 @@ class Editor extends Component {
 
     _handleClickOnButtonPublish = () => {
         const { type, match: { params: { postId } } } = this.props;
-        const contents = type === 'write' ? '작성한 내용대로 글을 작성할까요?' : '변경한 내용으로 수정할까요?';
+        const { category } = this.props.postStore.value;
+        const contents = type === 'write' ? '작성한 내용대로 글을 저장합니다' : '변경한 내용으로 수정할까요?';
         if (window.confirm(contents)) {
             if (type === 'write') {
                 return this.props.postStore.createPost()
                     .then((res) => {
                         this.props.history.goBack();
-                    });
+                    }).catch(err => console.log(err));
             }
             if (type === 'edit') {
                 this.setState({ leaving: !this.state.leaving });
                 return this.props.postStore.updatePost(postId)
                     .then((res) => {
+                        if (window.confirm('수정된 글을 확인하러 가시겠습니까?')) {
+                            return this.props.history.push(`/archive/${category}/${postId}`);
+                        }
                         this.props.history.goBack();
-                    });
+                    }).catch(err => console.log);
             }
         }
         return false;
@@ -226,11 +240,11 @@ class Editor extends Component {
     }
 
     render() {
-        const { isLoading, value: { title, category, content } } = this.props.postStore;
+        const { value: { title, category, content }, titleIsEmpty } = this.props.postStore;
         const { type } = this.props;
 
-        if (isLoading) {
-            return <div className={cx('Editor', { isLoading })}>
+        if (this.props.editorStore.isLoading) {
+            return <div className={cx('Editor', { 'isLoading': this.props.editorStore.isLoading })}>
                 <Loader />
                 {
                     !this.state.leaving ?
@@ -243,7 +257,7 @@ class Editor extends Component {
             <div className={cx('Editor', 'Editor-Only')}>
                 <div className={cx('wrapper-textarea')}>
                     <TextareaAutosize
-                        autoFocus
+                        autoFocus={type !== 'edit'}
                         className={cx('textarea-post-title')}
                         name="title"
                         id="postTitle"
@@ -293,20 +307,30 @@ class Editor extends Component {
                                 </figure>
                                 : <div className={cx('fake-img')}>미리보기</div>
                         }
+                        <div className={cx('thumbnail-tip-flexbox')}>
+                            <div className={cx('thumbnail-tip')}>썸네일 최적 크기(가로, 세로)</div>
+                            <div className={cx('thumbnail-tip')}>- (기본) 540 * 540</div>
+                            <div className={cx('thumbnail-tip')}>- (Clothing) 540 * 810</div>
+                        </div>
                     </div>
                 </div>
                 <ReactSummernote
-                    className={cx('editor-container')}
+                    className={cx('editor-container', 'Post-CSS')}
                     value={type === 'edit' ? content : ''}
                     ref={ref => this.editor = ref}
-                    options={isMobile ? optionsForMobile : options}
+                    autoFocus={type === 'edit'}
+                    options={
+                        isMobile ? optionsForMobile : options
+                    }
+
                     onChange={this._handleOnChange}
                     onImageUpload={this._handleOnImageUpload}
                 />
                 <div className={cx('wrapper-buttons')}>
                     <button className={cx('button', 'button-back')} onClick={this._handleClickOnButtonBack}>취소</button>
-                    <button className={cx('button', 'button-publish')} onClick={this._handleClickOnButtonPublish}>
-                        {type === "write" ? '공개하기' : '수정하기'}
+
+                    <button disabled={titleIsEmpty} className={cx('button', 'button-publish', { "disabled": titleIsEmpty })} onClick={this._handleClickOnButtonPublish}>
+                        {titleIsEmpty ? '제목이 필요해요' : type === "write" ? '저장하기' : '수정하기'}
                     </button>
                 </div>
             </div>

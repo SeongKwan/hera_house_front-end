@@ -1,5 +1,17 @@
 .AdminPostWrite {
-    background-color: $admin-main-container-color;
+    // background-color: $admin-main-container-color;
     min-height: 100vh;
-    width: 100%;
+    width: calc(540px * 3 + 48px);
+    margin: auto;
+    @include media("xl") {
+        width: calc(540px * 2 + 48px);
+    }
+    @include media("lg") {
+        // width: calc(540px * 1 + 48px);
+        width: 100%;
+    }
+    @include media("md") {
+    }
+    @include media("sm") {
+    }
 }

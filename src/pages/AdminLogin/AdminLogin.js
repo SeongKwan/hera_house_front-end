@@ -23,7 +23,16 @@ class AdminLogin extends Component {
 
     _handleClickOnButtonLogin = () => {
         this.props.authStore.login()
-            .then(res => this.props.history.push('/admin'));
+            .then(res => {
+                console.log(res);
+                this.props.history.push('/admin');
+            })
+            .catch(err => {
+                console.log(err);
+                if (!err.success) {
+                    window.alert('관리자계정 또는 비밀번호를 확인해 주세요.');
+                }
+            });
     }
 
     _handleClickOnButtonBack = () => {
@@ -32,6 +41,7 @@ class AdminLogin extends Component {
 
     render() {
         const { email, password } = this.props.loginStore.inputValuesForLogin;
+        const disabledButton = (email.length <= 0 || password.length <= 0);
 
         return (
             <div className={cx('AdminLogin')}>
@@ -62,15 +72,21 @@ class AdminLogin extends Component {
                             placeholder="비밀번호"
                             onChange={this._handleChangeOnInput}
                             onKeyDown={(e) => {
-                                if (password.length > 4 && e.keyCode === 13) {
-                                    return this._handleClickOnButtonLogin()
+                                if (password.length >= 8) {
+                                    if (e.keyCode === 13) {
+                                        return this._handleClickOnButtonLogin()
+                                    }
+                                } else {
+                                    if (e.keyCode === 13) {
+                                        return window.alert('비밀번호는 최소 8자리 입니다.');
+                                    }
                                 }
                             }}
                             value={password}
                         />
                         <label htmlFor="password">비밀번호</label>
                     </div>
-                    <button className={cx('button-login')} onClick={this._handleClickOnButtonLogin} onKeyDown={(e) => { if (e.keyCode === 27) { this._handleClickOnButtonLogin() } }}>로그인</button>
+                    <button disabled={disabledButton} className={cx('button-login', { 'disabled': disabledButton })} onClick={this._handleClickOnButtonLogin} onKeyDown={(e) => { if (e.keyCode === 27) { this._handleClickOnButtonLogin() } }}>로그인</button>
                     <button className={cx('button-back')} onClick={this._handleClickOnButtonBack}><FaLongArrowAltLeft className={cx('icon')} />사이트로 돌아가기</button>
                 </div>
             </div>

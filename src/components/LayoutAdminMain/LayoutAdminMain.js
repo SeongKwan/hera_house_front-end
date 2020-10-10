@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 @inject('authStore', 'loginStore')
 @observer
 class LayoutAdminMain extends Component {
-    state = {isOpened: false};
+    state = { isOpened: false };
 
     _handleClickOnLogo = () => {
         this.props.history.push('/admin');
@@ -24,17 +24,17 @@ class LayoutAdminMain extends Component {
             return this.props.authStore.logout()
                 .then(res => {
                     this.props.history.push('/');
-            })
+                })
         }
         return;
     }
 
     _handleClickOnHamburgerMenu = () => {
-        this.setState({ isOpened: !this.state.isOpened});
+        this.setState({ isOpened: !this.state.isOpened });
     }
-    
+
     _handleClickOnLinkCategory = () => {
-        this.setState({ isOpened: !this.state.isOpened});
+        this.setState({ isOpened: !this.state.isOpened });
     }
 
     render() {
@@ -45,42 +45,42 @@ class LayoutAdminMain extends Component {
             <div className={cx('LayoutAdminMain')}>
                 { isMobile &&
                     <>
-                    <div className={cx('header')}>
-                        <div className={cx('logo')} onClick={this._handleClickOnLogo}>
-                            HH.Manager
+                        <div className={cx('header')}>
+                            <div className={cx('logo')} onClick={this._handleClickOnLogo}>
+                                HH.Manager
                         </div>
-                        <div className={cx('wrapper-hamburger-menu')} onClick={this._handleClickOnHamburgerMenu}>
-                            <div className={cx("icon-menu", {isOpened})}>&nbsp;</div>
+                            <div className={cx('wrapper-hamburger-menu')} onClick={this._handleClickOnHamburgerMenu}>
+                                <div className={cx("icon-menu", { isOpened })}>&nbsp;</div>
+                            </div>
                         </div>
-                    </div>
-                    <div className={cx('hamburger-contents', {isOpened})}>
-                        <Link 
-                            className={cx('list-item-category')} 
-                            onClick={this._handleClickOnLinkCategory}
-                            to={`${path}/category`}>
-                            카테고리 관리
+                        <div className={cx('hamburger-contents', { isOpened })}>
+                            <Link
+                                className={cx('list-item-category')}
+                                onClick={this._handleClickOnLinkCategory}
+                                to={`${path}/category`}>
+                                카테고리 관리
                         </Link>
-                        <Link 
-                            className={cx('list-item-category')} 
-                            onClick={this._handleClickOnLinkCategory}
-                            to={`${path}/post`}>
-                            게시물 관리
+                            <Link
+                                className={cx('list-item-category')}
+                                onClick={this._handleClickOnLinkCategory}
+                                to={`${path}/post`}>
+                                게시물 관리
                         </Link>
-                        <Link 
-                            className={cx('list-item-category')} 
-                            onClick={this._handleClickOnLinkCategory}
-                            to={`${path}/manual`}>
-                            사이트 사용설명서
+                            <Link
+                                className={cx('list-item-category')}
+                                onClick={this._handleClickOnLinkCategory}
+                                to={`${path}/manual`}>
+                                사이트 사용설명서
                         </Link>
-                        <div className={cx('horizon-divider', 'list-item-category')}></div>
+                            <div className={cx('horizon-divider', 'list-item-category')}></div>
 
-                        <button className={cx('button-logout', 'list-item-category')} onClick={this._handleClickOnButtonLogout}>로그아웃</button>
-                        <Link 
-                            className={cx('link-to-site', 'list-item-category')} 
-                            to={`/`}>
-                            <FaLongArrowAltLeft className={cx('icon')} /><span>사이트로 돌아가기</span>
-                        </Link>
-                    </div>
+                            <button className={cx('button-logout', 'list-item-category')} onClick={this._handleClickOnButtonLogout}>로그아웃</button>
+                            <Link
+                                className={cx('link-to-site', 'list-item-category')}
+                                to={`/`}>
+                                <FaLongArrowAltLeft className={cx('icon')} /><span>사이트로 돌아가기</span>
+                            </Link>
+                        </div>
                     </>
                 }
                 <aside className={cx('aside')}>
@@ -89,22 +89,22 @@ class LayoutAdminMain extends Component {
                     </div>
                     <ul className={cx('list-category')}>
                         <li className={cx('list-item-wrapper')}>
-                            <Link 
-                                className={cx('list-item-category')} 
+                            <Link
+                                className={cx('list-item-category')}
                                 to={`${path}/category`}>
                                 카테고리 관리
                             </Link>
                         </li>
                         <li className={cx('list-item-wrapper')}>
-                            <Link 
-                                className={cx('list-item-category')} 
+                            <Link
+                                className={cx('list-item-category')}
                                 to={`${path}/post`}>
                                 게시물 관리
                             </Link>
                         </li>
                         <li className={cx('list-item-wrapper')}>
-                            <Link 
-                                className={cx('list-item-category')} 
+                            <Link
+                                className={cx('list-item-category')}
                                 to={`${path}/manual`}>
                                 사이트 사용설명서
                             </Link>
@@ -112,8 +112,8 @@ class LayoutAdminMain extends Component {
                     </ul>
                     <footer className={cx('footer')}>
                         <button className={cx('button-logout')} onClick={this._handleClickOnButtonLogout}>로그아웃</button>
-                        <Link 
-                            className={cx('link-to-site')} 
+                        <Link
+                            className={cx('link-to-site')}
                             to={`/`}>
                             <FaLongArrowAltLeft className={cx('icon')} /><span>사이트로 돌아가기</span>
                         </Link>

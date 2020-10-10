@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { computed } from 'mobx';
 import authStore from '../stores/authStore';
-// import errorStore from '../stores/errorStore';
-// import loginStore from '../stores/loginStore';
+import errorStore from '../stores/errorStore';
+import loginStore from '../stores/loginStore';
 
 const API_ROOT = `http://15.165.30.197:5001/`;
 
@@ -17,45 +17,45 @@ class Agent {
      */
     /* APIs */
 
-/**
- * 
- * Login & SignUp 
- */
+    /**
+     * 
+     * Login & SignUp 
+     */
 
     signup(userInfo) {
         return this.axios
-            .post('/auth/signup', 
-            {email: userInfo.email, password: userInfo.password, name: userInfo.name})
+            .post('/auth/signup',
+                { email: userInfo.email, password: userInfo.password, name: userInfo.name })
             .catch(this._handleError);
     }
 
-    login({email, password}) {
+    login({ email, password }) {
         return this.axios
-                .post('/auth/login', {email, password}, { 
-                    baseURL: API_ROOT,
-                    headers: { 
-                        
-                    }
-                })
-                .catch(this._handleError);
+            .post('/auth/login', { email, password }, {
+                baseURL: API_ROOT,
+                headers: {
+
+                }
+            })
+            .catch(this._handleError);
     }
 
 
-/**
- * 
- * Category
- */
+    /**
+     * 
+     * Category
+     */
 
     loadCategories() {
         return this.get(`/categories`);
     }
 
-    createCategory({name, description}) {
-        return this.post('/categories', {name, description});
+    createCategory({ name, description }) {
+        return this.post('/categories', { name, description });
     }
 
-    updateCategoryOrder({categories}) {
-        return this.patch('/categories/order', {categories});
+    updateCategoryOrder({ categories }) {
+        return this.patch('/categories/order', { categories });
     }
 
     deleteCategory(categoryId) {
@@ -63,22 +63,22 @@ class Agent {
     }
 
 
-/**
- * 
- * Post
- */
+    /**
+     * 
+     * Post
+     */
 
     uploadImage(formData) {
         let { token } = authStore;
-        
+
         return this.axios
-        .post('/api/v1/posts/upload/image', formData, { 
-            baseURL: API_ROOT,
-            headers: { 
-                "Authorization": `bearer ${token}`
-            }
-        })
-        .catch(this._handleError);
+            .post('/api/v1/posts/upload/image', formData, {
+                baseURL: API_ROOT,
+                headers: {
+                    "Authorization": `bearer ${token}`
+                }
+            })
+            .catch(this._handleError);
     }
 
     loadPosts() {
@@ -89,8 +89,8 @@ class Agent {
         return this.get(`/posts/${postId}`);
     }
 
-    createPost({title, category, content, isPublished, thumbnail}) {
-        return this.post(`/posts`, {title, category, content, isPublished, thumbnail});
+    createPost({ title, category, content, isPublished, thumbnail }) {
+        return this.post(`/posts`, { title, category, content, isPublished, thumbnail });
     }
 
     updatePost(postId, {
@@ -118,10 +118,10 @@ class Agent {
     }
 
 
-/**
- * 
- * User
- */
+    /**
+     * 
+     * User
+     */
 
     loadUsers() {
         return this.get(`/users`);
@@ -131,45 +131,85 @@ class Agent {
 
 
 
+    refreshToken() {
+        console.log('refresh token api');
+        let { refreshToken, user_id } = authStore;
+        return this.axios
+            .post('/auth/token', { refreshToken, user_id }, {
+                baseURL: API_ROOT,
+                headers: {
+
+                }
+            })
+            .catch(this._handleError);
+    }
+
+    validateToken() {
+        let { refreshToken, user_id } = authStore;
+        let { isLoggedIn } = loginStore;
+        if (isLoggedIn) {
+            return this.axios
+                .post('/auth/token/check', { refreshToken, user_id }, {
+                    baseURL: API_ROOT,
+                    headers: {
+
+                    }
+                })
+                .then(res => {
+                    console.log(res.data);
+                    if (!res.data) {
+                        authStore.setExpiredToken(true);
+
+                        // this.refreshToken();
+                    } else return res.data;
+                })
+                .catch(this._handleError);
+        }
+    }
 
 
 
     /* Base REST API method */
     get(url) {
+        this.validateToken();
         return this.axios
             .get(`/api/v1${url}`, this.requestConfig)
             .catch(this._handleError);
     }
     put(url, body) {
+        this.validateToken();
         return this.axios
             .put(`/api/v1${url}`, body, this.requestConfig)
             .catch(this._handleError);
     }
     patch(url, body) {
+        this.validateToken();
         return this.axios
             .patch(`/api/v1${url}`, body, this.requestConfig)
             .catch(this._handleError);
     }
     post(url, body) {
+        this.validateToken();
         return this.axios
             .post(`/api/v1${url}`, body, this.requestConfig)
             .catch(this._handleError);
     }
     delete(url) {
+        this.validateToken();
         return this.axios
             .delete(`/api/v1${url}`, this.requestConfig)
             .catch(this._handleError);
     }
 
     @computed get requestConfig() {
-        let requestConfig = { 
+        let requestConfig = {
             baseURL: API_ROOT,
-            headers: {} 
+            headers: {}
         };
-        
+
         let { token, email, user_id } = authStore;
         requestConfig.headers['user-type'] = "ADMIN";
-        
+
         if (token) { requestConfig.headers['Authorization'] = `bearer ${token}`; }
         if (email) { requestConfig.headers['email'] = `${email}`; }
         if (user_id) { requestConfig.headers['user_id'] = `${user_id}`; }
@@ -179,27 +219,27 @@ class Agent {
 
 
     _handleError(error) {
-        // let type;
-        // const { inLoggedIn } = loginStore;
+        let type;
+        const { inLoggedIn } = loginStore;
         if (error.response !== undefined) {
-            // type = error.response.data.type;
+            type = error.response.data.type;
             if (!window.navigator.onLine) {
                 alert('오프라인 상태입니다');
             } else {
-                // errorStore.setErrorToken(true);
+                errorStore.setErrorToken(true);
                 if (Boolean(error.response.data.type) === true) {
-                    // if (type === "expired" || type === "refresh" || type === "error") {
-                    //     return errorStore.authError(error.response.data);
-                    // } else if (type === 'guest') {
-                    //     if (inLoggedIn) {
-                    //         return window.location.reload(true);
-                    //     }
-                    //     return window.location.href = "http://cloudoc.net.s3-website.ap-northeast-2.amazonaws.com/";
-                    // }
-                    // return window.location.reload(true);
+                    if (type === "expired" || type === "refresh" || type === "error") {
+                        return errorStore.authError(error.response.data);
+                    } else if (type === 'guest') {
+                        if (inLoggedIn) {
+                            return window.location.reload(true);
+                        }
+                        return window.location.href = "http://hr-archive/";
+                    }
+                    return window.location.reload(true);
                 }
             }
-            
+
         }
         throw error.response;
     }

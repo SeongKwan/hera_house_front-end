@@ -89,32 +89,32 @@ class AuthStore {
         this.expiredToken = status;
     }
 
-    @action validateToken() {
-        return agent.validateToken()
-            .then(action((response) => {
-                if (!response.data) {
-                    this.setExpiredToken(true);
-                }
-                return response;
-            }))
-            .then((response) => {
-                if (!response.data) {
-                    setTimeout(() => {
-                        alert("로그인 시간이 만료되었습니다. 다시 로그인하여 주세요.")
-                    }, 100);
-                    setTimeout(() => {
-                        this.logout('expiredRefreshToken');
-                    }, 150);
-                    setTimeout(() => {
-                        window.location.href = "http://cloudoc.net.s3-website.ap-northeast-2.amazonaws.com/login";
-                    }, 200);
-                }
-                return response.data;
-            })
-            .catch((error) => {
-                throw error;
-            })
-    }
+    // @action validateToken() {
+    //     return agent.validateToken()
+    //         .then(action((response) => {
+    //             if (!response.data) {
+    //                 this.setExpiredToken(true);
+    //             }
+    //             return response;
+    //         }))
+    //         .then((response) => {
+    //             if (!response.data) {
+    //                 setTimeout(() => {
+    //                     alert("로그인 시간이 만료되었습니다. 다시 로그인하여 주세요.")
+    //                 }, 100);
+    //                 setTimeout(() => {
+    //                     this.logout('expiredRefreshToken');
+    //                 }, 150);
+    //                 setTimeout(() => {
+    //                     window.location.href = "http://hr-archive.com/admin/login";
+    //                 }, 200);
+    //             }
+    //             return response.data;
+    //         })
+    //         .catch((error) => {
+    //             throw error;
+    //         })
+    // }
 
     @action clearAuthError() {
         this.authError = false;
@@ -130,7 +130,7 @@ class AuthStore {
                     token,
                     refreshToken
                 } = res.data;
-                this.setTokenAndEmailAndUserTypeAndType(token, refreshToken, email, res.data.user.id);
+                this.setTokenAndEmailAndUserTypeAndType(token, refreshToken, email, res.data.user.user_id);
 
                 loginStore.setLoggedIn(true);
                 this.isLoading = false;
@@ -140,6 +140,7 @@ class AuthStore {
                 // this.errors = err.response && err.response.body && err.response.body.errors;
                 this.isLoading = false;
                 loginStore.setLoggedIn(false);
+                throw err;
                 // const { email, password } = err.data.errors || {};
                 // const { message } = err.data || {};
 
@@ -169,6 +170,7 @@ class AuthStore {
         window.localStorage.removeItem('token');
         window.localStorage.removeItem('user_id');
     }
+
 
     @action logout(type) {
         const THIS = this;

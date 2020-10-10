@@ -12,19 +12,54 @@ import AdminLogin from '../AdminLogin/AdminLogin';
 import LayoutAdminMain from '../../components/LayoutAdminMain/LayoutAdminMain';
 
 const cx = classNames.bind(styles);
+let timer = null;
 
 @withRouter
 @inject('authStore', 'loginStore')
 @observer
 class Admin extends Component {
     componentDidMount() {
+        console.log('CDM')
         const { isLoggedIn, loggedIn } = this.props.loginStore;
+
         const entryPoint = this.props.location.pathname.split('/')[1];
         if (!isLoggedIn && !loggedIn) {
             if (entryPoint === 'admin') {
                 this.props.history.replace('/admin/login');
             }
+        } else {
+            this.props.history.replace('/admin');
         }
+
+    }
+
+    // componentDidUpdate() {
+    //     const { isLoggedIn, loggedIn } = this.props.loginStore;
+    //     const { expiredToken } = this.props.authStore;
+    //     console.log('CDU')
+    //     if (isLoggedIn && timer === null) {
+    //         timer = setInterval(() => {
+    //             if (!expiredToken) {
+    //                 this.checkToken();
+    //             } else {
+    //                 console.log('expired');
+    //             }
+    //         }, 1000);
+    //     }
+    // }
+
+    // componentWillUnmount() {
+    //     clearInterval(timer);
+    //     this.props.authStore.setExpiredToken(false);
+    // }
+
+    checkToken = () => {
+        console.log('interver check token');
+        const THIS = this;
+        return new Promise((resolve, reject) => {
+            let result = THIS.props.authStore.validateToken();
+            return resolve({ success: result.data });
+        });
     }
 
     render() {
@@ -37,7 +72,7 @@ class Admin extends Component {
             </div>
         }
 
-        return (    
+        return (
             <div className={cx('Admin')}>
                 <Switch>
                     <Route path={`${path}`} exact>

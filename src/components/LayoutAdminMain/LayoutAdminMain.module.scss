@@ -7,7 +7,7 @@
     position: relative;
     user-select: none;
     width: 100%;
-    @include media('xs') {
+    @include media("xs") {
         padding-top: 60px;
         flex-direction: column;
     }
@@ -26,12 +26,12 @@
         height: 60px;
         justify-content: space-between;
         left: 0;
-        padding: 0.75rem  1rem 0.75rem 1.5rem;
+        padding: 0.75rem 1rem 0.75rem 1.5rem;
         position: fixed;
         top: 0;
         width: 100%;
         z-index: $z-header-admin;
-        @include media('xs') {
+        @include media("xs") {
             min-height: 60px;
         }
 
@@ -49,7 +49,7 @@
 
             .icon-menu {
                 position: relative;
-    
+
                 &,
                 &::before,
                 &::after {
@@ -58,31 +58,31 @@
                     height: 2px;
                     width: 1.5rem;
                 }
-    
+
                 &::before,
                 &::after {
                     content: "";
                     left: 0;
                     position: absolute;
-                    transition: all .2s;
+                    transition: all 0.2s;
                 }
-    
+
                 &::before {
                     top: -5px;
                 }
-    
+
                 &::after {
                     top: 5px;
                 }
-    
+
                 &.isOpened {
                     background-color: transparent;
-    
+
                     &::before {
                         top: 0;
                         transform: rotate(135deg);
                     }
-    
+
                     &::after {
                         top: 0;
                         transform: rotate(-135deg);
@@ -90,9 +90,8 @@
                 }
             }
         }
-
     }
-    
+
     .hamburger-contents {
         align-items: center;
         background-color: $admin-toggle-menu-color;
@@ -106,7 +105,7 @@
         transition: all 300ms ease;
         position: fixed;
         z-index: 2700;
-        
+
         &.isOpened {
             top: 58px;
             opacity: 1;
@@ -122,7 +121,7 @@
                 padding: 2rem 0;
                 position: relative;
                 &::after {
-                    content: '';
+                    content: "";
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -143,7 +142,7 @@
             }
         }
     }
-    
+
     .aside {
         background-color: $admin-sidebar-color;
         display: flex;
@@ -156,7 +155,7 @@
         top: 0;
         width: 360px;
         z-index: $z-aside;
-        @include media('xs') {
+        @include media("xs") {
             display: none;
         }
 
@@ -176,6 +175,7 @@
         .list-category {
             padding: 2rem 3rem;
             width: 100%;
+            list-style: none;
 
             .list-item-wrapper {
                 &:not(:last-child) {
@@ -205,9 +205,9 @@
             padding: 0rem 3rem;
             text-align: center;
             width: 100%;
-            
 
-            .link-to-site, .button-logout {
+            .link-to-site,
+            .button-logout {
                 align-items: center;
                 color: $white;
                 display: flex;
@@ -227,14 +227,14 @@
                     color: $font-color-light;
                 }
             }
-            
+
             .link-to-site {
                 margin-bottom: 4rem;
                 &:hover {
                     text-decoration: none;
 
                     span::after {
-                        content: '';
+                        content: "";
                         width: calc(100% + 24px);
                         height: 1px;
                         background-color: white;
@@ -246,7 +246,7 @@
                 span {
                     position: relative;
                     &::after {
-                        content: '';
+                        content: "";
                         width: 0%;
                         height: 1px;
                         background-color: white;
@@ -270,14 +270,13 @@
                 @include fontEn;
             }
         }
-
     }
 
     .main {
         background-color: $admin-main-container-color;
         color: $font-color-dark;
         width: 100%;
-        @include media('xs') {
+        @include media("xs") {
             width: 100%;
         }
     }

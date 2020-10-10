@@ -16,18 +16,21 @@ const routes = [
   { path: '/', name: 'Home', Component: Home, exact: true },
   { path: '/archive', name: 'Archive', Component: Archive },
   { path: '/admin', name: 'Admin Board', Component: Admin },
-  
+
   { path: '*', name: 'NotFoundPage', Component: NotFoundPage },
 ]
 
 const cx = classNames.bind(styles);
 
-@inject('commonStore')
+
+@inject('commonStore', 'loginStore', 'authStore')
 @observer
 class App extends Component {
+
+
   render() {
     return (
-      <div className={cx('App', {'disabled-scroll': !this.props.commonStore.enableScroll})}>
+      <div className={cx('App', { 'disabled-scroll': !this.props.commonStore.enableScroll })}>
         <Router>
           <Switch>
             {routes.map(({ path, Component, exact }) => (
@@ -35,7 +38,7 @@ class App extends Component {
                 <Component />
               </Route>
             ))}
-            </Switch>
+          </Switch>
         </Router>
       </div>
     );
