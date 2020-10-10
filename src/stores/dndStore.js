@@ -133,7 +133,6 @@ class DndStore {
     }
 
     @action restore() {
-        console.log('reso');
         this.clear();
         let collector = {};
         this.registry = JSON.parse(JSON.stringify(this.oldRegistry));

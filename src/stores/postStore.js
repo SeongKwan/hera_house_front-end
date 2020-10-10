@@ -154,7 +154,6 @@ class PostStore {
                 return res.data;
             }))
             .catch(action((err) => {
-                console.log(err);
                 this.isLoading = false;
                 throw err;
             }))

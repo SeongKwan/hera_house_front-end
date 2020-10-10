@@ -9,11 +9,8 @@ class ErrorStore {
         this.errorToken = status;
     }
     @action async authError(error) {
-        console.log('auth error');
         const { type } = error;
-        console.log(type);
         if (type === "refresh") {
-            console.log('reasdfiwe2324fasdf)');
             setTimeout(() => {
                 alert("로그인 시간이 만료되었습니다. 다시 로그인하여 주세요.")
             }, 100);

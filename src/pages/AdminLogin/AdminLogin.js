@@ -24,11 +24,9 @@ class AdminLogin extends Component {
     _handleClickOnButtonLogin = () => {
         this.props.authStore.login()
             .then(res => {
-                console.log(res);
                 this.props.history.push('/admin');
             })
             .catch(err => {
-                console.log(err);
                 if (!err.success) {
                     window.alert('관리자계정 또는 비밀번호를 확인해 주세요.');
                 }

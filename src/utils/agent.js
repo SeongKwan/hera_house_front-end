@@ -132,7 +132,6 @@ class Agent {
 
 
     refreshToken() {
-        console.log('refresh token api');
         let { refreshToken, user_id } = authStore;
         return this.axios
             .post('/auth/token', { refreshToken, user_id }, {
@@ -156,10 +155,18 @@ class Agent {
                     }
                 })
                 .then(res => {
-                    console.log(res.data);
                     if (!res.data) {
                         authStore.setExpiredToken(true);
 
+                        setTimeout(() => {
+                            alert("로그인 시간이 만료되었습니다. 다시 로그인하여 주세요.")
+                        }, 100);
+                        setTimeout(() => {
+                            authStore.logout('expiredRefreshToken');
+                        }, 150);
+                        setTimeout(() => {
+                            window.location.href = "http://hr-archive/admin/login/";
+                        }, 200);
                         // this.refreshToken();
                     } else return res.data;
                 })

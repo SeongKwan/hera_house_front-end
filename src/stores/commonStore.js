@@ -4,7 +4,6 @@ class CommonStore {
     @observable enableScroll = true;
 
     @action toggleEnableScroll() {
-        // console.log('toggle enable scroll')
         this.enableScroll = !this.enableScroll;
     }
 

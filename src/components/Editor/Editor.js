@@ -144,16 +144,12 @@ class Editor extends Component {
             this.state.thumbnail
         );
 
-        // console.log(formData)
-
         return this.props.postStore.uploadImage(formData)
             .then(res => {
-                // console.log(JSON.parse(JSON.stringify(res.files)))
                 let array = [];
                 res.files.forEach(file => {
                     array.push(file.filename);
                 })
-                // this.setState({imageUrls: array});
                 this.setState({ thumbnailUrl: array[0] });
                 this.props.postStore.changeValue('thumbnail', array[0])
             })
@@ -163,7 +159,6 @@ class Editor extends Component {
     }
 
     _handleOnImageUpload = (images, insertImage) => {
-        // console.log(images)
         this._setImagesToState(images)
             .then(res => {
                 if (res.success) {

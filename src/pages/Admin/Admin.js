@@ -19,7 +19,6 @@ let timer = null;
 @observer
 class Admin extends Component {
     componentDidMount() {
-        console.log('CDM')
         const { isLoggedIn, loggedIn } = this.props.loginStore;
 
         const entryPoint = this.props.location.pathname.split('/')[1];
@@ -32,36 +31,6 @@ class Admin extends Component {
         }
 
     }
-
-    // componentDidUpdate() {
-    //     const { isLoggedIn, loggedIn } = this.props.loginStore;
-    //     const { expiredToken } = this.props.authStore;
-    //     console.log('CDU')
-    //     if (isLoggedIn && timer === null) {
-    //         timer = setInterval(() => {
-    //             if (!expiredToken) {
-    //                 this.checkToken();
-    //             } else {
-    //                 console.log('expired');
-    //             }
-    //         }, 1000);
-    //     }
-    // }
-
-    // componentWillUnmount() {
-    //     clearInterval(timer);
-    //     this.props.authStore.setExpiredToken(false);
-    // }
-
-    checkToken = () => {
-        console.log('interver check token');
-        const THIS = this;
-        return new Promise((resolve, reject) => {
-            let result = THIS.props.authStore.validateToken();
-            return resolve({ success: result.data });
-        });
-    }
-
     render() {
         const { path } = this.props.match;
         const { isLoggedIn, loggedIn } = this.props.loginStore;
