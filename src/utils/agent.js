@@ -165,7 +165,7 @@ class Agent {
                             authStore.logout('expiredRefreshToken');
                         }, 150);
                         setTimeout(() => {
-                            window.location.href = "http://hr-archive/admin/login/";
+                            window.location.href = "http://hr-archive.com/admin/login/";
                         }, 200);
                         // this.refreshToken();
                     } else return res.data;
@@ -241,7 +241,7 @@ class Agent {
                         if (inLoggedIn) {
                             return window.location.reload(true);
                         }
-                        return window.location.href = "http://hr-archive/";
+                        return window.location.href = "http://hr-archive.com/";
                     }
                     return window.location.reload(true);
                 }

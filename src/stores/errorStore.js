@@ -18,7 +18,7 @@ class ErrorStore {
                 authStore.logout('expiredRefreshToken');
             }, 150);
             setTimeout(() => {
-                window.location.href = "http://hr-archive/admin/login/";
+                window.location.href = "http://hr-archive.com/admin/login/";
             }, 200);
             throw error;
         }
@@ -41,7 +41,7 @@ class ErrorStore {
         if (type === "error") {
             // throw error;
             loginStore.logout('expiredRefreshToken');
-            window.location.href = "http://hr-archive/admin/login/";
+            window.location.href = "http://hr-archive.com/admin/login/";
         }
     }
 }
