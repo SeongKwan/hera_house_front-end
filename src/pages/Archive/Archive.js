@@ -62,14 +62,7 @@ class Archive extends Component {
         });
     }
 
-
-
-    _handleOnClickSns = (e, type) => {
-        return window.open(sns[type], '_blank');
-    }
-
     render() {
-        // const categories = this.props.categoryStore.registry;
         const currentCategory = this.props.location.pathname.split('/')[2];
         const { isLoggedIn } = this.props.loginStore;
         let { path } = this.props.match;
@@ -89,12 +82,6 @@ class Archive extends Component {
                         <button onClick={() => this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
                     </div>
                 }
-                {/* <header className={cx('header')}>
-                    <div className={cx('wrapper-brand-logo')} data-device="desktop" onClick={this._handleClickOnBrandLogo}><span>Hera House</span></div>
-                    <div className={cx('wrapper-brand-logo')} data-device="mobile">
-                        <span onClick={this._handleClickOnBrandLogo}>HR</span>
-                    </div>
-                </header> */}
                 <NavBar />
                 <div className={cx('container', { 'covered-menu': this.state.openMenu })}>
                     <main className={cx('main')} ref={ref => this.mainContainer = ref}>
@@ -109,14 +96,14 @@ class Archive extends Component {
                                 <Post />
                             </Route>
                         </Switch>
-                        {
+                        {/* {
                             this.state.isShownScrollButton &&
                             <div className={cx('wrapper-button-top-scroll')}>
                                 <div className={cx('wrapper-icon')} onClick={this._handleClickOnTopScrollButton}>
                                     <IoIosArrowUp className={cx('icon')} />
                                 </div>
                             </div>
-                        }
+                        } */}
                     </main>
                 </div>
 
