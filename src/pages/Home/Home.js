@@ -32,9 +32,9 @@ class Home extends Component {
                     <link rel="canonical" href="http://hr-archive.com" />
                     {/* 검색엔진 단어 */}
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
-                    <meta name="Description" content="브랜드 디자이너 에일의 다양한 분야에 관한 그 만의 글이 모여있는 곳" />
+                    {/* <meta name="Description" content="브랜드 디자이너 에일의 다양한 분야에 관한 그 만의 글이 모여있는 곳" /> */}
                     {/* 사이트 제목 */}
-                    <meta http-equiv="Title" content="Hera's House" />
+                    <meta http-equiv="Title" content="Hera's Archive" />
                     {/* 사이트 주제 */}
                     <meta http-equiv="Subject" content="영감을 얻어가기 좋은 곳" />
                     {/* 자작사 */}
@@ -43,9 +43,6 @@ class Home extends Component {
                     {/* <meta http-equiv="Reply-To" content="we@naver.com" /> 
                     <meta http-equiv="Email" content="naver@naver.com" /> */}
                 </Helmet>
-                {/* <div className={cx('container', 'container--left')}>
-                    <img src={LeftBG} alt="left side background" />
-                </div> */}
                 <main className={cx('main')}>
                     <div className={cx('wrapper-brand-logo')}><span>HR ARCHIVE</span></div>
                     <nav className={cx(cn.list)}>
@@ -59,21 +56,8 @@ class Home extends Component {
                             })
                                 : <div></div>
                         }
-
-                        {/* {categories.map(category => {
-                            const { name } = category;
-                            return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                                <span>{name}</span>
-                            </li>
-                        </Link>
-                        })} */}
                     </nav>
                 </main>
-                {/* <div className={cx('container', 'container--center')}>
-                </div> */}
-                {/* <div className={cx('container', 'container--right')}>
-                    <img src={RightBG} alt="right side background" />
-                </div> */}
                 {
                     isLoggedIn &&
                     <div className={cx('floating-container')}>

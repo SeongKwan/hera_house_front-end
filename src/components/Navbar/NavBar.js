@@ -121,11 +121,7 @@ class NavBar extends Component {
                     })}
                 </nav>
                 <i ref={ref => this.activeMarker = ref} className={cx('active-marker')}></i>
-                {/* <div className={cx('container-sns')}>
-                    <IoLogoInstagram className={cx('icon')} onClick={() => this._handleOnClickSns('instagram')} />
-                    <TiSocialPinterest className={cx('icon')} onClick={() => this._handleOnClickSns('pinterest')} />
-                    <AiOutlineYoutube className={cx('icon')} onClick={() => this._handleOnClickSns('youtube')} />
-                </div> */}
+
                 <div className={cx('wrapper-toggle-menu')}>
                     <input
                         ref={ref => this.menuCheckbox = ref}
@@ -154,11 +150,11 @@ class NavBar extends Component {
                             <div className={cx('wrapper-button-admin')}><IoIosSettings className={cx('icon')} /></div>
                         </div>
                     }
-                    <div className={cx('container-sns')}>
+                    {/* <div className={cx('container-sns')}>
                         <IoLogoInstagram className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'instagram')} />
                         <TiSocialPinterest className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'pinterest')} />
                         <AiOutlineYoutube className={cx('icon')} onClick={(e) => this._handleOnClickSns(e, 'youtube')} />
-                    </div>
+                    </div> */}
                 </ul>
             </div>
         )

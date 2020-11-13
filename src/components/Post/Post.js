@@ -19,6 +19,8 @@ class Post extends Component {
         this._initialize();
     }
 
+
+
     componentWillUnmount() {
         this.props.postStore.clearThePost();
     }
@@ -42,6 +44,7 @@ class Post extends Component {
         this.props.postStore.toggleIsPublishedPost(post)
             .then(res => {
                 THIS.props.history.goBack();
+                return res;
             })
             .catch(err => {
                 console.error(err);
@@ -86,13 +89,6 @@ class Post extends Component {
                             theme="bubble"
                         />
                     </div>
-                    {/* <div className={'ql-editor'}>
-
-                        <Markdown
-                            escapeHtml={false}
-                            source={content}
-                        />
-                    </div> */}
                 </section>
             </article>
         );

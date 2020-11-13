@@ -37,12 +37,12 @@ class PostList extends Component {
     _initialize = () => {
         const { category } = this.props.match.params;
         this.props.postStore.loadPosts()
-        .then(posts => {
-            this.props.postStore.filterRegistry(posts, category);
-        })
-        .catch(err => {
-            console.error(err);
-        });
+            .then(posts => {
+                this.props.postStore.filterRegistry(posts, category);
+            })
+            .catch(err => {
+                console.error(err);
+            });
     }
 
     render() {
@@ -56,14 +56,14 @@ class PostList extends Component {
         }
 
         return (
-            <div className={cx('PostList', {'no-posts': posts.length < 1})}>
-                {   
+            <div className={cx('PostList', { 'no-posts': posts.length < 1 })}>
+                {
                     (postsLength > 0) && !isLoading &&
                     posts.map((post, i) => {
                         const { isPublished } = post;
                         if (isPublished) {
-                            return <Link key={i} to={`${url}/${post._id}`} className={cx('list-item-post', {'list-item-post--clothing': category === 'Clothing'})}>
-                                <img className={cx({img: category !== 'Clothing'}, {'img--clothing': category === 'Clothing'})} src={`${staticUrl}/${post.thumbnail}`} alt="post thumbnail" />
+                            return <Link key={i} to={`${url}/${post._id}`} className={cx('list-item-post', { 'list-item-post--clothing': category === 'Clothing' })}>
+                                <img className={cx({ img: category !== 'Clothing' }, { 'img--clothing': category === 'Clothing' })} src={`${staticUrl}/${post.thumbnail}`} alt="post thumbnail" />
                             </Link>
                         } else {
                             return false;
@@ -73,7 +73,7 @@ class PostList extends Component {
                 {
                     (postsLength === 0) && !isLoading &&
                     <div className={cx('no-posts')}>
-                        <img src={disapointedFace} alt="no results"/>
+                        <img src={disapointedFace} alt="no results" />
                         <p>여기에는 아직 글이 없네요...ㅠㅠ</p>
                     </div>
                 }
