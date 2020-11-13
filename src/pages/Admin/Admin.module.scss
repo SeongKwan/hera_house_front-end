@@ -1,19 +1,18 @@
 .Admin {
-    color: $white;
     display: flex;
     height: 100%;
     position: relative;
     user-select: none;
     width: 100%;
 
+    // color: $white;
+
     &.is-not-logged-in {
         background-color: $admin-main-container-color;
         height: 100%;
         @include centerPosition;
-        @include media('md') {
+        @include media("md") {
             padding: 0 1rem;
         }
     }
-    
-    
 }

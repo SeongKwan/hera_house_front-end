@@ -3,23 +3,14 @@
 @import "./animate";
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gidugu&family=Harmattan&family=Kulim+Park:wght@200;300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nanum+Gothic&family=Noto+Sans+KR&family=Poiret+One&family=Raleway:wght@300&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nanum+Gothic&family=Noto+Sans+KR&family=Poiret+One&family=Raleway:wght@300&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Noto+Sans+KR&family=Open+Sans&family=Raleway&display=swap");
 // font-family: 'Lato', sans-serif;
 // font-family: 'Nanum Gothic', sans-serif;
 // font-family: 'Noto Sans KR', sans-serif;
 // font-family: 'Poiret One', cursive;
 // font-family: 'Raleway', sans-serif;
-
-@font-face {
-    font-family: "summernote";
-    font-style: normal;
-    font-weight: 400;
-    font-display: auto;
-    src: url(font/summernote.eot);
-    src: url(font/summernote.eot?#iefix) format("embedded-opentype"), url(font/summernote.woff2) format("woff2"),
-        url(font/summernote.woff) format("woff"), url(font/summernote.ttf) format("truetype");
-}
 
 html,
 body {

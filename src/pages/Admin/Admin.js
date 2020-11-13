@@ -20,14 +20,15 @@ let timer = null;
 class Admin extends Component {
     componentDidMount() {
         const { isLoggedIn, loggedIn } = this.props.loginStore;
-
         const entryPoint = this.props.location.pathname.split('/')[1];
         if (!isLoggedIn && !loggedIn) {
+            console.log('1');
             if (entryPoint === 'admin') {
                 this.props.history.replace('/admin/login');
             }
         } else {
-            this.props.history.replace('/admin');
+            console.log('2');
+            // this.props.history.replace('/admin');
         }
 
     }
@@ -44,13 +45,13 @@ class Admin extends Component {
         return (
             <div className={cx('Admin')}>
                 <Switch>
-                    <Route path={`${path}`} exact>
+                    {/* <Route path={`${path}`} exact>
                         <LayoutAdminMain path={path}>
                             <LayoutAdmin sectionTitle="공지사항 & 업데이트">
                                 <AdminMain />
                             </LayoutAdmin>
                         </LayoutAdminMain>
-                    </Route>
+                    </Route> */}
                     <Route path={`${path}/category`}>
                         <LayoutAdminMain path={path}>
                             <LayoutAdmin sectionTitle="카테고리 관리">
@@ -78,6 +79,13 @@ class Admin extends Component {
                             </LayoutAdmin>
                         </LayoutAdminMain>
                     </Route>
+                    <Route component={() => {
+                        return (<LayoutAdminMain path={path}>
+                            <LayoutAdmin sectionTitle="게시물 관리">
+                                <AdminPost />
+                            </LayoutAdmin>
+                        </LayoutAdminMain>)
+                    }} />
                 </Switch>
             </div>
         );

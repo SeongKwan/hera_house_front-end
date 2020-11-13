@@ -6,6 +6,8 @@ import Markdown from 'react-markdown';
 import './Post.css';
 import { inject, observer } from 'mobx-react';
 import { Helmet } from 'react-helmet';
+import ReactQuill, { Quill } from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const cx = classNames.bind(styles);
 
@@ -77,10 +79,20 @@ class Post extends Component {
                     </div>
                 }
                 <section className={cx('section')}>
-                    <Markdown
-                        escapeHtml={false}
-                        source={content}
-                    />
+                    <div className={'ql-readOnly-container'}>
+                        <ReactQuill
+                            value={content}
+                            readOnly={true}
+                            theme="bubble"
+                        />
+                    </div>
+                    {/* <div className={'ql-editor'}>
+
+                        <Markdown
+                            escapeHtml={false}
+                            source={content}
+                        />
+                    </div> */}
                 </section>
             </article>
         );

@@ -1,23 +1,13 @@
-.Post-CSS h1,
-.Post-CSS h2,
-.Post-CSS h3,
-.Post-CSS h4,
-.Post-CSS h5,
-.Post-CSS h6,
-.Post-CSS p {
-    padding: 0 0.5%;
-    word-break: break-all;
-    white-space: normal;
-    margin-bottom: 6px !important;
+.ql-readOnly-container .ql-toolbar {
+    display: none;
+    /* height: 6vh; */
+    /* min-height: 70px; */
+    border: none !important;
 }
 
-.Post-CSS img {
-    margin: 0 auto;
-    max-width: 100% !important;
-    height: auto !important;
-    /* padding: 0 0.5rem; */
-}
-
-.Post-CSS iframe {
-    max-width: 100%;
+.ql-readOnly-container .ql-container {
+    overflow: visible !important;
+    height: 100% !important;
+    border: none !important;
+    font-family: "Roboto", sans-serif !important;
 }

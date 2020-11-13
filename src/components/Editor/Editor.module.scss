@@ -87,6 +87,7 @@
             }
 
             label {
+                color: $white;
                 align-items: center;
                 background: $admin-sidebar-color;
                 border-radius: $radius-easy;
@@ -195,6 +196,19 @@
                 &.disabled {
                     background-color: rgba($black, 0.1);
                     cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
+
+.ql-snow {
+    .ql-picker {
+        &.ql-size {
+            .ql-picker-label,
+            .ql-picker-item {
+                &::before {
+                    content: attr(data-value) !important;
                 }
             }
         }

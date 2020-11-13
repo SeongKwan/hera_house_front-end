@@ -4,38 +4,128 @@ import classNames from 'classnames/bind';
 import './Editor.css';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
-import { isMobile } from 'react-device-detect';
-import ReactSummernote from 'react-summernote';
-import 'react-summernote/lang/summernote-ko-KR'; // you can import any other locale
-import 'summernote/dist/summernote-bs4';
-import 'summernote/dist/summernote-bs4.css';
-import 'bootstrap/js/dist/modal';
-import 'bootstrap/js/dist/dropdown';
-import 'bootstrap/js/dist/tooltip';
-
 import TextareaAutosize from 'react-textarea-autosize';
-import options from './options';
-import optionsForMobile from './optionsForMobile';
 import staticUrl from '../../constants/staticUrl';
 import Loader from '../Loader/Loader';
 
+
+import ReactQuill, { Quill } from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import './Editor.scss';
+
+import ImageUploader from "quill-image-uploader";
+
 const cx = classNames.bind(styles);
+
+var Size = Quill.import('attributors/style/size');
+Size.whitelist = ['10px', '11px', '12px', '13px', '14px', '15px', '16px', '18px', '20px', '22px', '24px', '28px', '32px', '36px', '40px', '44px', '48px', '56px', '64px', '72px', '80px', '92px', '114px',];
+Quill.register(Size, true);
+let Font = Quill.import('formats/font');
+// We do not add Sans Serif since it is the default
+Font.whitelist = ['roboto', 'raleway', 'lato', 'notosanskr', 'opensans', 'thasadith'];
+Quill.register(Font, true);
+
+Quill.register("modules/imageUploader", ImageUploader);
+
+const CustomToolbar = () => (
+    <div id="toolbar">
+        <span className="ql-formats">
+            <button className="ql-header" value="1" />
+            <button className="ql-header" value="2" />
+            <select className="ql-font" defaultValue="roboto">
+                <option value="roboto">Roboto</option>
+                <option value="raleway">Raleway</option>
+                <option value="lato">Lato</option>
+                <option value="notosanskr">Noto Sans KR</option>
+                <option value="opensans">Open Sans</option>
+                <option value="thasadith">Thasadith</option>
+
+            </select>
+            <select className="ql-size" defaultValue="13px">
+                {Size.whitelist.map((size) => <option key={`font-size-${size}`} value={size}>{size}</option>)}
+            </select>
+            <button className="ql-bold" />
+            <button className="ql-italic" />
+            <button className="ql-underline" />
+            <button className="ql-strike" />
+            <select className="ql-color" />
+            <select className="ql-background" />
+        </span>
+        <span className="ql-formats">
+            <select className="ql-align" />
+            <button className="ql-list" value="ordered" />
+            <button className="ql-list" value="bullet" />
+            <button className="ql-indent" value="-1" />
+            <button className="ql-indent" value="+1" />
+            <button className="ql-script" value="sub" />
+            <button className="ql-script" value="super" />
+        </span>
+        <span className="ql-formats">
+            <button className="ql-link" />
+            <button className="ql-image" />
+            <button className="ql-video" />
+        </span>
+        <span className="ql-formats">
+            <button className="ql-clean" />
+        </span>
+
+
+    </div>
+);
 
 @withRouter
 @inject('postStore', 'categoryStore', 'editorStore')
 @observer
 class Editor extends Component {
-    state = { leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '' }
+    state = { value: '', leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '' }
+    modules = {
+        toolbar: {
+            container: "#toolbar",
+        },
+        imageUploader: {
+            upload:
+                (file) => {
+                    console.log(file);
+                    let formData = new FormData();
+                    formData.append(
+                        "file",
+                        file
+                    );
+
+                    return this.props.postStore.uploadImage(formData)
+                        .then(res => {
+
+                            let array = [];
+                            res.files.forEach(file => {
+                                array.push(file.filename);
+                            })
+                            return `${staticUrl}${array[0]}`;
+                        })
+                        .catch(err => {
+                            console.error(err)
+                        });
+                },
+        },
+    };
+
+
 
     componentDidMount() {
         const { type } = this.props;
         this._initialize(type);
+        // console(this.quillEditor);
+
     }
 
     componentWillUnmount() {
         this.clearState();
         this.props.postStore.clear();
     }
+
+    imageHandler() {
+        console.log('image handler');
+    }
+
 
     _initialize = async (type) => {
         this.props.editorStore.setLoadingState(true);
@@ -54,16 +144,14 @@ class Editor extends Component {
                     this.setState({ thumbnailUrl: res.thumbnail });
                 }).catch(err => alert(err));
         }
-        await this._initEditor();
+        this._initEditor();
     }
     _initEditor = () => {
-
         this.props.editorStore.setLoadingState(false);
-        this.editor.onInit(() => { console.log('init') });
     }
 
     clearState = () => {
-        this.setState({ leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '' })
+        this.setState({ value: '', leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '' })
     }
 
     _handleOnChange = (content) => {
@@ -159,44 +247,46 @@ class Editor extends Component {
     }
 
     _handleOnImageUpload = (images, insertImage) => {
-        this._setImagesToState(images)
-            .then(res => {
-                if (res.success) {
-                    setTimeout(() => {
-                        let formData = new FormData();
+        // console.log(images);
+        // return "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png";
+        // this._setImagesToState(images)
+        //     .then(res => {
+        //         if (res.success) {
+        //             setTimeout(() => {
+        //                 let formData = new FormData();
 
-                        for (let i = 0; i < this.state.file.length; i++) {
-                            formData.append(
-                                "file",
-                                this.state.file[i].multipart_form_data
-                            );
-                        }
+        //                 for (let i = 0; i < this.state.file.length; i++) {
+        //                     formData.append(
+        //                         "file",
+        //                         this.state.file[i].multipart_form_data
+        //                     );
+        //                 }
 
-                        // for (var key of formData.entries()) {
-                        //     console.log(key[0] + ', ' + key[1]);
-                        // }
+        //                 // for (var key of formData.entries()) {
+        //                 //     console.log(key[0] + ', ' + key[1]);
+        //                 // }
 
-                        return this.props.postStore.uploadImage(formData)
-                            .then(res => {
-                                let array = [];
-                                res.files.forEach(file => {
-                                    array.push(file.filename);
-                                })
-                                this.setState({ imageUrls: array });
-                            })
-                            .then(res => {
-                                this.state.imageUrls.forEach(url => {
-                                    insertImage(`${staticUrl}${url}`);
-                                });
-                                this.setState({ fileName: [], file: [], imageUrls: [] });
-                            })
-                            .catch(err => {
-                                console.error(err)
-                            });
-                    }, 300);
-                }
-                return res;
-            })
+        //                 return this.props.postStore.uploadImage(formData)
+        //                     .then(res => {
+        //                         let array = [];
+        //                         res.files.forEach(file => {
+        //                             array.push(file.filename);
+        //                         })
+        //                         this.setState({ imageUrls: array });
+        //                     })
+        //                     .then(res => {
+        //                         this.state.imageUrls.forEach(url => {
+        //                             insertImage(`${staticUrl}${url}`);
+        //                         });
+        //                         this.setState({ fileName: [], file: [], imageUrls: [] });
+        //                     })
+        //                     .catch(err => {
+        //                         console.error(err)
+        //                     });
+        //             }, 300);
+        //         }
+        //         return res;
+        //     })
     }
 
     _handleClickOnButtonBack = () => {
@@ -205,7 +295,7 @@ class Editor extends Component {
 
     _handleClickOnButtonPublish = () => {
         const { type, match: { params: { postId } } } = this.props;
-        const { category } = this.props.postStore.value;
+        const { category, content } = this.props.postStore.value;
         const contents = type === 'write' ? '작성한 내용대로 글을 저장합니다' : '변경한 내용으로 수정할까요?';
         if (window.confirm(contents)) {
             if (type === 'write') {
@@ -233,6 +323,12 @@ class Editor extends Component {
             return <option key={category.name} value={category.name}>{category.name}</option>
         });
     }
+
+    _handleOnChanged = (value) => {
+        this.props.postStore.changeValue('content', value);
+    }
+
+
 
     render() {
         const { value: { title, category, content }, titleIsEmpty } = this.props.postStore;
@@ -309,6 +405,24 @@ class Editor extends Component {
                         </div>
                     </div>
                 </div>
+                <div className={cx('editor-toolbar-container')}>
+                    <CustomToolbar />
+                </div>
+                <div id="editor-scroll-container" className={cx('editor-scroll-container')}>
+                    <ReactQuill
+                        ref={ref => this.editor = ref}
+                        theme="snow"
+                        placeholder="React Quill Rich Text Editor"
+                        modules={this.modules}
+                        value={content}
+                        onChange={this._handleOnChanged}
+
+
+                    />
+                </div>
+                {/* 
+                
+                
                 <ReactSummernote
                     className={cx('editor-container', 'Post-CSS')}
                     value={type === 'edit' ? content : ''}
@@ -321,6 +435,7 @@ class Editor extends Component {
                     onChange={this._handleOnChange}
                     onImageUpload={this._handleOnImageUpload}
                 />
+                 */}
                 <div className={cx('wrapper-buttons')}>
                     <button className={cx('button', 'button-back')} onClick={this._handleClickOnButtonBack}>취소</button>
 

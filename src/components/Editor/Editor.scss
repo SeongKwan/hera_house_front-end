@@ -1,0 +1,68 @@
+// font-family: 'Lato', sans-serif;
+// font-family: 'Noto Sans KR', sans-serif;
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Raleway', sans-serif;
+
+.ql-snow .ql-icon-picker .ql-picker-label {
+    padding: 0px 4px;
+}
+
+.ql-toolbar {
+    height: 6vh;
+    min-height: 70px;
+    border: none !important;
+}
+
+.ql-container {
+    overflow: hidden;
+    height: 70vh;
+    border: none !important;
+    font-family: "Roboto", sans-serif !important;
+}
+
+// Font - Roboto (Default)
+.ql-toolbar .ql-font span[data-label="Roboto"]::before {
+    font-family: "Roboto";
+}
+.ql-font-roboto {
+    font-family: "Roboto";
+}
+
+// Font - Raleway 400
+.ql-toolbar .ql-font span[data-label="Raleway"]::before {
+    font-family: "Raleway";
+}
+.ql-font-raleway {
+    font-family: "Raleway";
+}
+
+// Font - Lato 300
+.ql-toolbar .ql-font span[data-label="Lato"]::before {
+    font-family: "Lato", sans-serif;
+}
+.ql-font-lato {
+    font-family: "Lato", sans-serif;
+}
+
+// Font - Noto Sans KR 400
+.ql-toolbar .ql-font span[data-label="Noto Sans KR"]::before {
+    font-family: "Noto Sans KR", sans-serif;
+}
+.ql-font-notosanskr {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+// Font - Open Sans
+.ql-toolbar .ql-font span[data-label="Open Sans"]::before {
+    font-family: "Open Sans", sans-serif;
+}
+.ql-font-opensans {
+    font-family: "Open Sans", sans-serif;
+}
+// Font - Thasadith
+.ql-toolbar .ql-font span[data-label="Thasadith"]::before {
+    font-family: "Thasadith", sans-serif;
+}
+.ql-font-thasadith {
+    font-family: "Thasadith", sans-serif;
+}
