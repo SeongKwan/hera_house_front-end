@@ -63,7 +63,7 @@ const CustomToolbar = () => (
         <span className="ql-formats">
             <button className="ql-link" />
             <button className="ql-image" />
-            <button className="ql-video" />
+            {/* <button className="ql-video" /> */}
         </span>
         <span className="ql-formats">
             <button className="ql-clean" />
@@ -133,8 +133,7 @@ class Editor extends Component {
         const { postId } = this.props.match.params;
         await this.props.categoryStore.loadCategories()
             .then(res => {
-
-                this.props.postStore.changeValue('category', res[0].name);
+                this.props.postStore.changeValue('category', res.find((el) => el['order'] === 1).name);
             })
             .catch(err => alert(err));
         if (type === 'edit') {
@@ -152,10 +151,6 @@ class Editor extends Component {
 
     clearState = () => {
         this.setState({ value: '', leaving: false, fileName: [], file: [], imageUrls: [], thumbnail: '', thumbnailData: '', thumbnailUrl: '' })
-    }
-
-    _handleOnChange = (content) => {
-        this.props.postStore.changeValue('content', content);
     }
 
     _handleChangeValue = (e) => {
@@ -191,40 +186,6 @@ class Editor extends Component {
         });
     }
 
-    _setImagesToState = (images) => {
-        const file = images;
-        const fileTypes = [
-            "image/jpeg",
-            "image/pjpeg",
-            "image/png",
-            "image/svg",
-            "image/svg+xml"
-        ];
-        const THIS = this;
-        return new Promise(function (resolve, reject) {
-            for (let i = 0; i < images.length; i++) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file[i]);
-
-                for (let j = 0; j < fileTypes.length; j++) {
-                    if (file[i].type === fileTypes[j]) {
-                        reader.onloadend = () => {
-                            let concatName = [];
-                            let concatFile = [];
-                            concatName = concatName.concat(file[i].name);
-                            concatFile = concatFile.concat({
-                                category: file[i].type,
-                                multipart_form_data: file[i]
-                            });
-                            THIS.setState({ fileName: THIS.state.fileName.concat(concatName), file: THIS.state.file.concat(concatFile) }, () => { });
-                        };
-                    }
-                }
-            }
-            return resolve({ success: true });
-        });
-    }
-
     _getThumnbnameUrlFromServer = () => {
         let formData = new FormData();
         formData.append(
@@ -244,49 +205,6 @@ class Editor extends Component {
             .catch(err => {
                 console.error(err)
             });
-    }
-
-    _handleOnImageUpload = (images, insertImage) => {
-        // console.log(images);
-        // return "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png";
-        // this._setImagesToState(images)
-        //     .then(res => {
-        //         if (res.success) {
-        //             setTimeout(() => {
-        //                 let formData = new FormData();
-
-        //                 for (let i = 0; i < this.state.file.length; i++) {
-        //                     formData.append(
-        //                         "file",
-        //                         this.state.file[i].multipart_form_data
-        //                     );
-        //                 }
-
-        //                 // for (var key of formData.entries()) {
-        //                 //     console.log(key[0] + ', ' + key[1]);
-        //                 // }
-
-        //                 return this.props.postStore.uploadImage(formData)
-        //                     .then(res => {
-        //                         let array = [];
-        //                         res.files.forEach(file => {
-        //                             array.push(file.filename);
-        //                         })
-        //                         this.setState({ imageUrls: array });
-        //                     })
-        //                     .then(res => {
-        //                         this.state.imageUrls.forEach(url => {
-        //                             insertImage(`${staticUrl}${url}`);
-        //                         });
-        //                         this.setState({ fileName: [], file: [], imageUrls: [] });
-        //                     })
-        //                     .catch(err => {
-        //                         console.error(err)
-        //                     });
-        //             }, 300);
-        //         }
-        //         return res;
-        //     })
     }
 
     _handleClickOnButtonBack = () => {
@@ -366,6 +284,7 @@ class Editor extends Component {
                             name="category"
                             value={category}
                             onChange={this._handleChangeValue}
+
                         >
                             <option disabled>카테고리 선택</option>
                             {this._renderOptions()}
@@ -420,22 +339,6 @@ class Editor extends Component {
 
                     />
                 </div>
-                {/* 
-                
-                
-                <ReactSummernote
-                    className={cx('editor-container', 'Post-CSS')}
-                    value={type === 'edit' ? content : ''}
-                    ref={ref => this.editor = ref}
-                    autoFocus={type === 'edit'}
-                    options={
-                        isMobile ? optionsForMobile : options
-                    }
-
-                    onChange={this._handleOnChange}
-                    onImageUpload={this._handleOnImageUpload}
-                />
-                 */}
                 <div className={cx('wrapper-buttons')}>
                     <button className={cx('button', 'button-back')} onClick={this._handleClickOnButtonBack}>취소</button>
 
