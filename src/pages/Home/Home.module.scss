@@ -180,10 +180,11 @@
                             list-style: none;
                             color: #ffffff;
                             transition: all 0.2s;
-                            // &:hover {
-                            //     opacity: 0.8;
-                            // }
                         }
+                    }
+
+                    .archive-sub-category > div > li:hover {
+                        opacity: 0.8;
                     }
 
                     &:hover {
@@ -198,6 +199,10 @@
                         padding: 0;
                         top: 0;
                         left: 100%;
+
+                        & > div > li:hover {
+                            opacity: 0.8;
+                        }
                     }
 
                     .archive-sub-category > div:first-child:hover > li {
