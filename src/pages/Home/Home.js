@@ -13,7 +13,6 @@ const cn = {
     item: 'list-item-main-category',
 }
 
-
 const _workSubCategory = ['brand', 'fashion', 'art', 'graphic', 'object', 'food styling'];
 
 @withRouter
@@ -30,7 +29,7 @@ class Home extends Component {
         return (
             <div className={cx('Home')}>
                 <Helmet>
-                    <title>HR Archive - Home</title>
+                    <title>HR ARCHIVE - HOME</title>
                     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                     <link rel="canonical" href="http://hr-archive.com" />
                     {/* 검색엔진 단어 */}
@@ -46,10 +45,48 @@ class Home extends Component {
                     {/* <meta http-equiv="Reply-To" content="we@naver.com" /> 
                     <meta http-equiv="Email" content="naver@naver.com" /> */}
                 </Helmet>
-                <main className={cx('main')}>
+                <header>
+                    <div className={cx('concept-title')}>
+                        <span>BLACK ENDING</span>
+                    </div>
+                    <nav className={cx('home-nav')}>
+                        <ul>
+                            <li className={cx('nav-item', 'nav-item--herakim')}>HERA KIM</li>
+                            <li className={cx('nav-item', 'nav-item--projects')}>PROJECTS</li>
+                            <li className={cx('nav-item', 'nav-item--archives')}>ARCHIVES</li>
+                        </ul>
+                    </nav>
+                </header>
+                <div className={cx('identity')}>
+                    <p>Republic Korea based</p>
+                    <p>Design & Styling with</p>
+                    <p>Personally Concept Projects by</p>
+                    <p>Design director Hera Kim</p>
+
+                    <span className={cx('site-name')}>HR ARCHIVE</span>
+                </div>
+                <div className={cx('concept-point')}>
+                    <p>When all colors</p>
+                    <p>are combined,</p>
+                    <p>the end is clearly BLACK</p>
+                </div>
+                <div className={cx('sns')}>
+                    <div className={cx('youtube')}>Youtube</div>
+                    <div className={cx('instagram')}>Instagram</div>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default Home;
+
+
+
+{/* <main className={cx('main')}>
                     <div className={cx('wrapper-brand-logo')}><span>HR ARCHIVE</span></div>
                     <nav className={cx(cn.list)}>
-                        {/* {
+                        {
                             categories.length > 0 ? categories.map(category => {
                                 const { name } = category;
                                 return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
@@ -58,7 +95,7 @@ class Home extends Component {
                                 </Link>
                             })
                                 : <div></div>
-                        } */}
+                        }
                         <Link to={`/about`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
                             <span>HERA KIM</span>
                         </li>
@@ -107,11 +144,4 @@ class Home extends Component {
                     <div className={cx('floating-container')}>
                         <button onClick={() => this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
                     </div>
-                }
-
-            </div>
-        );
-    }
-}
-
-export default Home;
+                } */}
