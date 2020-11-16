@@ -22,12 +22,12 @@ class Admin extends Component {
         const { isLoggedIn, loggedIn } = this.props.loginStore;
         const entryPoint = this.props.location.pathname.split('/')[1];
         if (!isLoggedIn && !loggedIn) {
-            console.log('1');
+
             if (entryPoint === 'admin') {
                 this.props.history.replace('/admin/login');
             }
         } else {
-            console.log('2');
+
             // this.props.history.replace('/admin');
         }
 

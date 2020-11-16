@@ -1,6 +1,7 @@
 import { action, observable, computed } from 'mobx';
 import agent from '../utils/agent';
 import _ from 'lodash';
+import categoryStore from './categoryStore';
 
 class PostStore {
     @observable isLoading = false;
@@ -16,6 +17,11 @@ class PostStore {
         isPublished: false,
         thumbnail: ''
     };
+
+    @computed get finedPosts() {
+        if (categoryStore.currentCategory != null) return _.filter(this.registry, { category: categoryStore.currentCategory });
+        return this.registry;
+    }
 
     @computed get postsLength() {
         return this.filteredRegistry.filter(
@@ -183,6 +189,7 @@ class PostStore {
         })
             .then(action((res) => {
                 this.isLoading = false;
+                this.loadPosts();
                 return res.data;
             }))
             .catch(action((err) => {

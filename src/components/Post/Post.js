@@ -19,8 +19,6 @@ class Post extends Component {
         this._initialize();
     }
 
-
-
     componentWillUnmount() {
         this.props.postStore.clearThePost();
     }
@@ -44,7 +42,6 @@ class Post extends Component {
         this.props.postStore.toggleIsPublishedPost(post)
             .then(res => {
                 THIS.props.history.goBack();
-                return res;
             })
             .catch(err => {
                 console.error(err);
@@ -77,8 +74,8 @@ class Post extends Component {
                 {
                     isLoggedIn &&
                     <div className={cx('button-bar')}>
-                        <button className={cx('button-post', 'button-post--edit')} onClick={this._handleOnClickEditButton}>수정</button>
-                        <button className={cx('button-post', 'button-post--unpublish')} onClick={() => { this._handleOnClickUnpublishButton(thePost) }}>비공개</button>
+                        <button className={cx('button-post', 'button-post--edit')} onClick={this._handleOnClickEditButton}>Edit</button>
+                        <button className={cx('button-post', 'button-post--unpublish')} onClick={() => { this._handleOnClickUnpublishButton(thePost) }}>Hide</button>
                     </div>
                 }
                 <section className={cx('section')}>

@@ -11,11 +11,15 @@ import Archive from './pages/Archive/Archive';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Admin from './pages/Admin/Admin';
 import { inject, observer } from 'mobx-react';
+import About from './pages/About/About';
+import Projects from './pages/Projects/Projects';
 
 const routes = [
   { path: '/', name: 'Home', Component: Home, exact: true },
+  { path: '/about', name: 'HERA KIM', Component: About },
   { path: '/archive', name: 'Archive', Component: Archive },
   { path: '/admin', name: 'Admin Board', Component: Admin },
+  { path: '/projects', name: 'PROJECTS', Component: Projects },
 
   { path: '*', name: 'NotFoundPage', Component: NotFoundPage },
 ]

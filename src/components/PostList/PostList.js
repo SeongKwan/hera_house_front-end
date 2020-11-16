@@ -14,15 +14,12 @@ const cx = classNames.bind(styles);
 @observer
 class PostList extends Component {
     componentDidMount() {
-        const { currentCategory } = this.props.categoryStore;
-        const { filteredRegistry } = this.props.postStore;
+        // const { currentCategory } = this.props.categoryStore;
+        // const { filteredRegistry } = this.props.postStore;
         const currentCategoryFromURL = this.props.match.params.category;
-        let isRequiredReload = currentCategoryFromURL !== currentCategory;
-
-        if (isRequiredReload || filteredRegistry.length <= 0) {
-            this.props.categoryStore.setCurrentCategory(currentCategoryFromURL);
-            this._initialize();
-        }
+        // let isRequiredReload = currentCategoryFromURL !== currentCategory;
+        this.props.categoryStore.setCurrentCategory(currentCategoryFromURL);
+        this._initialize();
     }
 
     componentDidUpdate(prevProps) {
@@ -32,6 +29,10 @@ class PostList extends Component {
             this.props.categoryStore.setCurrentCategory(currentCategoryFromURL);
             this._initialize();
         }
+    }
+
+    componentWillUnmount() {
+
     }
 
     _initialize = () => {
@@ -48,7 +49,7 @@ class PostList extends Component {
     render() {
         const { category } = this.props.match.params;
         const { url } = this.props.match;
-        let { filteredRegistry: posts, isLoading, postsLength } = this.props.postStore;
+        let { filteredRegistry: posts, isLoading, postsLength, finedPosts } = this.props.postStore;
 
         if (posts === null && posts === undefined) {
             return <div className={cx('PostList')}>
@@ -59,7 +60,7 @@ class PostList extends Component {
             <div className={cx('PostList', { 'no-posts': posts.length < 1 })}>
                 {
                     (postsLength > 0) && !isLoading &&
-                    posts.map((post, i) => {
+                    finedPosts.map((post, i) => {
                         const { isPublished } = post;
                         if (isPublished) {
                             return <Link key={i} to={`${url}/${post._id}`} className={cx('list-item-post', { 'list-item-post--clothing': category === 'Clothing' })}>
@@ -74,7 +75,7 @@ class PostList extends Component {
                     (postsLength === 0) && !isLoading &&
                     <div className={cx('no-posts')}>
                         <img src={disapointedFace} alt="no results" />
-                        <p>여기에는 아직 글이 없네요...ㅠㅠ</p>
+                        <p>여기에는 아직 글이 없네요....ㅠㅠ</p>
                     </div>
                 }
             </div>

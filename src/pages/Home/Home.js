@@ -13,6 +13,9 @@ const cn = {
     item: 'list-item-main-category',
 }
 
+
+const _workSubCategory = ['brand', 'fashion', 'art', 'graphic', 'object', 'food styling'];
+
 @withRouter
 @inject('categoryStore', 'loginStore')
 @observer
@@ -46,7 +49,7 @@ class Home extends Component {
                 <main className={cx('main')}>
                     <div className={cx('wrapper-brand-logo')}><span>HR ARCHIVE</span></div>
                     <nav className={cx(cn.list)}>
-                        {
+                        {/* {
                             categories.length > 0 ? categories.map(category => {
                                 const { name } = category;
                                 return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
@@ -55,7 +58,48 @@ class Home extends Component {
                                 </Link>
                             })
                                 : <div></div>
-                        }
+                        } */}
+                        <Link to={`/about`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                            <span>HERA KIM</span>
+                        </li>
+                        </Link>
+                        <Link to={`/projects`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
+                            <span>PROJECTS</span>
+                        </li>
+                        </Link>
+                        <Link to={`/archive`} className={cx('link-nav-item', 'link-nav-item--archive')}>
+                            <li className={cx(cn.item)}>
+                                <span>ARCHIVE</span>
+                                <ul className={cx('archive-sub-category')}>
+                                    {
+                                        categories.length > 0 ? categories.map((category, idx) => {
+                                            const { name } = category;
+                                            console.log(name)
+                                            return <div key={name} to={`/archive/${name}`} className={cx('')}>
+                                                <li className={cx('')}>
+                                                    <span>{name}</span>
+                                                    {
+                                                        name === 'Work' &&
+                                                        <ul className={cx('work-sub-category')}>
+                                                            {
+                                                                _workSubCategory.map((category, i) => {
+                                                                    return <div key={category} to={`/archive/work/${category}`} className={cx('')}><li className={cx('')}>
+                                                                        <span>{category}</span>
+                                                                    </li>
+                                                                    </div>
+                                                                })
+                                                            }
+                                                        </ul>
+
+                                                    }
+                                                </li>
+                                            </div>
+                                        })
+                                            : <div></div>
+                                    }
+                                </ul>
+                            </li>
+                        </Link>
                     </nav>
                 </main>
                 {
