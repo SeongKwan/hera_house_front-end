@@ -18,37 +18,6 @@
     overflow: hidden;
     position: relative;
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0.5rem 1.3rem;
-        width: 100%;
-        height: 5.5vh;
-
-        .concept-title span {
-            font-size: 1.8rem;
-            font-weight: 400;
-        }
-
-        nav ul {
-            display: flex;
-            align-items: center;
-            margin: 0;
-            padding: 0 2.5rem;
-            li {
-                list-style: none;
-                padding: 0 1rem;
-                font-size: 1.8rem;
-                font-weight: 400;
-
-                &:nth-child(2) {
-                    margin: 0 2.5rem;
-                }
-            }
-        }
-    }
-
     .identity {
         margin: 1.3rem;
         margin-top: 5rem;

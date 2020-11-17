@@ -6,12 +6,9 @@ import classNames from 'classnames/bind';
 import { inject, observer } from 'mobx-react';
 import { IoIosSettings } from "react-icons/io";
 import { Helmet } from "react-helmet";
+import DesktopLayout from '../../layout/DesktopLayout';
 
 const cx = classNames.bind(styles);
-const cn = {
-    list: 'list-main-category',
-    item: 'list-item-main-category',
-}
 
 const _workSubCategory = ['brand', 'fashion', 'art', 'graphic', 'object', 'food styling'];
 
@@ -45,35 +42,25 @@ class Home extends Component {
                     {/* <meta http-equiv="Reply-To" content="we@naver.com" /> 
                     <meta http-equiv="Email" content="naver@naver.com" /> */}
                 </Helmet>
-                <header>
-                    <div className={cx('concept-title')}>
-                        <span>BLACK ENDING</span>
-                    </div>
-                    <nav className={cx('home-nav')}>
-                        <ul>
-                            <li className={cx('nav-item', 'nav-item--herakim')}>HERA KIM</li>
-                            <li className={cx('nav-item', 'nav-item--projects')}>PROJECTS</li>
-                            <li className={cx('nav-item', 'nav-item--archives')}>ARCHIVES</li>
-                        </ul>
-                    </nav>
-                </header>
-                <div className={cx('identity')}>
-                    <p>Republic Korea based</p>
-                    <p>Design & Styling with</p>
-                    <p>Personally Concept Projects by</p>
-                    <p>Design director Hera Kim</p>
+                <DesktopLayout>
+                    <div className={cx('identity')}>
+                        <p>Republic Korea based</p>
+                        <p>Design & Styling with</p>
+                        <p>Personally Concept Projects by</p>
+                        <p>Design director Hera Kim</p>
 
-                    <span className={cx('site-name')}>HR ARCHIVE</span>
-                </div>
-                <div className={cx('concept-point')}>
-                    <p>When all colors</p>
-                    <p>are combined,</p>
-                    <p>the end is clearly BLACK</p>
-                </div>
-                <div className={cx('sns')}>
-                    <div className={cx('youtube')}>Youtube</div>
-                    <div className={cx('instagram')}>Instagram</div>
-                </div>
+                        <span className={cx('site-name')}>HR ARCHIVE</span>
+                    </div>
+                    <div className={cx('concept-point')}>
+                        <p>When all colors</p>
+                        <p>are combined,</p>
+                        <p>the end is clearly BLACK</p>
+                    </div>
+                    <div className={cx('sns')}>
+                        <div className={cx('youtube')}>Youtube</div>
+                        <div className={cx('instagram')}>Instagram</div>
+                    </div>
+                </DesktopLayout>
             </div>
         );
     }

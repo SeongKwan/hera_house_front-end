@@ -1,5 +1,4 @@
 @import "./resetCSS";
-@import "./bootstrap";
 @import "./animate";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;800&display=swap");
 html,
@@ -21,14 +20,6 @@ div#root {
     height: 100%;
     width: 100%;
 }
-
-// *,
-// *:before,
-// *:after {
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: inherit;
-// }
 
 [contenteditable] {
     user-select: text;
