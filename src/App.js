@@ -17,7 +17,7 @@ import Projects from './pages/Projects/Projects';
 const routes = [
   { path: '/', name: 'Home', Component: Home, exact: true },
   { path: '/about', name: 'HERA KIM', Component: About },
-  { path: '/archive', name: 'Archive', Component: Archive },
+  { path: '/archives', name: 'Archive', Component: Archive },
   { path: '/admin', name: 'Admin Board', Component: Admin },
   { path: '/projects', name: 'PROJECTS', Component: Projects },
 

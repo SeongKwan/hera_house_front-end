@@ -15,8 +15,8 @@ class DesktopLayout extends Component {
                     <nav className={cx('home-nav')}>
                         <ul>
                             <li className={cx('nav-item', 'nav-item--herakim')}><Link to={`/about`}>HERA KIM</Link></li>
-                            <li className={cx('nav-item', 'nav-item--projects')}>PROJECTS</li>
-                            <li className={cx('nav-item', 'nav-item--archives')}>ARCHIVES</li>
+                            <li className={cx('nav-item', 'nav-item--projects')}><Link to={`/projects`}>PROJECTS</Link></li>
+                            <li className={cx('nav-item', 'nav-item--archives')}><Link to={`/archives`}>ARCHIVES</Link></li>
                         </ul>
                     </nav>
                 </header>

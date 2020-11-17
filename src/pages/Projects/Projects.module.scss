@@ -1,2 +1,86 @@
 .Projects {
+    background-color: $white;
+    position: relative;
+    height: 100%;
+
+    .flex-box {
+        background-color: $white;
+        height: 100%;
+        padding: 0 0.8rem 5rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .breadcrumb {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin: 3rem 0;
+    }
+
+    .grid-container {
+        padding-top: 2rem;
+        width: calc(540px * 3 + 48px);
+        margin: auto;
+        @include media("xl") {
+            width: calc(540px * 2 + 32px);
+        }
+        @include media("lg") {
+            // width: calc(540px * 1 + 48px);
+            width: 100%;
+        }
+        @include media("md") {
+        }
+        @include media("sm") {
+        }
+        @include media("sm") {
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -1.3rem;
+            padding: 0 1.3rem;
+
+            .list-item {
+                position: relative;
+                border-radius: 2px;
+                margin: 8px;
+                overflow: hidden;
+                transition: opacity 300ms ease;
+                @include media("lg") {
+                    width: calc(50% - 1rem);
+                }
+                @include media("md") {
+                    width: 100%;
+                }
+
+                .image {
+                    background-color: lightgray;
+                    width: 540px;
+                    height: 540px;
+
+                    @include media("lg") {
+                        width: 100%;
+                    }
+                    @include media("md") {
+                        width: 100%;
+                        height: 36rem;
+                    }
+                    @include media("sm") {
+                        height: 20rem;
+                    }
+                }
+
+                .list-item-title {
+                    text-align: center;
+                    margin: 2.5rem 0 1.5rem;
+                    font-size: 1.4rem;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
 }

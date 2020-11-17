@@ -8,42 +8,43 @@
     &.no-posts {
         height: 100%;
     }
-    @include media('md') {
+    @include media("md") {
         margin: -0.25rem 0rem 0 0;
     }
     .list-item-post--clothing,
     .fake-container--clothing {
         height: 810px;
     }
-    
-    .list-item-post, .fake-container {
+
+    .list-item-post,
+    .fake-container {
         background-color: lightgray;
         border-radius: 2px;
         margin: 8px;
         overflow: hidden;
         width: 540px;
         transition: opacity 300ms ease;
-        
-        @include media('lg') {
+
+        @include media("lg") {
             width: calc(50% - 1rem);
             height: 100%;
         }
-        @include media('sm') {
+        @include media("sm") {
             width: 100%;
         }
-
-        
 
         &:hover {
             opacity: 0.85;
         }
 
-        .img, .fake-box {
+        .img,
+        .fake-box {
             width: 100%;
             height: auto;
         }
 
-        .img--clothing, .fake-box--clothing {
+        .img--clothing,
+        .fake-box--clothing {
             min-height: 540px;
         }
 
@@ -53,7 +54,7 @@
             background-color: $fake-box-color;
         }
     }
-    
+
     .no-posts {
         align-items: center;
         display: flex;
@@ -61,10 +62,10 @@
         flex-direction: column;
         margin-top: 6rem;
         width: 100%;
-        @include media('md') {
+        @include media("md") {
             width: 100%;
         }
-        
+
         img {
             width: 100px;
         }
@@ -73,6 +74,5 @@
             margin-top: 1rem;
             font-weight: 100;
         }
-
     }
 }
