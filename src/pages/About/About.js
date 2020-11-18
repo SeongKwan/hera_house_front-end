@@ -14,7 +14,7 @@ class About extends Component {
                 <Helmet>
                     <title>HR Archive - HeraKim</title>
                     <link rel="canonical" href={`http://hr-archive.com/about`} />
-                    <meta http-equiv="Title" content={`HR Archive - Hera Kim`} />
+                    <meta http-equiv="Title" content={`HR ARCHIVE - HERA KIM`} />
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="HR Archive Archive" />
                 </Helmet>

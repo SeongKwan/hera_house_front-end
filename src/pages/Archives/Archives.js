@@ -24,7 +24,7 @@ class Archives extends Component {
                 <Helmet>
                     <title>HR Archive - Archives</title>
                     <link rel="canonical" href={`http://hr-archive.com/archives`} />
-                    <meta http-equiv="Title" content={`HR Archive - Archives`} />
+                    <meta http-equiv="Title" content={`HR ARCHIVE - ARCHIVES`} />
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="HR Archive Archive" />
                 </Helmet>

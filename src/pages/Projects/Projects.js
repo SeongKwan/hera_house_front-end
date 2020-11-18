@@ -22,7 +22,7 @@ class Projects extends Component {
                 <Helmet>
                     <title>HR Archive - Projects</title>
                     <link rel="canonical" href={`http://hr-archive.com/projects`} />
-                    <meta http-equiv="Title" content={`HR Archive - Projects`} />
+                    <meta http-equiv="Title" content={`HR ARCHIVE - PROJECTS`} />
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="HR Archive Archive" />
                 </Helmet>

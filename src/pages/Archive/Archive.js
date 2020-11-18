@@ -72,7 +72,7 @@ class Archive extends Component {
                 <Helmet>
                     <title>HR Archive - {currentCategory}</title>
                     <link rel="canonical" href={`http://hr-archive.com/archives/${currentCategory}`} />
-                    <meta http-equiv="Title" content={`HR Archive - ${currentCategory}`} />
+                    <meta http-equiv="Title" content={`HR ARCHIVE - ${currentCategory}`} />
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="HR Archive Archive" />
                 </Helmet>
