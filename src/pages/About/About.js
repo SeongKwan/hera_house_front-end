@@ -12,7 +12,7 @@ class About extends Component {
         return (
             <div className={cx('About')}>
                 <Helmet>
-                    <title>HR Archive - HeraKim</title>
+                    <title>HR ARCHIVE - HERA KIM</title>
                     <link rel="canonical" href={`http://hr-archive.com/about`} />
                     <meta http-equiv="Title" content={`HR ARCHIVE - HERA KIM`} />
                     <meta name="Keywords" content="fashion, brand, design, art, music" />

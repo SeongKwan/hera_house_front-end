@@ -22,7 +22,7 @@ class Archives extends Component {
         return (
             <div className={cx('Archives')}>
                 <Helmet>
-                    <title>HR Archive - Archives</title>
+                    <title>HR ARCHIVE - ARCHIVES</title>
                     <link rel="canonical" href={`http://hr-archive.com/archives`} />
                     <meta http-equiv="Title" content={`HR ARCHIVE - ARCHIVES`} />
                     <meta name="Keywords" content="fashion, brand, design, art, music" />

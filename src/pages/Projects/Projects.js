@@ -20,7 +20,7 @@ class Projects extends Component {
         return (
             <div className={cx('Projects')}>
                 <Helmet>
-                    <title>HR Archive - Projects</title>
+                    <title>HR ARCHIVE - PROJECTS</title>
                     <link rel="canonical" href={`http://hr-archive.com/projects`} />
                     <meta http-equiv="Title" content={`HR ARCHIVE - PROJECTS`} />
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
