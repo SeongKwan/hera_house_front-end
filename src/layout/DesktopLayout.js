@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import styles from './DesktopLayout.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
-
+const _subCategory = ['Work', 'Clothing', 'Daily', 'Photo', 'Share', 'Sounds'];
+const _workSubCategory = ['brand', 'fashion', 'art', 'graphic', 'object', 'food styling'];
 class DesktopLayout extends Component {
     render() {
         return (
@@ -16,7 +17,17 @@ class DesktopLayout extends Component {
                         <ul>
                             <li className={cx('nav-item', 'nav-item--herakim')}><Link to={`/about`}>HERA KIM</Link></li>
                             <li className={cx('nav-item', 'nav-item--projects')}><Link to={`/projects`}>PROJECTS</Link></li>
-                            <li className={cx('nav-item', 'nav-item--archives')}><Link to={`/archives`}>ARCHIVES</Link></li>
+                            <li className={cx('nav-item', 'nav-item--archives')}>
+                                <Link to={`/archives`}>ARCHIVES</Link>
+
+                            </li>
+                            {/* <ul className={cx('sub-nav')}>
+                                {
+                                    _subCategory.map((category, i) => {
+                                        return <li key={`sub-nav-item-${i}`} className={cx('sub-nav-item')}>{category}</li>
+                                    })
+                                }
+                            </ul> */}
                         </ul>
                     </nav>
                 </header>

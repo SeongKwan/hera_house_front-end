@@ -25,6 +25,7 @@
 
         // Main Category
         nav ul {
+            position: relative;
             display: flex;
             align-items: center;
             margin: 0;
@@ -37,6 +38,11 @@
                 &:nth-child(2) {
                     margin: 0 4.5rem;
                 }
+            }
+            .sub-nav {
+                position: absolute;
+                left: 0;
+                top: 100%;
             }
         }
     }

@@ -7,7 +7,7 @@ import {
   Route
 } from "react-router-dom";
 import Home from './pages/Home/Home';
-import Archive from './pages/Archive/Archive';
+import Archives from './pages/Archives/Archives';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Admin from './pages/Admin/Admin';
 import { inject, observer } from 'mobx-react';
@@ -17,7 +17,7 @@ import Projects from './pages/Projects/Projects';
 const routes = [
   { path: '/', name: 'Home', Component: Home, exact: true },
   { path: '/about', name: 'HERA KIM', Component: About },
-  { path: '/archives', name: 'Archive', Component: Archive },
+  { path: '/archives', name: 'Archives', Component: Archives },
   { path: '/admin', name: 'Admin Board', Component: Admin },
   { path: '/projects', name: 'PROJECTS', Component: Projects },
 

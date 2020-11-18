@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import styles from './Projects.module.scss';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import {
+    Switch,
+    Route,
+    Link,
+} from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
 
@@ -11,6 +15,8 @@ const cx = classNames.bind(styles);
 @withRouter
 class Projects extends Component {
     render() {
+        const title = this.props.location.pathname.split('/')[2];
+        let { path } = this.props.match;
         return (
             <div className={cx('Projects')}>
                 <Helmet>
@@ -24,21 +30,33 @@ class Projects extends Component {
                     <div className={cx('flex-box')}>
                         <div className={cx('breadcrumb')}>
                             <span>PROJECTS</span>
+                            {
+                                title !== undefined ?
+                                    <span>{` : ${title}`}</span>
+                                    : <span></span>
+                            }
                         </div>
-                        <div className={cx('grid-container')}>
-                            <ul className={cx('grid')}>
-                                <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                            </ul>
-                        </div>
+                        <Switch>
+                            <Route exact path={`${path}`}>
+                                <div className={cx('grid-container')}>
+                                    <ul className={cx('grid')}>
+                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                    </ul>
+                                </div>
+                            </Route>
+                            <Route path={`${path}/:title/:id`}>
+                                <div>project details page</div>
+                            </Route>
+                        </Switch>
                     </div>
-                </DesktopLayout>
 
+                </DesktopLayout>
             </div>
         );
     }

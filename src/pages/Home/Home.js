@@ -10,7 +10,7 @@ import DesktopLayout from '../../layout/DesktopLayout';
 
 const cx = classNames.bind(styles);
 
-const _workSubCategory = ['brand', 'fashion', 'art', 'graphic', 'object', 'food styling'];
+
 
 @withRouter
 @inject('categoryStore', 'loginStore')
