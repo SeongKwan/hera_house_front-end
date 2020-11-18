@@ -55,7 +55,7 @@
                         }
 
                         .sub-nav {
-                            display: none;
+                            display: flex;
                             position: absolute;
                             left: 50%;
                             top: 100%;
@@ -94,21 +94,21 @@
                             .sub-nav-item {
                                 .work-sub {
                                     display: none;
-                                    position: absolute;
+                                    // position: absolute;
                                     margin: 0;
                                     padding: 0;
-                                    padding-right: 1.3rem;
+                                    padding-bottom: 1rem;
+                                    // padding-right: 1.3rem;
                                     right: calc(100%);
                                     top: 0;
                                     flex-direction: column;
                                     & > li.work-sub-item {
                                         list-style: none;
-                                        font-size: 1.5rem;
+                                        font-size: 1.2rem;
                                         font-weight: 400;
 
-                                        &:not(:last-child) a {
-                                            padding-bottom: 1rem;
-                                        }
+                                        padding-bottom: 1rem;
+
                                         & > a {
                                             width: 100%;
                                             text-align: center;
