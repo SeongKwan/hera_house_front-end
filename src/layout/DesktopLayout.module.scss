@@ -1,6 +1,6 @@
 .DesktopLayout {
-    height: 100%;
     position: relative;
+    height: 100%;
     a {
         color: inherit;
         text-decoration: none;
@@ -15,9 +15,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.5rem 1.3rem;
-        width: 100%;
-        height: 5.5vh;
+        padding: 0rem 1.3rem;
 
         .concept-title span {
             font-size: 1.8rem;
@@ -32,7 +30,7 @@
                 display: flex;
                 align-items: center;
                 margin: 0;
-                padding: 0 2.5rem;
+
                 & > li {
                     list-style: none;
                     font-size: 1.8rem;
