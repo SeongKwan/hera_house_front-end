@@ -19,15 +19,26 @@ class DesktopLayout extends Component {
                             <li className={cx('nav-item', 'nav-item--projects')}><Link to={`/projects`}>PROJECTS</Link></li>
                             <li className={cx('nav-item', 'nav-item--archives')}>
                                 <Link to={`/archives`}>ARCHIVES</Link>
-
+                                <ul className={cx('sub-nav')}>
+                                    {
+                                        _subCategory.map((category, i) => {
+                                            return <li key={`sub-nav-item-${i}`} className={cx('sub-nav-item', `sub-nav-item--${category}`)}>
+                                                <Link to={`/archives/${category}`}>{category}</Link>
+                                                {
+                                                    category === "Work" &&
+                                                    <ul className={cx('work-sub')}>
+                                                        {_workSubCategory.map((category, i) => {
+                                                            return <li key={`work-sub-item-${i}`} className={cx('work-sub-item')}>
+                                                                <Link to={`/archives/work/${category}`}>{category}</Link>
+                                                            </li>
+                                                        })}
+                                                    </ul>
+                                                }
+                                            </li>
+                                        })
+                                    }
+                                </ul>
                             </li>
-                            {/* <ul className={cx('sub-nav')}>
-                                {
-                                    _subCategory.map((category, i) => {
-                                        return <li key={`sub-nav-item-${i}`} className={cx('sub-nav-item')}>{category}</li>
-                                    })
-                                }
-                            </ul> */}
                         </ul>
                     </nav>
                 </header>
