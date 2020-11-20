@@ -18,7 +18,7 @@ class About extends Component {
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="HR Archive Archive" />
                 </Helmet>
-                <DesktopLayout>
+                <DesktopLayout fadeIn>
                     <div className={cx('flex-box')}>
                         <div className={cx('owner-name')}>
                             <span>HERA KIM</span>

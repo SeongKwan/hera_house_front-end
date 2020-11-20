@@ -28,7 +28,7 @@ class Archives extends Component {
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="HR Archive Archive" />
                 </Helmet>
-                <DesktopLayout>
+                <DesktopLayout fadeUp>
                     <div className={cx('flex-box')}>
                         <div className={cx('breadcrumb')}>
                             <span>ARCHIVES</span>

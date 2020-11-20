@@ -53,7 +53,7 @@ class DesktopLayout extends Component {
                             </ul>
                         </nav>
                     </header>
-                    <main>
+                    <main className={cx({ 'fadeUp': this.props.fadeUp }, { 'fadeIn': this.props.fadeIn })}>
                         {this.props.children}
                     </main>
                 </div>

@@ -36,7 +36,7 @@ class Home extends Component {
                     {/* <meta http-equiv="Reply-To" content="we@naver.com" /> 
                     <meta http-equiv="Email" content="naver@naver.com" /> */}
                 </Helmet>
-                <DesktopLayout>
+                <DesktopLayout fadeIn>
                     <div className={cx('identity')}>
                         <p>Republic Korea based</p>
                         <p>Design & Styling with</p>
@@ -56,7 +56,7 @@ class Home extends Component {
                     </div>
                 </DesktopLayout>
             </div>
-        ); return <div className={cx('Home')}></div>
+        );
 
     }
 }
@@ -64,66 +64,3 @@ class Home extends Component {
 export default Home;
 
 
-
-{/* <main className={cx('main')}>
-                    <div className={cx('wrapper-brand-logo')}><span>HR ARCHIVE</span></div>
-                    <nav className={cx(cn.list)}>
-                        {
-                            categories.length > 0 ? categories.map(category => {
-                                const { name } = category;
-                                return <Link key={name} to={`/archive/${name}`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                                    <span>{name}</span>
-                                </li>
-                                </Link>
-                            })
-                                : <div></div>
-                        }
-                        <Link to={`/about`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                            <span>HERA KIM</span>
-                        </li>
-                        </Link>
-                        <Link to={`/projects`} className={cx('link-nav-item')}><li className={cx(cn.item)}>
-                            <span>PROJECTS</span>
-                        </li>
-                        </Link>
-                        <Link to={`/archive`} className={cx('link-nav-item', 'link-nav-item--archive')}>
-                            <li className={cx(cn.item)}>
-                                <span>ARCHIVE</span>
-                                <ul className={cx('archive-sub-category')}>
-                                    {
-                                        categories.length > 0 ? categories.map((category, idx) => {
-                                            const { name } = category;
-                                            console.log(name)
-                                            return <div key={name} to={`/archive/${name}`} className={cx('')}>
-                                                <li className={cx('')}>
-                                                    <span>{name}</span>
-                                                    {
-                                                        name === 'Work' &&
-                                                        <ul className={cx('work-sub-category')}>
-                                                            {
-                                                                _workSubCategory.map((category, i) => {
-                                                                    return <div key={category} to={`/archive/work/${category}`} className={cx('')}><li className={cx('')}>
-                                                                        <span>{category}</span>
-                                                                    </li>
-                                                                    </div>
-                                                                })
-                                                            }
-                                                        </ul>
-
-                                                    }
-                                                </li>
-                                            </div>
-                                        })
-                                            : <div></div>
-                                    }
-                                </ul>
-                            </li>
-                        </Link>
-                    </nav>
-                </main>
-                {
-                    isLoggedIn &&
-                    <div className={cx('floating-container')}>
-                        <button onClick={() => this.props.history.push('/admin')}><IoIosSettings className={cx('icon')} /></button>
-                    </div>
-                } */}
