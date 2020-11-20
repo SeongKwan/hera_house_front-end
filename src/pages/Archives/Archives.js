@@ -52,7 +52,7 @@ class Archives extends Component {
                             <Route exact path={`${path}`}>
                                 <div className={cx('grid-container')}>
                                     <ul className={cx('grid')}>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link to={`/viewer`}><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
                                         <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
                                         <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
                                         <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>

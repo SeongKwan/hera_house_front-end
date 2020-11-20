@@ -13,6 +13,7 @@ import Admin from './pages/Admin/Admin';
 import { inject, observer } from 'mobx-react';
 import About from './pages/About/About';
 import Projects from './pages/Projects/Projects';
+import Viewer from './pages/Viewer/Viewer';
 
 const routes = [
   { path: '/', name: 'Home', Component: Home, exact: true },
@@ -20,6 +21,7 @@ const routes = [
   { path: '/archives', name: 'Archives', Component: Archives },
   { path: '/admin', name: 'Admin Board', Component: Admin },
   { path: '/projects', name: 'PROJECTS', Component: Projects },
+  { path: '/viewer', name: 'Viewer', Component: Viewer },
 
   { path: '*', name: 'NotFoundPage', Component: NotFoundPage },
 ]

@@ -32,6 +32,20 @@ class CategoryStore {
                 throw err;
             }))
     }
+    @action loadSubCategories() {
+        console.log('load sub categories');
+        this.isLoading = true;
+        return agent.loadSubCategories()
+            .then(action((res) => {
+                this.registry = _.sortBy(res.data, 'order');
+                this.isLoading = false;
+                return res.data;
+            }))
+            .catch(action((err) => {
+                this.isLoading = false;
+                throw err;
+            }))
+    }
 
     @action createCategory() {
         this.isLoading = true;
@@ -46,6 +60,22 @@ class CategoryStore {
                 this.isLoading = false;
                 throw err;
             }))
+    }
+    @action createSubCategory() {
+        // console.log('create sub category');
+        // this.isLoading = true;
+        // const { name, description } = this.value;
+        // return agent.createSubCategory({ name: 'FOOD STYLING', description: "", mainCategory: "5ec26aa6a444624ceb030729" })
+        //     .then(action((res) => {
+        //         this.isLoading = false;
+        //         this.clearValue('name');
+        //         console.log(res.data);
+        //         return res.data;
+        //     }))
+        //     .catch(action((err) => {
+        //         this.isLoading = false;
+        //         throw err;
+        //     }))
     }
 
     @action updateCategoryOrder({ categories }) {

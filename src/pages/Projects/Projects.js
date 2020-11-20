@@ -17,6 +17,7 @@ class Projects extends Component {
     render() {
         const title = this.props.location.pathname.split('/')[2];
         let { path } = this.props.match;
+
         return (
             <div className={cx('Projects')}>
                 <Helmet>
@@ -40,7 +41,9 @@ class Projects extends Component {
                             <Route exact path={`${path}`}>
                                 <div className={cx('grid-container')}>
                                     <ul className={cx('grid')}>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link to={`/viewer?category=archives_work_objects&title=lovepoem&id=a9sed34`}><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link to={`/viewer?category=projects_fashion&title=blackending&id=a9sed34`}><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        <li className={cx('list-item')}><Link to={`/viewer?category=projects&title=blackending&id=a9sed34`}><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
                                         <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
                                         <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
                                         <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
+import { inject, observer } from 'mobx-react';
 import styles from './DesktopLayout.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
-const _subCategory = ['Work', 'Clothing', 'Daily', 'Photo', 'Share', 'Sounds'];
-const _workSubCategory = ['brand', 'fashion', 'art', 'graphic', 'object', 'food styling'];
+
+@withRouter
+@inject('categoryStore', 'loginStore')
+@observer
 class DesktopLayout extends Component {
     render() {
+        console.log(JSON.parse(JSON.stringify(this.props.mainCategories)));
         return (
             <div className={cx('DesktopLayout')}>
                 <header>
@@ -21,15 +26,15 @@ class DesktopLayout extends Component {
                                 <Link to={`/archives`}>ARCHIVES</Link>
                                 <ul className={cx('sub-nav')}>
                                     {
-                                        _subCategory.map((category, i) => {
-                                            return <li key={`sub-nav-item-${i}`} className={cx('sub-nav-item', `sub-nav-item--${category}`)}>
-                                                <Link to={`/archives/${category}`}>{category}</Link>
+                                        this.props.mainCategories.map((category, i) => {
+                                            return <li key={`sub-nav-item-${i}`} className={cx('sub-nav-item', `sub-nav-item--${category.name}`)}>
+                                                <Link to={`/archives/${category}`}>{category.name}</Link>
                                                 {
-                                                    category === "Work" &&
+                                                    category.name === "Work" &&
                                                     <ul className={cx('work-sub')}>
-                                                        {_workSubCategory.map((category, i) => {
+                                                        {category.subCategories.map((categoryWithSub, i) => {
                                                             return <li key={`work-sub-item-${i}`} className={cx('work-sub-item')}>
-                                                                <Link to={`/archives/work/${category}`}>{category}</Link>
+                                                                <Link to={`/archives/work/${categoryWithSub.name}`}>{categoryWithSub.name}</Link>
                                                             </li>
                                                         })}
                                                     </ul>

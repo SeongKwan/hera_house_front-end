@@ -50,8 +50,15 @@ class Agent {
         return this.get(`/categories`);
     }
 
+    loadSubCategories() {
+        return this.get(`/subcategories`);
+    }
+
     createCategory({ name, description }) {
         return this.post('/categories', { name, description });
+    }
+    createSubCategory({ name, description, mainCategory }) {
+        return this.post('/subcategories', { name, description, mainCategory });
     }
 
     updateCategoryOrder({ categories }) {
