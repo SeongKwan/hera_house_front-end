@@ -7,8 +7,12 @@
         opacity: 1;
     }
 }
-
 .Home {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
     background-image: url("../../styles/img/desktop_background.png");
     background-size: cover;
     background-repeat: no-repeat;
