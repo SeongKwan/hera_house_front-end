@@ -22,7 +22,7 @@
     .grid-container {
         padding-top: 2rem;
         width: calc(540px * 3 + 48px);
-        margin: auto;
+        // margin: auto;
         @include media("xl") {
             width: calc(540px * 2 + 32px);
         }
@@ -42,8 +42,10 @@
             flex-wrap: wrap;
             margin: -1.3rem;
             padding: 0 1.3rem;
+            padding-bottom: 5rem;
 
             .list-item {
+                list-style: none;
                 position: relative;
                 border-radius: 2px;
                 margin: 8px;
@@ -71,6 +73,11 @@
                     @include media("sm") {
                         height: 20rem;
                     }
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
                 }
 
                 .list-item-title {
@@ -79,6 +86,16 @@
                     font-size: 1.4rem;
                     font-weight: 300;
                     text-transform: uppercase;
+                    width: 540px;
+                    padding: 0 2rem;
+                    box-sizing: border-box;
+
+                    @include media("lg") {
+                        width: 100%;
+                    }
+                    @include media("md") {
+                        width: 100%;
+                    }
                 }
             }
         }

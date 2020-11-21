@@ -34,13 +34,13 @@ class DesktopLayout extends Component {
                                         {
                                             mainCategories.map((category, i) => {
                                                 return <li key={`sub-nav-item-${i}`} className={cx('sub-nav-item', `sub-nav-item--${category.name}`)}>
-                                                    <Link to={`/archives/${category}`}>{category.name}</Link>
+                                                    <Link to={`/archives/${category.name}`}>{category.name}</Link>
                                                     {
                                                         category.name === "Work" &&
                                                         <ul className={cx('work-sub')}>
                                                             {category.subCategories.map((categoryWithSub, i) => {
                                                                 return <li key={`work-sub-item-${i}`} className={cx('work-sub-item')}>
-                                                                    <Link to={`/archives/work/${categoryWithSub.name}`}>{categoryWithSub.name}</Link>
+                                                                    <Link to={`/archives/Work/${categoryWithSub.name}`}>{categoryWithSub.name}</Link>
                                                                 </li>
                                                             })}
                                                         </ul>

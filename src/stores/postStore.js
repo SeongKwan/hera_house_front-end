@@ -67,6 +67,20 @@ class PostStore {
             }))
     };
 
+    @action loadFilteredPosts({ type, category, subCategory }) {
+        this.isLoading = true;
+        return agent.loadFilteredPosts({ type, category, subCategory })
+            .then(action((res) => {
+                this.isLoading = false;
+                this.registry = res.data;
+                return res.data;
+            }))
+            .catch(action((err) => {
+                this.isLoading = false;
+                throw err;
+            }))
+    };
+
     @action loadPost(postId) {
         this.isLoading = true;
         return agent.loadPost(postId)
@@ -211,8 +225,37 @@ class PostStore {
             }))
     };
 
-    @action filterRegistry(posts, category) {
-        this.filteredRegistry = _.filter(posts, { category });
+    @action filterRegistry(posts, type, category, subCategory) {
+        // this.filteredRegistry = _.filter(posts, { type, category, subCategory });
+        let filter = { type, category, subCategory, };
+        console.log(filter);
+
+        this.filteredRegistry = _.filter(posts, (post) => {
+            console.log(post);
+            for (var key in filter) {
+                console.log(key);
+                if (post[key] === undefined || post[key] != filter[key])
+                    return false;
+            }
+            return true;
+        });
+        // this.filteredRegistry = posts.filter(function (item) {
+        //     console.log(item);
+        //     for (var key in filter) {
+        //         console.log(key);
+        //         if (item[key] === undefined || item[key] != filter[key])
+        //             return false;
+        //     }
+        //     return true;
+        // });
+
+        // users = users.filter(function (item) {
+        //     for (var key in filter) {
+        //         if (item[key] === undefined || item[key] != filter[key])
+        //             return false;
+        //     }
+        //     return true;
+        // });
     }
 
     @action clear() {

@@ -92,6 +92,10 @@ class Agent {
         return this.get(`/posts`);
     }
 
+    loadFilteredPosts({ type, category, subCategory }) {
+        return this.post(`/posts`, { type, category, subCategory });
+    }
+
     loadPost(postId) {
         return this.get(`/posts/${postId}`);
     }

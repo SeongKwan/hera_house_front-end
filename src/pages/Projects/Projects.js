@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import { inject, observer } from 'mobx-react';
 import styles from './Projects.module.scss';
 import classNames from 'classnames/bind';
 import {
@@ -9,14 +10,33 @@ import {
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
+import staticUrl from '../../constants/staticUrl';
 
 const cx = classNames.bind(styles);
 
 @withRouter
+@inject('postStore', 'categoryStore')
+@observer
 class Projects extends Component {
+    componentDidMount() {
+        this._initialize();
+    }
+
+    componentWillUnmount() {
+        this.props.postStore.clearRegistry();
+    }
+
+    _initialize = () => {
+        const type = this.props.location.pathname.split('/')[1]
+        this.props.postStore.loadFilteredPosts({ type });
+    }
+
     render() {
         const title = this.props.location.pathname.split('/')[2];
         let { path } = this.props.match;
+
+        let posts = this.props.postStore.registry;
+
 
         return (
             <div className={cx('Projects')}>
@@ -27,7 +47,7 @@ class Projects extends Component {
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="HR Archive Archive" />
                 </Helmet>
-                <DesktopLayout fadeUp>
+                <DesktopLayout fadeIn>
                     <div className={cx('flex-box')}>
                         <div className={cx('breadcrumb')}>
                             <span>PROJECTS</span>
@@ -41,20 +61,21 @@ class Projects extends Component {
                             <Route exact path={`${path}`}>
                                 <div className={cx('grid-container')}>
                                     <ul className={cx('grid')}>
-                                        <li className={cx('list-item')}><Link to={`/viewer?category=archives_work_objects&title=lovepoem&id=a9sed34`}><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link to={`/viewer?category=projects_fashion&title=blackending&id=a9sed34`}><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link to={`/viewer?category=projects&title=blackending&id=a9sed34`}><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
+                                        {
+                                            posts.length > 0 &&
+                                            posts.map((post, i) => {
+                                                return <li key={`projects-card-${post._id}}`} className={cx('list-item')}>
+                                                    <Link to={`/viewer?category=${post.type}&title=${post.title}&id=${post._id}`}>
+                                                        <div className={cx('image')}>
+                                                            <img src={`${staticUrl}/${post.thumbnail}`} alt="post thumbnail" />
+                                                        </div>
+                                                        <div className={cx('list-item-title')}>{post.title}</div>
+                                                    </Link>
+                                                </li>
+                                            })
+                                        }
                                     </ul>
                                 </div>
-                            </Route>
-                            <Route path={`${path}/:title/:id`}>
-                                <div>project details page</div>
                             </Route>
                         </Switch>
                     </div>
