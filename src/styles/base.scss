@@ -22,6 +22,7 @@ html {
 *:active,
 *:focus {
     cursor: none !important;
+    user-select: none !important;
 }
 
 div#root {

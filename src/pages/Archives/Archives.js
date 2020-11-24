@@ -74,10 +74,11 @@ class Archives extends Component {
                                     : <span></span>
                             }
                         </div>
+                        
                         <div className={cx('grid-container')}>
                             <ul className={cx('grid')}>
                                 {
-                                    posts.length > 0 &&
+                                    posts.length > 0 ?
                                     posts.map((post, i) => {
                                         return <li key={`projects-card-${post._id}}`} className={cx('list-item')}>
                                             <Link to={`/viewer?category=${post.type}_${post.category}_${post.subCategory}&title=${post.title}&id=${post._id}`}>
@@ -88,55 +89,10 @@ class Archives extends Component {
                                             </Link>
                                         </li>
                                     })
+                                    : <div>...?</div>
                                 }
                             </ul>
                         </div>
-                        <Switch>
-                            {/* <Route exact path={`${path}`}>
-                            </Route> */}
-                            {/* <Route exact path={`${path}/:subCategory`}>
-                                <div className={cx('grid-container')}>
-                                    <ul className={cx('grid')}>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                    </ul>
-                                </div>
-                            </Route>
-                            <Route exact path={`${path}/:subCategory/:title/:id`}>
-                                <div className={cx('grid-container')}>
-                                    <ul className={cx('grid')}>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                    </ul>
-                                </div>
-                            </Route>
-                            <Route exact path={`${path}/work/:aCategory`}>
-                                <div className={cx('grid-container')}>
-                                    <ul className={cx('grid')}>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                        <li className={cx('list-item')}><Link><div className={cx('image')}>img</div><div className={cx('list-item-title')}>black ending, 2020 12</div></Link></li>
-                                    </ul>
-                                </div>
-                            </Route>
-                            <Route path={`${path}/work/:aCategory/:title/:id`}>
-                                <h5>archives details page</h5>
-                            </Route> */}
-                        </Switch>
                     </div>
 
                 </DesktopLayout>
