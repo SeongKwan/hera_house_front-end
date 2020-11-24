@@ -33,6 +33,7 @@
         &:active,
         &:visited {
             color: inherit;
+            cursor: none !important;
         }
     }
     header {
@@ -78,12 +79,19 @@
                         position: relative;
                         &:hover {
                             .sub-nav {
-                                display: flex;
+                                // display: flex;
                             }
                         }
 
                         .sub-nav {
-                            display: none;
+                            &.active {
+                                max-height: 500px !important;
+                            }
+                            overflow: hidden;
+                            display: flex;
+                            transition: max-height 0.5s ease-in-out;
+                            // display: none;
+                            max-height: 0;
                             position: absolute;
                             left: 50%;
                             top: 100%;
@@ -102,40 +110,40 @@
                                 &:not(:last-child) a {
                                     padding-bottom: 1rem;
                                 }
+                                &:last-child {
+                                    padding-bottom: 5rem;
+                                }
 
                                 & > a {
                                     width: 100%;
                                     text-align: center;
                                     display: inline-block;
-                                    // padding: 0.3rem 0 1.6rem;
+                                    padding: 0.3rem 0 1.6rem;
                                 }
                             }
                             .sub-nav-item--Work {
                                 position: relative;
-                                &:hover {
-                                    ul.work-sub {
-                                        display: flex;
-                                    }
-                                }
                             }
 
                             .sub-nav-item {
                                 .work-sub {
-                                    display: none;
-                                    position: absolute;
+                                    &.active {
+                                        max-height: 500px !important;
+                                    }
+                                    transition: max-height 0.45s ease-in;
+                                    display: flex;
+                                    overflow: hidden;
+                                    max-height: 0;
                                     margin: 0;
                                     padding: 0;
-                                    // padding-bottom: 1rem;
-                                    padding-right: 1.3rem;
-                                    right: calc(100%);
-                                    top: 0;
+                                    // padding-right: 1.3rem;
+                                    // right: calc(100%);
+                                    // top: 0;
                                     flex-direction: column;
                                     & > li.work-sub-item {
                                         list-style: none;
                                         font-size: 1.2rem;
                                         font-weight: 400;
-
-                                        padding-bottom: 1rem;
 
                                         & > a {
                                             width: 100%;
@@ -145,6 +153,7 @@
                                             width: 100%;
                                             margin: 0;
                                             padding: 0;
+                                            padding-bottom: 1rem;
                                         }
                                     }
                                 }

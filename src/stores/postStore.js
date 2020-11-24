@@ -11,7 +11,9 @@ class PostStore {
     @observable value = {
         title: '',
         content: '',
+        type: '',
         category: '',
+        subCategory: '',
         createdAt: null,
         updatedAt: null,
         isPublished: false,
@@ -40,6 +42,14 @@ class PostStore {
     }
 
     @action changeValue(type, value) {
+        if (value === 'projects' && this.value['type'] === 'archives') {
+            console.log('??????')
+            this.value['category'] = '';
+            this.value['subCategory'] = '';
+        }
+        if (value !== 'Work' && this.value['category'] === 'Work') {
+            this.value['subCategory'] = '';
+        }
         this.value[type] = value;
     };
 
@@ -87,7 +97,9 @@ class PostStore {
             .then(action((res) => {
                 const {
                     title,
+                    type,
                     category,
+                    subCategory,
                     content,
                     thumbnail,
                     createdAt,
@@ -98,7 +110,9 @@ class PostStore {
                 this.value = {
                     ...this.value,
                     title,
+                    type,
                     category,
+                    subCategory,
                     content,
                     thumbnail,
                     createdAt,
@@ -122,7 +136,9 @@ class PostStore {
         const {
             title,
             content,
+            type,
             category,
+            subCategory,
             isPublished,
             thumbnail
         } = this.value;
@@ -130,7 +146,9 @@ class PostStore {
         return agent.createPost({
             title,
             content,
+            type,
             category,
+            subCategory,
             isPublished,
             thumbnail
         })
@@ -153,17 +171,22 @@ class PostStore {
         const {
             title,
             content,
+            type,
             category,
+            subCategory,
             createdAt,
             updatedAt,
             isPublished,
             thumbnail
         } = this.value;
 
+        
         return agent.updatePost(postId, {
             title,
             content,
+            type,
             category,
+            subCategory,
             createdAt,
             updatedAt,
             isPublished,
@@ -171,7 +194,7 @@ class PostStore {
         })
             .then(action((res) => {
                 this.isLoading = false;
-                return res.data;
+                return res.data.updatedPost;
             }))
             .catch(action((err) => {
                 this.isLoading = false;
@@ -185,7 +208,9 @@ class PostStore {
             _id,
             title,
             content,
+            type,
             category,
+            subCategory,
             createdAt,
             updatedAt,
             isPublished,
@@ -195,7 +220,9 @@ class PostStore {
         return agent.updatePost(_id, {
             title,
             content,
+            type,
             category,
+            subCategory,
             createdAt,
             updatedAt,
             isPublished: !isPublished,
@@ -226,7 +253,6 @@ class PostStore {
     };
 
     @action filterRegistry(posts, type, category, subCategory) {
-        // this.filteredRegistry = _.filter(posts, { type, category, subCategory });
         let filter = { type, category, subCategory, };
         console.log(filter);
 
@@ -239,23 +265,6 @@ class PostStore {
             }
             return true;
         });
-        // this.filteredRegistry = posts.filter(function (item) {
-        //     console.log(item);
-        //     for (var key in filter) {
-        //         console.log(key);
-        //         if (item[key] === undefined || item[key] != filter[key])
-        //             return false;
-        //     }
-        //     return true;
-        // });
-
-        // users = users.filter(function (item) {
-        //     for (var key in filter) {
-        //         if (item[key] === undefined || item[key] != filter[key])
-        //             return false;
-        //     }
-        //     return true;
-        // });
     }
 
     @action clear() {
@@ -269,7 +278,9 @@ class PostStore {
         this.value = {
             title: '',
             content: '',
+            type: '',
             category: '',
+            subCategory: '',
             isPublished: false,
             thumbnail: ''
         };

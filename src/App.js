@@ -14,6 +14,7 @@ import { inject, observer } from 'mobx-react';
 import About from './pages/About/About';
 import Projects from './pages/Projects/Projects';
 import Viewer from './pages/Viewer/Viewer';
+import Cursor from './components/Cursor/Cursor';
 
 const routes = [
   { path: '/', name: 'Home', Component: Home, exact: true },

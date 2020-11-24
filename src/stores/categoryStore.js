@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 class CategoryStore {
     @observable registry = [];
+    @observable registryForSubCategories = [];
     @observable isLoading = false;
     @observable value = {
         name: '',
@@ -37,7 +38,7 @@ class CategoryStore {
         this.isLoading = true;
         return agent.loadSubCategories()
             .then(action((res) => {
-                this.registry = _.sortBy(res.data, 'order');
+                this.registryForSubCategories = _.sortBy(res.data, 'order');
                 this.isLoading = false;
                 return res.data;
             }))

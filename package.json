@@ -51,7 +51,7 @@
     "mobx-react": "^6.1.8",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.28",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.6.4",
     "popper.js": "^1.16.1",

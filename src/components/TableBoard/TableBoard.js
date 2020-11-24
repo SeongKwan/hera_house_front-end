@@ -75,12 +75,12 @@ class TableBoard extends Component {
             <div className={cx('TableBoard')}>
 
                 <div className={cx('table-header')}>
-                    {['분류', '제목', '생성일', '수정일', '공개', ''].map((th, i) => { return <div className={cx('table-header-data', `${i + 1}`)} key={i}>{th}</div> })}
+                    {['유형','대분류','소분류', '제목', '생성일', '수정일', '공개', ''].map((th, i) => { return <div className={cx('table-header-data', `${i + 1}`)} key={i}>{th}</div> })}
                 </div>
                 <ul className={cx('table-body', { isLoading })}>
                     {
                         !isLoading ? paginatedContents.length > 0 ? paginatedContents.map((post, i) => {
-                            const { _id, title, category, createdAt, updatedAt, isPublished } = post;
+                            const { _id, title, type, category, subCategory, createdAt, updatedAt, isPublished } = post;
                             let formatedUpdatedDate;
 
                             let formatedCreatedDate = getLocaleFullDateWithTime(createdAt) || '-';
@@ -91,7 +91,9 @@ class TableBoard extends Component {
                             }
 
                             return <li key={i}>
+                                <div>{type}</div>
                                 <div>{category}</div>
+                                <div>{subCategory}</div>
                                 <div className={cx('title')} onClick={() => { this._handleClickOnListItem(_id) }}>{title}</div>
                                 <div>{formatedCreatedDate || '-'}</div>
                                 {updatedAt === null ? <div>-</div> :

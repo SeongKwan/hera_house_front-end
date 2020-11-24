@@ -52,13 +52,13 @@ class Admin extends Component {
                             </LayoutAdmin>
                         </LayoutAdminMain>
                     </Route> */}
-                    <Route path={`${path}/category`}>
+                    {/* <Route path={`${path}/category`}>
                         <LayoutAdminMain path={path}>
                             <LayoutAdmin sectionTitle="카테고리 관리">
                                 <AdminCategory />
                             </LayoutAdmin>
                         </LayoutAdminMain>
-                    </Route>
+                    </Route> */}
                     <Route path={`${path}/post`} exact>
                         <LayoutAdminMain path={path}>
                             <LayoutAdmin sectionTitle="게시물 관리">

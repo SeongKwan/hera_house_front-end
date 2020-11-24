@@ -61,7 +61,7 @@
         display: flex;
         padding: 0rem 1rem;
 
-        .category {
+        .type, .category, .subCategory {
             align-items: center;
             display: flex;
             font-size: 1.2rem;
@@ -93,7 +93,7 @@
                 border-radius: $radius-easy;
                 cursor: pointer;
                 display: flex;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
                 margin-bottom: 0;
                 padding: 0.5rem 1rem;
             }

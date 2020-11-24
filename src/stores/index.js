@@ -6,6 +6,7 @@ import editorStore from './editorStore';
 import loginStore from './loginStore';
 import postStore from './postStore';
 import tableStore from './tableStore';
+import cursorStore from './cursorStore';
 
 const stores = {
     authStore,
@@ -15,7 +16,8 @@ const stores = {
     editorStore,
     loginStore,
     postStore,
-    tableStore
+    tableStore,
+    cursorStore,
 }
 
 export default stores;

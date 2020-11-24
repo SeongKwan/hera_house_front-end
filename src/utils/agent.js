@@ -107,7 +107,9 @@ class Agent {
     updatePost(postId, {
         title,
         content,
+        type,
         category,
+        subCategory,
         createdAt,
         updatedAt,
         isPublished,
@@ -116,7 +118,9 @@ class Agent {
         return this.patch(`/posts/${postId}`, {
             title,
             content,
+            type,
             category,
+            subCategory,
             createdAt,
             updatedAt,
             isPublished,

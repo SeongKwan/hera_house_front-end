@@ -108,13 +108,9 @@ class Editor extends Component {
         },
     };
 
-
-
     componentDidMount() {
         const { type } = this.props;
         this._initialize(type);
-        // console(this.quillEditor);
-
     }
 
     componentWillUnmount() {
@@ -126,16 +122,21 @@ class Editor extends Component {
         console.log('image handler');
     }
 
-
     _initialize = async (type) => {
         this.props.editorStore.setLoadingState(true);
 
         const { postId } = this.props.match.params;
         await this.props.categoryStore.loadCategories()
             .then(res => {
-                this.props.postStore.changeValue('category', res.find((el) => el['order'] === 1).name);
+                this.props.postStore.changeValue('category', '');
             })
             .catch(err => alert(err));
+        await this.props.categoryStore.loadSubCategories()
+            .then(res => {
+                this.props.postStore.changeValue('subCategory', '');
+            })
+            .catch(err => alert(err));
+        
         if (type === 'edit') {
             await this.props.postStore.loadPost(postId)
                 .then(res => {
@@ -226,9 +227,10 @@ class Editor extends Component {
                 this.setState({ leaving: !this.state.leaving });
                 return this.props.postStore.updatePost(postId)
                     .then((res) => {
-                        if (window.confirm('수정된 글을 확인하러 가시겠습니까?')) {
-                            return this.props.history.push(`/archive/${category}/${postId}`);
-                        }
+                        // if (window.confirm('수정된 글을 확인하러 가시겠습니까?')) {
+                        //     if (res.type === 'archives') return this.props.history.push(`/viewer?category=${res.type}_${res.category}_${res.subCategory}&title=${res.title}&id=${res._id}`);
+                        //     return this.props.history.push(`/viewer?category=${res.type}&title=${res.title}&id=${res._id}`);
+                        // }
                         this.props.history.goBack();
                     }).catch(err => console.log);
             }
@@ -242,6 +244,12 @@ class Editor extends Component {
         });
     }
 
+    _renderSubCategoryOptions = () => {
+        return this.props.categoryStore.registryForSubCategories.map((category, i) => {
+            return <option key={category.name} value={category.name}>{category.name}</option>
+        });
+    }
+
     _handleOnChanged = (value) => {
         this.props.postStore.changeValue('content', value);
     }
@@ -249,9 +257,9 @@ class Editor extends Component {
 
 
     render() {
-        const { value: { title, category, content }, titleIsEmpty } = this.props.postStore;
-        const { type } = this.props;
-
+        const { value: { title, type: postType, category, subCategory, content }, titleIsEmpty } = this.props.postStore;
+        const { type: EditorType } = this.props;
+        console.log(category);
         if (this.props.editorStore.isLoading) {
             return <div className={cx('Editor', { 'isLoading': this.props.editorStore.isLoading })}>
                 <Loader />
@@ -264,9 +272,10 @@ class Editor extends Component {
         }
         return (
             <div className={cx('Editor', 'Editor-Only')}>
+                {/* 제목입력란 */}
                 <div className={cx('wrapper-textarea')}>
                     <TextareaAutosize
-                        autoFocus={type !== 'edit'}
+                        autoFocus={EditorType !== 'edit'}
                         className={cx('textarea-post-title')}
                         name="title"
                         id="postTitle"
@@ -277,6 +286,23 @@ class Editor extends Component {
                     />
                 </div>
                 <div className={cx('wrapper-category-thumbnail')}>
+                    {/* 유형선택란 */}
+                    <div className={cx('type')}>
+                        <label hidden htmlFor="select-type">유형</label>
+                        <select
+                            id="select-type"
+                            name="type"
+                            value={postType}
+                            onChange={this._handleChangeValue}
+                            
+
+                        >
+                            <option disabled>유형 선택</option>
+                            <option value="projects">Projects</option>
+                            <option value="archives">Archives</option>
+                        </select>
+                    </div>
+                    {/* 대분류 선택란 */}
                     <div className={cx('category')}>
                         <label hidden htmlFor="select-category">분류</label>
                         <select
@@ -284,10 +310,28 @@ class Editor extends Component {
                             name="category"
                             value={category}
                             onChange={this._handleChangeValue}
+                            disabled={postType !== "archives"}
 
                         >
                             <option disabled>카테고리 선택</option>
+                            <option value="">선택안함</option>
                             {this._renderOptions()}
+                        </select>
+                    </div>
+                    {/* 소분류 선택란 */}
+                    <div className={cx('subCategory')}>
+                        <label hidden htmlFor="select-subCategory">소분류</label>
+                        <select
+                            id="select-subCategory"
+                            name="subCategory"
+                            value={subCategory}
+                            onChange={this._handleChangeValue}
+                            disabled={(postType !== "archives") || category !== 'Work'}
+
+                        >
+                            <option disabled>소분류 선택</option>
+                            <option value="">선택안함</option>
+                            {this._renderSubCategoryOptions()}
                         </select>
                     </div>
                     <div className={cx('preview')}>
@@ -337,13 +381,14 @@ class Editor extends Component {
                         onChange={this._handleOnChanged}
 
 
+
                     />
                 </div>
                 <div className={cx('wrapper-buttons')}>
                     <button className={cx('button', 'button-back')} onClick={this._handleClickOnButtonBack}>취소</button>
 
                     <button disabled={titleIsEmpty} className={cx('button', 'button-publish', { "disabled": titleIsEmpty })} onClick={this._handleClickOnButtonPublish}>
-                        {titleIsEmpty ? '제목이 필요해요' : type === "write" ? '저장하기' : '수정하기'}
+                        {titleIsEmpty ? '제목이 필요해요' : EditorType === "write" ? '저장하기' : '수정하기'}
                     </button>
                 </div>
             </div>

@@ -54,12 +54,12 @@ class LayoutAdminMain extends Component {
                             </div>
                         </div>
                         <div className={cx('hamburger-contents', { isOpened })}>
-                            <Link
+                            {/* <Link
                                 className={cx('list-item-category')}
                                 onClick={this._handleClickOnLinkCategory}
                                 to={`${path}/category`}>
                                 카테고리 관리
-                        </Link>
+                        </Link> */}
                             <Link
                                 className={cx('list-item-category')}
                                 onClick={this._handleClickOnLinkCategory}
@@ -88,13 +88,13 @@ class LayoutAdminMain extends Component {
                         HR Archive Manager
                     </div>
                     <ul className={cx('list-category')}>
-                        <li className={cx('list-item-wrapper')}>
+                        {/* <li className={cx('list-item-wrapper')}>
                             <Link
                                 className={cx('list-item-category')}
                                 to={`${path}/category`}>
                                 카테고리 관리
                             </Link>
-                        </li>
+                        </li> */}
                         <li className={cx('list-item-wrapper')}>
                             <Link
                                 className={cx('list-item-category')}

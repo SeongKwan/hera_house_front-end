@@ -53,7 +53,7 @@ class Viewer extends Component {
             <div className={cx('Viewer')}>
                 <Helmet>
                     <title>HR ARCHIVE - ${title}</title>
-                    <link rel="canonical" href={`http://hr-archive.com/projects`} />
+                    <link rel="canonical" href={`http://hr-archive.com/${type}`} />
                     <meta http-equiv="Title" content={`HR ARCHIVE - Title`} />
                     <meta name="Keywords" content="fashion, brand, design, art, music" />
                     <meta name="Description" content="HR Archive Archive" />
