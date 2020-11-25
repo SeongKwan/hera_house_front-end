@@ -3,18 +3,26 @@ import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 import { inject, observer } from 'mobx-react';
 import styles from './DesktopLayout.module.scss';
+import './DesktopLayout.css';
 import classNames from 'classnames/bind';
 import Cursor from '../components/Cursor/Cursor';
+import { xs, sm, md, lg, xl } from '../constants/breakporints';
 
 const cx = classNames.bind(styles);
 
 @withRouter
-@inject('categoryStore', 'loginStore')
+@inject('categoryStore', 'loginStore', 'commonStore')
 @observer
 class DesktopLayout extends Component {
-    state = {selectedCategory: '', selectedSubCategory: ''}
+    state = {selectedCategory: '', selectedSubCategory: '', hamburgerOpend: false}
     componentDidMount() {
         this.props.categoryStore.loadCategories();
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+    resize() {
+        this.props.commonStore.changeScreenSize({width: window.innerWidth, height: window.innerHeight});
+        
     }
     _handleOnMouseOver = (e, name = '') => {
         if (this.state.selectedCategory !== 'work') {
@@ -31,8 +39,6 @@ class DesktopLayout extends Component {
     }
 
     _handleOnMouseLeave = (e, type = '') => {
-        
-        
         if (type === '') {
             setTimeout(() => {
                 this.setState({selectedCategory: '', selectedSubCategory: ''});
@@ -44,7 +50,13 @@ class DesktopLayout extends Component {
             
         }
     }
+
+    _handleOnClickHamburger= () => {
+        this.setState({hamburgerOpend: !this.state.hamburgerOpend});
+    }
     render() {
+        let { screenSize: { width, height }} = this.props.commonStore;
+        console.log(width, height);
         let mainCategories = this.props.categoryStore.registry || [];
         
         if (mainCategories.length <= 0) {
@@ -57,9 +69,12 @@ class DesktopLayout extends Component {
                         <div className={cx('concept-title')}>
                             <Link to={'/'}><span>BLACK ENDING</span></Link>
                         </div>
-                        <nav className={cx('home-nav')}>
+                        <nav className={cx('home-nav', {'home-nav--mobile': width <= md})}>
+                        {/* md 사이즈 이상 */}
+                        {
+                        width > md &&
                             <ul>
-                                <li id="cursor-test" className={cx('nav-item', 'nav-item--herakim')}><Link to={`/about`}>HERA KIM</Link></li>
+                                <li className={cx('nav-item', 'nav-item--herakim')}><Link to={`/about`}>HERA KIM</Link></li>
                                 <li className={cx('nav-item', 'nav-item--projects')}><Link to={`/projects`}>PROJECTS</Link></li>
                                 <li className={cx('nav-item', 'nav-item--archives')} onMouseOver={this._handleOnMouseOver} onMouseLeave={this._handleOnMouseLeave}>
                                     <Link to={`/archives`}>ARCHIVES</Link>
@@ -84,6 +99,18 @@ class DesktopLayout extends Component {
                                     </ul>
                                 </li>
                             </ul>
+                        }
+                        {
+                            width <= md &&
+                            <a className={cx({'open': this.state.hamburgerOpend})} href="#" id="nav-icon2" onClick={this._handleOnClickHamburger}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        }
                         </nav>
                     </header>
                     <main className={cx({ 'fadeUp': this.props.fadeUp }, { 'fadeIn': this.props.fadeIn })}>

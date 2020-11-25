@@ -7,18 +7,19 @@ import { inject, observer } from 'mobx-react';
 import { IoIosSettings } from "react-icons/io";
 import { Helmet } from "react-helmet";
 import DesktopLayout from '../../layout/DesktopLayout';
+import { xs, sm, md, lg, xl } from '../../constants/breakporints';
 
 const cx = classNames.bind(styles);
 const youtubeUrl = "https://www.youtube.com";
 const instagramUrl = "https://instagram.com/herakim_______?igshid=kkuvihytwxl3";
 
 @withRouter
-@inject('categoryStore', 'loginStore')
+@inject('categoryStore', 'loginStore', 'commonStore')
 @observer
 class Home extends Component {
 
     render() {
-
+        let { screenSize: { width, height }} = this.props.commonStore;
         return (
             <div className={cx('Home')}>
                 <Helmet>
@@ -44,18 +45,30 @@ class Home extends Component {
                         <p>Design & Styling with</p>
                         <p>Personally Concept Projects by</p>
                         <p>Design director Hera Kim</p>
-
-                        <span className={cx('site-name')}>HR ARCHIVE</span>
+                        {
+                        width > md &&
+                            <span className={cx('site-name')}>HR ARCHIVE</span>
+                        }       
                     </div>
-                    <div className={cx('concept-point')}>
-                        <p>When all colors</p>
-                        <p>are combined,</p>
-                        <p>the end is clearly BLACK</p>
-                    </div>
-                    <div className={cx('sns')}>
-                        <a href={youtubeUrl} className={cx('youtube')} target="_blank" title="HERA Official Youtube">Youtube</a>
-                        <a href={instagramUrl} className={cx('instagram')} target="_blank" title="HERA Official Instaram">Instagram</a>
-                    </div>
+                    {
+                        width <= md &&
+                            <span className={cx('site-name', 'site-name--mobile')}>HR ARCHIVE</span>
+                        }
+                    {
+                        width > md &&
+                        <div className={cx('concept-point')}>
+                            <p>When all colors</p>
+                            <p>are combined,</p>
+                            <p>the end is clearly BLACK</p>
+                        </div>
+                    }
+                    {
+                        width > md &&
+                        <div className={cx('sns')}>
+                            <a href={youtubeUrl} className={cx('youtube')} target="_blank" title="HERA Official Youtube">Youtube</a>
+                            <a href={instagramUrl} className={cx('instagram')} target="_blank" title="HERA Official Instaram">Instagram</a>
+                        </div>
+                    }
                 </DesktopLayout>
             </div>
         );

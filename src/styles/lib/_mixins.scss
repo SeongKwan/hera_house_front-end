@@ -31,15 +31,14 @@
 }
 
 @mixin fontKR {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 @mixin fontEn {
     // font-family: 'Harmattan', sans-serif !important;
     // font-family: 'Gidugu', sans-serif !important;
-    font-family: 'Kulim Park', sans-serif !important;
+    font-family: "Kulim Park", sans-serif !important;
 }
-
 
 @mixin shadow($z-depth: 1, $strength: 1, $color: black) {
     @if $z-depth==1 {
@@ -59,7 +58,7 @@
     }
 
     @if $z-depth==5 {
-        box-shadow: 0 20px 40px rgba($color, $strength * 0.30), 0 15px 12px rgba($color, $strength * 0.22);
+        box-shadow: 0 20px 40px rgba($color, $strength * 0.3), 0 15px 12px rgba($color, $strength * 0.22);
     }
 
     @if ($z-depth < 1) or ($z-depth > 5) {
@@ -76,7 +75,7 @@
 }
 
 @mixin transition {
-    transition: all .3s ease;
+    transition: all 0.3s ease;
 }
 
 @mixin transitionTime($time) {
@@ -93,20 +92,23 @@
     animation-name: fadeInDown;
 }
 
-
 @mixin fadeOutUp {
     -webkit-animation-name: fadeOutUp;
     animation-name: fadeOutUp;
 }
 
-
 // Map with much breakpoints
 $breakpoints: (
-    'xs': 482px,
-    'sm': 624px,
-    'md': 812px,
-    'lg': 1231px,
-    'xl': 1682px
+    // mobile
+    "xs": 482px,
+    // medium tablet
+    "sm": 624px,
+    // tablet
+    "md": 812px,
+    // hd monitor
+    "lg": 1231px,
+    // fhd monitor,
+    "xl": 1682px
 );
 
 // Respond-To Mixin
@@ -117,9 +119,7 @@ $breakpoints: (
         @media screen and (max-width: $value) {
             @content;
         }
-    }
-
-    @else {
+    } @else {
         @warn "Unknown `#{$size}` in $breakpoints";
     }
 }

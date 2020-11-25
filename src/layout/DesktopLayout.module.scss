@@ -42,6 +42,10 @@
         align-items: center;
         padding: 0rem 1.3rem;
 
+        @include media("md") {
+            padding: 0 2rem;
+        }
+
         .concept-title {
             z-index: 9999999999;
         }
@@ -49,6 +53,11 @@
         .concept-title span {
             font-size: 1.8rem;
             font-weight: 500;
+
+            @include media("sm") {
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
         }
 
         // Main Category

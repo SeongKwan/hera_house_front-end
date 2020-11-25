@@ -8,6 +8,7 @@
     }
 }
 .Home {
+    // xl 초과하는 범위에서
     opacity: 0;
     animation-name: fadeIn;
     animation-duration: 0.7s;
@@ -21,17 +22,32 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+    background-position-x: 50%;
+
+    @include media("lg") {
+    }
 
     .identity {
         margin: 1.3rem;
         margin-top: 5rem;
         position: relative;
 
+        @include media("md") {
+            position: absolute;
+            margin: 0;
+            left: 2rem;
+            bottom: 3rem;
+        }
+
         p {
             margin: 0;
             font-size: 2.25rem;
             font-weight: 200;
             line-height: 1.2;
+
+            @include media("md") {
+                font-size: 1.2rem;
+            }
         }
 
         .site-name {
@@ -39,7 +55,21 @@
             bottom: -7rem;
             font-weight: 200;
             font-size: 1.4rem;
+
+            &--mobile {
+                top: 50%;
+            }
         }
+    }
+
+    .site-name--mobile {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 2rem;
+        font-weight: 200;
+        font-size: 1.2rem;
+        writing-mode: vertical-rl;
     }
 
     .concept-point {
