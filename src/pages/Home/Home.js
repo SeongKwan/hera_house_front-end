@@ -9,6 +9,8 @@ import { Helmet } from "react-helmet";
 import DesktopLayout from '../../layout/DesktopLayout';
 
 const cx = classNames.bind(styles);
+const youtubeUrl = "https://www.youtube.com";
+const instagramUrl = "https://instagram.com/herakim_______?igshid=kkuvihytwxl3";
 
 @withRouter
 @inject('categoryStore', 'loginStore')
@@ -51,8 +53,8 @@ class Home extends Component {
                         <p>the end is clearly BLACK</p>
                     </div>
                     <div className={cx('sns')}>
-                        <div className={cx('youtube')}>Youtube</div>
-                        <div className={cx('instagram')}>Instagram</div>
+                        <a href={youtubeUrl} className={cx('youtube')} target="_blank" title="HERA Official Youtube">Youtube</a>
+                        <a href={instagramUrl} className={cx('instagram')} target="_blank" title="HERA Official Instaram">Instagram</a>
                     </div>
                 </DesktopLayout>
             </div>
