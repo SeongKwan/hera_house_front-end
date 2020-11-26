@@ -81,7 +81,8 @@
 
                     img {
                         width: 100%;
-                        height: auto;
+                        height: 100%;
+                        object-fit: cover;
                     }
                 }
 
@@ -98,6 +99,7 @@
                     @include media("md") {
                         width: 100%;
                         font-size: 1.2rem;
+                        margin-bottom: 0.5rem;
                     }
                 }
             }
