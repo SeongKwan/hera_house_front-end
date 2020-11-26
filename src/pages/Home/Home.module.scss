@@ -8,9 +8,6 @@
     }
 }
 .Home {
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
     // xl 초과하는 범위에서
     opacity: 0;
     animation-name: fadeIn;
@@ -22,9 +19,9 @@
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: -webkit-fill-available;
     overflow: hidden;
-    // position: relative;
+    position: relative;
     background-position-x: 50%;
 
     @include media("lg") {
