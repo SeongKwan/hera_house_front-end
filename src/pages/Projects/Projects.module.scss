@@ -19,6 +19,11 @@
         font-weight: 500;
         margin: 3rem 0;
         text-transform: uppercase;
+
+        @include media("md") {
+            font-size: 1.3rem;
+            margin: 2.5rem 0;
+        }
     }
 
     .grid-container {
@@ -33,6 +38,7 @@
             width: 100%;
         }
         @include media("md") {
+            padding-top: 1rem;
         }
         @include media("sm") {
         }
