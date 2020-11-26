@@ -28,6 +28,10 @@
         font-weight: 500;
         margin: 3rem 0;
         text-transform: uppercase;
+        text-align: center;
+        @include media("md") {
+            font-size: 1.3rem;
+        }
     }
     article {
         animation-name: fadeIn;

@@ -65,17 +65,17 @@ class Viewer extends Component {
                             {
                                 category !== undefined ?
                                     <span>{` : ${category}`}</span>
-                                    : <span></span>
+                                    : <></>
                             }
                             {
                                 subCategory !== undefined ?
                                     <span>{` : ${subCategory}`}</span>
-                                    : <span></span>
+                                    : <></>
                             }
                             {
                                 title !== undefined ?
                                     <span>{` : ${title}`}</span>
-                                    : <span></span>
+                                    : <></>
                             }
                         </div>
                     </div>
