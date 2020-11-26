@@ -19,7 +19,6 @@ class Cursor extends Component {
     }
     
     componentDidUpdate(prevProps) {
-        // console.log(prevProps.location.pathname);
         if (prevProps.location.pathname !== this.props.location.pathname) {
             console.log('CDU');
             return this._handleLinkHoverEvents();

@@ -39,7 +39,7 @@ class Home extends Component {
                     {/* <meta http-equiv="Reply-To" content="we@naver.com" /> 
                     <meta http-equiv="Email" content="naver@naver.com" /> */}
                 </Helmet>
-                <DesktopLayout fadeIn>
+                <DesktopLayout fadeIn borderless>
                     <div className={cx('identity')}>
                         <p>Republic Korea based</p>
                         <p>Design & Styling with</p>

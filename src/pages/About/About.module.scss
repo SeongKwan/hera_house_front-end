@@ -15,6 +15,10 @@
         font-size: 1.8rem;
         font-weight: 500;
         margin: 3rem 0;
+
+        @include media("md") {
+            font-size: 1.4rem;
+        }
     }
 
     .slider-container {
@@ -23,16 +27,29 @@
         background-image: url("../../styles/img/desktop_background.png");
         background-size: cover;
         background-repeat: no-repeat;
+        @include media("md") {
+            width: 80vw;
+            height: 56vh;
+            background-position-x: 60%;
+        }
     }
 
     .description {
-        margin: 3rem 0 0;
+        margin: 3rem 0 2rem;
         text-align: center;
+
+        @include media("md") {
+            padding: 0 2rem;
+        }
 
         p {
             font-size: 1.4rem;
             line-height: 2;
             font-weight: 300;
+            @include media("md") {
+                font-size: 1.2rem;
+                line-height: 1.5;
+            }
         }
     }
 }

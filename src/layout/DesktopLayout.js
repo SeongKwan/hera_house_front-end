@@ -56,7 +56,7 @@ class DesktopLayout extends Component {
     }
     render() {
         let { screenSize: { width, height }} = this.props.commonStore;
-        console.log(width, height);
+        
         let mainCategories = this.props.categoryStore.registry || [];
         
         if (mainCategories.length <= 0) {
@@ -65,7 +65,7 @@ class DesktopLayout extends Component {
             return (
                 <div className={cx('DesktopLayout')}>
                     <Cursor />
-                    <header>
+                    <header className={cx({'borderless': this.props.borderless})}>
                         <div className={cx('concept-title')}>
                             <Link to={'/'}><span>BLACK ENDING</span></Link>
                         </div>
