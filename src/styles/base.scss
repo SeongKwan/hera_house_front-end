@@ -2,10 +2,16 @@
 @import "./animate";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;800&display=swap");
 
-html,
-body {
-    height: 100%;
+html {
+    height: -webkit-fill-available;
+
     width: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
 }
 
 html {

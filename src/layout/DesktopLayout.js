@@ -7,6 +7,12 @@ import './DesktopLayout.css';
 import classNames from 'classnames/bind';
 import Cursor from '../components/Cursor/Cursor';
 import { xs, sm, md, lg, xl } from '../constants/breakporints';
+import {
+    BrowserView,
+    MobileView,
+    isBrowser,
+    isMobile
+} from "react-device-detect";
 
 const cx = classNames.bind(styles);
 
@@ -64,7 +70,10 @@ class DesktopLayout extends Component {
         } else
             return (
                 <div className={cx('DesktopLayout')}>
-                    <Cursor />
+                    {
+                        !isMobile &&
+                        <Cursor />
+                    }
                     <header className={cx({'borderless': this.props.borderless})}>
                         <div className={cx('concept-title')}>
                             <Link to={'/'}><span>BLACK ENDING</span></Link>
