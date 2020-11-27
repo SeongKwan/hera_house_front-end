@@ -176,11 +176,11 @@
         font-weight: 400;
         font-size: 40px;
         width: 90vw;
-        height: 100vh;
-        height: -webkit-fill-available;
-        overflow: scroll;
-        // min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+        // height: 100vh;
         // min-height: calc(var(--vh, 1vh) * 100);
+        // height: -webkit-fill-available;
+        // overflow: scroll;
+        // min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
 
         position: absolute;
         right: 0;
@@ -236,10 +236,10 @@
                     padding-top: 5vh;
                     // padding-bottom: 5vh;
                     // height: 90vh; /* Fallback for browsers that do not support Custom Properties */
-                    // height: calc(var(--vh, 1vh) * 90);
+                    height: calc(var(--vh, 1vh) * 95);
                     // height: 100vh;
-                    height: -webkit-fill-available;
-                    // overflow: scroll;
+                    // height: -webkit-fill-available;
+                    overflow: scroll;
                     position: relative;
                     display: flex;
                     flex-direction: column;

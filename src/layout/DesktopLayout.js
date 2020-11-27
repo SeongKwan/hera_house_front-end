@@ -34,12 +34,15 @@ class DesktopLayout extends Component {
         this.props.categoryStore.loadCategories();
         window.addEventListener("resize", this.resize.bind(this));
         // We listen to the resize event
-        window.addEventListener('resize', () => {
-            // We execute the same script as before
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        });
+        window.addEventListener('load', () => {this._getVhFromWindow();});
+        window.addEventListener('resize', () => {this._getVhFromWindow();});
         this.resize();
+    }
+
+    _getVhFromWindow = () => {
+        let vh = window.innerHeight * 0.01;
+        console.log(vh);
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
 
     componentWillUnmount() {
@@ -85,6 +88,7 @@ class DesktopLayout extends Component {
     }
 
     _handleOnClickMainMenu = (e, name) => {
+        this._getVhFromWindow();
         if (name === 'Archives') {
             if (this.state.mainMenuIsOpened) {
                 return true;
@@ -95,6 +99,7 @@ class DesktopLayout extends Component {
     }
 
     _handleOnClickSubMenu = (e, name) => {
+        this._getVhFromWindow();
         if (name === 'Work') {
             if (this.state.subMenuIsOpened) {
                 return true;
