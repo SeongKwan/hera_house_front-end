@@ -176,9 +176,6 @@
         font-weight: 400;
         font-size: 40px;
         width: 90vw;
-        min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-        min-height: calc(var(--vh, 1vh) * 100);
-        overflow: scroll;
 
         position: absolute;
         right: 0;
@@ -220,20 +217,22 @@
 
             .flex-box {
                 flex: 100;
-                padding-top: 5vh;
+
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 & > ul {
-                    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+                    padding: 0;
+                    margin: 0;
+                    padding-top: 5vh;
+                    height: 95vh; /* Fallback for browsers that do not support Custom Properties */
                     height: calc(var(--vh, 1vh) * 95);
+                    overflow: scroll;
                     position: relative;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: flex-start;
-                    margin: 0;
-                    padding: 0;
                     margin-bottom: 2rem;
 
                     & > div:first-child {
