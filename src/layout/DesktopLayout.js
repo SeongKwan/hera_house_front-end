@@ -150,60 +150,62 @@ class DesktopLayout extends Component {
                                 <div className={cx('flex-box')}>
                                     {/* type category list */}
                                     <ul>
-                                        <li className={cx('nav-item', 'nav-item--herakim')}>
-                                            <Link to={`/about`}>HERA KIM</Link>
-                                        </li>
-                                        <li className={cx('nav-item', 'nav-item--projects')}>
-                                            <Link to={`/projects`}>PROJECTS</Link>
-                                        </li>
-                                        <li 
-                                            className={cx('nav-item', 'nav-item--archives')} 
-                                            
-                                        >
-                                            <Link to={`/archives`} onClick={(e) => {this._handleOnClickMainMenu(e, 'Archives')}}>
-                                                ARCHIVES
-                                                {
-                                                    this.state.mainMenuIsOpened &&
-                                                    <span> ▶︎</span>
-                                                }
-                                            </Link>
-                                            {/* main category list */}
-                                            <ul 
-                                                className={cx('sub-nav', {'active': this.state.mainMenuIsOpened})} 
+                                        <div>
+                                            <li className={cx('nav-item', 'nav-item--herakim')}>
+                                                <Link to={`/about`}>HERA KIM</Link>
+                                            </li>
+                                            <li className={cx('nav-item', 'nav-item--projects')}>
+                                                <Link to={`/projects`}>PROJECTS</Link>
+                                            </li>
+                                            <li 
+                                                className={cx('nav-item', 'nav-item--archives')} 
+                                                
                                             >
-                                                {
-                                                    mainCategories.map((category, i) => {
-                                                        return <li 
-                                                            key={`sub-nav-item-${i}`} 
-                                                            className={cx('sub-nav-item', `sub-nav-item--${category.name}`)} 
-                                                            >
-                                                                <Link 
-                                                                    to={`/archives/${category.name}`}
-                                                                    className={cx({'isOpened': category.name === 'Work' && this.state.mainMenuIsOpened})} 
-                                                                    onClick={(e) => this._handleOnClickSubMenu(e, category.name)} 
+                                                <Link to={`/archives`} onClick={(e) => {this._handleOnClickMainMenu(e, 'Archives')}}>
+                                                    ARCHIVES
+                                                    {
+                                                        this.state.mainMenuIsOpened &&
+                                                        <span> ▶︎</span>
+                                                    }
+                                                </Link>
+                                                {/* main category list */}
+                                                <ul 
+                                                    className={cx('sub-nav', {'active': this.state.mainMenuIsOpened})} 
+                                                >
+                                                    {
+                                                        mainCategories.map((category, i) => {
+                                                            return <li 
+                                                                key={`sub-nav-item-${i}`} 
+                                                                className={cx('sub-nav-item', `sub-nav-item--${category.name}`)} 
                                                                 >
-                                                                    {category.name}
-                                                                    {
-                                                                        this.state.subMenuIsOpened && category.name === 'Work' &&
-                                                                        <span> ▶︎</span>
-                                                                    }
-                                                                </Link>
-                                                            {/* sub category list */}
-                                                            {
-                                                                category.name === "Work" &&
-                                                                <ul className={cx('work-sub', {'active': this.state.subMenuIsOpened})}>
-                                                                    {category.subCategories.map((categoryWithSub, i) => {
-                                                                        return <li key={`work-sub-item-${i}`} className={cx('work-sub-item')}>
-                                                                            <Link to={`/archives/Work/${categoryWithSub.name}`}>- {categoryWithSub.name}</Link>
-                                                                        </li>
-                                                                    })}
-                                                                </ul>
-                                                            }
-                                                        </li>
-                                                    })
-                                                }
-                                            </ul>
-                                        </li>
+                                                                    <Link 
+                                                                        to={`/archives/${category.name}`}
+                                                                        className={cx({'isOpened': category.name === 'Work' && this.state.mainMenuIsOpened})} 
+                                                                        onClick={(e) => this._handleOnClickSubMenu(e, category.name)} 
+                                                                    >
+                                                                        {category.name}
+                                                                        {
+                                                                            this.state.subMenuIsOpened && category.name === 'Work' &&
+                                                                            <span> ▶︎</span>
+                                                                        }
+                                                                    </Link>
+                                                                {/* sub category list */}
+                                                                {
+                                                                    category.name === "Work" &&
+                                                                    <ul className={cx('work-sub', {'active': this.state.subMenuIsOpened})}>
+                                                                        {category.subCategories.map((categoryWithSub, i) => {
+                                                                            return <li key={`work-sub-item-${i}`} className={cx('work-sub-item')}>
+                                                                                <Link to={`/archives/Work/${categoryWithSub.name}`}>- {categoryWithSub.name}</Link>
+                                                                            </li>
+                                                                        })}
+                                                                    </ul>
+                                                                }
+                                                            </li>
+                                                        })
+                                                    }
+                                                </ul>
+                                            </li>
+                                        </div>
                                         <div className={cx('sns')}>
                                             <a href={sns.instagramUrl} className={cx('instagram')} target="_blank" title="HERA Official Instaram">Instagram</a>
                                             <a href={sns.youtubeUrl} className={cx('youtube')} target="_blank" title="HERA Official Youtube">Youtube</a>
