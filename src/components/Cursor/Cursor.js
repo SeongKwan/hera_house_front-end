@@ -12,21 +12,18 @@ const cx = classNames.bind(styles);
 class Cursor extends Component {
     state={position: {x: 0, y: 0}, hidden: false, clicked: false, hovered: false}
     componentDidMount() {
-        console.log('CDM');
-        console.log(this.props.location.pathname);
         this._addEventListeners();
         this._handleLinkHoverEvents();
     }
     
     componentDidUpdate(prevProps) {
         if (prevProps.location.pathname !== this.props.location.pathname) {
-            console.log('CDU');
+     
             return this._handleLinkHoverEvents();
         }
     }
 
     componentWillUnmount() {
-        console.log('CWUM');
         this._removeEventListeners();
     }
 
