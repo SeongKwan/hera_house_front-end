@@ -37,6 +37,7 @@ class DesktopLayout extends Component {
     }
 
     componentWillUnmount() {
+        this.props.commonStore.clearEnableScroll();
         this.setState({
             selectedCategory: '', 
             selectedSubCategory: '', 
