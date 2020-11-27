@@ -21,19 +21,35 @@ const cx = classNames.bind(styles);
 @inject('categoryStore', 'loginStore', 'commonStore')
 @observer
 class DesktopLayout extends Component {
-    state = {selectedCategory: '', selectedSubCategory: '', hamburgerOpened: false, typeMenuIsOpened: false, MainMenuIsOpened: false,}
+    state = {
+        selectedCategory: '', 
+        selectedSubCategory: '', 
+        hamburgerOpened: false, 
+        typeMenuIsOpened: false,
+        mainMenuIsOpened: false, 
+        subMenuIsOpened: false,
+    }
+
     componentDidMount() {
         this.props.categoryStore.loadCategories();
         window.addEventListener("resize", this.resize.bind(this));
         this.resize();
     }
-    resize() {
-        this.props.commonStore.changeScreenSize({width: window.innerWidth, height: window.innerHeight});
-        
+
+    componentWillUnmount() {
+        this.setState({
+            selectedCategory: '', 
+            selectedSubCategory: '', 
+            hamburgerOpened: false, 
+            typeMenuIsOpened: false,
+            mainMenuIsOpened: false, 
+            subMenuIsOpened: false,
+        });
     }
+    resize= () => this.props.commonStore.changeScreenSize({width: window.innerWidth, height: window.innerHeight});
+    
     _handleOnMouseOver = (e, name = '') => {
-        if (this.state.selectedCategory !== 'work') {
-            
+        if (this.state.selectedCategory !== 'work') {        
             setTimeout(() => {
                 this.setState({selectedCategory: 'work'});
             }, 200);
@@ -54,7 +70,6 @@ class DesktopLayout extends Component {
             setTimeout(() => {
                 this.setState({selectedSubCategory: ''});
             }, 100);
-            
         }
     }
 
@@ -62,9 +77,28 @@ class DesktopLayout extends Component {
 
     }
 
+    _handleOnClickMainMenu = (e, name) => {
+        if (name === 'Archives') {
+            if (this.state.mainMenuIsOpened) {
+                return true;
+            }
+            e.preventDefault();
+            this.setState({mainMenuIsOpened: !this.state.mainMenuIsOpened});
+        } else return true;
+    }
+
+    _handleOnClickSubMenu = (e, name) => {
+        if (this.state.subMenuIsOpened) {
+            return true;
+        }
+        e.preventDefault();
+        this.setState({subMenuIsOpened: !this.state.subMenuIsOpened});
+    }
+
     _handleOnClickHamburger= () => {
         this.setState({hamburgerOpened: !this.state.hamburgerOpened});
     }
+
     render() {
         let { screenSize: { width, height }} = this.props.commonStore;
         
@@ -83,7 +117,12 @@ class DesktopLayout extends Component {
                     {/* 모바일 햄버거 메뉴 */}
                         {
                             width <= md &&
-                            <a className={cx('mobile-hamberger-menu', {'open': this.state.hamburgerOpened})} href="#" id="nav-icon2" onClick={this._handleOnClickHamburger}>
+                            <a 
+                                className={cx('mobile-hamberger-menu', {'open': this.state.hamburgerOpened})} 
+                                href="#" 
+                                id="nav-icon2" 
+                                onClick={this._handleOnClickHamburger}
+                            >
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -92,26 +131,64 @@ class DesktopLayout extends Component {
                                 <span></span>
                             </a>
                         }
-                    {/* 모바일 슬라이드 메뉴 컨테이너 */}
+                    {/* 모바일 슬라이드 메뉴 컨테이너 (md 이하) */}
                     {
                         width <= md && 
-                        <div className={cx("slide-navigation", { "visible": this.state.hamburgerOpened}, {"hidden": !this.state.hamburgerOpened}, {"animated": true}, {'slideInLeft': this.state.hamburgerOpened}, {'slideOutLeft': !this.state.hamburgerOpened})}>
+                        <div 
+                            className={cx(
+                                "slide-navigation", 
+                                { "visible": this.state.hamburgerOpened}, 
+                                {"hidden": !this.state.hamburgerOpened}, 
+                                {"animated": true}, 
+                                {'slideInLeft': this.state.hamburgerOpened}, 
+                                {'slideOutLeft': !this.state.hamburgerOpened})}
+                            >
                             <nav>
-                                
                                 <div className={cx('flex-box')}>
+                                    {/* type category list */}
                                     <ul>
-                                        <li className={cx('nav-item', 'nav-item--herakim')}><Link to={`/about`}>HERA KIM</Link></li>
-                                        <li className={cx('nav-item', 'nav-item--projects')}><Link to={`/projects`}>PROJECTS</Link></li>
-                                        <li className={cx('nav-item', 'nav-item--archives')} onClick={this._handleOnMouseOver}>
-                                            <Link to={`/archives`}>ARCHIVES</Link>
-                                            <ul className={cx('sub-nav', {'active': this.state.selectedCategory === 'work'})} onMouseLeave={(e) => this._handleOnMouseLeave(e, 'sub')}>
+                                        <li className={cx('nav-item', 'nav-item--herakim')}>
+                                            <Link to={`/about`}>HERA KIM</Link>
+                                        </li>
+                                        <li className={cx('nav-item', 'nav-item--projects')}>
+                                            <Link to={`/projects`}>PROJECTS</Link>
+                                        </li>
+                                        <li 
+                                            className={cx('nav-item', 'nav-item--archives')} 
+                                            
+                                        >
+                                            <Link to={`/archives`} onClick={(e) => {this._handleOnClickMainMenu(e, 'Archives')}}>
+                                                ARCHIVES
+                                                {
+                                                    this.state.mainMenuIsOpened &&
+                                                    <span> ▶︎</span>
+                                                }
+                                            </Link>
+                                            {/* main category list */}
+                                            <ul 
+                                                className={cx('sub-nav', {'active': this.state.mainMenuIsOpened})} 
+                                            >
                                                 {
                                                     mainCategories.map((category, i) => {
-                                                        return <li key={`sub-nav-item-${i}`} className={cx('sub-nav-item', `sub-nav-item--${category.name}`)} onClick={(e) => this._handleOnMouseOver(e, category.name)} >
-                                                            <Link to={`/archives/${category.name}`}>{category.name}</Link>
+                                                        return <li 
+                                                            key={`sub-nav-item-${i}`} 
+                                                            className={cx('sub-nav-item', `sub-nav-item--${category.name}`)} 
+                                                            >
+                                                                <Link 
+                                                                    to={`/archives/${category.name}`}
+                                                                    className={cx({'isOpened': category.name === 'Work' && this.state.mainMenuIsOpened})} 
+                                                                    onClick={(e) => this._handleOnClickSubMenu(e, category.name)} 
+                                                                >
+                                                                    {category.name}
+                                                                    {
+                                                                        this.state.subMenuIsOpened && category.name === 'Work' &&
+                                                                        <span> ▶︎</span>
+                                                                    }
+                                                                </Link>
+                                                            {/* sub category list */}
                                                             {
                                                                 category.name === "Work" &&
-                                                                <ul className={cx('work-sub', {'active': this.state.selectedSubCategory === 'Work'})}>
+                                                                <ul className={cx('work-sub', {'active': this.state.subMenuIsOpened})}>
                                                                     {category.subCategories.map((categoryWithSub, i) => {
                                                                         return <li key={`work-sub-item-${i}`} className={cx('work-sub-item')}>
                                                                             <Link to={`/archives/Work/${categoryWithSub.name}`}>- {categoryWithSub.name}</Link>

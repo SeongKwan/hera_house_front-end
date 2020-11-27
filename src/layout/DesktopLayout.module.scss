@@ -274,6 +274,9 @@
                         font-size: 1.3rem;
                         font-weight: 500;
                         margin: 1.5rem 1rem;
+                        &:last-child {
+                            margin-bottom: 1.5rem;
+                        }
 
                         & > a {
                             display: inline-block;
@@ -282,14 +285,18 @@
 
                         &:nth-last-child(2) {
                             position: relative;
-
+                            > a {
+                                margin-bottom: 0.5rem;
+                            }
+                            // main category
                             .sub-nav {
                                 &.active {
                                     max-height: 500px !important;
                                 }
                                 display: flex;
                                 transition: max-height 0.5s ease-in-out;
-                                max-height: 500px;
+                                max-height: 0;
+                                overflow: hidden;
 
                                 flex-direction: column;
                                 margin: 0 2rem;
@@ -316,13 +323,15 @@
                                     .work-sub {
                                         &.active {
                                             max-height: 500px !important;
+                                            padding: 0rem 0 1rem;
                                         }
-                                        transition: max-height 0.45s ease-in;
+                                        transition: all 0.45s ease-in;
+                                        transition-property: max-height, padding;
                                         display: flex;
                                         overflow: hidden;
-                                        max-height: 500px;
+                                        max-height: 0;
                                         margin: 0;
-                                        padding: 0rem 0 1rem;
+                                        padding: 0;
                                         flex-direction: column;
                                         & > li.work-sub-item {
                                             list-style: none;
