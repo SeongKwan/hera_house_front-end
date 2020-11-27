@@ -88,11 +88,13 @@ class DesktopLayout extends Component {
     }
 
     _handleOnClickSubMenu = (e, name) => {
-        if (this.state.subMenuIsOpened) {
-            return true;
-        }
-        e.preventDefault();
-        this.setState({subMenuIsOpened: !this.state.subMenuIsOpened});
+        if (name === 'Work') {
+            if (this.state.subMenuIsOpened) {
+                return true;
+            }
+            e.preventDefault();
+            this.setState({subMenuIsOpened: !this.state.subMenuIsOpened});
+        } else return true;
     }
 
     _handleOnClickHamburger= () => {
