@@ -10,14 +10,35 @@
 @keyframes fadeInUp {
     from {
         opacity: 0.5;
-        -webkit-transform: translate3d(0, 6px, 0);
+
         transform: translate3d(0, 6px, 0);
     }
 
     to {
         opacity: 1;
-        -webkit-transform: translate3d(0, 0, 0);
+
         transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes slideInLeft {
+    from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+@keyframes slideOutLeft {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        visibility: hidden;
+
+        transform: translate3d(100%, 0, 0);
     }
 }
 .DesktopLayout {
@@ -43,7 +64,7 @@
         padding: 0rem 1.3rem;
 
         @include media("md") {
-            padding: 0 2rem;
+            padding: 2rem 2rem;
             border-bottom: 1px solid #151515;
             &.borderless {
                 border-bottom: 0;
@@ -51,7 +72,7 @@
         }
 
         .concept-title {
-            z-index: 9999999999;
+            z-index: 9999999;
         }
 
         .concept-title span {
@@ -90,11 +111,6 @@
                     &:last-child {
                         padding-right: 0;
                         position: relative;
-                        &:hover {
-                            .sub-nav {
-                                // display: flex;
-                            }
-                        }
 
                         .sub-nav {
                             &.active {
@@ -103,7 +119,6 @@
                             overflow: hidden;
                             display: flex;
                             transition: max-height 0.5s ease-in-out;
-                            // display: none;
                             max-height: 0;
                             position: absolute;
                             left: 50%;
@@ -149,9 +164,6 @@
                                     max-height: 0;
                                     margin: 0;
                                     padding: 0;
-                                    // padding-right: 1.3rem;
-                                    // right: calc(100%);
-                                    // top: 0;
                                     flex-direction: column;
                                     & > li.work-sub-item {
                                         list-style: none;
@@ -178,15 +190,10 @@
         }
     }
     main {
-        // padding-top: 5rem;
-        // position: absolute;
         width: 100%;
-        // height: 100%;
-        // top: 0;
-        // left: 0;
-        animation-duration: 0.7s;
         animation-fill-mode: both;
-        animation-timing-function: ease-in;
+        animation-timing-function: ease-out;
+        animation-duration: 0.7s;
         &.fadeIn {
             opacity: 0;
             animation-name: fadeIn;
@@ -194,6 +201,172 @@
         &.fadeUp {
             opacity: 0;
             animation-name: fadeInUp;
+        }
+    }
+
+    /**
+     * 모바일 슬라이드 메뉴
+     */
+
+    div.slide-navigation {
+        background: $white;
+
+        font-weight: 400;
+        font-size: 40px;
+        width: 90vw;
+        height: 100vh;
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0.8;
+        transition: all 1.2s ease-out;
+        z-index: 999999999;
+        transition-property: opacity;
+        &.hidden {
+            opacity: 0;
+            transition-delay: 0.5s;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        &.visible {
+            opacity: 0.8;
+        }
+
+        &.animated {
+            animation-fill-mode: both;
+            animation-timing-function: ease-in;
+        }
+
+        &.slideInLeft {
+            animation-duration: 0.5s;
+            animation-name: slideInLeft;
+        }
+
+        &.slideOutLeft {
+            animation-name: slideOutLeft;
+            animation-duration: 0.5s;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow-y: scroll;
+
+            .flex-box {
+                flex: 100;
+                padding-top: 4rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                & > ul {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin: 0;
+                    padding: 0;
+                    margin-bottom: 2rem;
+
+                    & > li {
+                        list-style: none;
+                        font-size: 1.3rem;
+                        font-weight: 500;
+                        margin: 1.5rem 1rem;
+
+                        & > a {
+                            display: inline-block;
+                            padding: 1rem 1rem;
+                        }
+
+                        &:nth-last-child(2) {
+                            position: relative;
+
+                            .sub-nav {
+                                &.active {
+                                    max-height: 500px !important;
+                                }
+                                display: flex;
+                                transition: max-height 0.5s ease-in-out;
+                                max-height: 500px;
+
+                                flex-direction: column;
+                                margin: 0 2rem;
+                                padding: 0;
+                                & > li {
+                                    width: 100%;
+                                    position: relative;
+                                    list-style: none;
+                                    font-size: 1.2rem;
+                                    font-weight: 400;
+                                    text-transform: uppercase;
+
+                                    & > a {
+                                        width: 100%;
+                                        display: inline-block;
+                                        padding: 0.5rem 0 1.5rem;
+                                    }
+                                }
+                                .sub-nav-item--Work {
+                                    position: relative;
+                                }
+
+                                .sub-nav-item {
+                                    .work-sub {
+                                        &.active {
+                                            max-height: 500px !important;
+                                        }
+                                        transition: max-height 0.45s ease-in;
+                                        display: flex;
+                                        overflow: hidden;
+                                        max-height: 500px;
+                                        margin: 0;
+                                        padding: 0rem 0 1rem;
+                                        flex-direction: column;
+                                        & > li.work-sub-item {
+                                            list-style: none;
+                                            font-size: 0.9rem;
+                                            font-weight: 200;
+
+                                            & > a {
+                                                width: 100%;
+                                                text-transform: uppercase;
+                                                display: inline-block;
+                                                width: 100%;
+                                                margin: 0;
+                                                padding: 0;
+                                                padding-bottom: 1rem;
+                                                white-space: nowrap;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .sns {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 2rem;
+
+                    a {
+                        font-size: 0.9rem;
+                        font-weight: 500;
+
+                        &:first-child {
+                            margin-bottom: 1rem;
+                        }
+                        &::before {
+                            content: "●";
+                            font-size: 0.7rem;
+                            margin-right: 0.5rem;
+                        }
+                    }
+                }
+            }
         }
     }
 }

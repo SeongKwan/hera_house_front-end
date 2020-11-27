@@ -1,10 +1,12 @@
 /* Hamburger menu icon */
 #nav-icon2 {
+    z-index: 99999999999999999;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
     display: block;
     width: 28px;
     height: 20px;
-    position: relative;
-    margin: 38px auto;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
