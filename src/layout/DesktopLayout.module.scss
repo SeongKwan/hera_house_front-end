@@ -215,37 +215,39 @@
         }
 
         nav {
-            display: flex;
-            flex-direction: column;
+            // display: flex;
+            // flex-direction: column;
             // height: 100%;
             // min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
             // min-height: calc(var(--vh, 1vh) * 100);
-            min-height: 100vh;
+            // min-height: 100vh;
             // height: -webkit-fill-available;
             // overflow-y: scroll;
 
             .flex-box {
                 flex: 100;
-
+                height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+                height: calc(var(--vh, 1vh) * 100);
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 & > ul {
                     padding: 0;
-                    margin: 0;
-                    padding-top: 5vh;
+                    margin: 3rem 0;
+
+                    // padding-top: 5vh;
                     // padding-bottom: 5vh;
                     // height: 90vh; /* Fallback for browsers that do not support Custom Properties */
-                    height: calc(var(--vh, 1vh) * 95);
-                    // height: 100vh;
+                    height: 100vh;
+                    height: calc(var(--vh, 1vh) * 100);
                     // height: -webkit-fill-available;
                     overflow: scroll;
                     position: relative;
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between;
+
                     align-items: flex-start;
-                    margin-bottom: 2rem;
+                    // margin-bottom: 2rem;
 
                     & > div:first-child {
                         & > li {
@@ -337,6 +339,7 @@
                 }
 
                 .sns {
+                    margin-top: auto;
                     display: flex;
                     flex-direction: column;
                     padding: 2rem;
