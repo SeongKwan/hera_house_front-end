@@ -176,7 +176,10 @@
         font-weight: 400;
         font-size: 40px;
         width: 90vw;
-        height: 100vh;
+        min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+        min-height: calc(var(--vh, 1vh) * 100);
+        overflow: scroll;
+
         position: absolute;
         right: 0;
         top: 0;
