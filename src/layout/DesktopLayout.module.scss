@@ -232,13 +232,8 @@
                 flex-direction: column;
                 justify-content: space-between;
                 & > ul {
-                    padding: 0;
-                    margin: 0;
-                    margin: 3rem 0 6rem;
-                    // margin: 3rem 0;
-
-                    // padding-top: 5vh;
-                    // padding-bottom: 5vh;
+                    margin: 1rem 0 3rem;
+                    padding: 1rem 0 2rem;
                     // height: 90vh; /* Fallback for browsers that do not support Custom Properties */
                     height: 100vh;
                     height: calc(var(--vh, 1vh) * 100);
