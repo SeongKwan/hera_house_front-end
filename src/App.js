@@ -33,8 +33,6 @@ const cx = classNames.bind(styles);
 @inject('commonStore', 'loginStore', 'authStore')
 @observer
 class App extends Component {
-
-
   render() {
     return (
       <div className={cx('App', { 'disabled-scroll': !this.props.commonStore.enableScroll })}>
