@@ -177,6 +177,9 @@
         font-size: 40px;
         width: 90vw;
 
+        min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+        min-height: calc(var(--vh, 1vh) * 100);
+
         position: absolute;
         right: 0;
         top: 0;
@@ -191,7 +194,7 @@
         }
 
         &.visible {
-            opacity: 0.88;
+            opacity: 0.9;
         }
 
         &.animated {
@@ -213,6 +216,8 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+            min-height: calc(var(--vh, 1vh) * 100);
             overflow-y: scroll;
 
             .flex-box {
@@ -225,8 +230,9 @@
                     padding: 0;
                     margin: 0;
                     padding-top: 5vh;
-                    height: 95vh; /* Fallback for browsers that do not support Custom Properties */
-                    height: calc(var(--vh, 1vh) * 95);
+                    padding-bottom: 5vh;
+                    height: 90vh; /* Fallback for browsers that do not support Custom Properties */
+                    height: calc(var(--vh, 1vh) * 90);
                     overflow: scroll;
                     position: relative;
                     display: flex;
