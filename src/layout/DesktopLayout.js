@@ -118,7 +118,7 @@ class DesktopLayout extends Component {
             return <div></div>
         } else
             return (
-                <div className={cx('DesktopLayout')}>
+                <div className={cx('DesktopLayout', {'disableScroll': !this.props.commonStore.enableScroll})}>
                     {/* 모바일에선 터치화면이여서 커서가 불필요 */}
                     {
                         !isMobile &&
