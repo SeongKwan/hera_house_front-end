@@ -217,12 +217,13 @@
 
             .flex-box {
                 flex: 100;
-                padding-top: 4rem;
+                padding-top: 5vh;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 & > ul {
-                    min-height: 100%;
+                    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+                    height: calc(var(--vh, 1vh) * 95);
                     position: relative;
                     display: flex;
                     flex-direction: column;
