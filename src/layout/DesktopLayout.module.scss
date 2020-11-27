@@ -218,7 +218,6 @@
         position: absolute;
         right: 0;
         top: 0;
-        opacity: 0.8;
         transition: all 1.2s ease-out;
         z-index: 999999999;
         transition-property: opacity;
@@ -230,7 +229,7 @@
         }
 
         &.visible {
-            opacity: 0.8;
+            opacity: 0.88;
         }
 
         &.animated {
