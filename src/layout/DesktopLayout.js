@@ -33,6 +33,12 @@ class DesktopLayout extends Component {
     componentDidMount() {
         this.props.categoryStore.loadCategories();
         window.addEventListener("resize", this.resize.bind(this));
+        // We listen to the resize event
+        window.addEventListener('resize', () => {
+            // We execute the same script as before
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
         this.resize();
     }
 
