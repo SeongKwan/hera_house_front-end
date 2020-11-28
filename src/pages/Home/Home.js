@@ -47,12 +47,12 @@ class Home extends Component {
                         <p>Design director Hera Kim</p>
                         {
                         width > md &&
-                            <span className={cx('site-name')}>HR ARCHIVE</span>
+                            <Link to='/' className={cx('site-name')}>HR ARCHIVE</Link>
                         }       
                     </div>
                     {
                         width <= md &&
-                            <span className={cx('site-name', 'site-name--mobile')}>HR ARCHIVE</span>
+                            <Link to='/' className={cx('site-name', 'site-name--mobile')}>HR ARCHIVE</Link>
                         }
                     {
                         width > md &&

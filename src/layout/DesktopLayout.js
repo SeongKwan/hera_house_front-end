@@ -41,12 +41,17 @@ class DesktopLayout extends Component {
 
     _getVhFromWindow = () => {
         let vh = window.innerHeight * 0.01;
-        console.log(vh);
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
 
     componentWillUnmount() {
         this.props.commonStore.clearEnableScroll();
+        this._clearState();
+    }
+    
+    resize= () => this.props.commonStore.changeScreenSize({width: window.innerWidth, height: window.innerHeight});
+    
+    _clearState = () => {
         this.setState({
             selectedCategory: '', 
             selectedSubCategory: '', 
@@ -56,7 +61,6 @@ class DesktopLayout extends Component {
             subMenuIsOpened: false,
         });
     }
-    resize= () => this.props.commonStore.changeScreenSize({width: window.innerWidth, height: window.innerHeight});
     
     _handleOnMouseOver = (e, name = '') => {
         if (this.state.selectedCategory !== 'work') {        
@@ -91,22 +95,28 @@ class DesktopLayout extends Component {
         this._getVhFromWindow();
         if (name === 'Archives') {
             if (this.state.mainMenuIsOpened) {
+                this._clearState();
                 return true;
             }
             e.preventDefault();
             this.setState({mainMenuIsOpened: !this.state.mainMenuIsOpened});
-        } else return true;
+        } else 
+        this._clearState();
+        return true;
     }
 
     _handleOnClickSubMenu = (e, name) => {
         this._getVhFromWindow();
         if (name === 'Work') {
             if (this.state.subMenuIsOpened) {
+                this._clearState();
                 return true;
             }
             e.preventDefault();
             this.setState({subMenuIsOpened: !this.state.subMenuIsOpened});
-        } else return true;
+        } else 
+        this._clearState();
+        return true;
     }
 
     _handleOnClickHamburger= () => {
@@ -207,7 +217,7 @@ class DesktopLayout extends Component {
                                                                     <ul className={cx('work-sub', {'active': this.state.subMenuIsOpened})}>
                                                                         {category.subCategories.map((categoryWithSub, i) => {
                                                                             return <li key={`work-sub-item-${i}`} className={cx('work-sub-item')}>
-                                                                                <Link to={`/archives/Work/${categoryWithSub.name}`}>- {categoryWithSub.name}</Link>
+                                                                                <Link to={`/archives/Work/${categoryWithSub.name}`} onClick={() => {this._clearState();}}>- {categoryWithSub.name}</Link>
                                                                             </li>
                                                                         })}
                                                                     </ul>

@@ -45,6 +45,7 @@ class Archives extends Component {
         const subCategory = this.props.location.pathname.split('/')[2];
         const aCategory = this.props.location.pathname.split('/')[3];
         const title = this.props.location.pathname.split('/')[4];
+        const { isLoading } = this.props.postStore;
         let posts = this.props.postStore.registry;
         return (
             <div className={cx('Archives')}>
@@ -90,7 +91,7 @@ class Archives extends Component {
                                             </Link>
                                         </li>
                                     })
-                                    : <div className={cx('loader-container')}><Loader /></div>
+                                    : posts.length === 0 && !isLoading ? <div className={cx('no-results')}>Nothings in here, yet.</div> : <div className={cx('loader-container')}><Loader /></div>
                                 }
                             </ul>
                         </div>

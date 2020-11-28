@@ -34,8 +34,8 @@ class Projects extends Component {
 
     render() {
         const title = this.props.location.pathname.split('/')[2];
+        const { isLoading } = this.props.postStore;
         let { path } = this.props.match;
-
         let posts = this.props.postStore.registry;
 
 
@@ -74,7 +74,7 @@ class Projects extends Component {
                                                     </Link>
                                                 </li>
                                             })
-                                            : <div className={cx('loader-container')}><Loader /></div>
+                                            : posts.length === 0 && !isLoading ? <div className={cx('no-results')}>Nothings in here, yet.</div> : <div className={cx('loader-container')}><Loader /></div>
                                         }
                                     </ul>
                                 </div>

@@ -14,6 +14,15 @@
         height: 20vh;
     }
 
+    .no-results {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: center;
+        height: 20vh;
+        color: rgb(90, 90, 90);
+    }
+
     .flex-box {
         background-color: $white;
         height: 100%;
