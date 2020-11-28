@@ -11,6 +11,7 @@ import {
 import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
 import staticUrl from '../../constants/staticUrl';
+import Loader from '../../components/Loader/Loader';
 
 const cx = classNames.bind(styles);
 
@@ -62,7 +63,7 @@ class Projects extends Component {
                                 <div className={cx('grid-container')}>
                                     <ul className={cx('grid')}>
                                         {
-                                            posts.length > 0 &&
+                                            posts.length > 0 ?
                                             posts.map((post, i) => {
                                                 return <li key={`projects-card-${post._id}}`} className={cx('list-item')}>
                                                     <Link to={`/viewer?category=${post.type}&title=${post.title}&id=${post._id}`}>
@@ -73,6 +74,7 @@ class Projects extends Component {
                                                     </Link>
                                                 </li>
                                             })
+                                            : <div className={cx('loader-container')}><Loader /></div>
                                         }
                                     </ul>
                                 </div>

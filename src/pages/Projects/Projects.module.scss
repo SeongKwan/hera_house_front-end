@@ -5,6 +5,14 @@
     overflow-x: hidden;
     overflow-y: scroll;
 
+    .loader-container {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: center;
+        height: 20vh;
+    }
+
     .flex-box {
         background-color: $white;
         height: 100%;

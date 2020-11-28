@@ -1,10 +1,14 @@
 import React from 'react';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Loading from 'react-loader-spinner';
+import "./Loader.scss";
 
 const Loader = () => {
     return (
-        <Loading type="Rings" color="#003366" height={120} width={120} />
+    <section className="loading">
+        <div className="circle"></div>
+        <div className="circle"></div>
+        <div className="circle"></div>
+    </section>
+    
     );
 };
 

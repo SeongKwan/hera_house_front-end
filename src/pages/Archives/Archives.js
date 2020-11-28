@@ -11,6 +11,7 @@ import {
 import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
 import staticUrl from '../../constants/staticUrl';
+import Loader from '../../components/Loader/Loader';
 
 const cx = classNames.bind(styles);
 
@@ -89,7 +90,7 @@ class Archives extends Component {
                                             </Link>
                                         </li>
                                     })
-                                    : <div>...?</div>
+                                    : <div className={cx('loader-container')}><Loader /></div>
                                 }
                             </ul>
                         </div>
