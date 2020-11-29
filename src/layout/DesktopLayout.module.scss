@@ -23,7 +23,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0rem 1.3rem;
+        padding: 0rem 3.3rem;
 
         @include media("md") {
             padding: 2rem 2rem;
@@ -38,11 +38,11 @@
         }
 
         .concept-title span {
-            font-size: 1.8rem;
+            font-size: 22px;
             font-weight: 500;
 
             @include media("sm") {
-                font-size: 1.4rem;
+                font-size: 17px;
                 font-weight: 600;
             }
         }
@@ -53,12 +53,13 @@
             & > ul {
                 position: relative;
                 display: flex;
-                align-items: center;
+                // align-items: center;
                 margin: 0;
 
                 & > li {
+                    min-width: 120px;
                     list-style: none;
-                    font-size: 1.8rem;
+                    font-size: 22px;
                     font-weight: 500;
                     padding: 0 2rem;
 
@@ -92,9 +93,10 @@
                             padding: 0;
                             & > li {
                                 width: 100%;
+                                min-width: 120px;
                                 position: relative;
                                 list-style: none;
-                                font-size: 1.5rem;
+                                font-size: 20px;
                                 font-weight: 400;
                                 text-transform: uppercase;
                                 &:not(:last-child) a {
@@ -106,9 +108,9 @@
 
                                 & > a {
                                     width: 100%;
-                                    text-align: center;
+                                    // text-align: center;
                                     display: inline-block;
-                                    padding: 0.3rem 0 1.6rem;
+                                    padding: 22px 0 1.6rem;
                                 }
                             }
                             .sub-nav-item--Work {
@@ -129,18 +131,25 @@
                                     flex-direction: column;
                                     & > li.work-sub-item {
                                         list-style: none;
-                                        font-size: 1.2rem;
+                                        font-size: 15px;
                                         font-weight: 400;
 
+                                        &:first-child > a {
+                                            margin-top: 22px;
+                                        }
+
+                                        &:last-child > a {
+                                            padding-bottom: 16px;
+                                        }
                                         & > a {
                                             width: 100%;
-                                            text-align: center;
+                                            // text-align: center;
                                             text-transform: uppercase;
                                             display: inline-block;
                                             width: 100%;
                                             margin: 0;
                                             padding: 0;
-                                            padding-bottom: 1rem;
+                                            padding-bottom: 38px;
                                         }
                                     }
                                 }
@@ -240,7 +249,7 @@
                     & > div:first-child {
                         & > li {
                             list-style: none;
-                            font-size: 1.3rem;
+                            font-size: 17px;
                             font-weight: 500;
                             margin: 1.5rem 1rem;
                             &:last-child {
@@ -274,7 +283,7 @@
                                         width: 100%;
                                         position: relative;
                                         list-style: none;
-                                        font-size: 1.2rem;
+                                        font-size: 17px;
                                         font-weight: 400;
                                         text-transform: uppercase;
 
@@ -304,8 +313,11 @@
                                             flex-direction: column;
                                             & > li.work-sub-item {
                                                 list-style: none;
-                                                font-size: 0.9rem;
+                                                font-size: 15px;
                                                 font-weight: 200;
+                                                &:first-child > a {
+                                                    margin-top: 14px;
+                                                }
 
                                                 & > a {
                                                     width: 100%;
@@ -314,7 +326,7 @@
                                                     width: 100%;
                                                     margin: 0;
                                                     padding: 0;
-                                                    padding-bottom: 1rem;
+                                                    padding-bottom: 22px;
                                                     white-space: nowrap;
                                                 }
                                             }

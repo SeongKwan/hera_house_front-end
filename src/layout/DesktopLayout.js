@@ -185,10 +185,7 @@ class DesktopLayout extends Component {
                                             >
                                                 <Link to={`/archives`} onClick={(e) => {this._handleOnClickMainMenu(e, 'Archives')}}>
                                                     ARCHIVES
-                                                    {
-                                                        this.state.mainMenuIsOpened &&
-                                                        <span> ▶︎</span>
-                                                    }
+                                                    
                                                 </Link>
                                                 {/* main category list */}
                                                 <ul 
@@ -206,10 +203,7 @@ class DesktopLayout extends Component {
                                                                         onClick={(e) => this._handleOnClickSubMenu(e, category.name)} 
                                                                     >
                                                                         {category.name}
-                                                                        {
-                                                                            this.state.subMenuIsOpened && category.name === 'Work' &&
-                                                                            <span> ▶︎</span>
-                                                                        }
+                                                                        
                                                                     </Link>
                                                                 {/* sub category list */}
                                                                 {
@@ -260,7 +254,7 @@ class DesktopLayout extends Component {
                                                         <ul className={cx('work-sub', {'active': this.state.selectedSubCategory === 'Work'})}>
                                                             {category.subCategories.map((categoryWithSub, i) => {
                                                                 return <li key={`work-sub-item-${i}`} className={cx('work-sub-item')}>
-                                                                    <Link to={`/archives/Work/${categoryWithSub.name}`}>{categoryWithSub.name}</Link>
+                                                                    <Link to={`/archives/Work/${categoryWithSub.name}`}>- {categoryWithSub.name}</Link>
                                                                 </li>
                                                             })}
                                                         </ul>

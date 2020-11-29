@@ -18,7 +18,7 @@
         margin: 3rem 0;
 
         @include media("md") {
-            font-size: 1.4rem;
+            font-size: 20px;
             margin: 2.5rem 0;
         }
     }
@@ -46,10 +46,10 @@
 
         p {
             font-size: 1.4rem;
-            line-height: 2;
+            line-height: 1.7;
             font-weight: 300;
             @include media("md") {
-                font-size: 1.2rem;
+                font-size: 17px;
                 line-height: 1.5;
             }
         }
