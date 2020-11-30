@@ -233,7 +233,7 @@ class DesktopLayout extends Component {
                     }
                     <header className={cx({'borderless': this.props.borderless})}>
                         <div className={cx('concept-title')}>
-                            <Link to={'/'}><span>BLACK ENDING</span></Link>
+                            <Link to={'/'}><span>HR ARCHIVE</span></Link>
                         </div>
                         <nav className={cx('home-nav', {'home-nav--mobile': width <= md})}>
                         {/* md 사이즈 이상 (테스크톱 크기) */}
