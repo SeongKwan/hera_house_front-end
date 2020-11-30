@@ -48,7 +48,7 @@
             margin-bottom: 10px;
 
             @include media("md") {
-                font-size: 1.2rem;
+                font-size: 17px;
                 margin-bottom: 2px;
             }
         }
@@ -71,7 +71,7 @@
         transform: translateY(-50%);
         left: 2rem;
         font-weight: 200;
-        font-size: 17px;
+        font-size: 15px;
         writing-mode: vertical-rl;
     }
 
