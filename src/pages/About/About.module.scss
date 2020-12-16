@@ -26,13 +26,16 @@
     .slider-container {
         width: 1080px;
         height: 620px;
-        background-image: url("../../styles/img/desktop_background.png");
+        background-image: url("../../styles/img/desktop_background.jpeg");
         background-size: cover;
         background-repeat: no-repeat;
         @include media("md") {
             width: 80vw;
             height: 50vh;
             background-position-x: 60%;
+        }
+        @include media("sm") {
+            background-image: url("../../styles/img/mobile_background.jpeg");
         }
     }
 
