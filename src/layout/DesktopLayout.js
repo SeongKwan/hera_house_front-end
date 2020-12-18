@@ -223,8 +223,8 @@ class DesktopLayout extends Component {
                                             </li>
                                         </div>
                                         <div className={cx('sns')}>
-                                            <a href={sns.instagramUrl} className={cx('instagram')} target="_blank" title="HERA Official Instaram">Instagram</a>
-                                            <a href={sns.youtubeUrl} className={cx('youtube')} target="_blank" title="HERA Official Youtube">Youtube</a>
+                                            <a href={sns.instagramUrl} className={cx('instagram')} target="_blank" rel="noopener norefferer" title="HERA Official Instaram">Instagram</a>
+                                            <a href={sns.youtubeUrl} className={cx('youtube')} target="_blank" rel="noopener norefferer" title="HERA Official Youtube">Youtube</a>
                                         </div>
                                     </ul>
                                 </div>

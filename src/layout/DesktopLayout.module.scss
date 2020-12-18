@@ -77,7 +77,7 @@
 
                         .sub-nav {
                             &.active {
-                                max-height: 500px !important;
+                                max-height: 1000px !important;
                             }
                             overflow: hidden;
                             display: flex;
@@ -120,7 +120,7 @@
                             .sub-nav-item {
                                 .work-sub {
                                     &.active {
-                                        max-height: 500px !important;
+                                        max-height: 1000px !important;
                                     }
                                     transition: max-height 0.45s ease-in;
                                     display: flex;
@@ -269,7 +269,7 @@
                                 // main category
                                 .sub-nav {
                                     &.active {
-                                        max-height: 500px !important;
+                                        max-height: 1000px !important;
                                     }
                                     display: flex;
                                     transition: max-height 0.5s ease-in-out;
@@ -300,7 +300,7 @@
                                     .sub-nav-item {
                                         .work-sub {
                                             &.active {
-                                                max-height: 500px !important;
+                                                max-height: 1000px !important;
                                                 padding: 0rem 0 1rem;
                                             }
                                             transition: all 0.45s ease-in;
