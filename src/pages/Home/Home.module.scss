@@ -47,13 +47,13 @@
 
     p {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 200;
       line-height: 1.2;
       margin-bottom: 10px;
 
       @include media("md") {
-        font-size: 17px;
+        font-size: 13.5px;
         margin-bottom: 2px;
       }
     }
@@ -62,10 +62,11 @@
       position: absolute;
       bottom: -7rem;
       font-weight: 200;
-      font-size: 1.25rem;
+      font-size: 1.05rem;
 
       &--mobile {
         top: 50%;
+        font-size: 0.95rem;
       }
     }
   }
@@ -87,7 +88,7 @@
 
     p {
       margin: 0;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 200;
       line-height: 1.2;
     }
@@ -100,7 +101,7 @@
     left: 4vw;
 
     a {
-      font-size: 1.1rem;
+      font-size: 1rem;
 
       &:first-child {
         margin-right: 5rem;
