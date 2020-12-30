@@ -1,114 +1,114 @@
 @keyframes fadeIn {
-    from {
-        opacity: 0.25;
-    }
+  from {
+    opacity: 0.25;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 .Home {
-    // xl 초과하는 범위에서
-    opacity: 0;
-    animation-name: fadeIn;
-    animation-duration: 0.7s;
-    animation-fill-mode: both;
-    animation-timing-function: ease;
-    background-image: url("../../styles/img/desktop_background.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  // xl 초과하는 범위에서
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 0.7s;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+  background-image: url("../../styles/img/desktop_background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background-position-x: 50%;
+
+  @include media("lg") {
+  }
+
+  @include media("sm") {
+    background-image: url("../../styles/img/mobile_background.png");
+  }
+
+  .identity {
+    margin: 1.3rem;
+    margin-top: 5rem;
     position: relative;
-    background-position-x: 50%;
+    padding-left: 2rem;
 
-    @include media("lg") {
+    @include media("md") {
+      position: absolute;
+      margin: 0;
+      left: 2rem;
+      bottom: 3rem;
+      padding-left: 0;
     }
 
-    @include media("sm") {
-        background-image: url("../../styles/img/mobile_background.jpeg");
+    p {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 200;
+      line-height: 1.2;
+      margin-bottom: 10px;
+
+      @include media("md") {
+        font-size: 17px;
+        margin-bottom: 2px;
+      }
     }
 
-    .identity {
-        margin: 1.3rem;
-        margin-top: 5rem;
-        position: relative;
-        padding-left: 2rem;
+    .site-name {
+      position: absolute;
+      bottom: -7rem;
+      font-weight: 200;
+      font-size: 1.25rem;
 
-        @include media("md") {
-            position: absolute;
-            margin: 0;
-            left: 2rem;
-            bottom: 3rem;
-            padding-left: 0;
-        }
-
-        p {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 200;
-            line-height: 1.2;
-            margin-bottom: 10px;
-
-            @include media("md") {
-                font-size: 17px;
-                margin-bottom: 2px;
-            }
-        }
-
-        .site-name {
-            position: absolute;
-            bottom: -7rem;
-            font-weight: 200;
-            font-size: 1.25rem;
-
-            &--mobile {
-                top: 50%;
-            }
-        }
-    }
-
-    .site-name--mobile {
-        position: absolute;
+      &--mobile {
         top: 50%;
-        transform: translateY(-50%);
-        left: 2rem;
-        font-weight: 200;
-        font-size: 15px;
-        writing-mode: vertical-rl;
+      }
     }
+  }
 
-    .concept-point {
-        position: absolute;
-        top: 60%;
-        left: 77%;
+  .site-name--mobile {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2rem;
+    font-weight: 200;
+    font-size: 15px;
+    writing-mode: vertical-rl;
+  }
 
-        p {
-            margin: 0;
-            font-size: 1.4rem;
-            font-weight: 200;
-            line-height: 1.2;
-        }
+  .concept-point {
+    position: absolute;
+    top: 60%;
+    left: 77%;
+
+    p {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 200;
+      line-height: 1.2;
     }
+  }
 
-    .sns {
-        position: absolute;
-        display: flex;
-        bottom: 7vh;
-        left: 4vw;
+  .sns {
+    position: absolute;
+    display: flex;
+    bottom: 7vh;
+    left: 4vw;
 
-        a {
-            font-size: 1.1rem;
+    a {
+      font-size: 1.1rem;
 
-            &:first-child {
-                margin-right: 5rem;
-            }
-            &::before {
-                content: "●";
-                font-size: 0.8rem;
-                margin-right: 0.5rem;
-            }
-        }
+      &:first-child {
+        margin-right: 5rem;
+      }
+      &::before {
+        content: "●";
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+      }
     }
+  }
 }
