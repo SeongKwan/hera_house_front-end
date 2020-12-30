@@ -14,9 +14,10 @@
   animation-duration: 0.7s;
   animation-fill-mode: both;
   animation-timing-function: ease;
-  background-image: url("../../styles/img/desktop_background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+  //   background-image: url("../../styles/img/desktop_background.jpeg");
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  background-color: $white;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -27,7 +28,7 @@
   }
 
   @include media("sm") {
-    background-image: url("../../styles/img/mobile_background.png");
+    background-image: url("../../styles/img/mobile_background.jpeg");
   }
 
   .identity {
