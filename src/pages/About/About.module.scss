@@ -27,8 +27,9 @@
     width: 1080px;
     height: 620px;
     background-image: url("../../styles/img/about.jpeg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
     @include media("md") {
       width: 80vw;
       height: 50vh;
