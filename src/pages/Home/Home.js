@@ -54,14 +54,7 @@ class Home extends Component {
                         width <= md &&
                             <Link to='/' className={cx('site-name', 'site-name--mobile')}>BLACK ENDING</Link>
                         }
-                    {
-                        width > md &&
-                        <div className={cx('concept-point')}>
-                            <p>When all colors</p>
-                            <p>are combined,</p>
-                            <p>the end is clearly BLACK</p>
-                        </div>
-                    }
+                    
                     {
                         width > md &&
                         <div className={cx('sns')}>
