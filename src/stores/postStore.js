@@ -43,7 +43,6 @@ class PostStore {
 
     @action changeValue(type, value) {
         if (value === 'projects' && this.value['type'] === 'archives') {
-            console.log('??????')
             this.value['category'] = '';
             this.value['subCategory'] = '';
         }
@@ -156,10 +155,6 @@ class PostStore {
                 this.isLoading = false;
                 return res.data;
             }))
-            .then(action((res) => {
-                this.isLoading = false;
-                return res;
-            }))
             .catch(action((err) => {
                 this.isLoading = false;
                 throw err;
@@ -260,7 +255,7 @@ class PostStore {
             console.log(post);
             for (var key in filter) {
                 console.log(key);
-                if (post[key] === undefined || post[key] != filter[key])
+                if (post[key] === undefined || post[key] !== filter[key])
                     return false;
             }
             return true;
