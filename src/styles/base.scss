@@ -10,7 +10,7 @@ body {
 
 html {
     box-sizing: border-box; // Padding, Margin 을 포함한 박스크기 || 반응형에 적합
-    cursor: none !important;
+    // cursor: none !important;
 
     font-size: 16px; // 1rem
     font-family: "Raleway", sans-serif; // 1,2,3,6,8
@@ -29,8 +29,8 @@ html {
 *:hover,
 *:active,
 *:focus {
-    cursor: none !important;
-    user-select: none !important;
+    // cursor: none !important;
+    // user-select: none !important;
 }
 
 div#root {
