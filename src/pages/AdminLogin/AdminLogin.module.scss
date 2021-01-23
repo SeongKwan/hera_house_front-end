@@ -4,7 +4,7 @@
     color: $font-color-dark;
     border-radius: $radius-easy;
     padding: 3rem 4rem 3rem;
-    @include media("xs") {
+    @include media('xs') {
         width: 100%;
         padding: 3rem 1rem;
     }
@@ -24,9 +24,12 @@
             position: relative;
             margin-bottom: 2.5rem;
             padding: 0 0.5rem;
+            display: flex;
+            align-items: center;
+
             &::after {
                 background-color: $font-color-light;
-                content: "";
+                content: '';
                 height: 1px;
                 width: 100%;
                 position: absolute;
@@ -44,10 +47,6 @@
                 outline: 0;
                 width: 260px;
                 @include fontEn;
-                &::placeholder {
-                    color: $font-color-light;
-                    font-weight: 100;
-                }
             }
 
             label {
