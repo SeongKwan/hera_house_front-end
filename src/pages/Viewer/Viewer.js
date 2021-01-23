@@ -63,17 +63,17 @@ class Viewer extends Component {
                         <div className={cx('breadcrumb')}>
                             <span>{type}</span>
                             {
-                                category !== undefined ?
+                                category.length !== 0 ?
                                     <span>{` : ${category}`}</span>
                                     : <></>
                             }
                             {
-                                subCategory !== undefined ?
+                                subCategory.length !== 0 ?
                                     <span>{` : ${subCategory}`}</span>
                                     : <></>
                             }
                             {
-                                title !== undefined ?
+                                title.length !== 0 ?
                                     <span>{` : ${title}`}</span>
                                     : <></>
                             }
