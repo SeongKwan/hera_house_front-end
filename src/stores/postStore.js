@@ -249,12 +249,12 @@ class PostStore {
 
     @action filterRegistry(posts, type, category, subCategory) {
         let filter = { type, category, subCategory, };
-        console.log(filter);
+        // console.log(filter);
 
         this.filteredRegistry = _.filter(posts, (post) => {
-            console.log(post);
+            // console.log(post);
             for (var key in filter) {
-                console.log(key);
+                // console.log(key);
                 if (post[key] === undefined || post[key] !== filter[key])
                     return false;
             }

@@ -34,7 +34,7 @@ class CategoryStore {
             }))
     }
     @action loadSubCategories() {
-        console.log('load sub categories');
+        
         this.isLoading = true;
         return agent.loadSubCategories()
             .then(action((res) => {

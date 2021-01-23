@@ -124,7 +124,7 @@ class Editor extends Component {
     },
     imageUploader: {
       upload: (file) => {
-        console.log(file);
+        
         let formData = new FormData();
         formData.append("file", file);
 
@@ -155,7 +155,7 @@ class Editor extends Component {
   }
 
   imageHandler() {
-    console.log("image handler");
+    
   }
 
   _initialize = async (type) => {
@@ -334,7 +334,7 @@ class Editor extends Component {
       titleIsEmpty,
     } = this.props.postStore;
     const { type: EditorType } = this.props;
-    console.log(this.props.postStore.value);
+    
     if (this.props.editorStore.isLoading) {
       return (
         <div

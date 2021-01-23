@@ -96,7 +96,7 @@ class Agent {
   }
 
   loadFilteredPosts({ type, category, subCategory }) {
-    console.log("req load filtered posts");
+    
     return this.post(`/posts/filteredPosts`, { type, category, subCategory });
   }
 
@@ -113,7 +113,7 @@ class Agent {
     isPublished,
     thumbnail,
   }) {
-    console.log("req create post");
+    
     return this.post(`/posts`, {
       title,
       type,
@@ -232,7 +232,7 @@ class Agent {
       .catch(this._handleError);
   }
   post(url, body) {
-    console.log("post !!!");
+    
     this.validateToken();
     return this.axios
       .post(`/api/v1${url}`, body, this.requestConfig)

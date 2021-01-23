@@ -40,10 +40,10 @@ class Viewer extends Component {
         const type = query.category.split('_')[0];
         const category = query.category.split('_')[1];
         const subCategory = query.category.split('_')[2];
-        console.log(query);
+        // console.log(query);
 
         const { thePost } = this.props.postStore;
-        console.log(thePost);
+        // console.log(thePost);
         // const { isLoggedIn } = this.props.loginStore;
 
         if (!!title === false) {
