@@ -6,8 +6,8 @@ import styles from "./DesktopLayout.module.scss";
 import "./DesktopLayout.css";
 import classNames from "classnames/bind";
 import Cursor from "../components/Cursor/Cursor";
-import { md } from "../constants/breakporints";
 import { isMobile } from "react-device-detect";
+import { md } from "../constants/breakporints";
 import sns from "../constants/sns";
 
 const cx = classNames.bind(styles);
