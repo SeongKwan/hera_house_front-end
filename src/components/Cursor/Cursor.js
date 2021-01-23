@@ -18,7 +18,7 @@ class Cursor extends Component {
     
     componentDidUpdate(prevProps) {
         if (prevProps.location.pathname !== this.props.location.pathname) {
-     
+    
             return this._handleLinkHoverEvents();
         }
     }

@@ -5,7 +5,7 @@ import styles from './About.module.scss';
 import classNames from 'classnames/bind';
 import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
-import { xs, sm, md, lg, xl } from '../../constants/breakporints';
+import { md } from '../../constants/breakporints';
 
 const cx = classNames.bind(styles);
 
@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 @observer
 class About extends Component {
     render() {
-        let { screenSize: { width, height }} = this.props.commonStore;
+        let { screenSize: { width }} = this.props.commonStore;
         return (
             <div className={cx('About')}>
                 <Helmet>

@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import { Switch, Route } from 'react-router-dom';
 import styles from './Admin.module.scss';
 import classNames from 'classnames/bind';
-import AdminCategory from '../../components/AdminCategory/AdminCategory';
+// import AdminCategory from '../../components/AdminCategory/AdminCategory';
 import AdminPost from '../../components/AdminPost/AdminPost';
 import LayoutAdmin from '../../components/LayoutAdmin/LayoutAdmin';
 import AdminPostWrite from '../../components/AdminPostWrite/AdminPostWrite';
@@ -12,7 +12,7 @@ import AdminLogin from '../AdminLogin/AdminLogin';
 import LayoutAdminMain from '../../components/LayoutAdminMain/LayoutAdminMain';
 
 const cx = classNames.bind(styles);
-let timer = null;
+// let timer = null;
 
 @withRouter
 @inject('authStore', 'loginStore')
@@ -94,13 +94,13 @@ class Admin extends Component {
 
 export default Admin;
 
-const AdminMain = () => {
-    return (
-        <div>
-            공지사항 목록을 넣을 예정
-        </div>
-    );
-};
+// const AdminMain = () => {
+//     return (
+//         <div>
+//             공지사항 목록을 넣을 예정
+//         </div>
+//     );
+// };
 const AdminManual = () => {
     return (
         <div>

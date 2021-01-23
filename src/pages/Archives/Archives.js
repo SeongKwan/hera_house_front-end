@@ -4,8 +4,6 @@ import { inject, observer } from 'mobx-react';
 import styles from './Archives.module.scss';
 import classNames from 'classnames/bind';
 import {
-    Switch,
-    Route,
     Link,
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';

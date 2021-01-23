@@ -4,10 +4,9 @@ import { withRouter } from "react-router";
 import styles from './Home.module.scss';
 import classNames from 'classnames/bind';
 import { inject, observer } from 'mobx-react';
-import { IoIosSettings } from "react-icons/io";
 import { Helmet } from "react-helmet";
 import DesktopLayout from '../../layout/DesktopLayout';
-import { xs, sm, md, lg, xl } from '../../constants/breakporints';
+import { md } from '../../constants/breakporints';
 
 const cx = classNames.bind(styles);
 const youtubeUrl = "https://www.youtube.com";
@@ -19,7 +18,7 @@ const instagramUrl = "https://instagram.com/herakim_______?igshid=kkuvihytwxl3";
 class Home extends Component {
 
     render() {
-        let { screenSize: { width, height }} = this.props.commonStore;
+        let { screenSize: { width }} = this.props.commonStore;
         return (
             <div className={cx('Home')}>
                 <Helmet>
@@ -58,8 +57,8 @@ class Home extends Component {
                     {
                         width > md &&
                         <div className={cx('sns')}>
-                            <a href={youtubeUrl} className={cx('youtube')} target="_blank" title="HERA Official Youtube">Youtube</a>
-                            <a href={instagramUrl} className={cx('instagram')} target="_blank" title="HERA Official Instaram">Instagram</a>
+                            <a href={youtubeUrl} className={cx('youtube')} target="_blank" rel="noopener noreferrer" title="HERA Official Youtube">Youtube</a>
+                            <a href={instagramUrl} className={cx('instagram')} target="_blank" rel="noopener noreferrer" title="HERA Official Instaram">Instagram</a>
                         </div>
                     }
                 </DesktopLayout>

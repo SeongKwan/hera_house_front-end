@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react';
 import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
 import qs from 'qs';
-import ReactQuill, { Quill } from 'react-quill';
+import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './Quill.scss';
 
@@ -32,7 +32,7 @@ class Viewer extends Component {
         this.props.postStore.loadPost(query.id);
     }
     render() {
-        let { path } = this.props.match;
+        // let { path } = this.props.match;
         const query = qs.parse(this.props.location.search, {
             ignoreQueryPrefix: true
         });
@@ -44,7 +44,7 @@ class Viewer extends Component {
 
         const { thePost } = this.props.postStore;
         console.log(thePost);
-        const { isLoggedIn } = this.props.loginStore;
+        // const { isLoggedIn } = this.props.loginStore;
 
         if (!!title === false) {
             return <div></div>
