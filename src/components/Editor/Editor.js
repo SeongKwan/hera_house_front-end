@@ -145,6 +145,7 @@ class Editor extends Component {
 
     componentDidMount() {
         const { type } = this.props;
+        window.scrollTo(0, 0);
         this._initialize(type);
     }
 
