@@ -284,7 +284,6 @@
         width: 100%;
         @include media('xs') {
             width: 100%;
-            padding-top: 60px;
             height: calc(100vh - 60px);
         }
     }
