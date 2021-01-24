@@ -26,7 +26,7 @@ class PostStore {
     }
 
     @computed get postsLength() {
-        return this.filteredRegistry.filter(
+        return this.registry.filter(
             post => post.isPublished === true
         ).length;
     }

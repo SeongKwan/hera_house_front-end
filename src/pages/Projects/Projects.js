@@ -37,9 +37,6 @@ class Projects extends Component {
         const { isLoading, postsLength } = this.props.postStore;
         let { path } = this.props.match;
         let posts = this.props.postStore.registry;
-        
-        console.log(postsLength)
-        console.log(isLoading)
 
         return (
             <div className={cx('Projects')}>
