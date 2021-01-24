@@ -2,13 +2,12 @@
     background-color: $admin-main-container-color;
     color: $white;
     display: flex;
-    height: 100%;
+
     overflow: scroll;
     position: relative;
     user-select: none;
     width: 100%;
-    @include media("xs") {
-        padding-top: 60px;
+    @include media('xs') {
         flex-direction: column;
     }
 
@@ -25,13 +24,13 @@
         display: flex;
         height: 60px;
         justify-content: space-between;
-        left: 0;
-        padding: 0.75rem 1rem 0.75rem 1.5rem;
-        position: fixed;
-        top: 0;
-        width: 100%;
         z-index: $z-header-admin;
-        @include media("xs") {
+        @include media('xs') {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            padding: 0 1rem;
             min-height: 60px;
         }
 
@@ -61,7 +60,7 @@
 
                 &::before,
                 &::after {
-                    content: "";
+                    content: '';
                     left: 0;
                     position: absolute;
                     transition: all 0.2s;
@@ -107,8 +106,9 @@
         z-index: 2700;
 
         &.isOpened {
-            top: 58px;
+            top: 60px;
             opacity: 1;
+            padding: 1rem 0;
         }
         .list-item-category {
             text-align: center;
@@ -116,12 +116,13 @@
             width: 100%;
             background-color: $admin-toggle-menu-color;
             color: $font-color-dark;
+            text-decoration: none;
 
             &.horizon-divider {
                 padding: 2rem 0;
                 position: relative;
                 &::after {
-                    content: "";
+                    content: '';
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -134,9 +135,13 @@
         }
         .button-logout {
             border: 0;
+            font-size: 1rem;
         }
 
         .link-to-site {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             .icon {
                 margin-right: 0.5rem;
             }
@@ -155,7 +160,7 @@
         top: 0;
         width: 360px;
         z-index: $z-aside;
-        @include media("xs") {
+        @include media('xs') {
             display: none;
         }
 
@@ -235,7 +240,7 @@
                     text-decoration: none;
 
                     span::after {
-                        content: "";
+                        content: '';
                         width: calc(100% + 24px);
                         height: 1px;
                         background-color: white;
@@ -247,7 +252,7 @@
                 span {
                     position: relative;
                     &::after {
-                        content: "";
+                        content: '';
                         width: 0%;
                         height: 1px;
                         background-color: white;
@@ -277,8 +282,10 @@
         background-color: $admin-main-container-color;
         color: $font-color-dark;
         width: 100%;
-        @include media("xs") {
+        @include media('xs') {
             width: 100%;
+            padding-top: 60px;
+            height: calc(100vh - 60px);
         }
     }
 }

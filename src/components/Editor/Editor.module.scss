@@ -3,19 +3,17 @@
     flex-direction: column;
     padding-bottom: 5rem;
     position: relative;
-    // overflow: hidden;
-    // width: 100%;
     margin: auto;
     width: 60%;
-    @include media("xl") {
+    @include media('xl') {
     }
-    @include media("lg") {
+    @include media('lg') {
         width: 70%;
     }
-    @include media("md") {
+    @include media('md') {
         width: 90%;
     }
-    @include media("sm") {
+    @include media('sm') {
         width: 95%;
     }
 
@@ -30,24 +28,32 @@
         }
     }
 
+    .categories-container {
+        display: flex;
+        padding: 1rem 0;
+        flex-direction: row;
+        @include media('xs') {
+        }
+    }
+
     .wrapper-textarea {
         background-color: $white;
         padding-bottom: 1rem;
-        @include media("xs") {
+        @include media('xs') {
             padding-bottom: 0;
+            padding: 1rem;
         }
 
         .textarea-post-title {
             border: 0;
             border-radius: $radius-easy;
             font-size: 2.5rem;
-            padding: 1.5rem 0;
+            padding: 0;
             outline: 0;
             resize: none;
             width: 100%;
-            @include media("xs") {
+            @include media('xs') {
                 font-size: 1.75rem;
-                padding: 1rem;
             }
             &::placeholder {
                 color: $font-color-light;
@@ -61,7 +67,13 @@
         display: flex;
         padding: 0rem 1rem;
 
-        .type, .category, .subCategory {
+        @include media('xs') {
+            flex-direction: column;
+        }
+
+        .type,
+        .category,
+        .subCategory {
             align-items: center;
             display: flex;
             font-size: 1.2rem;
@@ -149,17 +161,17 @@
         position: fixed;
         width: calc((540px * 3 + 48px) * 0.6);
         margin: auto;
-        @include media("xl") {
+        @include media('xl') {
             width: calc((540px * 2 + 48px) * 0.6);
         }
-        @include media("lg") {
+        @include media('lg') {
             // width: calc(540px * 1 + 48px);
             width: 70%;
         }
-        @include media("md") {
+        @include media('md') {
             width: 90%;
         }
-        @include media("sm") {
+        @include media('sm') {
             width: 95%;
         }
 
@@ -189,7 +201,7 @@
             &-publish {
                 background-color: $admin-sidebar-color;
                 // margin-right: 1rem;
-                @include media("xs") {
+                @include media('xs') {
                     margin-right: 0rem;
                 }
 

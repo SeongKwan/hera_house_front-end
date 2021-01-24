@@ -49,7 +49,7 @@ class LayoutAdminMain extends Component {
           <>
             <div className={cx("header")}>
               <div className={cx("logo")} onClick={this._handleClickOnLogo}>
-                HH.Manager
+                HRACHIVE
               </div>
               <div
                 className={cx("wrapper-hamburger-menu")}
@@ -133,7 +133,7 @@ class LayoutAdminMain extends Component {
               <FaLongArrowAltLeft className={cx("icon")} />
               <span>사이트로 돌아가기</span>
             </Link>
-            <div className={cx("footer-content")}>2020 HR Archive</div>
+            <div className={cx("footer-content")}>2021 HR Archive</div>
           </footer>
         </aside>
         <main className={cx("main")}>

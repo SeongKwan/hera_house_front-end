@@ -1,7 +1,16 @@
 .AdminPost {
     width: 100%;
     overflow: hidden;
+
+    .post-list-container {
+        display: none;
+        @include media('xs') {
+            display: block;
+        }
+    }
+
     
+
     .button-add-post {
         background-color: $admin-sidebar-color;
         border: 1px solid transparent;
@@ -34,7 +43,7 @@
         height: 60px;
         @include fontEn; // 글 높이 정렬
         @include centerPosition;
-        
+
         .icon {
             font-size: 2rem;
         }

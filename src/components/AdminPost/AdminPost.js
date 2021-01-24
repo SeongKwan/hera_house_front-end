@@ -32,10 +32,10 @@ class AdminPost extends Component {
                 }
                 {
                     isMobile &&
-                    <MobileView>
+                    <div className={cx('post-list-container')}>
                         <button className={cx('floating-button-add-post')} onClick={this._handleClickOnButtonAddPost}><IoMdAdd className={cx('icon')} /></button>
                         <TableBoardMobile />
-                    </MobileView>
+                    </div>
                 }
             </main>
         );
