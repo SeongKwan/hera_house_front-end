@@ -43,7 +43,7 @@ class Archives extends Component {
         const subCategory = this.props.location.pathname.split('/')[2];
         const aCategory = this.props.location.pathname.split('/')[3];
         const title = this.props.location.pathname.split('/')[4];
-        const { isLoading } = this.props.postStore;
+        const { isLoading, postsLength } = this.props.postStore;
         let posts = this.props.postStore.registry;
         return (
             <div className={cx('Archives')}>
@@ -78,7 +78,7 @@ class Archives extends Component {
                         <div className={cx('grid-container')}>
                             <ul className={cx('grid')}>
                                 {
-                                    posts.length > 0 ?
+                                    posts.length >= 0 && !isLoading ?
                                     posts.map((post, i) => {
                                         return <li key={`projects-card-${post._id}}`} className={cx('list-item')}>
                                             <Link to={`/viewer?category=${post.type}_${post.category}_${post.subCategory}&title=${post.title}&id=${post._id}`}>
@@ -89,7 +89,10 @@ class Archives extends Component {
                                             </Link>
                                         </li>
                                     })
-                                    : posts.length === 0 && !isLoading ? <div className={cx('no-results')}>Nothings in here, yet.</div> : <div className={cx('loader-container')}><Loader /></div>
+                                    : <div className={cx('loader-container')}><Loader /></div>
+                                }
+                                {
+                                    postsLength === 0 && !isLoading && <div className={cx('no-results')}>Nothings in here, yet.</div>
                                 }
                             </ul>
                         </div>

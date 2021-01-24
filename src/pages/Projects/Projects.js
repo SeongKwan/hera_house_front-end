@@ -34,10 +34,12 @@ class Projects extends Component {
 
     render() {
         const title = this.props.location.pathname.split('/')[2];
-        const { isLoading } = this.props.postStore;
+        const { isLoading, postsLength } = this.props.postStore;
         let { path } = this.props.match;
         let posts = this.props.postStore.registry;
-
+        
+        console.log(postsLength)
+        console.log(isLoading)
 
         return (
             <div className={cx('Projects')}>
@@ -63,18 +65,24 @@ class Projects extends Component {
                                 <div className={cx('grid-container')}>
                                     <ul className={cx('grid')}>
                                         {
-                                            posts.length > 0 ?
+                                            posts.length >= 0 && !isLoading ?
                                             posts.map((post, i) => {
-                                                return <li key={`projects-card-${post._id}}`} className={cx('list-item')}>
+                                                const { isPublished } = post;
+                                                if (isPublished)
+                                                {return <li key={`projects-card-${post._id}}`} className={cx('list-item')}>
                                                     <Link to={`/viewer?category=${post.type}&title=${post.title}&id=${post._id}`}>
                                                         <div className={cx('image')}>
                                                             <img src={`${staticUrl}/${post.thumbnail}`} alt="post thumbnail" />
                                                         </div>
                                                         <div className={cx('list-item-title')}>{post.title}</div>
                                                     </Link>
-                                                </li>
+                                                </li>}
+                                                else { return false; }
                                             })
-                                            : posts.length === 0 && !isLoading ? <div className={cx('no-results')}>Nothings in here, yet.</div> : <div className={cx('loader-container')}><Loader /></div>
+                                            : <div className={cx('loader-container')}><Loader /></div>
+                                        }
+                                        {
+                                            postsLength === 0 && !isLoading && <div className={cx('no-results')}>Nothings in here, yet.</div>
                                         }
                                     </ul>
                                 </div>
