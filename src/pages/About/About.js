@@ -28,9 +28,9 @@ class About extends Component {
                 <DesktopLayout fadeIn>
                     <div className={cx('flex-box')}>
                         <div className={cx('owner-name')}>
-                            <span>HERA KIM</span>
+                            {/* <span>HERA KIM</span> */}
                         </div>
-                        <div className={cx('slider-container')}></div>
+                        {/* <div className={cx('slider-container')}></div> */}
                         {
                         width > md &&
                         <div className={cx('description')}>
