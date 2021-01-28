@@ -40,10 +40,10 @@ class Viewer extends Component {
         const type = query.category.split('_')[0];
         const category = query.category.split('_')[1];
         const subCategory = query.category.split('_')[2];
-        // console.log(query);
+        
+        console.log(category !== null);
 
         const { thePost } = this.props.postStore;
-        // console.log(thePost);
         // const { isLoggedIn } = this.props.loginStore;
 
         if (!!title === false) {
@@ -63,17 +63,17 @@ class Viewer extends Component {
                         <div className={cx('breadcrumb')}>
                             <span>{type}</span>
                             {
-                                category.length !== 0 ?
+                                category !== undefined && category !== null ?
                                     <span>{` : ${category}`}</span>
                                     : <></>
                             }
                             {
-                                subCategory.length !== 0 ?
+                                subCategory !== undefined && subCategory !== null ?
                                     <span>{` : ${subCategory}`}</span>
                                     : <></>
                             }
                             {
-                                title.length !== 0 ?
+                                title !== undefined && title !== null ?
                                     <span>{` : ${title}`}</span>
                                     : <></>
                             }
