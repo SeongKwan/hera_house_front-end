@@ -8,7 +8,7 @@
     &.no-posts {
         height: 100%;
     }
-    @include media("md") {
+    @include media('md') {
         margin: -0.25rem 0rem 0 0;
     }
     .list-item-post--clothing,
@@ -25,11 +25,11 @@
         width: 540px;
         transition: opacity 300ms ease;
 
-        @include media("lg") {
+        @include media('lg') {
             width: calc(50% - 1rem);
             height: 100%;
         }
-        @include media("sm") {
+        @include media('sm') {
             width: 100%;
         }
 
@@ -62,7 +62,7 @@
         flex-direction: column;
         margin-top: 6rem;
         width: 100%;
-        @include media("md") {
+        @include media('md') {
             width: 100%;
         }
 
@@ -72,7 +72,6 @@
 
         p {
             margin-top: 1rem;
-            font-weight: 100;
         }
     }
 }

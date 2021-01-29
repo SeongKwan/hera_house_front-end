@@ -1,6 +1,6 @@
 .Archive {
     position: relative;
-    
+
     &.no-scroll {
         height: 100%;
         overflow: hidden;
@@ -57,7 +57,7 @@
             user-select: none;
 
             // Main Logo for Desktop
-            &[data-device="desktop"] {
+            &[data-device='desktop'] {
                 display: block;
                 width: 320px;
 
@@ -67,7 +67,7 @@
             }
 
             // Main Logo for Mobile
-            &[data-device="mobile"] {
+            &[data-device='mobile'] {
                 display: none;
             }
 
@@ -76,17 +76,17 @@
                 cursor: pointer;
                 font-size: 30px;
                 color: $white;
-                font-weight: 800;
+
                 transition: opacity 300ms ease;
                 @include fontEn;
             }
 
             @include media('md') {
-                &[data-device="desktop"] {
+                &[data-device='desktop'] {
                     display: none;
                 }
 
-                &[data-device="mobile"] {
+                &[data-device='mobile'] {
                     cursor: default;
                     display: flex;
                     justify-content: space-between;
@@ -102,7 +102,6 @@
         }
     }
 
-
     .container {
         position: relative;
         z-index: $z-container-archive;
@@ -111,10 +110,9 @@
             z-index: $z-container-archive-covered-menu;
         }
 
-    /*
+        /*
     ** Sidebar
     **/
-        
 
         .main {
             padding-top: 2rem;
@@ -128,13 +126,10 @@
                 width: 100%;
             }
             @include media('md') {
-                
             }
             @include media('sm') {
-                
             }
             @include media('sm') {
-                
             }
 
             .current-category {
@@ -220,7 +215,7 @@
                 color: $white;
                 margin-left: 1rem;
                 position: relative;
-                
+
                 &,
                 &::before,
                 &::after {
@@ -232,10 +227,10 @@
 
                 &::before,
                 &::after {
-                    content: "";
+                    content: '';
                     left: 0;
                     position: absolute;
-                    transition: all .2s;
+                    transition: all 0.2s;
                 }
 
                 &::before {
@@ -273,7 +268,7 @@
         position: fixed;
         right: -100%;
         top: 0;
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         width: 0%;
         z-index: $z-ul-archive-menu-list;
         &.going-in {
@@ -329,17 +324,16 @@
             position: absolute;
             transform: translateX(-50%);
             width: 100%;
-    
+
             .icon {
                 color: $white;
                 cursor: pointer;
                 font-size: 1.45rem;
                 transition: color 300ms ease-in-out;
-    
+
                 &:nth-child(2) {
                     margin: 0 1rem;
                 }
-    
             }
         }
 
@@ -363,7 +357,6 @@
                 }
 
                 .wrapper-button-admin {
-
                     .icon {
                         cursor: pointer;
                         font-size: 2.2rem;
