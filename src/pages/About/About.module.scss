@@ -6,16 +6,13 @@
     overflow-x: hidden;
 
     .flex-box {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        
     }
 
     .owner-name {
-        font-size: 1.8rem;
+        // font-size: 1.8rem;
 
-        margin: 3rem 0;
+        // margin: 3rem 0;
 
         @include media('md') {
             font-size: 20px;
@@ -41,17 +38,22 @@
     }
 
     .description {
-        margin: 3rem 0 2rem;
         text-align: center;
+        margin-top: 230px;
 
         @include media('md') {
             padding: 0 2rem;
         }
 
         p {
-            font-size: 17px;
-            line-height: 1.7;
+            margin: 0;
+            font-size: 20px;
+
             font-weight: 300;
+            line-height: 30px;
+            letter-spacing: 0em;
+            text-align: center;
+
             @include media('md') {
                 font-size: 13px;
                 line-height: 1.7;

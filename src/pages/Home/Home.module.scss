@@ -32,10 +32,9 @@
     }
 
     .identity {
-        margin: 1.3rem;
-        margin-top: 5rem;
         position: relative;
-        padding-left: 2rem;
+        margin-left: 100px;
+        margin-top: 76px;
 
         @include media('md') {
             position: absolute;
@@ -46,11 +45,11 @@
         }
 
         p {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 0em;
+            line-height: 30px;
             margin: 0;
-            font-size: 17px;
-
-            line-height: 1.4;
-            margin-bottom: 10px;
 
             @include media('md') {
                 font-size: 13px;
@@ -59,10 +58,14 @@
         }
 
         .site-name {
-            position: absolute;
-            bottom: -7rem;
+            display: block;
+            margin-top: 200px;
 
-            font-size: 17px;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 30px;
+            letter-spacing: 0em;
 
             &--mobile {
                 top: 50%;
@@ -95,21 +98,23 @@
     }
 
     .sns {
-        position: absolute;
+        margin-top: 300px;
+        margin-left: 100px;
         display: flex;
-        bottom: 7vh;
-        left: 4vw;
+        align-items: center;
 
         a {
-            font-size: 1rem;
-
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 30px;
+            letter-spacing: 0em;
             &:first-child {
-                margin-right: 5rem;
+                margin-right: 50px;
             }
-            &::before {
-                content: '●';
-                font-size: 0.8rem;
-                margin-right: 0.5rem;
+            img {
+                margin-right: 15px;
             }
         }
     }
