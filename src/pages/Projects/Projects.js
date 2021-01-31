@@ -53,7 +53,7 @@ class Projects extends Component {
                             <span>PROJECTS</span>
                             {
                                 title !== undefined ?
-                                    <span>{` : ${title}`}</span>
+                                    <span>{` > ${title}`}</span>
                                     : <span></span>
                             }
                         </div>

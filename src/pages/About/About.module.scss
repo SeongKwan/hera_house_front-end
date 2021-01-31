@@ -6,7 +6,6 @@
     overflow-x: hidden;
 
     .flex-box {
-        
     }
 
     .owner-name {
@@ -41,8 +40,8 @@
         text-align: center;
         margin-top: 230px;
 
-        @include media('md') {
-            padding: 0 2rem;
+        @include media('sm') {
+            
         }
 
         p {
@@ -54,9 +53,12 @@
             letter-spacing: 0em;
             text-align: center;
 
-            @include media('md') {
-                font-size: 13px;
-                line-height: 1.7;
+            @include media('sm') {
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 20px;
+                letter-spacing: 0em;
             }
         }
     }

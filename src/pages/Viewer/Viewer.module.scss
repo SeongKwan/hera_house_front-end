@@ -25,13 +25,23 @@
     }
 
     .breadcrumb {
-        font-size: 22px;
+        font-size: 20px;
+        font-style: normal;
         font-weight: 300;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: center;
+
         margin: 3rem 0;
         text-transform: uppercase;
         text-align: center;
-        @include media("md") {
-            font-size: 1.3rem;
+        @include media('sm') {
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: center;
         }
     }
     article {
@@ -43,17 +53,16 @@
         position: relative;
         padding-top: 1rem;
         width: 60%;
-        @include media("xl") {
+        @include media('xl') {
         }
-        @include media("lg") {
+        @include media('lg') {
             width: 70%;
         }
-        @include media("md") {
+        @include media('md') {
             width: 90%;
         }
-        @include media("sm") {
+        @include media('sm') {
             width: 95%;
         }
-
     }
 }

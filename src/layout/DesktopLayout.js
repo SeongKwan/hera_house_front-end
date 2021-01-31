@@ -98,13 +98,14 @@ class DesktopLayout extends Component {
         this._getVhFromWindow();
         if (name === 'Archives') {
             if (this.state.mainMenuIsOpened) {
-                this._clearState();
-                return true;
+                // this._clearState();
+                return false;
             }
             e.preventDefault();
             this.setState({ mainMenuIsOpened: !this.state.mainMenuIsOpened });
         } else this._clearState();
-        return true;
+        e.preventDefault();
+        return false;
     };
 
     _handleOnClickSubMenu = (e, name) => {
@@ -205,8 +206,10 @@ class DesktopLayout extends Component {
                                                     'nav-item--archives',
                                                 )}
                                             >
-                                                <Link
-                                                    to={`/archives`}
+                                                <div
+                                                    className={cx(
+                                                        'mobile-link-archive',
+                                                    )}
                                                     onClick={(e) => {
                                                         this._handleOnClickMainMenu(
                                                             e,
@@ -215,7 +218,7 @@ class DesktopLayout extends Component {
                                                     }}
                                                 >
                                                     ARCHIVES
-                                                </Link>
+                                                </div>
                                                 {/* main category list */}
                                                 <ul
                                                     className={cx('sub-nav', {
@@ -332,7 +335,11 @@ class DesktopLayout extends Component {
                             </nav>
                         </div>
                     )}
-                    <div className={cx('header-container', {borderless: atHomeRoute})}>
+                    <div
+                        className={cx('header-container', {
+                            borderless: atHomeRoute,
+                        })}
+                    >
                         <header
                             className={cx({
                                 borderless: this.props.borderless,

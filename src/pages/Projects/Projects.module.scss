@@ -43,10 +43,16 @@
         margin-top: 50px;
         margin-bottom: 50px;
 
-        // @include media('md') {
-        //     font-size: 17px;
-        //     margin: 2.5rem 0;
-        // }
+        @include media('sm') {
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: center;
+
+            margin-top: 40px;
+        }
     }
 
     .grid-container {
@@ -65,8 +71,9 @@
         // }
         // @include media('sm') {
         // }
-        // @include media('sm') {
-        // }
+        @include media('sm') {
+            width: 100%;
+        }
 
         .grid {
             display: flex;
@@ -75,6 +82,10 @@
             margin-top: -15px;
             padding: 0;
             padding-bottom: 5rem;
+
+            @include media('sm') {
+                flex-direction: column;
+            }
 
             .list-item {
                 margin: 15px 10px;
@@ -86,8 +97,11 @@
                 @include media('lg') {
                     width: calc(50% - 1rem);
                 }
-                @include media('md') {
+                @include media('sm') {
                     width: 100%;
+                    margin: 15px 0;
+                    display: flex;
+                    justify-content: center;
                 }
 
                 .image {
@@ -102,9 +116,10 @@
                     //     width: 100%;
                     //     height: 36rem;
                     // }
-                    // @include media('sm') {
-                    //     height: 20rem;
-                    // }
+                    @include media('sm') {
+                        width: 305px;
+                        height: 305px;
+                    }
 
                     img {
                         width: 100%;
@@ -126,13 +141,11 @@
                     letter-spacing: 0em;
                     margin-top: 10px;
 
-                    @include media('lg') {
-                        // width: 100%;
-                    }
-                    @include media('md') {
-                        // width: 100%;
-                        // font-size: 1.2rem;
-                        // margin-bottom: 1.5rem;
+                    @include media('sm') {
+                        width: 305px;
+                        font-size: 10px;
+                        line-height: 20px;
+                        letter-spacing: 0em;
                     }
                 }
             }

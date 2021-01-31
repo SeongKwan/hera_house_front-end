@@ -36,11 +36,11 @@
         margin-left: 100px;
         margin-top: 76px;
 
-        @include media('md') {
+        @include media('sm') {
             position: absolute;
             margin: 0;
-            left: 2rem;
-            bottom: 3rem;
+            left: 35px;
+            bottom: 35px;
             padding-left: 0;
         }
 
@@ -51,9 +51,12 @@
             line-height: 30px;
             margin: 0;
 
-            @include media('md') {
-                font-size: 13px;
-                margin-bottom: 2px;
+            @include media('sm') {
+                font-size: 12px;
+
+                font-weight: 300;
+                line-height: 20px;
+                letter-spacing: 0em;
             }
         }
 
@@ -78,10 +81,15 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left: 2rem;
+        left: 24px;
 
-        font-size: 15px;
         writing-mode: vertical-rl;
+
+        font-size: 12px;
+
+        font-weight: 300;
+        line-height: 30px;
+        letter-spacing: 0em;
     }
 
     .concept-point {

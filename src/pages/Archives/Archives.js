@@ -70,17 +70,17 @@ class Archives extends Component {
                         <div className={cx('breadcrumb')}>
                             <span>ARCHIVES</span>
                             {subCategory !== undefined ? (
-                                <span>{` : ${subCategory}`}</span>
+                                <span>{` > ${subCategory}`}</span>
                             ) : (
                                 <span></span>
                             )}
                             {aCategory !== undefined ? (
-                                <span>{` : ${aCategory}`}</span>
+                                <span>{` > ${aCategory}`}</span>
                             ) : (
                                 <span></span>
                             )}
                             {title !== undefined ? (
-                                <span>{` : ${title}`}</span>
+                                <span>{` > ${title}`}</span>
                             ) : (
                                 <span></span>
                             )}

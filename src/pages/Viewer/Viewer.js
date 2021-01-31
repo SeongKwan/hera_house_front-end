@@ -26,57 +26,53 @@ class Viewer extends Component {
 
     _initialize = () => {
         const query = qs.parse(this.props.location.search, {
-            ignoreQueryPrefix: true
+            ignoreQueryPrefix: true,
         });
 
         this.props.postStore.loadPost(query.id);
-    }
+    };
     render() {
         // let { path } = this.props.match;
         const query = qs.parse(this.props.location.search, {
-            ignoreQueryPrefix: true
+            ignoreQueryPrefix: true,
         });
         const title = query.title;
         const type = query.category.split('_')[0];
         const category = query.category.split('_')[1];
         const subCategory = query.category.split('_')[2];
-        
+
         console.log(category !== null);
 
         const { thePost } = this.props.postStore;
         // const { isLoggedIn } = this.props.loginStore;
 
         if (!!title === false) {
-            return <div></div>
+            return <div></div>;
         }
         return (
             <div className={cx('Viewer')}>
                 <Helmet>
                     <title>HR ARCHIVE - ${title}</title>
-                    <link rel="canonical" href={`http://hr-archive.com/${type}`} />
+                    <link
+                        rel="canonical"
+                        href={`http://hr-archive.com/${type}`}
+                    />
                     <meta http-equiv="Title" content={`HR ARCHIVE - Title`} />
-                    <meta name="Keywords" content="fashion, brand, design, art, music" />
+                    <meta
+                        name="Keywords"
+                        content="fashion, brand, design, art, music"
+                    />
                     <meta name="Description" content="HR Archive Archive" />
                 </Helmet>
                 <DesktopLayout>
                     <div className={cx('flex-box')}>
                         <div className={cx('breadcrumb')}>
-                            <span>{type}</span>
-                            {
-                                category !== undefined && category !== null ?
-                                    <span>{` : ${category}`}</span>
-                                    : <></>
-                            }
-                            {
-                                subCategory !== undefined && subCategory !== null ?
-                                    <span>{` : ${subCategory}`}</span>
-                                    : <></>
-                            }
-                            {
-                                title !== undefined && title !== null ?
-                                    <span>{` : ${title}`}</span>
-                                    : <></>
-                            }
+
+                            {title !== undefined && title !== null ? (
+                                <span>{`${title}`}</span>
+                            ) : (
+                                <></>
+                            )}
                         </div>
                     </div>
                     <article>

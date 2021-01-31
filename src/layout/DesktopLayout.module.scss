@@ -33,12 +33,9 @@
         padding: 0px 100px;
         margin: 0 auto;
 
-        @include media('md') {
-            padding: 2rem 2rem;
-            border-bottom: 1px solid #151515;
-            &.borderless {
-                border-bottom: 0;
-            }
+        @include media('sm') {
+            height: 90px;
+            padding: 0 35px;
         }
 
         .concept-title {
@@ -53,7 +50,8 @@
             letter-spacing: 0em;
 
             @include media('sm') {
-                font-size: 17px;
+                font-size: 15px;
+                line-height: 17px;
             }
         }
 
@@ -197,6 +195,7 @@
         font-weight: 400;
         font-size: 40px;
         width: 90vw;
+        max-width: 322px;
         // height: 100vh;
         // min-height: calc(var(--vh, 1vh) * 100);
         // height: -webkit-fill-available;
@@ -244,14 +243,15 @@
                 flex-direction: column;
                 justify-content: space-between;
                 & > ul {
-                    margin: 1rem 0 3rem;
-                    padding: 1rem 0 2rem;
+                    margin: 0;
+                    padding: 0;
+                    padding-left: 45px;
+                    margin-top: 90px;
                     // height: 90vh; /* Fallback for browsers that do not support Custom Properties */
                     height: 100vh;
                     height: calc(var(--vh, 1vh) * 100);
                     // height: -webkit-fill-available;
                     overflow: scroll;
-                    position: relative;
                     display: flex;
                     flex-direction: column;
 
@@ -261,23 +261,22 @@
                     & > div:first-child {
                         & > li {
                             list-style: none;
-                            font-size: 17px;
+                            font-size: 13px;
+                            font-weight: 400;
+                            line-height: 20px;
+                            letter-spacing: 0em;
 
-                            margin: 1.5rem 1rem;
-                            &:last-child {
-                                margin-bottom: 1.5rem;
+                            &:nth-child(2) {
+                                margin: 50px 0;
                             }
 
                             & > a {
                                 display: inline-block;
-                                padding: 1rem 1rem;
                             }
 
                             &:last-child {
                                 position: relative;
-                                > a {
-                                    margin-bottom: 0.5rem;
-                                }
+
                                 // main category
                                 .sub-nav {
                                     &.active {
@@ -289,20 +288,27 @@
                                     overflow: hidden;
 
                                     flex-direction: column;
-                                    margin: 0 2rem;
+                                    margin-top: 17.5px;
+                                    margin-left: 10px;
                                     padding: 0;
                                     & > li {
                                         width: 100%;
                                         position: relative;
                                         list-style: none;
-                                        font-size: 17px;
-                                        font-weight: 400;
+
                                         text-transform: uppercase;
+
+                                        font-size: 11px;
+                                        font-style: normal;
+                                        font-weight: 400;
+                                        line-height: 12px;
+                                        letter-spacing: 0em;
+                                        color: #828282;
 
                                         & > a {
                                             width: 100%;
+                                            padding: 12.5px 0;
                                             display: inline-block;
-                                            padding: 0.5rem 0 1.5rem;
                                         }
                                     }
                                     .sub-nav-item--Work {
@@ -351,23 +357,30 @@
                     }
                 }
 
+                // mobile only
                 .sns {
-                    margin-top: auto;
+                    position: absolute;
+                    top: 550px;
+                    left: 45px;
                     display: flex;
                     flex-direction: column;
-                    padding: 2rem;
-                    margin-bottom: 1rem;
+
+                    @include media('sm') {
+                        
+                    }
 
                     a {
-                        font-size: 0.9rem;
+                        font-size: 10px;
+                        font-style: normal;
+                        font-weight: 300;
+                        line-height: 30px;
+                        letter-spacing: 0em;
+                        text-transform: uppercase;
 
-                        &:first-child {
-                            margin-bottom: 25px;
-                        }
                         &::before {
                             content: '●';
-                            font-size: 0.7rem;
-                            margin-right: 0.5rem;
+                            font-size: 7px;
+                            margin-right: 7px;
                         }
                     }
                 }

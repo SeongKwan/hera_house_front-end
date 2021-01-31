@@ -43,8 +43,8 @@ class About extends Component {
                         <div className={cx('description')}>
                             <p>Republic Korea based</p>
                             <p>Design & Styling with</p>
-                            <p>Personally Concept Projects </p>
-                            <p>by Design director Hera Kim</p>
+                            <p>Personally Concept Projects by</p>
+                            <p>Design director Hera Kim</p>
                         </div>
                         }
                     </div>

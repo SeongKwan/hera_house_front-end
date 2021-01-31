@@ -2,7 +2,6 @@
     background-color: $white;
     position: relative;
     width: 100%;
-
     overflow-x: hidden;
     overflow-y: scroll;
 
@@ -24,9 +23,7 @@
     }
 
     .flex-box {
-        background-color: $white;
         height: 100%;
-        padding: 0 0.8rem 5rem;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -34,68 +31,94 @@
     }
 
     .breadcrumb {
-        font-size: 22px;
+        font-size: 20px;
 
-        margin: 3rem 0;
+        font-weight: 300;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: center;
+
         text-transform: uppercase;
-        @include media('md') {
-            font-size: 17px;
-            margin: 2.5rem 0;
+
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        @include media('sm') {
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: center;
+
+            margin-top: 40px;
         }
     }
 
     .grid-container {
-        padding-top: 2rem;
-        width: calc(540px * 3 + 48px);
+        width: calc(400px * 3 + 40px);
+        // width: calc(540px * 3 + 48px);
         // margin: auto;
         @include media('xl') {
-            width: calc(540px * 2 + 32px);
+            // width: calc(540px * 2 + 32px);
         }
         @include media('lg') {
             // width: calc(540px * 1 + 48px);
+            // width: 100%;
+        }
+        // @include media('md') {
+        //     padding-top: 1rem;
+        // }
+        // @include media('sm') {
+        // }
+        @include media('sm') {
             width: 100%;
-        }
-        @include media('md') {
-            padding-top: 1rem;
-        }
-        @include media('sm') {
-        }
-        @include media('sm') {
         }
 
         .grid {
             display: flex;
             flex-wrap: wrap;
-            margin: -1.3rem;
-            padding: 0 1.3rem;
+            margin: -10px;
+            margin-top: -15px;
+            padding: 0;
+            padding-bottom: 5rem;
+
+            @include media('sm') {
+                flex-direction: column;
+            }
 
             .list-item {
+                margin: 15px 10px;
+                list-style: none;
                 position: relative;
                 border-radius: 2px;
-                margin: 8px;
                 overflow: hidden;
                 transition: opacity 300ms ease;
                 @include media('lg') {
                     width: calc(50% - 1rem);
                 }
-                @include media('md') {
+                @include media('sm') {
                     width: 100%;
+                    margin: 15px 0;
+                    display: flex;
+                    justify-content: center;
                 }
 
                 .image {
                     background-color: lightgray;
-                    width: 540px;
-                    height: 540px;
+                    width: 400px;
+                    height: 400px;
 
-                    @include media('lg') {
-                        width: 100%;
-                    }
-                    @include media('md') {
-                        width: 100%;
-                        height: 36rem;
-                    }
+                    // @include media('lg') {
+                    //     width: 100%;
+                    // }
+                    // @include media('md') {
+                    //     width: 100%;
+                    //     height: 36rem;
+                    // }
                     @include media('sm') {
-                        height: 20rem;
+                        width: 305px;
+                        height: 305px;
                     }
 
                     img {
@@ -106,21 +129,23 @@
                 }
 
                 .list-item-title {
-                    text-align: center;
-                    margin: 2.5rem 0 1.5rem;
-                    font-size: 1.4rem;
-                    font-weight: 300;
-                    max-width: 540px;
                     white-space: normal;
-                    word-break: break-word;
+                    word-break: break-all;
+                    width: 400px;
 
-                    @include media('lg') {
-                        width: 100%;
-                    }
-                    @include media('md') {
-                        width: 100%;
-                        font-size: 1.2rem;
-                        margin-bottom: 1.5rem;
+                    font-family: Spartan;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 30px;
+                    letter-spacing: 0em;
+                    margin-top: 10px;
+
+                    @include media('sm') {
+                        width: 305px;
+                        font-size: 10px;
+                        line-height: 20px;
+                        letter-spacing: 0em;
                     }
                 }
             }
