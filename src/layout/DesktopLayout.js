@@ -126,6 +126,7 @@ class DesktopLayout extends Component {
     };
 
     render() {
+        const atHomeRoute = this.props.history.location.pathname === '/';
         let {
             screenSize: { width },
         } = this.props.commonStore;
@@ -331,7 +332,7 @@ class DesktopLayout extends Component {
                             </nav>
                         </div>
                     )}
-                    <div className={cx('header-container')}>
+                    <div className={cx('header-container', {borderless: atHomeRoute})}>
                         <header
                             className={cx({
                                 borderless: this.props.borderless,

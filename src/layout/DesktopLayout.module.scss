@@ -21,6 +21,9 @@
     }
     div.header-container {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        &.borderless {
+            box-shadow: none;
+        }
     }
     header {
         display: flex;
@@ -29,7 +32,6 @@
         height: 170px;
         padding: 0px 100px;
         margin: 0 auto;
-        
 
         @include media('md') {
             padding: 2rem 2rem;
