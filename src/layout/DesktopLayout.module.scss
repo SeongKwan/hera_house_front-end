@@ -16,7 +16,7 @@
         &:active,
         &:visited {
             color: inherit;
-            cursor: none !important;
+            // cursor: none !important;
         }
     }
     div.header-container {
@@ -74,13 +74,13 @@
 
                     & > a {
                         display: inline-block;
-                        padding: 1.3rem 0;
                         font-weight: 400;
                     }
 
                     &:nth-child(2) {
                         margin: 0 80px;
                     }
+                    &:nth-child(2),
                     &:last-child {
                         padding-right: 0;
                         position: relative;
@@ -94,9 +94,10 @@
                             transition: max-height 0.5s ease-in-out;
                             max-height: 0;
                             position: absolute;
-                            left: 50%;
+                            left: 0;
+                            right: 0;
                             top: 100%;
-                            transform: translateX(calc(-50% + 1rem));
+                            padding-top: 50px;
 
                             flex-direction: column;
                             margin: 0;
@@ -106,21 +107,26 @@
                                 min-width: 120px;
                                 position: relative;
                                 list-style: none;
-                                font-size: 20px;
-                                font-weight: 400;
                                 text-transform: uppercase;
+                                font-size: 17px;
+                                font-weight: 400;
+                                line-height: 19px;
+                                letter-spacing: 0em;
+                                text-align: center;
+
+                                &:first-child {
+                                    margin-top: 50px;
+                                }
                                 &:not(:last-child) a {
-                                    padding-bottom: 1rem;
                                 }
                                 &:last-child {
-                                    padding-bottom: 5rem;
                                 }
 
                                 & > a {
+                                    padding: 15px 0;
+                                    color: #828282;
                                     width: 100%;
-                                    // text-align: center;
                                     display: inline-block;
-                                    padding: 22px 0 1.6rem;
                                 }
                             }
                             .sub-nav-item--Work {
@@ -266,6 +272,10 @@
                             line-height: 20px;
                             letter-spacing: 0em;
 
+                            .mobile-link-archive {
+                                margin-top: -17.5px;
+                            }
+
                             &:nth-child(2) {
                                 margin: 50px 0;
                             }
@@ -274,7 +284,8 @@
                                 display: inline-block;
                             }
 
-                            &:last-child {
+                            &:last-child,
+                            &:nth-child(2) {
                                 position: relative;
 
                                 // main category
@@ -283,7 +294,7 @@
                                         max-height: 1000px !important;
                                     }
                                     display: flex;
-                                    transition: max-height 0.5s ease-in-out;
+                                    transition: max-height 0s ease-in-out;
                                     max-height: 0;
                                     overflow: hidden;
 
@@ -311,6 +322,7 @@
                                             display: inline-block;
                                         }
                                     }
+                                    
                                     .sub-nav-item--Work {
                                         position: relative;
                                     }
@@ -366,7 +378,6 @@
                     flex-direction: column;
 
                     @include media('sm') {
-                        
                     }
 
                     a {

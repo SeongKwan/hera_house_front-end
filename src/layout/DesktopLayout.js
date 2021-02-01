@@ -22,6 +22,7 @@ class DesktopLayout extends Component {
         hamburgerOpened: false,
         typeMenuIsOpened: false,
         mainMenuIsOpened: false,
+        projectsMenuOpened: false,
         subMenuIsOpened: false,
     };
 
@@ -61,12 +62,18 @@ class DesktopLayout extends Component {
             hamburgerOpened: false,
             typeMenuIsOpened: false,
             mainMenuIsOpened: false,
+            projectsMenuOpened: false,
             subMenuIsOpened: false,
         });
     };
 
     _handleOnMouseOver = (e, name = '') => {
         if (this.state.selectedCategory !== 'work') {
+            if (name === 'projects') {
+                return setTimeout(() => {
+                    this.setState({ selectedCategory: 'projects' });
+                }, 200);
+            }
             setTimeout(() => {
                 this.setState({ selectedCategory: 'work' });
             }, 200);
@@ -96,13 +103,18 @@ class DesktopLayout extends Component {
 
     _handleOnClickMainMenu = (e, name) => {
         this._getVhFromWindow();
-        if (name === 'Archives') {
-            if (this.state.mainMenuIsOpened) {
-                // this._clearState();
-                return false;
-            }
+        if (name === 'projects') {
+            e.preventDefault();
+            this.setState({ mainMenuIsOpened: false });
+            this.setState({
+                projectsMenuOpened: !this.state.projectsMenuOpened,
+            });
+        } else if (name === 'Archives') {
             e.preventDefault();
             this.setState({ mainMenuIsOpened: !this.state.mainMenuIsOpened });
+            this.setState({
+                projectsMenuOpened: false,
+            });
         } else this._clearState();
         e.preventDefault();
         return false;
@@ -134,6 +146,8 @@ class DesktopLayout extends Component {
 
         let mainCategories = this.props.categoryStore.registry || [];
 
+        console.log(this.state.projectsMenuOpened);
+
         if (mainCategories.length <= 0) {
             return <div></div>;
         } else
@@ -144,7 +158,7 @@ class DesktopLayout extends Component {
                     })}
                 >
                     {/* 모바일에선 터치화면이여서 커서가 불필요 */}
-                    {!isMobile && <Cursor />}
+                    {/* {!isMobile && <Cursor />} */}
                     {/* 모바일 햄버거 메뉴 */}
                     {width <= md && (
                         <a
@@ -196,9 +210,70 @@ class DesktopLayout extends Component {
                                                     'nav-item--projects',
                                                 )}
                                             >
-                                                <Link to={`/projects`}>
+                                                <div
+                                                    className={cx(
+                                                        'mobile-link-projects',
+                                                    )}
+                                                    onClick={(e) => {
+                                                        this._handleOnClickMainMenu(
+                                                            e,
+                                                            'projects',
+                                                        );
+                                                    }}
+                                                >
                                                     PROJECTS
-                                                </Link>
+                                                </div>
+                                                <ul
+                                                    className={cx('sub-nav', {
+                                                        active: this.state
+                                                            .projectsMenuOpened,
+                                                    })}
+                                                >
+                                                    {mainCategories.map(
+                                                        (category, i) => {
+                                                            if (
+                                                                category.type !==
+                                                                'projects'
+                                                            )
+                                                                return false;
+                                                            return (
+                                                                <li
+                                                                    key={`sub-nav-item-${i}`}
+                                                                    className={cx(
+                                                                        'sub-nav-item',
+                                                                        `sub-nav-item--${category.name}`,
+                                                                    )}
+                                                                >
+                                                                    <Link
+                                                                        to={`/projects/${category.name}`}
+                                                                        className={cx(
+                                                                            {
+                                                                                isOpened:
+                                                                                    category.name ===
+                                                                                        'Work' &&
+                                                                                    this
+                                                                                        .state
+                                                                                        .projectsMenuOpened,
+                                                                            },
+                                                                        )}
+                                                                        onClick={(
+                                                                            e,
+                                                                        ) =>
+                                                                            this._handleOnClickSubMenu(
+                                                                                e,
+                                                                                category.name,
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            category.name
+                                                                        }
+                                                                    </Link>
+                                                                </li>
+                                                            );
+                                                        },
+                                                    )}
+                                                </ul>
                                             </li>
                                             <li
                                                 className={cx(
@@ -228,6 +303,11 @@ class DesktopLayout extends Component {
                                                 >
                                                     {mainCategories.map(
                                                         (category, i) => {
+                                                            if (
+                                                                category.type !==
+                                                                'archives'
+                                                            )
+                                                                return false;
                                                             return (
                                                                 <li
                                                                     key={`sub-nav-item-${i}`}
@@ -261,48 +341,6 @@ class DesktopLayout extends Component {
                                                                             category.name
                                                                         }
                                                                     </Link>
-                                                                    {/* sub category list */}
-                                                                    {category.name ===
-                                                                        'Work' && (
-                                                                        <ul
-                                                                            className={cx(
-                                                                                'work-sub',
-                                                                                {
-                                                                                    active: this
-                                                                                        .state
-                                                                                        .subMenuIsOpened,
-                                                                                },
-                                                                            )}
-                                                                        >
-                                                                            {category.subCategories.map(
-                                                                                (
-                                                                                    categoryWithSub,
-                                                                                    i,
-                                                                                ) => {
-                                                                                    return (
-                                                                                        <li
-                                                                                            key={`work-sub-item-${i}`}
-                                                                                            className={cx(
-                                                                                                'work-sub-item',
-                                                                                            )}
-                                                                                        >
-                                                                                            <Link
-                                                                                                to={`/archives/Work/${categoryWithSub.name}`}
-                                                                                                onClick={() => {
-                                                                                                    this._clearState();
-                                                                                                }}
-                                                                                            >
-                                                                                                -{' '}
-                                                                                                {
-                                                                                                    categoryWithSub.name
-                                                                                                }
-                                                                                            </Link>
-                                                                                        </li>
-                                                                                    );
-                                                                                },
-                                                                            )}
-                                                                        </ul>
-                                                                    )}
                                                                 </li>
                                                             );
                                                         },
@@ -371,10 +409,68 @@ class DesktopLayout extends Component {
                                                 'nav-item',
                                                 'nav-item--projects',
                                             )}
+                                            onMouseOver={(e) =>
+                                                this._handleOnMouseOver(
+                                                    e,
+                                                    'projects',
+                                                )
+                                            }
+                                            onMouseLeave={
+                                                this._handleOnMouseLeave
+                                            }
                                         >
                                             <Link to={`/projects`}>
                                                 PROJECTS
                                             </Link>
+                                            <ul
+                                                className={cx('sub-nav', {
+                                                    active:
+                                                        this.state
+                                                            .selectedCategory ===
+                                                        'projects',
+                                                })}
+                                                onMouseLeave={(e) =>
+                                                    this._handleOnMouseLeave(
+                                                        e,
+                                                        'sub',
+                                                    )
+                                                }
+                                            >
+                                                {mainCategories.map(
+                                                    (category, i) => {
+                                                        if (
+                                                            category.type !==
+                                                            'projects'
+                                                        )
+                                                            return false;
+                                                        return (
+                                                            <li
+                                                                key={`sub-nav-item-${i}`}
+                                                                className={cx(
+                                                                    'sub-nav-item',
+                                                                    `sub-nav-item--${category.name}`,
+                                                                )}
+                                                                onMouseOver={(
+                                                                    e,
+                                                                ) =>
+                                                                    this._handleOnMouseOver(
+                                                                        e,
+                                                                        category.name,
+                                                                    )
+                                                                }
+                                                            >
+                                                                <Link
+                                                                    to={`/projects/${category.name}`}
+                                                                >
+                                                                    {
+                                                                        category.name
+                                                                    }
+                                                                </Link>
+                                                            </li>
+                                                        );
+                                                    },
+                                                )}
+                                            </ul>
                                         </li>
                                         <li
                                             className={cx(
@@ -407,6 +503,11 @@ class DesktopLayout extends Component {
                                             >
                                                 {mainCategories.map(
                                                     (category, i) => {
+                                                        if (
+                                                            category.type !==
+                                                            'archives'
+                                                        )
+                                                            return false;
                                                         return (
                                                             <li
                                                                 key={`sub-nav-item-${i}`}
@@ -430,46 +531,6 @@ class DesktopLayout extends Component {
                                                                         category.name
                                                                     }
                                                                 </Link>
-                                                                {category.name ===
-                                                                    'Work' && (
-                                                                    <ul
-                                                                        className={cx(
-                                                                            'work-sub',
-                                                                            {
-                                                                                active:
-                                                                                    this
-                                                                                        .state
-                                                                                        .selectedSubCategory ===
-                                                                                    'Work',
-                                                                            },
-                                                                        )}
-                                                                    >
-                                                                        {category.subCategories.map(
-                                                                            (
-                                                                                categoryWithSub,
-                                                                                i,
-                                                                            ) => {
-                                                                                return (
-                                                                                    <li
-                                                                                        key={`work-sub-item-${i}`}
-                                                                                        className={cx(
-                                                                                            'work-sub-item',
-                                                                                        )}
-                                                                                    >
-                                                                                        <Link
-                                                                                            to={`/archives/Work/${categoryWithSub.name}`}
-                                                                                        >
-                                                                                            -{' '}
-                                                                                            {
-                                                                                                categoryWithSub.name
-                                                                                            }
-                                                                                        </Link>
-                                                                                    </li>
-                                                                                );
-                                                                            },
-                                                                        )}
-                                                                    </ul>
-                                                                )}
                                                             </li>
                                                         );
                                                     },

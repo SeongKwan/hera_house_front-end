@@ -16,7 +16,7 @@ class AdminPostWrite extends Component {
     render() {
         return (
             <div className={cx('AdminPostWrite')}>
-                {!isMobile && <Cursor />}
+                {/* {!isMobile && <Cursor />} */}
                 <Editor type={this.props.type} />
             </div>
         );

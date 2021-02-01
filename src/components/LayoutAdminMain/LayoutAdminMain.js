@@ -44,7 +44,7 @@ class LayoutAdminMain extends Component {
     return (
       <div className={cx("LayoutAdminMain")}>
         {/* 모바일에선 터치화면이여서 커서가 불필요 */}
-        {!isMobile && <Cursor />}
+        {/* {!isMobile && <Cursor />} */}
         {isMobile && (
           <>
             <div className={cx("header")}>

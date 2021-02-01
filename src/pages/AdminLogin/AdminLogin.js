@@ -46,7 +46,7 @@ class AdminLogin extends Component {
 
         return (
             <div className={cx('AdminLogin')}>
-                {!isMobile && <Cursor />}
+                {/* {!isMobile && <Cursor />} */}
                 <div className={cx('title')}>관리자 로그인</div>
                 <div className={cx('form')}>
                     <div className={cx('wrapper-input')}>
