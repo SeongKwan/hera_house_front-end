@@ -95,7 +95,7 @@ class Agent {
         return this.get(`/posts`);
     }
 
-    loadFilteredPosts({ type, category, subCategory }) {
+    loadFilteredPosts({ type, category, subCategory = null }) {
         return this.post(`/posts/filteredPosts`, {
             type,
             category,

@@ -68,16 +68,19 @@ class DesktopLayout extends Component {
     };
 
     _handleOnMouseOver = (e, name = '') => {
-        if (this.state.selectedCategory !== 'work') {
-            if (name === 'projects') {
-                return setTimeout(() => {
-                    this.setState({ selectedCategory: 'projects' });
-                }, 200);
-            }
-            setTimeout(() => {
-                this.setState({ selectedCategory: 'work' });
+        if (name === 'projects') {
+            return setTimeout(() => {
+                this.setState({ selectedCategory: '' });
+                this.setState({ selectedCategory: 'projects' });
             }, 200);
-        } else if (name === 'Work') {
+        }
+        if (name === 'archives') {
+            setTimeout(() => {
+                this.setState({ selectedCategory: '' });
+                this.setState({ selectedCategory: 'archives' });
+            }, 200);
+        }
+        if (name === 'Work') {
             setTimeout(() => {
                 this.setState({ selectedSubCategory: name });
             }, 100);
@@ -145,8 +148,6 @@ class DesktopLayout extends Component {
         } = this.props.commonStore;
 
         let mainCategories = this.props.categoryStore.registry || [];
-
-        console.log(this.state.projectsMenuOpened);
 
         if (mainCategories.length <= 0) {
             return <div></div>;
@@ -419,9 +420,7 @@ class DesktopLayout extends Component {
                                                 this._handleOnMouseLeave
                                             }
                                         >
-                                            <Link to={`/projects`}>
-                                                PROJECTS
-                                            </Link>
+                                            <div>PROJECTS</div>
                                             <ul
                                                 className={cx('sub-nav', {
                                                     active:
@@ -477,22 +476,20 @@ class DesktopLayout extends Component {
                                                 'nav-item',
                                                 'nav-item--archives',
                                             )}
-                                            onMouseOver={
-                                                this._handleOnMouseOver
+                                            onMouseOver={(e) =>
+                                                this._handleOnMouseOver(e, 'archives')
                                             }
                                             onMouseLeave={
                                                 this._handleOnMouseLeave
                                             }
                                         >
-                                            <Link to={`/archives`}>
-                                                ARCHIVES
-                                            </Link>
+                                            <div>ARCHIVES</div>
                                             <ul
                                                 className={cx('sub-nav', {
                                                     active:
                                                         this.state
                                                             .selectedCategory ===
-                                                        'work',
+                                                        'archives',
                                                 })}
                                                 onMouseLeave={(e) =>
                                                     this._handleOnMouseLeave(

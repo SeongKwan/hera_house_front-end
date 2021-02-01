@@ -28,7 +28,6 @@ const routes = [
 
 const cx = classNames.bind(styles);
 
-
 @inject('commonStore', 'loginStore', 'authStore')
 @observer
 class App extends Component {
