@@ -86,10 +86,10 @@ const CustomToolbar = () => (
         </span>
         <span className="ql-formats">
             <select className="ql-align" />
-            <button className="ql-list" value="ordered" />
-            <button className="ql-list" value="bullet" />
-            <button className="ql-indent" value="-1" />
-            <button className="ql-indent" value="+1" />
+            {/* <button className="ql-list" value="ordered" /> */}
+            {/* <button className="ql-list" value="bullet" /> */}
+            {/* <button className="ql-indent" value="-1" /> */}
+            {/* <button className="ql-indent" value="+1" /> */}
             <button className="ql-script" value="sub" />
             <button className="ql-script" value="super" />
         </span>
@@ -234,7 +234,7 @@ class Editor extends Component {
         });
     }
 
-    _getThumnbnameUrlFromServer = () => {
+    _getThumbnailUrlFromServer = () => {
         let formData = new FormData();
         formData.append('file', this.state.thumbnail);
 
@@ -283,18 +283,18 @@ class Editor extends Component {
                 return this.props.postStore
                     .updatePost(postId)
                     .then((res) => {
-                        if (
-                            res.isPublished &&
-                            window.confirm('수정된 글을 확인하러 가시겠습니까?')
-                        ) {
-                            if (res.type === 'archives')
-                                return this.props.history.push(
-                                    `/viewer?category=${res.type}_${res.category}_${res.subCategory}&title=${res.title}&id=${res._id}`,
-                                );
-                            return this.props.history.push(
-                                `/viewer?category=${res.type}&title=${res.title}&id=${res._id}`,
-                            );
-                        }
+                        // if (
+                        //     res.isPublished &&
+                        //     window.confirm('수정된 글을 확인하러 가시겠습니까?')
+                        // ) {
+                        //     if (res.type === 'archives')
+                        //         return this.props.history.push(
+                        //             `/viewer?category=${res.type}_${res.category}_${res.subCategory}&title=${res.title}&id=${res._id}`,
+                        //         );
+                        //     return this.props.history.push(
+                        //         `/viewer?category=${res.type}&title=${res.title}&id=${res._id}`,
+                        //     );
+                        // }
                         this.props.history.goBack();
                     })
                     .catch((err) => console.log);
@@ -303,8 +303,10 @@ class Editor extends Component {
         return false;
     };
 
-    _renderOptions = () => {
+    _renderOptions = (postType) => {
         return this.props.categoryStore.registry.map((category, i) => {
+            console.log(category.type)
+            if (category.type !== postType) return false;
             return (
                 <option key={category.name} value={category.name}>
                     {category.name}
@@ -331,10 +333,12 @@ class Editor extends Component {
 
     render() {
         const {
-            value: { title, type: postType, category, subCategory, content },
+            value: { title, type: postType, category, content },
             titleIsEmpty,
         } = this.props.postStore;
         const { type: EditorType } = this.props;
+
+        console.log(postType)
 
         if (this.props.editorStore.isLoading) {
             return (
@@ -395,15 +399,14 @@ class Editor extends Component {
                                 name="category"
                                 value={category}
                                 onChange={this._handleChangeValue}
-                                disabled={postType !== 'archives'}
                             >
                                 <option disabled>카테고리 선택</option>
                                 <option value="">선택안함</option>
-                                {this._renderOptions()}
+                                {this._renderOptions(postType)}
                             </select>
                         </div>
                         {/* 소분류 선택란 */}
-                        <div className={cx('subCategory')}>
+                        {/* <div className={cx('subCategory')}>
                             <label hidden htmlFor="select-subCategory">
                                 소분류
                             </label>
@@ -421,7 +424,7 @@ class Editor extends Component {
                                 <option value="">선택안함</option>
                                 {this._renderSubCategoryOptions()}
                             </select>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className={cx('preview')}>
@@ -436,7 +439,7 @@ class Editor extends Component {
                                     this._handleImageChange(e).then((res) => {
                                         if (res.success) {
                                             setTimeout(() => {
-                                                this._getThumnbnameUrlFromServer();
+                                                this._getThumbnailUrlFromServer();
                                             }, 300);
                                         }
                                     })

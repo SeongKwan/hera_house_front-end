@@ -139,6 +139,9 @@ class DesktopLayout extends Component {
     _handleOnClickHamburger = () => {
         this.props.commonStore.toggleEnableScroll();
         this.setState({ hamburgerOpened: !this.state.hamburgerOpened });
+        if (this.state.hamburgerOpened) {
+            this._clearState();
+        }
     };
 
     render() {
@@ -162,21 +165,23 @@ class DesktopLayout extends Component {
                     {/* {!isMobile && <Cursor />} */}
                     {/* 모바일 햄버거 메뉴 */}
                     {width <= md && (
-                        <a
-                            className={cx('mobile-hamberger-menu', {
-                                open: this.state.hamburgerOpened,
-                            })}
-                            href="#"
-                            id="nav-icon2"
-                            onClick={this._handleOnClickHamburger}
-                        >
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </a>
+                        <div className={cx('hamburger-menu-wrappper')}>
+                            <a
+                                className={cx('mobile-hamberger-menu', {
+                                    open: this.state.hamburgerOpened,
+                                })}
+                                href="#"
+                                id="nav-icon2"
+                                onClick={this._handleOnClickHamburger}
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </div>
                     )}
                     {/* 모바일 슬라이드 메뉴 컨테이너 (md 이하) */}
                     {width <= md && (
@@ -477,7 +482,10 @@ class DesktopLayout extends Component {
                                                 'nav-item--archives',
                                             )}
                                             onMouseOver={(e) =>
-                                                this._handleOnMouseOver(e, 'archives')
+                                                this._handleOnMouseOver(
+                                                    e,
+                                                    'archives',
+                                                )
                                             }
                                             onMouseLeave={
                                                 this._handleOnMouseLeave
