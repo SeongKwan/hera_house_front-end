@@ -45,7 +45,23 @@ Size.whitelist = [
 Quill.register(Size, true);
 let Font = Quill.import('formats/font');
 // We do not add Sans Serif since it is the default
-Font.whitelist = ['notosanskr', 'opensans', 'thasadith'];
+Font.whitelist = [
+    'Spartan100',
+    'Spartan200',
+    'Spartan300',
+    'Spartan400',
+    'Spartan500',
+    'Spartan600',
+    'Spartan700',
+    'Spartan800',
+    'Spartan900',
+    'NotoSansKR100',
+    'NotoSansKR300',
+    'NotoSansKR400',
+    'NotoSansKR500',
+    'NotoSansKR700',
+    'NotoSansKR900',
+];
 Quill.register(Font, true);
 
 Quill.register('modules/imageUploader', ImageUploader);
@@ -55,13 +71,22 @@ const CustomToolbar = () => (
         <span className="ql-formats">
             <button className="ql-header" value="1" />
             <button className="ql-header" value="2" />
-            <select className="ql-font" defaultValue="roboto">
-                <option value="roboto">Roboto</option>
-                <option value="raleway">Raleway</option>
-                <option value="lato">Lato</option>
-                <option value="notosanskr">Noto Sans KR</option>
-                <option value="opensans">Open Sans</option>
-                <option value="thasadith">Thasadith</option>
+            <select className="ql-font" defaultValue="Spartan400">
+                <option value="Spartan100">Spartan100</option>
+                <option value="Spartan100">Spartan200</option>
+                <option value="Spartan300">Spartan300</option>
+                <option value="Spartan400">Spartan400</option>
+                <option value="Spartan500">Spartan500</option>
+                <option value="Spartan500">Spartan600</option>
+                <option value="Spartan700">Spartan700</option>
+                <option value="Spartan700">Spartan800</option>
+                <option value="Spartan900">Spartan900</option>
+                <option value="NotoSansKR100">NotoSansKR100</option>
+                <option value="NotoSansKR300">NotoSansKR300</option>
+                <option value="NotoSansKR300">NotoSansKR400</option>
+                <option value="NotoSansKR500">NotoSansKR500</option>
+                <option value="NotoSansKR700">NotoSansKR700</option>
+                <option value="NotoSansKR900">NotoSansKR900</option>
             </select>
             <select className="ql-size" defaultValue="13px">
                 {Size.whitelist.map((size) => (
@@ -276,18 +301,6 @@ class Editor extends Component {
                 return this.props.postStore
                     .updatePost(postId)
                     .then((res) => {
-                        // if (
-                        //     res.isPublished &&
-                        //     window.confirm('수정된 글을 확인하러 가시겠습니까?')
-                        // ) {
-                        //     if (res.type === 'archives')
-                        //         return this.props.history.push(
-                        //             `/viewer?category=${res.type}_${res.category}_${res.subCategory}&title=${res.title}&id=${res._id}`,
-                        //         );
-                        //     return this.props.history.push(
-                        //         `/viewer?category=${res.type}&title=${res.title}&id=${res._id}`,
-                        //     );
-                        // }
                         this.props.history.goBack();
                     })
                     .catch((err) => console.log);
@@ -500,6 +513,21 @@ class Editor extends Component {
             </div>
         );
     }
+}
+
+{
+    /* <select className="ql-font">
+    <option value="NotoSansKR100">NotoSansKR100</option>
+    <option value="NotoSansKR300">NotoSansKR300</option>
+    <option value="NotoSansKR500">NotoSansKR500</option>
+    <option value="NotoSansKR700">NotoSansKR700</option>
+    <option value="NotoSansKR900">NotoSansKR900</option>
+    <option value="Spartan100">Spartan100</option>
+    <option value="Spartan300">Spartan300</option>
+    <option value="Spartan500">Spartan500</option>
+    <option value="Spartan700">Spartan700</option>
+    <option value="Spartan900">Spartan900</option>
+</select> */
 }
 
 export default Editor;

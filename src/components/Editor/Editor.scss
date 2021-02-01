@@ -2,6 +2,7 @@
 // font-family: 'Noto Sans KR', sans-serif;
 // font-family: 'Open Sans', sans-serif;
 // font-family: 'Raleway', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .ql-snow .ql-icon-picker .ql-picker-label {
     padding: 0px 4px;
@@ -26,49 +27,145 @@
     font-family: 'Roboto', sans-serif !important;
 }
 
-// Font - Roboto (Default)
-.ql-toolbar .ql-font span[data-label='Roboto']::before {
-    font-family: 'Roboto';
+/* Set default font-family */
+.ql-editor {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 400;
 }
-.ql-font-roboto {
-    font-family: 'Roboto';
-}
-
-// Font - Raleway 400
-.ql-toolbar .ql-font span[data-label='Raleway']::before {
-    font-family: 'Raleway';
-}
-.ql-font-raleway {
-    font-family: 'Raleway';
-}
-
-// Font - Lato 300
-.ql-toolbar .ql-font span[data-label='Lato']::before {
-    font-family: 'Lato', sans-serif;
-}
-.ql-font-lato {
-    font-family: 'Lato', sans-serif;
-}
-
-// Font - Noto Sans KR 400
-.ql-toolbar .ql-font span[data-label='Noto Sans KR']::before {
+// Font - Noto Sans KR
+.ql-toolbar .ql-font span[data-label='NotoSansKR100']::before {
     font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 100;
 }
-.ql-font-notosanskr {
+.ql-font-NotoSansKR100 {
     font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 100;
+}
+// Font - Noto Sans KR
+.ql-toolbar .ql-font span[data-label='NotoSansKR300']::before {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+}
+.ql-font-NotoSansKR300 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+}
+// Font - Noto Sans KR
+.ql-toolbar .ql-font span[data-label='NotoSansKR400']::before {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+}
+.ql-font-NotoSansKR400 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+}
+// Font - Noto Sans KR
+.ql-toolbar .ql-font span[data-label='NotoSansKR500']::before {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+.ql-font-NotoSansKR500 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+// Font - Noto Sans KR
+.ql-toolbar .ql-font span[data-label='NotoSansKR700']::before {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+}
+.ql-font-NotoSansKR700 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+}
+// Font - Noto Sans KR
+.ql-toolbar .ql-font span[data-label='NotoSansKR900']::before {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 900;
+}
+.ql-font-NotoSansKR900 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 900;
 }
 
-// Font - Open Sans
-.ql-toolbar .ql-font span[data-label='Open Sans']::before {
-    font-family: 'Open Sans', sans-serif;
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan100']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 100;
 }
-.ql-font-opensans {
-    font-family: 'Open Sans', sans-serif;
+.ql-font-Spartan100 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 100;
 }
-// Font - Thasadith
-.ql-toolbar .ql-font span[data-label='Thasadith']::before {
-    font-family: 'Thasadith', sans-serif;
+
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan200']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 200;
 }
-.ql-font-thasadith {
-    font-family: 'Thasadith', sans-serif;
+.ql-font-Spartan200 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 200;
+}
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan300']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 300;
+}
+.ql-font-Spartan300 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 300;
+}
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan400']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 400;
+}
+.ql-font-Spartan400 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 400;
+}
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan500']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 500;
+}
+.ql-font-Spartan500 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 500;
+}
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan600']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 600;
+}
+.ql-font-Spartan600 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 600;
+}
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan700']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 700;
+}
+.ql-font-Spartan700 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 700;
+}
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan800']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 800;
+}
+.ql-font-Spartan800 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 800;
+}
+// Font - Spartan
+.ql-toolbar .ql-font span[data-label='Spartan900']::before {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 900;
+}
+.ql-font-Spartan900 {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 900;
 }

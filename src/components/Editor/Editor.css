@@ -28,8 +28,6 @@
     padding: 1rem 0rem 1.5rem !important;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
-
 .custom-blockquote {
     font-size: 1.2em;
     /* width: 60%; */
@@ -97,4 +95,8 @@
     @include media('sm') {
         width: 95%;
     } */
+}
+
+.ql-snow .ql-picker.ql-font {
+    width: 150px !important;
 }
