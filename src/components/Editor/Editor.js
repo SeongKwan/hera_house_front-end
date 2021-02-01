@@ -45,14 +45,7 @@ Size.whitelist = [
 Quill.register(Size, true);
 let Font = Quill.import('formats/font');
 // We do not add Sans Serif since it is the default
-Font.whitelist = [
-    'roboto',
-    'raleway',
-    'lato',
-    'notosanskr',
-    'opensans',
-    'thasadith',
-];
+Font.whitelist = ['notosanskr', 'opensans', 'thasadith'];
 Quill.register(Font, true);
 
 Quill.register('modules/imageUploader', ImageUploader);
@@ -305,7 +298,6 @@ class Editor extends Component {
 
     _renderOptions = (postType) => {
         return this.props.categoryStore.registry.map((category, i) => {
-            console.log(category.type)
             if (category.type !== postType) return false;
             return (
                 <option key={category.name} value={category.name}>
@@ -337,8 +329,6 @@ class Editor extends Component {
             titleIsEmpty,
         } = this.props.postStore;
         const { type: EditorType } = this.props;
-
-        console.log(postType)
 
         if (this.props.editorStore.isLoading) {
             return (
