@@ -83,7 +83,7 @@ class Home extends Component {
                                 <img
                                     src={InstagramIcon}
                                     alt="instagram icon"
-                                    width={20}
+                                    width={18}
                                 />
                                 <span>INSTAGRAM</span>
                             </a>
