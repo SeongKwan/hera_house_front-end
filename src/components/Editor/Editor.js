@@ -140,7 +140,7 @@ class Editor extends Component {
                         res.files.forEach((file) => {
                             array.push(file.filename);
                         });
-                        return `${staticUrl}${array[0]}`;
+                        return `${staticUrl}/${array[0]}`;
                     })
                     .catch((err) => {
                         console.error(err);
@@ -440,7 +440,7 @@ class Editor extends Component {
                         {this.state.thumbnailUrl !== '' ? (
                             <figure>
                                 <img
-                                    src={`${staticUrl}${this.state.thumbnailUrl}`}
+                                    src={`${staticUrl}/${this.state.thumbnailUrl}`}
                                     alt="thumbnail preview"
                                 />
                             </figure>
