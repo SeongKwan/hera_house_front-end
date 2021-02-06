@@ -75,7 +75,7 @@ const CustomToolbar = () => (
                     </option>
                 ))}
             </select>
-            <select className="ql-line-height">
+            <select className="ql-line-height" defaultValue="1.4">
                 {[...Array(25).keys()].map((x, index) => (
                     <option
                         key={`line-height-option-${index}`}
