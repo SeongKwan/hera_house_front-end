@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
 import staticUrl from '../../constants/staticUrl';
 import Loader from '../../components/Loader/Loader';
+import ListItemImage from '../../components/ListItemImage';
 
 const cx = classNames.bind(styles);
 
@@ -90,18 +91,25 @@ class Projects extends Component {
                                                                 'image',
                                                             )}
                                                         >
-                                                            <img
+                                                            {/* <img
                                                                 src={`${staticUrl}/${post.thumbnail}`}
                                                                 alt="post thumbnail"
+                                                            /> */}
+                                                            <ListItemImage
+                                                                src={`${staticUrl}/${post.thumbnail}`}
+                                                                alt="post thumbnail"
+                                                                title={
+                                                                    post.title
+                                                                }
                                                             />
                                                         </div>
-                                                        <div
+                                                        {/* <div
                                                             className={cx(
                                                                 'list-item-title',
                                                             )}
                                                         >
                                                             {post.title}
-                                                        </div>
+                                                        </div> */}
                                                     </Link>
                                                 </li>
                                             );
