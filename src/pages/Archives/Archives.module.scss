@@ -98,8 +98,8 @@
                 }
 
                 .image {
-                    width: 400px;
-                    height: 400px;
+                    // width: 400px;
+                    // height: 400px;
 
                     @include media('sm') {
                         width: 100%;
@@ -119,7 +119,7 @@
                 .list-item-title {
                     white-space: normal;
                     word-break: break-all;
-                    width: 400px;
+                    // width: 400px;
 
                     font-family: Spartan;
                     font-size: 15px;

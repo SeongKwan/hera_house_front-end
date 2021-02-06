@@ -16,25 +16,41 @@ const ListItemImage = ({ src, alt, title }) => {
 
     console.log(height);
     return (
-        <ImageBlock height={height !== 0 ? height : undefined}>
-            <img ref={ref} src={src} alt={alt} onLoad={() => setLoad(true)} />
+        <FlexBox>
+            <ImageBlock height={height !== 0 ? height : undefined}>
+                <img
+                    ref={ref}
+                    src={src}
+                    alt={alt}
+                    onLoad={() => setLoad(true)}
+                />
+            </ImageBlock>
             {load && <PostTitle>{title}</PostTitle>}
-        </ImageBlock>
+        </FlexBox>
     );
 };
 
+const FlexBox = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 const ImageBlock = styled.div`
     ${({ height }) => css`
-        height: ${height};
-        min-height: 510px;
-        width: 100%;
+        height: ${`${height}px;`};
+        /* min-height: 510px; */
     `}
+    width: 400px;
+
+    @media screen and (max-width: 624px) {
+        width: 100%;
+    }
 `;
 
 const PostTitle = styled.div`
+    width: 400px;
     white-space: normal;
     word-break: break-all;
-    width: 400px;
 
     font-family: Spartan;
     font-size: 15px;
@@ -44,7 +60,7 @@ const PostTitle = styled.div`
     letter-spacing: 0em;
     margin-top: 10px;
 
-    @include media('sm') {
+    @media screen and (max-width: 624px) {
         width: 100%;
         font-size: 10px;
         line-height: 20px;
