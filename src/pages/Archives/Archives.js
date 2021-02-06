@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
 import staticUrl from '../../constants/staticUrl';
 import Loader from '../../components/Loader/Loader';
+import ListItemImage from '../../components/ListItemImage';
 
 const cx = classNames.bind(styles);
 
@@ -47,6 +48,7 @@ class Archives extends Component {
         const title = this.props.location.pathname.split('/')[4];
         const { isLoading, postsLength } = this.props.postStore;
         let posts = this.props.postStore.registry;
+
         return (
             <div className={cx('Archives')}>
                 <Helmet>
@@ -91,6 +93,7 @@ class Archives extends Component {
                                 {posts.length >= 0 && !isLoading ? (
                                     posts.map((post, i) => {
                                         const { isPublished } = post;
+
                                         if (isPublished)
                                             return (
                                                 <li
@@ -105,10 +108,11 @@ class Archives extends Component {
                                                                 'image',
                                                             )}
                                                         >
-                                                            <img
+                                                            <ListItemImage src={`${staticUrl}/${post.thumbnail}`} alt="post thumbnail" />
+                                                            {/* <img
                                                                 src={`${staticUrl}/${post.thumbnail}`}
                                                                 alt="post thumbnail"
-                                                            />
+                                                            /> */}
                                                         </div>
                                                         <div
                                                             className={cx(

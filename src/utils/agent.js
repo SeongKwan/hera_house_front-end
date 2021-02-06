@@ -4,7 +4,7 @@ import authStore from '../stores/authStore';
 import errorStore from '../stores/errorStore';
 import loginStore from '../stores/loginStore';
 
-const API_ROOT = `http://15.165.30.197:5001/`;
+const API_ROOT = `http://15.165.30.197:5001`;
 
 class Agent {
     constructor(baseURL = null) {
