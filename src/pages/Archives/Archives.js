@@ -108,19 +108,25 @@ class Archives extends Component {
                                                                 'image',
                                                             )}
                                                         >
-                                                            <ListItemImage src={`${staticUrl}/${post.thumbnail}`} alt="post thumbnail" />
+                                                            <ListItemImage
+                                                                src={`${staticUrl}/${post.thumbnail}`}
+                                                                alt="post thumbnail"
+                                                                title={
+                                                                    post.title
+                                                                }
+                                                            />
                                                             {/* <img
                                                                 src={`${staticUrl}/${post.thumbnail}`}
                                                                 alt="post thumbnail"
                                                             /> */}
                                                         </div>
-                                                        <div
+                                                        {/* <div
                                                             className={cx(
                                                                 'list-item-title',
                                                             )}
                                                         >
                                                             {post.title}
-                                                        </div>
+                                                        </div> */}
                                                     </Link>
                                                 </li>
                                             );
