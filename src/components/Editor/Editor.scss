@@ -175,3 +175,14 @@
         width: 100%;
     }
 }
+
+.ql-line-height {
+    min-width: 60px;
+}
+
+@for $i from 1 through 25 {
+    .ql-picker-item[data-value='#{(60.0 + ($i - 1) * 10.0) / 100.0}']::before,
+    .ql-picker-label[data-value='#{(60.0 + ($i - 1) * 10.0) / 100.0}']::before {
+        content: '#{(60.0 + ($i - 1) * 10.0) / 100.0}' !important;
+    }
+}

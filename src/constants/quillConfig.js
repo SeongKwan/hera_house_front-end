@@ -1,0 +1,47 @@
+export const fontSize = [
+    '10px',
+    '11px',
+    '12px',
+    '13px',
+    '14px',
+    '15px',
+    '16px',
+    '18px',
+    '20px',
+    '22px',
+    '24px',
+    '28px',
+    '32px',
+    '36px',
+    '40px',
+    '44px',
+    '48px',
+    '56px',
+    '64px',
+    '72px',
+    '80px',
+    '92px',
+    '114px',
+];
+
+export const font = [
+    'Spartan100',
+    'Spartan200',
+    'Spartan300',
+    'Spartan400',
+    'Spartan500',
+    'Spartan600',
+    'Spartan700',
+    'Spartan800',
+    'Spartan900',
+    'NotoSansKR100',
+    'NotoSansKR300',
+    'NotoSansKR400',
+    'NotoSansKR500',
+    'NotoSansKR700',
+    'NotoSansKR900',
+];
+
+export const AvailableLineHeights = [...Array(25).keys()].map(
+    (x) => `${(60.0 + x * 10.0) / 100.0}`,
+);

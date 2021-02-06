@@ -13,58 +13,38 @@ import 'react-quill/dist/quill.snow.css';
 import './Editor.scss';
 
 import ImageUploader from 'quill-image-uploader';
+import * as QuillConfig from '../../constants/quillConfig';
 
 const cx = classNames.bind(styles);
 
 var Size = Quill.import('attributors/style/size');
-Size.whitelist = [
-    '10px',
-    '11px',
-    '12px',
-    '13px',
-    '14px',
-    '15px',
-    '16px',
-    '18px',
-    '20px',
-    '22px',
-    '24px',
-    '28px',
-    '32px',
-    '36px',
-    '40px',
-    '44px',
-    '48px',
-    '56px',
-    '64px',
-    '72px',
-    '80px',
-    '92px',
-    '114px',
-];
+Size.whitelist = QuillConfig.fontSize;
 Quill.register(Size, true);
 let Font = Quill.import('formats/font');
 // We do not add Sans Serif since it is the default
-Font.whitelist = [
-    'Spartan100',
-    'Spartan200',
-    'Spartan300',
-    'Spartan400',
-    'Spartan500',
-    'Spartan600',
-    'Spartan700',
-    'Spartan800',
-    'Spartan900',
-    'NotoSansKR100',
-    'NotoSansKR300',
-    'NotoSansKR400',
-    'NotoSansKR500',
-    'NotoSansKR700',
-    'NotoSansKR900',
-];
+Font.whitelist = QuillConfig.font;
 Quill.register(Font, true);
 
 Quill.register('modules/imageUploader', ImageUploader);
+
+var Parchment = window.Quill.import('parchment');
+const config = {
+    scope: Parchment.Scope.BLOCK,
+    whitelist: QuillConfig.AvailableLineHeights,
+};
+var lineHtClass = new Parchment.Attributor.Class(
+    'line-height',
+    'ql-line-height',
+    config,
+);
+var lineHtStyle = new Parchment.Attributor.Style(
+    'line-height',
+    'line-height',
+    config,
+);
+
+Parchment.register(lineHtClass);
+Parchment.register(lineHtStyle);
 
 const CustomToolbar = () => (
     <div id="toolbar">
@@ -93,6 +73,14 @@ const CustomToolbar = () => (
                     <option key={`font-size-${size}`} value={size}>
                         {size}
                     </option>
+                ))}
+            </select>
+            <select className="ql-line-height">
+                {[...Array(25).keys()].map((x, index) => (
+                    <option
+                        key={`line-height-option-${index}`}
+                        value={`${(60.0 + x * 10.0) / 100.0}`}
+                    ></option>
                 ))}
             </select>
             <button className="ql-bold" />
