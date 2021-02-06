@@ -137,7 +137,7 @@ class DesktopLayout extends Component {
     };
 
     _handleOnClickHamburger = () => {
-        this.props.commonStore.toggleEnableScroll();
+        // this.props.commonStore.toggleEnableScroll();
         this.setState({ hamburgerOpened: !this.state.hamburgerOpened });
         if (this.state.hamburgerOpened) {
             this._clearState();

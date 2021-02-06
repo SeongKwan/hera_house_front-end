@@ -208,7 +208,7 @@
         // overflow: scroll;
         // min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
 
-        position: absolute;
+        position: fixed;
         right: 0;
         top: 0;
         transition: all 0.9s ease-out;
