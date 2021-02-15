@@ -5,8 +5,8 @@ import { inject, observer } from 'mobx-react';
 import styles from './DesktopLayout.module.scss';
 import './DesktopLayout.css';
 import classNames from 'classnames/bind';
-import Cursor from '../components/Cursor/Cursor';
-import { isMobile } from 'react-device-detect';
+// import Cursor from '../components/Cursor/Cursor';
+// import { isMobile } from 'react-device-detect';
 import { md } from '../constants/breakporints';
 import sns from '../constants/sns';
 

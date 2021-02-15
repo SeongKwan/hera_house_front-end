@@ -7,8 +7,6 @@ import { inject, observer } from 'mobx-react';
 import { Helmet } from 'react-helmet';
 import DesktopLayout from '../../layout/DesktopLayout';
 import { md } from '../../constants/breakporints';
-import InstagramIcon from '../../styles/img/instagram_icon.png';
-import YoutubeIcon from '../../styles/img/youtube_icon.png';
 
 const cx = classNames.bind(styles);
 const youtubeUrl = 'https://www.youtube.com/channel/UCrLT9SidYIPGg8m2W2rDelQ';
