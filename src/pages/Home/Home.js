@@ -11,7 +11,7 @@ import InstagramIcon from '../../styles/img/instagram_icon.png';
 import YoutubeIcon from '../../styles/img/youtube_icon.png';
 
 const cx = classNames.bind(styles);
-const youtubeUrl = 'https://www.youtube.com';
+const youtubeUrl = 'https://www.youtube.com/channel/UCrLT9SidYIPGg8m2W2rDelQ';
 const instagramUrl = 'https://instagram.com/herakim_______?igshid=kkuvihytwxl3';
 
 @withRouter
@@ -80,11 +80,7 @@ class Home extends Component {
                                 rel="noopener noreferrer"
                                 title="HERA Official Instaram"
                             >
-                                <img
-                                    src={InstagramIcon}
-                                    alt="instagram icon"
-                                    width={18}
-                                />
+                                <span>●</span>
                                 <span>INSTAGRAM</span>
                             </a>
                             <a
@@ -94,11 +90,7 @@ class Home extends Component {
                                 rel="noopener noreferrer"
                                 title="HERA Official Youtube"
                             >
-                                <img
-                                    src={YoutubeIcon}
-                                    alt="instagram icon"
-                                    width={20}
-                                />
+                                <span>●</span>
                                 <span>YOUTUBE</span>
                             </a>
                         </div>
