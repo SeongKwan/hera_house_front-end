@@ -272,6 +272,10 @@
                             line-height: 20px;
                             letter-spacing: 0em;
 
+                            @include media('sm') {
+                                font-size: 11px;
+                            }
+
                             .mobile-link-archive {
                                 margin-top: -17.5px;
                             }
@@ -315,6 +319,10 @@
                                         line-height: 12px;
                                         letter-spacing: 0em;
                                         color: #828282;
+
+                                        @include media('sm') {
+                                            font-size: 9px;
+                                        }
 
                                         & > a {
                                             width: 100%;
