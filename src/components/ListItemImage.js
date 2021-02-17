@@ -62,7 +62,7 @@ const PostTitle = styled.div`
 
     @media screen and (max-width: 624px) {
         width: 100%;
-        font-size: 10px;
+        font-size: 13px;
         line-height: 20px;
         letter-spacing: 0em;
     }

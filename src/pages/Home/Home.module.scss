@@ -52,7 +52,7 @@
             margin: 0;
 
             @include media('sm') {
-                font-size: 12px;
+                font-size: 16px;
 
                 font-weight: 300;
                 line-height: 20px;
@@ -85,7 +85,7 @@
 
         writing-mode: vertical-rl;
 
-        font-size: 12px;
+        font-size: 16px;
 
         font-weight: 300;
         line-height: 30px;
