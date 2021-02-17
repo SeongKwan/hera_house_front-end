@@ -171,6 +171,7 @@
 }
 
 .ql-editor img {
+    width: 100%;
     @include media('sm') {
         width: 100%;
     }
