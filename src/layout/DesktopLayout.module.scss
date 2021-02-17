@@ -252,7 +252,8 @@
                     margin: 0;
                     padding: 0;
                     padding-left: 45px;
-                    margin-top: 90px;
+                    padding-top: 90px;
+                    padding-bottom: 20px;
                     // height: 90vh; /* Fallback for browsers that do not support Custom Properties */
                     height: 100vh;
                     height: calc(var(--vh, 1vh) * 100);
