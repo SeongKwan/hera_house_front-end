@@ -20,6 +20,10 @@
         }
     }
     div.header-container {
+        position: fixed;
+        width: 100%;
+        background: white;
+        z-index: 999;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         &.borderless {
             box-shadow: none;
@@ -177,6 +181,7 @@
         }
     }
     main {
+        padding-top: 90px;
         width: 100%;
         animation-fill-mode: both;
         animation-timing-function: ease-out;
@@ -212,7 +217,7 @@
         right: 0;
         top: 0;
         transition: all 0.9s ease-out;
-        z-index: 999999999;
+        z-index: 1000;
         transition-property: opacity;
         &.hidden {
             opacity: 0;
