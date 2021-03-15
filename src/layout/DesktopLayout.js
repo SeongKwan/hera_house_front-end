@@ -217,20 +217,21 @@ class DesktopLayout extends Component {
                                                     'nav-item--projects',
                                                 )}
                                             >
-                                                <div
+                                                <Link
                                                     className={cx(
                                                         'mobile-link-projects',
                                                     )}
-                                                    onClick={(e) => {
-                                                        this._handleOnClickMainMenu(
-                                                            e,
-                                                            'projects',
-                                                        );
-                                                    }}
+                                                    // onClick={(e) => {
+                                                    //     this._handleOnClickMainMenu(
+                                                    //         e,
+                                                    //         'projects',
+                                                    //     );
+                                                    // }}
+                                                    to={'/projects'}
                                                 >
                                                     PROJECTS
-                                                </div>
-                                                <ul
+                                                </Link>
+                                                {/* <ul
                                                     className={cx('sub-nav', {
                                                         active: this.state
                                                             .projectsMenuOpened,
@@ -280,7 +281,7 @@ class DesktopLayout extends Component {
                                                             );
                                                         },
                                                     )}
-                                                </ul>
+                                                </ul> */}
                                             </li>
                                             <li
                                                 className={cx(
@@ -288,21 +289,22 @@ class DesktopLayout extends Component {
                                                     'nav-item--archives',
                                                 )}
                                             >
-                                                <div
+                                                <Link
                                                     className={cx(
                                                         'mobile-link-archive',
                                                     )}
-                                                    onClick={(e) => {
-                                                        this._handleOnClickMainMenu(
-                                                            e,
-                                                            'Archives',
-                                                        );
-                                                    }}
+                                                    // onClick={(e) => {
+                                                    //     this._handleOnClickMainMenu(
+                                                    //         e,
+                                                    //         'Archives',
+                                                    //     );
+                                                    // }}
+                                                    to={"/archives"}
                                                 >
                                                     ARCHIVES
-                                                </div>
+                                                </Link>
                                                 {/* main category list */}
-                                                <ul
+                                                {/* <ul
                                                     className={cx('sub-nav', {
                                                         active: this.state
                                                             .mainMenuIsOpened,
@@ -352,7 +354,7 @@ class DesktopLayout extends Component {
                                                             );
                                                         },
                                                     )}
-                                                </ul>
+                                                </ul> */}
                                             </li>
                                         </div>
                                         <div className={cx('sns')}>
@@ -426,8 +428,9 @@ class DesktopLayout extends Component {
                                                 this._handleOnMouseLeave
                                             }
                                         >
-                                            <div>PROJECTS</div>
-                                            <ul
+                                            
+                                            <Link to={`/projects`}>PROJECTS</Link>
+                                            {/* <ul
                                                 className={cx('sub-nav', {
                                                     active:
                                                         this.state
@@ -475,7 +478,7 @@ class DesktopLayout extends Component {
                                                         );
                                                     },
                                                 )}
-                                            </ul>
+                                            </ul> */}
                                         </li>
                                         <li
                                             className={cx(
@@ -492,8 +495,8 @@ class DesktopLayout extends Component {
                                                 this._handleOnMouseLeave
                                             }
                                         >
-                                            <div>ARCHIVES</div>
-                                            <ul
+                                            <Link to={`/archives`}>ARCHIVES</Link>
+                                            {/* <ul
                                                 className={cx('sub-nav', {
                                                     active:
                                                         this.state
@@ -541,7 +544,7 @@ class DesktopLayout extends Component {
                                                         );
                                                     },
                                                 )}
-                                            </ul>
+                                            </ul> */}
                                         </li>
                                     </ul>
                                 )}

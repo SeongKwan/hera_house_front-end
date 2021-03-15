@@ -194,6 +194,9 @@
             opacity: 0;
             animation-name: fadeInUp;
         }
+        @include media('sm') {
+            padding-top: 90px;
+        }
     }
 
     /**

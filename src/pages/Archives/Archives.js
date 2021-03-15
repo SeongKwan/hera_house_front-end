@@ -39,7 +39,7 @@ class Archives extends Component {
         const type = this.props.location.pathname.split('/')[1];
         const category = this.props.location.pathname.split('/')[2];
         const subCategory = this.props.location.pathname.split('/')[3];
-        this.props.postStore.loadFilteredPosts({ type, category, subCategory });
+        this.props.postStore.loadPosts();
     };
 
     render() {
@@ -71,7 +71,7 @@ class Archives extends Component {
                     <div className={cx('flex-box')}>
                         <div className={cx('breadcrumb')}>
                             <span>ARCHIVES</span>
-                            {subCategory !== undefined ? (
+                            {/* {subCategory !== undefined ? (
                                 <span>{` > ${subCategory}`}</span>
                             ) : (
                                 <span></span>
@@ -85,7 +85,7 @@ class Archives extends Component {
                                 <span>{` > ${title}`}</span>
                             ) : (
                                 <span></span>
-                            )}
+                            )} */}
                         </div>
 
                         <div className={cx('grid-container')}>
