@@ -32,7 +32,6 @@ class Viewer extends Component {
         this.props.postStore.loadPost(query.id);
     };
     render() {
-        // let { path } = this.props.match;
         const query = qs.parse(this.props.location.search, {
             ignoreQueryPrefix: true,
         });
@@ -41,14 +40,13 @@ class Viewer extends Component {
         const category = query.category.split('_')[1];
         const subCategory = query.category.split('_')[2];
 
-        console.log(category !== null);
-
         const { thePost } = this.props.postStore;
         // const { isLoggedIn } = this.props.loginStore;
 
         if (!!title === false) {
             return <div></div>;
         }
+        console.log(title);
         return (
             <div className={cx('Viewer')}>
                 <Helmet>
@@ -67,7 +65,6 @@ class Viewer extends Component {
                 <DesktopLayout>
                     <div className={cx('flex-box')}>
                         <div className={cx('breadcrumb')}>
-
                             {title !== undefined && title !== null ? (
                                 <span>{`${title}`}</span>
                             ) : (

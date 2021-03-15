@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Editor.module.scss';
 import classNames from 'classnames/bind';
-import './Editor.css';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -9,6 +8,7 @@ import staticUrl from '../../constants/staticUrl';
 import Loader from '../Loader/Loader';
 
 import ReactQuill, { Quill } from 'react-quill';
+import './Editor.css';
 import 'react-quill/dist/quill.snow.css';
 import './Editor.scss';
 
