@@ -35,13 +35,15 @@ class Viewer extends Component {
         const query = qs.parse(this.props.location.search, {
             ignoreQueryPrefix: true,
         });
-        const title = query.title;
+
         const type = query.category.split('_')[0];
         const category = query.category.split('_')[1];
         const subCategory = query.category.split('_')[2];
 
         const { thePost } = this.props.postStore;
         // const { isLoggedIn } = this.props.loginStore;
+        const { title } = thePost;
+        console.log(title);
 
         if (!!title === false) {
             return <div></div>;

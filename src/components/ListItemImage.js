@@ -9,12 +9,12 @@ const ListItemImage = ({ src, alt, title }) => {
     useEffect(() => {
         if (load) {
             setHeight(ref.current.clientHeight);
-            console.log(ref);
-            console.log(ref.current.clientHeight);
+            // console.log(ref);
+            // console.log(ref.current.clientHeight);
         }
     }, [load]);
 
-    console.log(height);
+    // console.log(height);
     return (
         <FlexBox>
             <ImageBlock height={height !== 0 ? height : undefined}>

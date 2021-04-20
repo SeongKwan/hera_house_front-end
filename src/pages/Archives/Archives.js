@@ -101,7 +101,7 @@ class Archives extends Component {
                                                     className={cx('list-item')}
                                                 >
                                                     <Link
-                                                        to={`/viewer?category=${post.type}_${post.category}_${post.subCategory}&title=${post.title}&id=${post._id}`}
+                                                        to={`/viewer?category=${post.type}_${post.category}_${post.subCategory}&id=${post._id}`}
                                                     >
                                                         <div
                                                             className={cx(
