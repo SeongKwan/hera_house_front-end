@@ -299,9 +299,9 @@ class DesktopLayout extends Component {
                                                     //         'Archives',
                                                     //     );
                                                     // }}
-                                                    to={"/archives"}
+                                                    to={"/sounds"}
                                                 >
-                                                    ARCHIVES
+                                                    SOUNDS
                                                 </Link>
                                                 {/* main category list */}
                                                 {/* <ul
@@ -495,7 +495,7 @@ class DesktopLayout extends Component {
                                                 this._handleOnMouseLeave
                                             }
                                         >
-                                            <Link to={`/archives`}>ARCHIVES</Link>
+                                            <Link to={`/sounds`}>SOUNDS</Link>
                                             {/* <ul
                                                 className={cx('sub-nav', {
                                                     active:

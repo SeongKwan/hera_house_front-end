@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
-import styles from './Archives.module.scss';
+import styles from './Sounds.module.scss';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 @withRouter
 @inject('postStore', 'categoryStore')
 @observer
-class Archives extends Component {
+class Sounds extends Component {
     componentDidMount() {
         this._initialize();
     }
@@ -70,7 +70,7 @@ class Archives extends Component {
                 <DesktopLayout fadeIn>
                     <div className={cx('flex-box')}>
                         <div className={cx('breadcrumb')}>
-                            <span>ARCHIVES</span>
+                            <span>SOUNDS</span>
                             {/* {subCategory !== undefined ? (
                                 <span>{` > ${subCategory}`}</span>
                             ) : (
@@ -153,4 +153,4 @@ class Archives extends Component {
     }
 }
 
-export default Archives;
+export default Sounds;
