@@ -56,7 +56,7 @@ class Home extends Component {
                         <p>Design director Hera Kim</p>
                         {width > md && (
                             <Link to="/" className={cx('site-name')}>
-                                BLACK ENDING
+                                #1 Cosmos Dahlia
                             </Link>
                         )}
                     </div>
@@ -65,7 +65,7 @@ class Home extends Component {
                             to="/"
                             className={cx('site-name', 'site-name--mobile')}
                         >
-                            BLACK ENDING
+                            #1 Cosmos Dahlia
                         </Link>
                     )}
 

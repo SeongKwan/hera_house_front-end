@@ -37,6 +37,7 @@
         margin-top: 76px;
 
         @include media('sm') {
+            display:none;
             position: absolute;
             margin: 0;
             left: 35px;
@@ -69,6 +70,7 @@
             font-weight: 300;
             line-height: 30px;
             letter-spacing: 0em;
+            text-transform: uppercase;
 
             &--mobile {
                 top: 50%;
@@ -82,7 +84,7 @@
         top: 50%;
         transform: translateY(-50%);
         left: 24px;
-
+        text-transform: uppercase;
         writing-mode: vertical-rl;
 
         font-size: 16px;
